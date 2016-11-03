@@ -18,6 +18,12 @@ These libs are intended to work on Windows and POSIX systems. For building the l
 - OpenSSL (tested with v1.1.0b 26 Sep 2016), see https://www.openssl.org/
 
 
+## Documentation
+
+Also in progress...
+
+See https://marcelboldt.github.io/EXASockets/
+
 ## See also
 
 https://github.com/EXASOL/websocket-api/blob/master/WebsocketAPI.md
