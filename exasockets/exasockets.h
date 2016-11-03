@@ -1,6 +1,6 @@
 /*
 websockets.cpp and websockets.h
-http://www.github.com/marcelboldt/websockets
+http://www.github.com/marcelboldt/EXASockets
 
  The MIT License (MIT)
 
@@ -59,6 +59,20 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 class exasockets_connection {
 public:
+    //! Establishes a connection to EXASOL and returns an exasockets_connection object.
+    /*!
+     *
+     * @param server  The IP address of the EXASOL node to connect to. E.g. '192.168.137.10'
+     * @param port  The Port the EXASOL DB listens on. E.g. 8563
+     * @param clientName    The name of the client, as it will be shown e.g. in the CLIENT column in EXA_(USER/ALL/DBA)_SESSIONS. E.g. the name of the frontend.
+     * @param username  The EXASOL DB user name for authentification. E.g. 'sys'
+     * @param password  The EXASOL user password. E.g. 'exasol'. Transfer is always RSA encrypted.
+     * @param pwd_len   The password length. E.g. 6.
+     * @param autocommit    If the DBMS is supposed to execute a COMMIT automatically after each statement. Default: true (recommended)
+     * @param use_compression   If the result sets are to be transferred compressed. Default: false. Compression is not yet implemented on the client side.
+     * @param sessionId     An ID for the session to be created in EXASOL. Per default a random session ID is created (recommended).
+     * @return An exasockets_connection object containing an open connection.
+     */
     exasockets_connection(const char *server,
                           uint16_t port,
                           const char *clientName,
@@ -74,7 +88,18 @@ public:
 
     int update_session_attributes();
 
+    //! Sends an SQL statement to EXASOL and fetches the response.
+    /*! Sends an SQL stmt and fetches the result set. If a result set handle is received instead of data, then this is returned as an int.
+     * Otherwise 0 is returned and the resultSet is stored inside the connection object.
+     *
+     * @param sql The SQL statement, e.g. 'select * from schema1.tbl1'
+     * @return A result handler to be used with fetch() if available, otherwise 0.
+     */
     int exec_sql(char *sql);
+
+    //TODO: add a fetch method
+    // exec_sql may call fetch internally and return a result set. Question: how is the result set stored best? Own class?
+    int fetch(int handler);
 
     const char *databaseName() const;
 

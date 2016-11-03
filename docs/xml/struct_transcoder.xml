@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="struct_transcoder" kind="struct" language="C++" prot="public">
+        <compoundname>Transcoder</compoundname>
+        <includes refid="encodings_8h" local="no">encodings.h</includes>
+        <templateparamlist>
+            <param>
+                <type>typename</type>
+                <declname>SourceEncoding</declname>
+                <defname>SourceEncoding</defname>
+            </param>
+            <param>
+                <type>typename</type>
+                <declname>TargetEncoding</declname>
+                <defname>TargetEncoding</defname>
+            </param>
+        </templateparamlist>
+        <sectiondef kind="public-static-func">
+            <memberdef kind="function" id="struct_transcoder_1a0ea2edfe35784ebf1063921d2bd5fb66" prot="public"
+                       static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename InputStream</type>
+                    </param>
+                    <param>
+                        <type>typename OutputStream</type>
+                    </param>
+                </templateparamlist>
+                <type>RAPIDJSON_FORCEINLINE bool</type>
+                <definition>static RAPIDJSON_FORCEINLINE bool Transcoder&lt; SourceEncoding, TargetEncoding &gt;::Transcode</definition>
+                <argsstring>(InputStream &amp;is, OutputStream &amp;os)</argsstring>
+                <name>Transcode</name>
+                <param>
+                    <type>InputStream &amp;</type>
+                    <declname>is</declname>
+                </param>
+                <param>
+                    <type>OutputStream &amp;</type>
+                    <declname>os</declname>
+                </param>
+                <briefdescription>
+                    <para>Take one Unicode codepoint from source encoding, convert it to target encoding and put it to
+                        the output stream.
+                    </para>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/encodings.h" line="661" column="1" bodyfile="rapidjson/encodings.h"
+                          bodystart="661" bodyend="667"/>
+            </memberdef>
+            <memberdef kind="function" id="struct_transcoder_1a16345a912c679b2ea197328eb1444f82" prot="public"
+                       static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename InputStream</type>
+                    </param>
+                    <param>
+                        <type>typename OutputStream</type>
+                    </param>
+                </templateparamlist>
+                <type>RAPIDJSON_FORCEINLINE bool</type>
+                <definition>static RAPIDJSON_FORCEINLINE bool Transcoder&lt; SourceEncoding, TargetEncoding &gt;::TranscodeUnsafe</definition>
+                <argsstring>(InputStream &amp;is, OutputStream &amp;os)</argsstring>
+                <name>TranscodeUnsafe</name>
+                <param>
+                    <type>InputStream &amp;</type>
+                    <declname>is</declname>
+                </param>
+                <param>
+                    <type>OutputStream &amp;</type>
+                    <declname>os</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/encodings.h" line="670" column="1" bodyfile="rapidjson/encodings.h"
+                          bodystart="670" bodyend="676"/>
+            </memberdef>
+            <memberdef kind="function" id="struct_transcoder_1a8a64aa837f7962894a99f63232472543" prot="public"
+                       static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename InputStream</type>
+                    </param>
+                    <param>
+                        <type>typename OutputStream</type>
+                    </param>
+                </templateparamlist>
+                <type>RAPIDJSON_FORCEINLINE bool</type>
+                <definition>static RAPIDJSON_FORCEINLINE bool Transcoder&lt; SourceEncoding, TargetEncoding &gt;::Validate</definition>
+                <argsstring>(InputStream &amp;is, OutputStream &amp;os)</argsstring>
+                <name>Validate</name>
+                <param>
+                    <type>InputStream &amp;</type>
+                    <declname>is</declname>
+                </param>
+                <param>
+                    <type>OutputStream &amp;</type>
+                    <declname>os</declname>
+                </param>
+                <briefdescription>
+                    <para>Validate one Unicode codepoint from an encoded stream.</para>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/encodings.h" line="680" column="1" bodyfile="rapidjson/encodings.h"
+                          bodystart="680" bodyend="682"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+            <para>Encoding conversion.</para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <location file="rapidjson/encodings.h" line="658" column="1" bodyfile="rapidjson/encodings.h" bodystart="658"
+                  bodyend="683"/>
+        <listofallmembers>
+            <member refid="struct_transcoder_1a0ea2edfe35784ebf1063921d2bd5fb66" prot="public" virt="non-virtual">
+                <scope>Transcoder</scope>
+                <name>Transcode</name>
+            </member>
+            <member refid="struct_transcoder_1a16345a912c679b2ea197328eb1444f82" prot="public" virt="non-virtual">
+                <scope>Transcoder</scope>
+                <name>TranscodeUnsafe</name>
+            </member>
+            <member refid="struct_transcoder_1a8a64aa837f7962894a99f63232472543" prot="public" virt="non-virtual">
+                <scope>Transcoder</scope>
+                <name>Validate</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

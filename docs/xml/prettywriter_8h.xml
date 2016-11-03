@@ -1,0 +1,3167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="prettywriter_8h" kind="file" language="C++">
+        <compoundname>prettywriter.h</compoundname>
+        <includes refid="writer_8h" local="yes">writer.h</includes>
+        <incdepgraph>
+            <node id="532">
+                <label>internal/strfunc.h</label>
+                <link refid="strfunc_8h_source"/>
+                <childnode refid="523" relation="include">
+                </childnode>
+            </node>
+            <node id="537">
+                <label>stringbuffer.h</label>
+                <link refid="stringbuffer_8h_source"/>
+                <childnode refid="523" relation="include">
+                </childnode>
+                <childnode refid="529" relation="include">
+                </childnode>
+            </node>
+            <node id="534">
+                <label>itoa.h</label>
+                <link refid="itoa_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+            </node>
+            <node id="521">
+                <label>rapidjson/prettywriter.h</label>
+                <link refid="prettywriter_8h"/>
+                <childnode refid="522" relation="include">
+                </childnode>
+            </node>
+            <node id="527">
+                <label>cassert</label>
+            </node>
+            <node id="531">
+                <label>swap.h</label>
+                <link refid="swap_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+            </node>
+            <node id="528">
+                <label>encodings.h</label>
+                <link refid="encodings_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+            </node>
+            <node id="535">
+                <label>diyfp.h</label>
+                <link refid="diyfp_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+            </node>
+            <node id="522">
+                <label>writer.h</label>
+                <link refid="writer_8h_source"/>
+                <childnode refid="523" relation="include">
+                </childnode>
+                <childnode refid="529" relation="include">
+                </childnode>
+                <childnode refid="532" relation="include">
+                </childnode>
+                <childnode refid="533" relation="include">
+                </childnode>
+                <childnode refid="534" relation="include">
+                </childnode>
+                <childnode refid="537" relation="include">
+                </childnode>
+                <childnode refid="538" relation="include">
+                </childnode>
+            </node>
+            <node id="523">
+                <label>stream.h</label>
+                <link refid="stream_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+                <childnode refid="528" relation="include">
+                </childnode>
+            </node>
+            <node id="524">
+                <label>rapidjson.h</label>
+                <link refid="rapidjson_8h"/>
+                <childnode refid="525" relation="include">
+                </childnode>
+                <childnode refid="526" relation="include">
+                </childnode>
+                <childnode refid="527" relation="include">
+                </childnode>
+            </node>
+            <node id="533">
+                <label>internal/dtoa.h</label>
+                <link refid="dtoa_8h_source"/>
+                <childnode refid="534" relation="include">
+                </childnode>
+                <childnode refid="535" relation="include">
+                </childnode>
+                <childnode refid="536" relation="include">
+                </childnode>
+            </node>
+            <node id="536">
+                <label>ieee754.h</label>
+                <link refid="ieee754_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+            </node>
+            <node id="529">
+                <label>internal/stack.h</label>
+                <link refid="stack_8h_source"/>
+                <childnode refid="530" relation="include">
+                </childnode>
+                <childnode refid="531" relation="include">
+                </childnode>
+            </node>
+            <node id="538">
+                <label>new</label>
+            </node>
+            <node id="525">
+                <label>cstdlib</label>
+            </node>
+            <node id="530">
+                <label>../allocators.h</label>
+                <link refid="allocators_8h_source"/>
+                <childnode refid="524" relation="include">
+                </childnode>
+            </node>
+            <node id="526">
+                <label>cstring</label>
+            </node>
+        </incdepgraph>
+        <innerclass refid="class_pretty_writer" prot="public">PrettyWriter</innerclass>
+        <sectiondef kind="enum">
+            <memberdef kind="enum" id="prettywriter_8h_1a150fd6ef2dbf4025c33ece85451982d5" prot="public" static="no">
+                <name>PrettyFormatOptions</name>
+                <enumvalue id="prettywriter_8h_1a150fd6ef2dbf4025c33ece85451982d5a00acc6a868833bb14b6426314f09cbed"
+                           prot="public">
+                    <name>kFormatDefault</name>
+                    <initializer>= 0</initializer>
+                    <briefdescription>
+                        <para>Default pretty formatting.</para>
+                    </briefdescription>
+                    <detaileddescription>
+                    </detaileddescription>
+                </enumvalue>
+                <enumvalue id="prettywriter_8h_1a150fd6ef2dbf4025c33ece85451982d5addf85c922d2d597ab1074a55b27c3fe2"
+                           prot="public">
+                    <name>kFormatSingleLineArray</name>
+                    <initializer>= 1</initializer>
+                    <briefdescription>
+                        <para>Format arrays on a single line.</para>
+                    </briefdescription>
+                    <detaileddescription>
+                    </detaileddescription>
+                </enumvalue>
+                <briefdescription>
+                    <para>Combination of <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref> format
+                        flags.
+                    </para>
+                </briefdescription>
+                <detaileddescription>
+                    <para>
+                        <simplesect kind="see">
+                            <para>
+                                <ref refid="class_pretty_writer_1a1ff9dbeff9b9c724080cb65987a41b73" kindref="member">
+                                    PrettyWriter::SetFormatOptions
+                                </ref>
+                            </para>
+                        </simplesect>
+                    </para>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/prettywriter.h" line="35" column="1" bodyfile="rapidjson/prettywriter.h"
+                          bodystart="35" bodyend="38"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <programlisting>
+            <codeline lineno="1">
+                <highlight class="comment">//<sp/>Tencent<sp/>is<sp/>pleased<sp/>to<sp/>support<sp/>the<sp/>open<sp/>
+                    source<sp/>community<sp/>by<sp/>making<sp/>RapidJSON<sp/>available.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="2">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="3">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Copyright<sp/>(C)<sp/>2015<sp/>THL<sp/>A29<sp/>Limited,<sp/>a<sp/>
+                    Tencent<sp/>company,<sp/>and<sp/>Milo<sp/>Yip.<sp/>All<sp/>rights<sp/>reserved.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="4">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="5">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>MIT<sp/>License<sp/>(the<sp/>&quot;License&quot;);
+                    <sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="6">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.<sp/>You<sp/>may<sp/>
+                    obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="7">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="8">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>http://opensource.org/licenses/MIT
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="9">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="10">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed
+                    <sp/>to<sp/>in<sp/>writing,<sp/>software<sp/>distributed
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="11">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>
+                    &quot;AS<sp/>IS&quot;<sp/>BASIS,<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="12">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>
+                    implied.<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="13">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and<sp/>
+                    limitations<sp/>under<sp/>the<sp/>License.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="14">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="15">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#ifndef<sp/>RAPIDJSON_PRETTYWRITER_H_
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="16">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#define<sp/>RAPIDJSON_PRETTYWRITER_H_
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="17">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="18">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#include<sp/>&quot;writer.h&quot;
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="19">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="20">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#ifdef<sp/>__GNUC__
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="21">
+                <highlight class="normal">RAPIDJSON_DIAG_PUSH</highlight>
+            </codeline>
+            <codeline lineno="22">
+                <highlight class="normal">RAPIDJSON_DIAG_OFF(effc++)</highlight>
+            </codeline>
+            <codeline lineno="23">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="24">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="25">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#if<sp/>defined(__clang__)
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="26">
+                <highlight class="normal">RAPIDJSON_DIAG_PUSH</highlight>
+            </codeline>
+            <codeline lineno="27">
+                <highlight class="normal">RAPIDJSON_DIAG_OFF(c++98-compat)</highlight>
+            </codeline>
+            <codeline lineno="28">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="29">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="30">
+                <highlight class="normal">
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gad3806c8251fdc7da9618b7e922674ffc"
+                         kindref="member">RAPIDJSON_NAMESPACE_BEGIN
+                    </ref>
+                </highlight>
+            </codeline>
+            <codeline lineno="31">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="33"></codeline>
+            <codeline lineno="35">
+                <highlight class="keyword">enum</highlight>
+                <highlight class="normal"><sp/>PrettyFormatOptions<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="36">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>kFormatDefault<sp/>=<sp/>0,
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+            </codeline>
+            <codeline lineno="37">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>kFormatSingleLineArray<sp/>=<sp/>1
+                    <sp/>
+                    <sp/>
+                </highlight>
+            </codeline>
+            <codeline lineno="38">
+                <highlight class="normal">};</highlight>
+            </codeline>
+            <codeline lineno="39">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="41"></codeline>
+            <codeline lineno="47">
+                <highlight class="keyword">template</highlight>
+                <highlight class="normal">&lt;</highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal"><sp/>OutputStream,
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal"><sp/>SourceEncoding<sp/>=<sp/>UTF8&lt;&gt;,
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal"><sp/>TargetEncoding<sp/>=<sp/>UTF8&lt;&gt;,
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal"><sp/>StackAllocator<sp/>=<sp/>CrtAllocator,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">unsigned</highlight>
+                <highlight class="normal"><sp/>writeFlags<sp/>=<sp/>kWriteDefaultFlags&gt;
+                </highlight>
+            </codeline>
+            <codeline lineno="48">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">class
+                    <sp/>
+                </highlight>
+                <highlight class="normal">
+                    <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>
+                    <sp/>:
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">public</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_writer" kindref="compound">Writer</ref>&lt;OutputStream,<sp/>SourceEncoding,<sp/>
+                    TargetEncoding,<sp/>StackAllocator,<sp/>writeFlags&gt;<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="49">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">public</highlight>
+                <highlight class="normal">:</highlight>
+            </codeline>
+            <codeline lineno="50">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typedef</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_writer" kindref="compound">Writer&lt;OutputStream, SourceEncoding, TargetEncoding,
+                        StackAllocator&gt;</ref>
+                    <sp/>Base;
+                </highlight>
+            </codeline>
+            <codeline lineno="51">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typedef</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal"><sp/>Base::Ch<sp/>Ch;
+                </highlight>
+            </codeline>
+            <codeline lineno="52">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="54"></codeline>
+            <codeline lineno="58" refid="class_pretty_writer_1a928ac2a5235b8877048ebdd5f35a556f" refkind="member">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">explicit</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a928ac2a5235b8877048ebdd5f35a556f" kindref="member">
+                        PrettyWriter</ref>(OutputStream&amp;<sp/>os,<sp/>StackAllocator*<sp/>allocator<sp/>=<sp/>0,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">size_t</highlight>
+                <highlight class="normal"><sp/>levelDepth<sp/>=<sp/>Base::kDefaultLevelDepth)<sp/>:
+                    <sp/>
+                </highlight>
+            </codeline>
+            <codeline lineno="59">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base(os,<sp/>allocator,<sp/>levelDepth),<sp/>indentChar_(
+                </highlight>
+                <highlight class="stringliteral">&apos;<sp/>&apos;
+                </highlight>
+                <highlight class="normal">),<sp/>indentCharCount_(4),<sp/>formatOptions_(kFormatDefault)<sp/>{}
+                </highlight>
+            </codeline>
+            <codeline lineno="60">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="61">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="62">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">explicit</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a928ac2a5235b8877048ebdd5f35a556f" kindref="member">
+                        PrettyWriter</ref>(StackAllocator*<sp/>allocator<sp/>=<sp/>0,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">size_t</highlight>
+                <highlight class="normal"><sp/>levelDepth<sp/>=<sp/>Base::kDefaultLevelDepth)<sp/>:
+                    <sp/>
+                </highlight>
+            </codeline>
+            <codeline lineno="63">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base(allocator,<sp/>levelDepth),<sp/>indentChar_(
+                </highlight>
+                <highlight class="charliteral">&apos;<sp/>&apos;
+                </highlight>
+                <highlight class="normal">),<sp/>indentCharCount_(4)<sp/>{}
+                </highlight>
+            </codeline>
+            <codeline lineno="64">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="65">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#if<sp/>RAPIDJSON_HAS_CXX11_RVALUE_REFS
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="66">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a928ac2a5235b8877048ebdd5f35a556f" kindref="member">
+                        PrettyWriter</ref>(<ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>&amp;&amp;
+                    <sp/>rhs)<sp/>:
+                </highlight>
+            </codeline>
+            <codeline lineno="67">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base(std::forward&lt;PrettyWriter&gt;(rhs)),<sp/>indentChar_(rhs.indentChar_),<sp/>
+                    indentCharCount_(rhs.indentCharCount_),<sp/>formatOptions_(rhs.formatOptions_)<sp/>{}
+                </highlight>
+            </codeline>
+            <codeline lineno="68">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="69">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="71"></codeline>
+            <codeline lineno="75" refid="class_pretty_writer_1ad307b4c8d61af25042d0adcd0910c19a" refkind="member">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>&amp;
+                    <sp/>
+                    <ref refid="class_pretty_writer_1ad307b4c8d61af25042d0adcd0910c19a" kindref="member">SetIndent</ref>
+                    (Ch<sp/>indentChar,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">unsigned</highlight>
+                <highlight class="normal"><sp/>indentCharCount)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="76">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(indentChar<sp/>==
+                    <sp/>
+                </highlight>
+                <highlight class="charliteral">&apos;<sp/>&apos;
+                </highlight>
+                <highlight class="normal"><sp/>||<sp/>indentChar<sp/>==
+                    <sp/>
+                </highlight>
+                <highlight class="charliteral">&apos;\t&apos;</highlight>
+                <highlight class="normal"><sp/>||<sp/>indentChar<sp/>==
+                    <sp/>
+                </highlight>
+                <highlight class="charliteral">&apos;\n&apos;</highlight>
+                <highlight class="normal"><sp/>||<sp/>indentChar<sp/>==
+                    <sp/>
+                </highlight>
+                <highlight class="charliteral">&apos;\r&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="77">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>indentChar_<sp/>=<sp/>indentChar;
+                </highlight>
+            </codeline>
+            <codeline lineno="78">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>indentCharCount_<sp/>=<sp/>indentCharCount;
+                </highlight>
+            </codeline>
+            <codeline lineno="79">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>*
+                </highlight>
+                <highlight class="keyword">this</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="80">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="81">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="83"></codeline>
+            <codeline lineno="85" refid="class_pretty_writer_1a1ff9dbeff9b9c724080cb65987a41b73" refkind="member">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>&amp;
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a1ff9dbeff9b9c724080cb65987a41b73" kindref="member">
+                        SetFormatOptions</ref>(PrettyFormatOptions<sp/>options)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="86">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>formatOptions_<sp/>=<sp/>options;
+                </highlight>
+            </codeline>
+            <codeline lineno="87">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>*
+                </highlight>
+                <highlight class="keyword">this</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="88">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="89">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="94">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="95">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Null()
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(<ref
+                            refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7aa09befbfb4f2e1409f237817979d8087"
+                            kindref="member">kNullType</ref>);
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteNull();<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="96">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Bool(
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>b)
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(b<sp/>?
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7a209434e5edd66630011ca19d710d7cd6"
+                         kindref="member">kTrueType
+                    </ref>
+                    <sp/>:
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7a062b8296274a258acf0e142868684c54"
+                         kindref="member">kFalseType</ref>);
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteBool(b);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="97">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Int(
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>i)
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(<ref
+                            refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7afc9f813b7aaf71911bdae20a86b2702d"
+                            kindref="member">kNumberType</ref>);
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteInt(i);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="98">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Uint(
+                </highlight>
+                <highlight class="keywordtype">unsigned</highlight>
+                <highlight class="normal"><sp/>u)
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(<ref
+                            refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7afc9f813b7aaf71911bdae20a86b2702d"
+                            kindref="member">kNumberType</ref>);
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteUint(u);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="99">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Int64(int64_t<sp/>i64)
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(<ref
+                            refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7afc9f813b7aaf71911bdae20a86b2702d"
+                            kindref="member">kNumberType</ref>);
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteInt64(i64);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="100">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Uint64(uint64_t<sp/>u64)
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(<ref
+                            refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7afc9f813b7aaf71911bdae20a86b2702d"
+                            kindref="member">kNumberType</ref>);
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteUint64(u64);
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="101">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Double(
+                </highlight>
+                <highlight class="keywordtype">double</highlight>
+                <highlight class="normal"><sp/>d)
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>{<sp/>PrettyPrefix(<ref
+                            refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7afc9f813b7aaf71911bdae20a86b2702d"
+                            kindref="member">kNumberType</ref>);
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteDouble(d);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="102">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="103">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>RawNumber(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>Ch*<sp/>str,
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    <sp/>length,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>copy<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">false</highlight>
+                <highlight class="normal">)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="104">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(str<sp/>!=<sp/>0);
+                </highlight>
+            </codeline>
+            <codeline lineno="105">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)copy;
+                </highlight>
+            </codeline>
+            <codeline lineno="106">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PrettyPrefix(<ref
+                        refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7afc9f813b7aaf71911bdae20a86b2702d"
+                        kindref="member">kNumberType</ref>);
+                </highlight>
+            </codeline>
+            <codeline lineno="107">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteString(str,<sp/>length);
+                </highlight>
+            </codeline>
+            <codeline lineno="108">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="109">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="110">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>String(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>Ch*<sp/>str,
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    <sp/>length,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>copy<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">false</highlight>
+                <highlight class="normal">)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="111">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(str<sp/>!=<sp/>0);
+                </highlight>
+            </codeline>
+            <codeline lineno="112">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)copy;
+                </highlight>
+            </codeline>
+            <codeline lineno="113">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PrettyPrefix(<ref
+                        refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7a2d823b89b055bc743d05c03183d3f338"
+                        kindref="member">kStringType</ref>);
+                </highlight>
+            </codeline>
+            <codeline lineno="114">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteString(str,<sp/>length);
+                </highlight>
+            </codeline>
+            <codeline lineno="115">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="116">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="117">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#if<sp/>RAPIDJSON_HAS_STDSTRING
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="118">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>String(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>std::basic_string&lt;Ch&gt;&amp;<sp/>str)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="119">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>String(str.data(),
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    (str.size()));
+                </highlight>
+            </codeline>
+            <codeline lineno="120">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="121">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="122">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="123">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>StartObject()<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="124">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PrettyPrefix(<ref
+                        refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7a146f46700e905e8df96a6a90b5c7640f"
+                        kindref="member">kObjectType</ref>);
+                </highlight>
+            </codeline>
+            <codeline lineno="125">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">new</highlight>
+                <highlight class="normal"><sp/>(Base::level_stack_.template<sp/>Push&lt;typename<sp/>Base::Level&gt;())
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="struct_writer_1_1_level" kindref="compound">Base::Level</ref>(
+                </highlight>
+                <highlight class="keyword">false</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="126">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteStartObject();
+                </highlight>
+            </codeline>
+            <codeline lineno="127">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="128">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="129">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Key(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>Ch*<sp/>str,
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    <sp/>length,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>copy<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">false</highlight>
+                <highlight class="normal">)<sp/>{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>String(str,<sp/>length,<sp/>copy);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="130">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="131">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#if<sp/>RAPIDJSON_HAS_STDSTRING
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="132">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Key(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>std::basic_string&lt;Ch&gt;&amp;<sp/>str)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="133">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Key(str.data(),
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    (str.size()));
+                </highlight>
+            </codeline>
+            <codeline lineno="134">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="135">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="136">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+            </codeline>
+            <codeline lineno="137">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>EndObject(
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    <sp/>memberCount<sp/>=<sp/>0)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="138">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)memberCount;
+                </highlight>
+            </codeline>
+            <codeline lineno="139">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(Base::level_stack_.GetSize()<sp/>&gt;=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">sizeof</highlight>
+                <highlight class="normal">(</highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="struct_writer_1_1_level" kindref="compound">Base::Level</ref>));
+                </highlight>
+            </codeline>
+            <codeline lineno="140">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(!Base::level_stack_.
+                </highlight>
+                <highlight class="keyword">template</highlight>
+                <highlight class="normal"><sp/>Top&lt;typename<sp/>Base::Level&gt;()-&gt;inArray);
+                </highlight>
+            </codeline>
+            <codeline lineno="141">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>empty<sp/>=<sp/>Base::level_stack_.template<sp/>Pop&lt;typename<sp/>
+                    Base::Level&gt;(1)-&gt;valueCount<sp/>==<sp/>0;
+                </highlight>
+            </codeline>
+            <codeline lineno="142">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="143">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(!empty)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="144">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;\n&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="145">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>WriteIndent();
+                </highlight>
+            </codeline>
+            <codeline lineno="146">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="147">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>ret<sp/>=<sp/>Base::WriteEndObject();
+                </highlight>
+            </codeline>
+            <codeline lineno="148">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)ret;
+                </highlight>
+            </codeline>
+            <codeline lineno="149">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(ret<sp/>==
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">true</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="150">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(Base::level_stack_.Empty())
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>end<sp/>of<sp/>json<sp/>text
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="151">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Flush();
+                </highlight>
+            </codeline>
+            <codeline lineno="152">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">true</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="153">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="154">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="155">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>StartArray()<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="156">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PrettyPrefix(<ref
+                        refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7af41527d6925efa3c5c3dadb23dfef7c8"
+                        kindref="member">kArrayType</ref>);
+                </highlight>
+            </codeline>
+            <codeline lineno="157">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">new</highlight>
+                <highlight class="normal"><sp/>(Base::level_stack_.template<sp/>Push&lt;typename<sp/>Base::Level&gt;())
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="struct_writer_1_1_level" kindref="compound">Base::Level</ref>(
+                </highlight>
+                <highlight class="keyword">true</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="158">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteStartArray();
+                </highlight>
+            </codeline>
+            <codeline lineno="159">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="160">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="161">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>EndArray(
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    <sp/>memberCount<sp/>=<sp/>0)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="162">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)memberCount;
+                </highlight>
+            </codeline>
+            <codeline lineno="163">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(Base::level_stack_.GetSize()<sp/>&gt;=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">sizeof</highlight>
+                <highlight class="normal">(</highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="struct_writer_1_1_level" kindref="compound">Base::Level</ref>));
+                </highlight>
+            </codeline>
+            <codeline lineno="164">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(Base::level_stack_.
+                </highlight>
+                <highlight class="keyword">template</highlight>
+                <highlight class="normal"><sp/>Top&lt;typename<sp/>Base::Level&gt;()-&gt;inArray);
+                </highlight>
+            </codeline>
+            <codeline lineno="165">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>empty<sp/>=<sp/>Base::level_stack_.template<sp/>Pop&lt;typename<sp/>
+                    Base::Level&gt;(1)-&gt;valueCount<sp/>==<sp/>0;
+                </highlight>
+            </codeline>
+            <codeline lineno="166">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="167">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(!empty<sp/>&amp;&amp;<sp/>!(formatOptions_<sp/>&amp;<sp/>
+                    kFormatSingleLineArray))<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="168">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;\n&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="169">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>WriteIndent();
+                </highlight>
+            </codeline>
+            <codeline lineno="170">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="171">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>ret<sp/>=<sp/>Base::WriteEndArray();
+                </highlight>
+            </codeline>
+            <codeline lineno="172">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)ret;
+                </highlight>
+            </codeline>
+            <codeline lineno="173">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(ret<sp/>==
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">true</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="174">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(Base::level_stack_.Empty())
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>end<sp/>of<sp/>json<sp/>text
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="175">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Flush();
+                </highlight>
+            </codeline>
+            <codeline lineno="176">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">true</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="177">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="178">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="180"></codeline>
+            <codeline lineno="183"></codeline>
+            <codeline lineno="185" refid="class_pretty_writer_1a7e85689355a827d273f272c26b447225" refkind="member">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a7e85689355a827d273f272c26b447225" kindref="member">String</ref>(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>Ch*<sp/>str)<sp/>{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a7e85689355a827d273f272c26b447225" kindref="member">String</ref>
+                    (str,<sp/>internal::StrLen(str));<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="186">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Key(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>Ch*<sp/>str)<sp/>{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Key(str,<sp/>internal::StrLen(str));<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="187">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="189"></codeline>
+            <codeline lineno="191"></codeline>
+            <codeline lineno="199" refid="class_pretty_writer_1a440890a72408a150ef46edda6becdc94" refkind="member">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a440890a72408a150ef46edda6becdc94" kindref="member">RawValue</ref>(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>Ch*<sp/>json,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">size_t</highlight>
+                <highlight class="normal"><sp/>length,
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref>
+                    <sp/>type)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="200">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(json<sp/>!=<sp/>0);
+                </highlight>
+            </codeline>
+            <codeline lineno="201">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PrettyPrefix(type);
+                </highlight>
+            </codeline>
+            <codeline lineno="202">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>Base::WriteRawValue(json,<sp/>length);
+                </highlight>
+            </codeline>
+            <codeline lineno="203">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="204">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="205">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">protected</highlight>
+                <highlight class="normal">:</highlight>
+            </codeline>
+            <codeline lineno="206">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">void</highlight>
+                <highlight class="normal"><sp/>PrettyPrefix(
+                    <ref refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref>
+                    <sp/>type)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="207">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>(void)type;
+                </highlight>
+            </codeline>
+            <codeline lineno="208">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(Base::level_stack_.GetSize()<sp/>!=<sp/>0)<sp/>{
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>this<sp/>value<sp/>is<sp/>not<sp/>at<sp/>root
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="209">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="struct_writer_1_1_level" kindref="compound">Base::Level</ref>*<sp/>level<sp/>=<sp/>
+                    Base::level_stack_.template<sp/>Top&lt;typename<sp/>Base::Level&gt;();
+                </highlight>
+            </codeline>
+            <codeline lineno="210">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="211">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(level-&gt;<ref
+                        refid="struct_writer_1_1_level_1aa009a2d675e98757c2997072aad78789" kindref="member">
+                    inArray</ref>)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="212">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(level-&gt;
+                    <ref refid="struct_writer_1_1_level_1a4a09e5fda49d0d57b2adc041203f244f" kindref="member">
+                        valueCount
+                    </ref>
+                    <sp/>&gt;<sp/>0)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="213">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;,&apos;</highlight>
+                <highlight class="normal">);
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>add<sp/>comma<sp/>if<sp/>it<sp/>is<sp/>not<sp/>the<sp/>first<sp/>
+                    element<sp/>in<sp/>array
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="214">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(formatOptions_<sp/>&amp;<sp/>kFormatSingleLineArray)
+                </highlight>
+            </codeline>
+            <codeline lineno="215">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;<sp/>&apos;
+                </highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="216">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="217">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="218">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(!(formatOptions_<sp/>&amp;<sp/>kFormatSingleLineArray))<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="219">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;\n&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="220">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>WriteIndent();
+                </highlight>
+            </codeline>
+            <codeline lineno="221">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="222">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="223">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">else</highlight>
+                <highlight class="normal"><sp/>{
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>in<sp/>object
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="224">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(level-&gt;
+                    <ref refid="struct_writer_1_1_level_1a4a09e5fda49d0d57b2adc041203f244f" kindref="member">
+                        valueCount
+                    </ref>
+                    <sp/>&gt;<sp/>0)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="225">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(level-&gt;
+                    <ref refid="struct_writer_1_1_level_1a4a09e5fda49d0d57b2adc041203f244f" kindref="member">
+                        valueCount
+                    </ref>
+                    <sp/>%<sp/>2<sp/>==<sp/>0)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="226">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;,&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="227">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;\n&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="228">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="229">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">else</highlight>
+                <highlight class="normal"><sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="230">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;:&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="231">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;<sp/>&apos;
+                </highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="232">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="233">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="234">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">else</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="235">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::os_-&gt;Put(
+                </highlight>
+                <highlight class="charliteral">&apos;\n&apos;</highlight>
+                <highlight class="normal">);</highlight>
+            </codeline>
+            <codeline lineno="236">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="237">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(level-&gt;
+                    <ref refid="struct_writer_1_1_level_1a4a09e5fda49d0d57b2adc041203f244f" kindref="member">
+                        valueCount
+                    </ref>
+                    <sp/>%<sp/>2<sp/>==<sp/>0)
+                </highlight>
+            </codeline>
+            <codeline lineno="238">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>WriteIndent();
+                </highlight>
+            </codeline>
+            <codeline lineno="239">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="240">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(!level-&gt;
+                    <ref refid="struct_writer_1_1_level_1aa009a2d675e98757c2997072aad78789" kindref="member">inArray
+                    </ref>
+                    <sp/>&amp;&amp;<sp/>level-&gt;
+                    <ref refid="struct_writer_1_1_level_1a4a09e5fda49d0d57b2adc041203f244f" kindref="member">
+                        valueCount
+                    </ref>
+                    <sp/>%<sp/>2<sp/>==<sp/>0)
+                </highlight>
+            </codeline>
+            <codeline lineno="241">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(type<sp/>==
+                    <sp/>
+                    <ref refid="rapidjson_8h_1a1d1cfd8ffb84e947f82999c682b666a7a2d823b89b055bc743d05c03183d3f338"
+                         kindref="member">kStringType</ref>);
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>if<sp/>it&apos;s<sp/>in<sp/>object,<sp/>then<sp/>even<sp/>number<sp/>
+                    should<sp/>be<sp/>a<sp/>name
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="242">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>level-&gt;<ref refid="struct_writer_1_1_level_1a4a09e5fda49d0d57b2adc041203f244f"
+                                        kindref="member">valueCount</ref>++;
+                </highlight>
+            </codeline>
+            <codeline lineno="243">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="244">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">else</highlight>
+                <highlight class="normal"><sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="245">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(!Base::hasRoot_);
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>Should<sp/>only<sp/>has<sp/>one<sp/>and<sp/>only<sp/>one<sp/>root.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="246">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Base::hasRoot_<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">true</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="247">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="248">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="249">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="250">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">void</highlight>
+                <highlight class="normal"><sp/>WriteIndent()
+                    <sp/>
+                    <sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="251">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">size_t</highlight>
+                <highlight class="normal"><sp/>count<sp/>=<sp/>(Base::level_stack_.GetSize()<sp/>/
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">sizeof</highlight>
+                <highlight class="normal">(</highlight>
+                <highlight class="keyword">typename</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="struct_writer_1_1_level" kindref="compound">Base::Level</ref>))<sp/>*<sp/>
+                    indentCharCount_;
+                </highlight>
+            </codeline>
+            <codeline lineno="252">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PutN(*Base::os_,<sp/>static_cast&lt;typename<sp/>TargetEncoding::Ch&gt;(indentChar_),<sp/>
+                    count);
+                </highlight>
+            </codeline>
+            <codeline lineno="253">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="254">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="255">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>Ch<sp/>indentChar_;
+                </highlight>
+            </codeline>
+            <codeline lineno="256">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">unsigned</highlight>
+                <highlight class="normal"><sp/>indentCharCount_;
+                </highlight>
+            </codeline>
+            <codeline lineno="257">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>PrettyFormatOptions<sp/>formatOptions_;
+                </highlight>
+            </codeline>
+            <codeline lineno="258">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="259">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">private</highlight>
+                <highlight class="normal">:</highlight>
+            </codeline>
+            <codeline lineno="260">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>Prohibit<sp/>copy<sp/>constructor<sp/>&amp;<sp/>assignment<sp/>
+                    operator.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="261">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="class_pretty_writer_1a928ac2a5235b8877048ebdd5f35a556f" kindref="member">
+                        PrettyWriter</ref>(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>&amp;);
+                </highlight>
+            </codeline>
+            <codeline lineno="262">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>&amp;<sp/>operator=(
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_pretty_writer" kindref="compound">PrettyWriter</ref>&amp;);
+                </highlight>
+            </codeline>
+            <codeline lineno="263">
+                <highlight class="normal">};</highlight>
+            </codeline>
+            <codeline lineno="264">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="265">
+                <highlight class="normal">
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gaf18f052a98b9f5df5448d39484b743c1"
+                         kindref="member">RAPIDJSON_NAMESPACE_END
+                    </ref>
+                </highlight>
+            </codeline>
+            <codeline lineno="266">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="267">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#if<sp/>defined(__clang__)
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="268">
+                <highlight class="normal">RAPIDJSON_DIAG_POP</highlight>
+            </codeline>
+            <codeline lineno="269">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="270">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="271">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#ifdef<sp/>__GNUC__
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="272">
+                <highlight class="normal">RAPIDJSON_DIAG_POP</highlight>
+            </codeline>
+            <codeline lineno="273">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="274">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="275">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif<sp/>//<sp/>RAPIDJSON_RAPIDJSON_H_
+                </highlight>
+            </codeline>
+        </programlisting>
+        <location file="rapidjson/prettywriter.h"/>
+    </compounddef>
+</doxygen>

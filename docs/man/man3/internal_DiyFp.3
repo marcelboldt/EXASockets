@@ -1,0 +1,85 @@
+.TH "internal::DiyFp" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+internal::DiyFp \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDiyFp\fP (uint64_t fp, int exp)"
+.br
+.ti -1c
+.RI "\fBDiyFp\fP (double d)"
+.br
+.ti -1c
+.RI "\fBDiyFp\fP \fBoperator\-\fP (const \fBDiyFp\fP &rhs) const"
+.br
+.ti -1c
+.RI "\fBDiyFp\fP \fBoperator*\fP (const \fBDiyFp\fP &rhs) const"
+.br
+.ti -1c
+.RI "\fBDiyFp\fP \fBNormalize\fP () const"
+.br
+.ti -1c
+.RI "\fBDiyFp\fP \fBNormalizeBoundary\fP () const"
+.br
+.ti -1c
+.RI "void \fBNormalizedBoundaries\fP (\fBDiyFp\fP *minus, \fBDiyFp\fP *plus) const"
+.br
+.ti -1c
+.RI "double \fBToDouble\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "uint64_t \fBf\fP"
+.br
+.ti -1c
+.RI "int \fBe\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBkDiySignificandSize\fP = 64"
+.br
+.ti -1c
+.RI "static const int \fBkDpSignificandSize\fP = 52"
+.br
+.ti -1c
+.RI "static const int \fBkDpExponentBias\fP = 0x3FF + kDpSignificandSize"
+.br
+.ti -1c
+.RI "static const int \fBkDpMaxExponent\fP = 0x7FF \- kDpExponentBias"
+.br
+.ti -1c
+.RI "static const int \fBkDpMinExponent\fP = \-kDpExponentBias"
+.br
+.ti -1c
+.RI "static const int \fBkDpDenormalExponent\fP = \-kDpExponentBias + 1"
+.br
+.ti -1c
+.RI "static const uint64_t \fBkDpExponentMask\fP = \fBRAPIDJSON_UINT64_C2\fP(0x7FF00000, 0x00000000)"
+.br
+.ti -1c
+.RI "static const uint64_t \fBkDpSignificandMask\fP = \fBRAPIDJSON_UINT64_C2\fP(0x000FFFFF, 0xFFFFFFFF)"
+.br
+.ti -1c
+.RI "static const uint64_t \fBkDpHiddenBit\fP = \fBRAPIDJSON_UINT64_C2\fP(0x00100000, 0x00000000)"
+.br
+.in -1c
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDiyFp\fP internal::DiyFp::operator* (const \fBDiyFp\fP & rhs) const\fC [inline]\fP"
+mult_round 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

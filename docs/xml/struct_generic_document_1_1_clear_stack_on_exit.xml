@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="struct_generic_document_1_1_clear_stack_on_exit" kind="struct" language="C++" prot="private">
+        <compoundname>GenericDocument::ClearStackOnExit</compoundname>
+        <sectiondef kind="private-attrib">
+            <memberdef kind="variable"
+                       id="struct_generic_document_1_1_clear_stack_on_exit_1a56c2e82730f07911288b42640b029dc3"
+                       prot="private" static="no" mutable="no">
+                <type>
+                    <ref refid="class_generic_document" kindref="compound">GenericDocument</ref>
+                    &amp;
+                </type>
+                <definition>GenericDocument&amp; GenericDocument&lt; Encoding, Allocator, StackAllocator &gt;::ClearStackOnExit::d_</definition>
+                <argsstring></argsstring>
+                <name>d_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="2324" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="2324" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function"
+                       id="struct_generic_document_1_1_clear_stack_on_exit_1a99ba88d8b8ae15ccf5c979fff80c713a"
+                       prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericDocument&lt; Encoding, Allocator, StackAllocator &gt;::ClearStackOnExit::ClearStackOnExit</definition>
+                <argsstring>(GenericDocument &amp;d)</argsstring>
+                <name>ClearStackOnExit</name>
+                <param>
+                    <type>
+                        <ref refid="class_generic_document" kindref="compound">GenericDocument</ref>
+                        &amp;
+                    </type>
+                    <declname>d</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="2319" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="2319" bodyend="2319"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="struct_generic_document_1_1_clear_stack_on_exit_1aa51248f341ec130a29e4f8c3705c9312"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericDocument&lt; Encoding, Allocator, StackAllocator &gt;::ClearStackOnExit::~ClearStackOnExit</definition>
+                <argsstring>()</argsstring>
+                <name>~ClearStackOnExit</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="2320" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="2320" bodyend="2320"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="private-func">
+            <memberdef kind="function"
+                       id="struct_generic_document_1_1_clear_stack_on_exit_1ae009d5d42300fb5790227d24b4b38921"
+                       prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type></type>
+                <definition>GenericDocument&lt; Encoding, Allocator, StackAllocator &gt;::ClearStackOnExit::ClearStackOnExit</definition>
+                <argsstring>(const ClearStackOnExit &amp;)</argsstring>
+                <name>ClearStackOnExit</name>
+                <param>
+                    <type>const ClearStackOnExit &amp;</type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="2322" column="1"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="struct_generic_document_1_1_clear_stack_on_exit_1a474a254254f2deaba8c98ea79dc9c0f1"
+                       prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>ClearStackOnExit &amp;</type>
+                <definition>ClearStackOnExit&amp; GenericDocument&lt; Encoding, Allocator, StackAllocator &gt;::ClearStackOnExit::operator=</definition>
+                <argsstring>(const ClearStackOnExit &amp;)</argsstring>
+                <name>operator=</name>
+                <param>
+                    <type>const ClearStackOnExit &amp;</type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="2323" column="1"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <location file="rapidjson/document.h" line="2318" column="1" bodyfile="rapidjson/document.h" bodystart="2318"
+                  bodyend="2325"/>
+        <listofallmembers>
+            <member refid="struct_generic_document_1_1_clear_stack_on_exit_1a99ba88d8b8ae15ccf5c979fff80c713a"
+                    prot="public" virt="non-virtual">
+                <scope>GenericDocument::ClearStackOnExit</scope>
+                <name>ClearStackOnExit</name>
+            </member>
+            <member refid="struct_generic_document_1_1_clear_stack_on_exit_1ae009d5d42300fb5790227d24b4b38921"
+                    prot="private" virt="non-virtual">
+                <scope>GenericDocument::ClearStackOnExit</scope>
+                <name>ClearStackOnExit</name>
+            </member>
+            <member refid="struct_generic_document_1_1_clear_stack_on_exit_1a56c2e82730f07911288b42640b029dc3"
+                    prot="private" virt="non-virtual">
+                <scope>GenericDocument::ClearStackOnExit</scope>
+                <name>d_</name>
+            </member>
+            <member refid="struct_generic_document_1_1_clear_stack_on_exit_1a474a254254f2deaba8c98ea79dc9c0f1"
+                    prot="private" virt="non-virtual">
+                <scope>GenericDocument::ClearStackOnExit</scope>
+                <name>operator=</name>
+            </member>
+            <member refid="struct_generic_document_1_1_clear_stack_on_exit_1aa51248f341ec130a29e4f8c3705c9312"
+                    prot="public" virt="non-virtual">
+                <scope>GenericDocument::ClearStackOnExit</scope>
+                <name>~ClearStackOnExit</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="struct_generic_value_1_1_object_data" kind="struct" language="C++" prot="public">
+        <compoundname>GenericValue::ObjectData</compoundname>
+        <sectiondef kind="public-attrib">
+            <memberdef kind="variable" id="struct_generic_value_1_1_object_data_1a8aa09c430b245b9bb0745a1ab38201d5"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                </type>
+                <definition>SizeType GenericValue&lt; Encoding, Allocator &gt;::ObjectData::size</definition>
+                <argsstring></argsstring>
+                <name>size</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="1906" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="1906" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="struct_generic_value_1_1_object_data_1a22b8d8b01d52db71471f0d4c990cb93b"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                </type>
+                <definition>SizeType GenericValue&lt; Encoding, Allocator &gt;::ObjectData::capacity</definition>
+                <argsstring></argsstring>
+                <name>capacity</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="1907" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="1907" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="struct_generic_value_1_1_object_data_1a108be865f16e4c028f2354b1474a1ec8"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="class_generic_value_1a7ccf27c44058b4c11c3efc6473afb886" kindref="member">Member</ref>
+                    *
+                </type>
+                <definition>Member* GenericValue&lt; Encoding, Allocator &gt;::ObjectData::members</definition>
+                <argsstring></argsstring>
+                <name>members</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="1908" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="1908" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <collaborationgraph>
+            <node id="220">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ObjectData</label>
+                <link refid="struct_generic_value_1_1_object_data"/>
+                <childnode refid="221" relation="usage">
+                    <edgelabel>members</edgelabel>
+                </childnode>
+            </node>
+            <node id="221">
+                <label>GenericMember&lt; Encoding, Allocator &gt;</label>
+                <link refid="struct_generic_member"/>
+            </node>
+        </collaborationgraph>
+        <location file="rapidjson/document.h" line="1905" column="1" bodyfile="rapidjson/document.h" bodystart="1905"
+                  bodyend="1909"/>
+        <listofallmembers>
+            <member refid="struct_generic_value_1_1_object_data_1a22b8d8b01d52db71471f0d4c990cb93b" prot="public"
+                    virt="non-virtual">
+                <scope>GenericValue::ObjectData</scope>
+                <name>capacity</name>
+            </member>
+            <member refid="struct_generic_value_1_1_object_data_1a108be865f16e4c028f2354b1474a1ec8" prot="public"
+                    virt="non-virtual">
+                <scope>GenericValue::ObjectData</scope>
+                <name>members</name>
+            </member>
+            <member refid="struct_generic_value_1_1_object_data_1a8aa09c430b245b9bb0745a1ab38201d5" prot="public"
+                    virt="non-virtual">
+                <scope>GenericValue::ObjectData</scope>
+                <name>size</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

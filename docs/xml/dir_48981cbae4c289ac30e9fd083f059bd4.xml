@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="dir_48981cbae4c289ac30e9fd083f059bd4" kind="dir">
+        <compoundname>rapidjson</compoundname>
+        <innerdir refid="dir_d3929094be6e7780a0e711721f7264ce">rapidjson/error</innerdir>
+        <innerdir refid="dir_f4240cbe9e3958d7542e85c1617c22e3">rapidjson/internal</innerdir>
+        <innerdir refid="dir_72e1163e8fc42a47f6e0f4c692811d8f">rapidjson/msinttypes</innerdir>
+        <innerfile refid="allocators_8h">allocators.h</innerfile>
+        <innerfile refid="document_8h">document.h</innerfile>
+        <innerfile refid="encodedstream_8h">encodedstream.h</innerfile>
+        <innerfile refid="encodings_8h">encodings.h</innerfile>
+        <innerfile refid="filereadstream_8h">filereadstream.h</innerfile>
+        <innerfile refid="filewritestream_8h">filewritestream.h</innerfile>
+        <innerfile refid="fwd_8h">fwd.h</innerfile>
+        <innerfile refid="istreamwrapper_8h">istreamwrapper.h</innerfile>
+        <innerfile refid="memorybuffer_8h">memorybuffer.h</innerfile>
+        <innerfile refid="memorystream_8h">memorystream.h</innerfile>
+        <innerfile refid="ostreamwrapper_8h">ostreamwrapper.h</innerfile>
+        <innerfile refid="pointer_8h">pointer.h</innerfile>
+        <innerfile refid="prettywriter_8h">prettywriter.h</innerfile>
+        <innerfile refid="rapidjson_8h">rapidjson.h</innerfile>
+        <innerfile refid="reader_8h">reader.h</innerfile>
+        <innerfile refid="schema_8h">schema.h</innerfile>
+        <innerfile refid="stream_8h">stream.h</innerfile>
+        <innerfile refid="stringbuffer_8h">stringbuffer.h</innerfile>
+        <innerfile refid="writer_8h">writer.h</innerfile>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <location file="rapidjson/"/>
+    </compounddef>
+</doxygen>

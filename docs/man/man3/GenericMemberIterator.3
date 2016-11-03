@@ -1,0 +1,232 @@
+.TH "GenericMemberIterator< Const, Encoding, Allocator >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericMemberIterator< Const, Encoding, Allocator > \- (Constant) member iterator for a JSON object value  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <document\&.h>\fP
+.PP
+Inherits iterator< std::random_access_iterator_tag, internal::MaybeAddConst< Const, GenericMember< Encoding, Allocator > >::Type >\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBGenericMemberIterator\fP \fBIterator\fP"
+.br
+.RI "Iterator type itself\&. "
+.ti -1c
+.RI "typedef \fBGenericMemberIterator\fP< true, Encoding, Allocator > \fBConstIterator\fP"
+.br
+.RI "Constant iterator type\&. "
+.ti -1c
+.RI "typedef \fBGenericMemberIterator\fP< false, Encoding, Allocator > \fBNonConstIterator\fP"
+.br
+.RI "Non-constant iterator type\&. "
+.ti -1c
+.RI "typedef BaseType::pointer \fBPointer\fP"
+.br
+.RI "Pointer to (const) \fBGenericMember\fP\&. "
+.ti -1c
+.RI "typedef BaseType::reference \fBReference\fP"
+.br
+.RI "Reference to (const) \fBGenericMember\fP\&. "
+.ti -1c
+.RI "typedef BaseType::difference_type \fBDifferenceType\fP"
+.br
+.RI "Signed integer type (e\&.g\&. \fCptrdiff_t\fP) "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericMemberIterator\fP ()"
+.br
+.RI "Default constructor (singular value) "
+.ti -1c
+.RI "\fBGenericMemberIterator\fP (const \fBNonConstIterator\fP &it)"
+.br
+.RI "Iterator conversions to more const\&. "
+.ti -1c
+.RI "\fBIterator\fP & \fBoperator=\fP (const \fBNonConstIterator\fP &it)"
+.br
+.ti -1c
+.RI "\fBDifferenceType\fP \fBoperator\-\fP (\fBConstIterator\fP that) const"
+.br
+.RI "Distance\&. "
+.in -1c
+.PP
+.RI "\fBstepping\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBIterator\fP & \fBoperator++\fP ()"
+.br
+.ti -1c
+.RI "\fBIterator\fP & \fBoperator\-\-\fP ()"
+.br
+.ti -1c
+.RI "\fBIterator\fP \fBoperator++\fP (int)"
+.br
+.ti -1c
+.RI "\fBIterator\fP \fBoperator\-\-\fP (int)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBincrement/decrement\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBIterator\fP \fBoperator+\fP (\fBDifferenceType\fP n) const"
+.br
+.ti -1c
+.RI "\fBIterator\fP \fBoperator\-\fP (\fBDifferenceType\fP n) const"
+.br
+.ti -1c
+.RI "\fBIterator\fP & \fBoperator+=\fP (\fBDifferenceType\fP n)"
+.br
+.ti -1c
+.RI "\fBIterator\fP & \fBoperator\-=\fP (\fBDifferenceType\fP n)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBrelations\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (\fBConstIterator\fP that) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (\fBConstIterator\fP that) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (\fBConstIterator\fP that) const"
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (\fBConstIterator\fP that) const"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (\fBConstIterator\fP that) const"
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (\fBConstIterator\fP that) const"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBdereference\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBReference\fP \fBoperator*\fP () const"
+.br
+.ti -1c
+.RI "\fBPointer\fP \fBoperator\->\fP () const"
+.br
+.ti -1c
+.RI "\fBReference\fP \fBoperator[]\fP (\fBDifferenceType\fP n) const"
+.br
+.in -1c
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBGenericValue< Encoding, Allocator >\fP"
+.br
+.ti -1c
+.RI "template<bool , typename , typename > class \fBGenericMemberIterator\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<bool Const, typename Encoding, typename Allocator>
+.br
+class GenericMemberIterator< Const, Encoding, Allocator >"
+(Constant) member iterator for a JSON object value 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIConst\fP Is this a constant iterator? 
+.br
+\fIEncoding\fP Encoding of the value\&. (Even non-string values need to have the same encoding in a document) 
+.br
+\fIAllocator\fP Allocator type for allocating memory of object, array and string\&.
+.RE
+.PP
+This class implements a Random Access Iterator for \fBGenericMember\fP elements of a \fBGenericValue\fP, see ISO/IEC 14882:2003(E) C++ standard, 24\&.1 [lib\&.iterator\&.requirements]\&.
+.PP
+\fBNote:\fP
+.RS 4
+This iterator implementation is mainly intended to avoid implicit conversions from iterator values to \fCNULL\fP, e\&.g\&. from GenericValue::FindMember\&.
+.PP
+Define \fCRAPIDJSON_NOMEMBERITERATORCLASS\fP to fall back to a pointer-based implementation, if your platform doesn't provide the C++ <iterator> header\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGenericMember\fP, \fBGenericValue::MemberIterator\fP, \fBGenericValue::ConstMemberIterator\fP 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<bool Const, typename Encoding , typename Allocator > \fBGenericMemberIterator\fP< Const, Encoding, Allocator >::\fBGenericMemberIterator\fP ()\fC [inline]\fP"
+
+.PP
+Default constructor (singular value) Creates an iterator pointing to no element\&. 
+.PP
+\fBNote:\fP
+.RS 4
+All operations, except for comparisons, are undefined on such values\&. 
+.RE
+.PP
+
+.SS "template<bool Const, typename Encoding , typename Allocator > \fBGenericMemberIterator\fP< Const, Encoding, Allocator >::\fBGenericMemberIterator\fP (const \fBNonConstIterator\fP & it)\fC [inline]\fP"
+
+.PP
+Iterator conversions to more const\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIit\fP (Non-const) iterator to copy from
+.RE
+.PP
+Allows the creation of an iterator from another \fBGenericMemberIterator\fP that is 'less const'\&. Especially, creating a non-constant iterator from a constant iterator are disabled: 
+.PD 0
+
+.IP "\(bu" 2
+const -> non-const (not ok) 
+.IP "\(bu" 2
+const -> const (ok) 
+.IP "\(bu" 2
+non-const -> const (ok) 
+.IP "\(bu" 2
+non-const -> non-const (ok)
+.PP
+\fBNote:\fP
+.RS 4
+If the \fCConst\fP template parameter is already \fCfalse\fP, this constructor effectively defines a regular copy-constructor\&. Otherwise, the copy constructor is implicitly defined\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

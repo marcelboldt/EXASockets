@@ -1,6 +1,6 @@
 /*
 websockets.cpp and websockets.h
-http://www.github.com/marcelboldt/websockets
+http://www.github.com/marcelboldt/EXASockets
 
  The MIT License (MIT)
 
@@ -414,7 +414,9 @@ int exasockets_connection::update_session_attributes() {
 }
 
 int exasockets_connection::exec_sql(char *sql) {
-    /* Sends an SQL stmt and fetches the result set */
+    /* Sends an SQL stmt and fetches the result set.
+     * If a result set handle is received instead of data, then this is returned as an int.
+     * Otherwise 0 is returned and the resultSet is stored inside the result set.
 
     /*
      *  {
@@ -449,6 +451,12 @@ int exasockets_connection::exec_sql(char *sql) {
     } else if (this->resultSet.HasMember("exception")) {
         std::cout << this->resultSet["exception"]["text"].GetString() << std::endl;
     } else {
+        if (this->resultSet.HasMember("results")) {
+            const rapidjson::Value &results = this->resultSet["results"];
+            assert(results.IsArray());
+            assert(results[1].HasMember("resultSetHandle"));
+            return results[1]["resultSetHandle"].GetInt();
+        }
 
 // TODO: parse parameters
 
@@ -456,3 +464,4 @@ int exasockets_connection::exec_sql(char *sql) {
 
     return 0;
 }
+

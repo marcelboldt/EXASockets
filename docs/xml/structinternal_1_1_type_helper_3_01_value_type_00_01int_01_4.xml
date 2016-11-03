@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4" kind="struct" language="C++"
+                 prot="public">
+        <compoundname>internal::TypeHelper&lt; ValueType, int &gt;</compoundname>
+        <templateparamlist>
+            <param>
+                <type>typename ValueType</type>
+            </param>
+        </templateparamlist>
+        <sectiondef kind="public-static-func">
+            <memberdef kind="function"
+                       id="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1aa17ef940501aac12fd7934ef979c607e"
+                       prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>bool</type>
+                <definition>static bool internal::TypeHelper&lt; ValueType, int &gt;::Is</definition>
+                <argsstring>(const ValueType &amp;v)</argsstring>
+                <name>Is</name>
+                <param>
+                    <type>const ValueType &amp;</type>
+                    <declname>v</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="423" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="423" bodyend="423"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1a98c331ac026873b9ad4ba68e7bf28446"
+                       prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>int</type>
+                <definition>static int internal::TypeHelper&lt; ValueType, int &gt;::Get</definition>
+                <argsstring>(const ValueType &amp;v)</argsstring>
+                <name>Get</name>
+                <param>
+                    <type>const ValueType &amp;</type>
+                    <declname>v</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="424" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="424" bodyend="424"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1aceea0a0fac6684e53a9d9f66da4154cd"
+                       prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>ValueType &amp;</type>
+                <definition>static ValueType&amp; internal::TypeHelper&lt; ValueType, int &gt;::Set</definition>
+                <argsstring>(ValueType &amp;v, int data)</argsstring>
+                <name>Set</name>
+                <param>
+                    <type>ValueType &amp;</type>
+                    <declname>v</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>data</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="425" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="425" bodyend="425"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1a2ca21bedcaeaf0fffe913edb2fe1a66a"
+                       prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>ValueType &amp;</type>
+                <definition>static ValueType&amp; internal::TypeHelper&lt; ValueType, int &gt;::Set</definition>
+                <argsstring>(ValueType &amp;v, int data, typename ValueType::AllocatorType &amp;)</argsstring>
+                <name>Set</name>
+                <param>
+                    <type>ValueType &amp;</type>
+                    <declname>v</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>data</declname>
+                </param>
+                <param>
+                    <type>typename ValueType::AllocatorType &amp;</type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/document.h" line="426" column="1" bodyfile="rapidjson/document.h"
+                          bodystart="426" bodyend="426"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <location file="rapidjson/document.h" line="422" column="1" bodyfile="rapidjson/document.h" bodystart="422"
+                  bodyend="427"/>
+        <listofallmembers>
+            <member refid="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1a98c331ac026873b9ad4ba68e7bf28446"
+                    prot="public" virt="non-virtual">
+                <scope>internal::TypeHelper&lt; ValueType, int &gt;</scope>
+                <name>Get</name>
+            </member>
+            <member refid="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1aa17ef940501aac12fd7934ef979c607e"
+                    prot="public" virt="non-virtual">
+                <scope>internal::TypeHelper&lt; ValueType, int &gt;</scope>
+                <name>Is</name>
+            </member>
+            <member refid="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1aceea0a0fac6684e53a9d9f66da4154cd"
+                    prot="public" virt="non-virtual">
+                <scope>internal::TypeHelper&lt; ValueType, int &gt;</scope>
+                <name>Set</name>
+            </member>
+            <member refid="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4_1a2ca21bedcaeaf0fffe913edb2fe1a66a"
+                    prot="public" virt="non-virtual">
+                <scope>internal::TypeHelper&lt; ValueType, int &gt;</scope>
+                <name>Set</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

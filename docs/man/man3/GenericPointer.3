@@ -1,0 +1,440 @@
+.TH "GenericPointer< ValueType, Allocator >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericPointer< ValueType, Allocator > \- Represents a JSON Pointer\&. Use Pointer for \fBUTF8\fP encoding and default allocator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pointer\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBToken\fP"
+.br
+.RI "A token is the basic units of internal representation\&. "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef ValueType::EncodingType \fBEncodingType\fP"
+.br
+.RI "Encoding type from Value\&. "
+.ti -1c
+.RI "typedef ValueType::Ch \fBCh\fP"
+.br
+.RI "Character type from Value\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Allocator stackAllocator \fBRAPIDJSON_DISABLEIF_RETURN\fP ((internal::OrExpr< internal::IsPointer< T >, \fBinternal::IsGenericValue\fP< T > >),(ValueType &)) GetWithDefault(\fBGenericDocument\fP< \fBEncodingType\fP"
+.br
+.ti -1c
+.RI "bool \fBErase\fP (ValueType &root) const"
+.br
+.RI "Erase a value in a subtree\&. "
+.in -1c
+.PP
+.RI "\fBConstructors and destructor\&.\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBGenericPointer\fP (Allocator *allocator=0)"
+.br
+.RI "Default constructor\&. "
+.ti -1c
+.RI "\fBGenericPointer\fP (const \fBCh\fP *source, Allocator *allocator=0)"
+.br
+.RI "Constructor that parses a string or URI fragment representation\&. "
+.ti -1c
+.RI "\fBGenericPointer\fP (const \fBCh\fP *source, size_t length, Allocator *allocator=0)"
+.br
+.RI "Constructor that parses a string or URI fragment representation, with length of the source string\&. "
+.ti -1c
+.RI "\fBGenericPointer\fP (const \fBToken\fP *tokens, size_t tokenCount)"
+.br
+.RI "Constructor with user-supplied tokens\&. "
+.ti -1c
+.RI "\fBGenericPointer\fP (const \fBGenericPointer\fP &rhs, Allocator *allocator=0)"
+.br
+.RI "Copy constructor\&. "
+.ti -1c
+.RI "\fB~GenericPointer\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBGenericPointer\fP & \fBoperator=\fP (const \fBGenericPointer\fP &rhs)"
+.br
+.RI "Assignment operator\&. "
+.in -1c
+.in -1c
+.PP
+.RI "\fBAppend token\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBGenericPointer\fP \fBAppend\fP (const \fBToken\fP &token, Allocator *allocator=0) const"
+.br
+.RI "Append a token and return a new Pointer\&. "
+.ti -1c
+.RI "\fBGenericPointer\fP \fBAppend\fP (const \fBCh\fP *name, \fBSizeType\fP length, Allocator *allocator=0) const"
+.br
+.RI "Append a name token with length, and return a new Pointer\&. "
+.ti -1c
+.RI "template<typename T > \fBRAPIDJSON_DISABLEIF_RETURN\fP ((internal::NotExpr< internal::IsSame< typename internal::RemoveConst< T >::\fBType\fP, \fBCh\fP > >),(\fBGenericPointer\fP)) \fBAppend\fP(T *name"
+.br
+.RI "Append a name token without length, and return a new Pointer\&. "
+.in -1c
+.in -1c
+.PP
+.RI "\fBSwap a value\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "ValueType & \fBSwap\fP (ValueType &root, ValueType &value, typename ValueType::AllocatorType &allocator) const"
+.br
+.RI "Swap a value with a value in a subtree\&. "
+.ti -1c
+.RI "template<typename stackAllocator > ValueType & \fBSwap\fP (\fBGenericDocument\fP< \fBEncodingType\fP, typename ValueType::AllocatorType, stackAllocator > &document, ValueType &value) const"
+.br
+.RI "Swap a value with a value in a document\&. "
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Allocator * \fBallocator\fP"
+.br
+.ti -1c
+.RI "Allocator stackAllocator stackAllocator & \fBdocument\fP"
+.br
+.ti -1c
+.RI "Allocator stackAllocator stackAllocator T defaultValue \fBconst\fP"
+.br
+.in -1c
+.SS "Set a value"
+
+.in +1c
+.ti -1c
+.RI "T \fBvalue\fP"
+.br
+.ti -1c
+.RI "T ValueType::AllocatorType &allocator \fBconst\fP"
+.br
+.ti -1c
+.RI "stackAllocator & \fBdocument\fP"
+.br
+.ti -1c
+.RI "stackAllocator T value \fBconst\fP"
+.br
+.ti -1c
+.RI "ValueType & \fBSet\fP (ValueType &root, ValueType &value, typename ValueType::AllocatorType &allocator) const"
+.br
+.RI "Set a value in a subtree, with move semantics\&. "
+.ti -1c
+.RI "ValueType & \fBSet\fP (ValueType &root, const ValueType &value, typename ValueType::AllocatorType &allocator) const"
+.br
+.RI "Set a value in a subtree, with copy semantics\&. "
+.ti -1c
+.RI "ValueType & \fBSet\fP (ValueType &root, const \fBCh\fP *value, typename ValueType::AllocatorType &allocator) const"
+.br
+.RI "Set a null-terminated string in a subtree\&. "
+.ti -1c
+.RI "template<typename T > \fBRAPIDJSON_DISABLEIF_RETURN\fP ((internal::OrExpr< internal::IsPointer< T >, \fBinternal::IsGenericValue\fP< T > >),(ValueType &)) \fBSet\fP(ValueType &root"
+.br
+.RI "Set a primitive value in a subtree\&. "
+.ti -1c
+.RI "template<typename stackAllocator > ValueType & \fBSet\fP (\fBGenericDocument\fP< \fBEncodingType\fP, typename ValueType::AllocatorType, stackAllocator > &document, ValueType &value) const"
+.br
+.RI "Set a value in a document, with move semantics\&. "
+.ti -1c
+.RI "template<typename stackAllocator > ValueType & \fBSet\fP (\fBGenericDocument\fP< \fBEncodingType\fP, typename ValueType::AllocatorType, stackAllocator > &document, const ValueType &value) const"
+.br
+.RI "Set a value in a document, with copy semantics\&. "
+.ti -1c
+.RI "template<typename stackAllocator > ValueType & \fBSet\fP (\fBGenericDocument\fP< \fBEncodingType\fP, typename ValueType::AllocatorType, stackAllocator > &document, const \fBCh\fP *value) const"
+.br
+.RI "Set a null-terminated string in a document\&. "
+.ti -1c
+.RI "template<typename T , typename stackAllocator > \fBRAPIDJSON_DISABLEIF_RETURN\fP ((internal::OrExpr< internal::IsPointer< T >, \fBinternal::IsGenericValue\fP< T > >),(ValueType &)) \fBSet\fP(\fBGenericDocument\fP< \fBEncodingType\fP"
+.br
+.RI "Set a primitive value in a document\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator>
+.br
+class GenericPointer< ValueType, Allocator >"
+Represents a JSON Pointer\&. Use Pointer for \fBUTF8\fP encoding and default allocator\&. 
+
+This class implements RFC 6901 'JavaScript Object Notation (JSON) Pointer' (https://tools.ietf.org/html/rfc6901)\&.
+.PP
+A JSON pointer is for identifying a specific value in a JSON document (\fBGenericDocument\fP)\&. It can simplify coding of DOM tree manipulation, because it can access multiple-level depth of DOM tree with single API call\&.
+.PP
+After it parses a string representation (e\&.g\&. '/foo/0' or URI fragment representation (e\&.g\&. '#/foo/0') into its internal representation (tokens), it can be used to resolve a specific value in multiple documents, or sub-tree of documents\&.
+.PP
+Contrary to \fBGenericValue\fP, Pointer can be copy constructed and copy assigned\&. Apart from assignment, a Pointer cannot be modified after construction\&.
+.PP
+Although Pointer is very convenient, please aware that constructing Pointer involves parsing and dynamic memory allocation\&. A special constructor with user- supplied tokens eliminates these\&.
+.PP
+\fBGenericPointer\fP depends on \fBGenericDocument\fP and \fBGenericValue\fP\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIValueType\fP The value type of the DOM tree\&. E\&.g\&. \fBGenericValue\fP<UTF8<> > 
+.br
+\fIAllocator\fP The allocator type for allocating memory for internal representation\&.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+\fBGenericPointer\fP uses same encoding of ValueType\&. However, Allocator of \fBGenericPointer\fP is independent of Allocator of Value\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> \fBGenericPointer\fP< ValueType, Allocator >::\fBGenericPointer\fP (const \fBCh\fP * source, Allocator * allocator = \fC0\fP)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Constructor that parses a string or URI fragment representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP A null-terminated, string or URI fragment representation of JSON pointer\&. 
+.br
+\fIallocator\fP User supplied allocator for this pointer\&. If no allocator is provided, it creates a self-owned one\&. 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> \fBGenericPointer\fP< ValueType, Allocator >::\fBGenericPointer\fP (const \fBCh\fP * source, size_t length, Allocator * allocator = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Constructor that parses a string or URI fragment representation, with length of the source string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP A string or URI fragment representation of JSON pointer\&. 
+.br
+\fIlength\fP Length of source\&. 
+.br
+\fIallocator\fP User supplied allocator for this pointer\&. If no allocator is provided, it creates a self-owned one\&. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Slightly faster than the overload without length\&. 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> \fBGenericPointer\fP< ValueType, Allocator >::\fBGenericPointer\fP (const \fBToken\fP * tokens, size_t tokenCount)\fC [inline]\fP"
+
+.PP
+Constructor with user-supplied tokens\&. This constructor let user supplies const array of tokens\&. This prevents the parsing process and eliminates allocation\&. This is preferred for memory constrained environments\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItokens\fP An constant array of tokens representing the JSON pointer\&. 
+.br
+\fItokenCount\fP Number of tokens\&.
+.RE
+.PP
+\fBExample\fP 
+.PP
+.nf
+#define NAME(s) { s, sizeof(s) / sizeof(s[0]) - 1, kPointerInvalidIndex }
+#define INDEX(i) { #i, sizeof(#i) - 1, i }
+
+static const Pointer::Token kTokens[] = { NAME("foo"), INDEX(123) };
+static const Pointer p(kTokens, sizeof(kTokens) / sizeof(kTokens[0]));
+// Equivalent to static const Pointer p("/foo/123");
+
+#undef NAME
+#undef INDEX
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> \fBGenericPointer\fP \fBGenericPointer\fP< ValueType, Allocator >::Append (const \fBToken\fP & token, Allocator * allocator = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Append a token and return a new Pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoken\fP \fBToken\fP to be appended\&. 
+.br
+\fIallocator\fP Allocator for the newly return Pointer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new Pointer with appended token\&. 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> \fBGenericPointer\fP \fBGenericPointer\fP< ValueType, Allocator >::Append (const \fBCh\fP * name, \fBSizeType\fP length, Allocator * allocator = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Append a name token with length, and return a new Pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name to be appended\&. 
+.br
+\fIlength\fP Length of name\&. 
+.br
+\fIallocator\fP Allocator for the newly return Pointer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new Pointer with appended token\&. 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> bool \fBGenericPointer\fP< ValueType, Allocator >::Erase (ValueType & root) const\fC [inline]\fP"
+
+.PP
+Erase a value in a subtree\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroot\fP Root value of a DOM sub-tree to be resolved\&. It can be any value other than document root\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the resolved value is found and erased\&.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Erasing with an empty pointer \fCPointer\fP(''), i\&.e\&. the root, always fail and return false\&. 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> template<typename T > \fBGenericPointer\fP< ValueType, Allocator >::RAPIDJSON_DISABLEIF_RETURN ((internal::NotExpr< internal::IsSame< typename internal::RemoveConst< T >::\fBType\fP, \fBCh\fP > >), (\fBGenericPointer\fP< ValueType, Allocator >))"
+
+.PP
+Append a name token without length, and return a new Pointer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name (const Ch*) to be appended\&. 
+.br
+\fIallocator\fP Allocator for the newly return Pointer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new Pointer with appended token\&. 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> template<typename T > \fBGenericPointer\fP< ValueType, Allocator >::RAPIDJSON_DISABLEIF_RETURN ((internal::OrExpr< internal::IsPointer< T >, \fBinternal::IsGenericValue\fP< T > >), (ValueType &))"
+
+.PP
+Set a primitive value in a subtree\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Either \fBType\fP, \fCint\fP, \fCunsigned\fP, \fCint64_t\fP, \fCuint64_t\fP, \fCbool\fP 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> template<typename T , typename stackAllocator > \fBGenericPointer\fP< ValueType, Allocator >::RAPIDJSON_DISABLEIF_RETURN ((internal::OrExpr< internal::IsPointer< T >, \fBinternal::IsGenericValue\fP< T > >), (ValueType &))"
+
+.PP
+Set a primitive value in a document\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Either \fBType\fP, \fCint\fP, \fCunsigned\fP, \fCint64_t\fP, \fCuint64_t\fP, \fCbool\fP 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> ValueType& \fBGenericPointer\fP< ValueType, Allocator >::Set (ValueType & root, ValueType & value, typename ValueType::AllocatorType & allocator) const\fC [inline]\fP"
+
+.PP
+Set a value in a subtree, with move semantics\&. It creates all parents if they are not exist or types are different to the tokens\&. So this function always succeeds but potentially remove existing values\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroot\fP Root value of a DOM sub-tree to be resolved\&. It can be any value other than document root\&. 
+.br
+\fIvalue\fP Value to be set\&. 
+.br
+\fIallocator\fP Allocator for creating the values if the specified value or its parents are not exist\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+Create() 
+.RE
+.PP
+
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> ValueType& \fBGenericPointer\fP< ValueType, Allocator >::Swap (ValueType & root, ValueType & value, typename ValueType::AllocatorType & allocator) const\fC [inline]\fP"
+
+.PP
+Swap a value with a value in a subtree\&. It creates all parents if they are not exist or types are different to the tokens\&. So this function always succeeds but potentially remove existing values\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroot\fP Root value of a DOM sub-tree to be resolved\&. It can be any value other than document root\&. 
+.br
+\fIvalue\fP Value to be swapped\&. 
+.br
+\fIallocator\fP Allocator for creating the values if the specified value or its parents are not exist\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+Create() 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> Allocator stackAllocator stackAllocator T defaultValue \fBGenericPointer\fP< ValueType, Allocator >::const"
+\fBInitial value:\fP
+.PP
+.nf
+{
+        return GetWithDefault(document, defaultValue, document\&.GetAllocator())
+.fi
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> T ValueType::AllocatorType& allocator \fBGenericPointer\fP< ValueType, Allocator >::const"
+\fBInitial value:\fP
+.PP
+.nf
+{
+        return Create(root, allocator) = ValueType(value)\&.Move()
+.fi
+.SS "template<typename ValueType, typename Allocator = CrtAllocator> stackAllocator T value \fBGenericPointer\fP< ValueType, Allocator >::const"
+\fBInitial value:\fP
+.PP
+.nf
+{
+            return Create(document) = value
+.fi
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

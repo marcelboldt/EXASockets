@@ -1,0 +1,99 @@
+.TH "internal::Schema< SchemaDocumentType >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+internal::Schema< SchemaDocumentType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef SchemaDocumentType::ValueType \fBValueType\fP"
+.br
+.ti -1c
+.RI "typedef SchemaDocumentType::AllocatorType \fBAllocatorType\fP"
+.br
+.ti -1c
+.RI "typedef SchemaDocumentType::PointerType \fBPointerType\fP"
+.br
+.ti -1c
+.RI "typedef ValueType::EncodingType \fBEncodingType\fP"
+.br
+.ti -1c
+.RI "typedef EncodingType::Ch \fBCh\fP"
+.br
+.ti -1c
+.RI "typedef \fBSchemaValidationContext\fP< SchemaDocumentType > \fBContext\fP"
+.br
+.ti -1c
+.RI "typedef \fBSchema\fP< SchemaDocumentType > \fBSchemaType\fP"
+.br
+.ti -1c
+.RI "typedef \fBGenericValue\fP< EncodingType, AllocatorType > \fBSValue\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSchema\fP (SchemaDocumentType *schemaDocument, const PointerType &p, const ValueType &value, const ValueType &document, AllocatorType *allocator)"
+.br
+.ti -1c
+.RI "bool \fBBeginValue\fP (\fBContext\fP &context) const"
+.br
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE bool \fBEndValue\fP (\fBContext\fP &context) const"
+.br
+.ti -1c
+.RI "bool \fBNull\fP (\fBContext\fP &context) const"
+.br
+.ti -1c
+.RI "bool \fBBool\fP (\fBContext\fP &context, bool) const"
+.br
+.ti -1c
+.RI "bool \fBInt\fP (\fBContext\fP &context, int i) const"
+.br
+.ti -1c
+.RI "bool \fBUint\fP (\fBContext\fP &context, unsigned u) const"
+.br
+.ti -1c
+.RI "bool \fBInt64\fP (\fBContext\fP &context, int64_t i) const"
+.br
+.ti -1c
+.RI "bool \fBUint64\fP (\fBContext\fP &context, uint64_t u) const"
+.br
+.ti -1c
+.RI "bool \fBDouble\fP (\fBContext\fP &context, double d) const"
+.br
+.ti -1c
+.RI "bool \fBString\fP (\fBContext\fP &context, const Ch *str, \fBSizeType\fP length, bool) const"
+.br
+.ti -1c
+.RI "bool \fBStartObject\fP (\fBContext\fP &context) const"
+.br
+.ti -1c
+.RI "bool \fBKey\fP (\fBContext\fP &context, const Ch *str, \fBSizeType\fP len, bool) const"
+.br
+.ti -1c
+.RI "bool \fBEndObject\fP (\fBContext\fP &context, \fBSizeType\fP memberCount) const"
+.br
+.ti -1c
+.RI "bool \fBStartArray\fP (\fBContext\fP &context) const"
+.br
+.ti -1c
+.RI "bool \fBEndArray\fP (\fBContext\fP &context, \fBSizeType\fP elementCount) const"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBGenericSchemaDocument< ValueType, AllocatorType >\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

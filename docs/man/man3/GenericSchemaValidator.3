@@ -1,0 +1,188 @@
+.TH "GenericSchemaValidator< SchemaDocumentType, OutputHandler, StateAllocator >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericSchemaValidator< SchemaDocumentType, OutputHandler, StateAllocator > \- JSON Schema Validator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <schema\&.h>\fP
+.PP
+Inherits \fBinternal::ISchemaStateFactory< SchemaDocumentType::SchemaType >\fP, and \fBinternal::ISchemaValidator\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef SchemaDocumentType::SchemaType \fBSchemaType\fP"
+.br
+.ti -1c
+.RI "typedef SchemaDocumentType::PointerType \fBPointerType\fP"
+.br
+.ti -1c
+.RI "typedef SchemaType::EncodingType \fBEncodingType\fP"
+.br
+.ti -1c
+.RI "typedef EncodingType::Ch \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericSchemaValidator\fP (const SchemaDocumentType &schemaDocument, StateAllocator *allocator=0, size_t schemaStackCapacity=kDefaultSchemaStackCapacity, size_t documentStackCapacity=kDefaultDocumentStackCapacity)"
+.br
+.RI "Constructor without output handler\&. "
+.ti -1c
+.RI "\fBGenericSchemaValidator\fP (const SchemaDocumentType &schemaDocument, OutputHandler &outputHandler, StateAllocator *allocator=0, size_t schemaStackCapacity=kDefaultSchemaStackCapacity, size_t documentStackCapacity=kDefaultDocumentStackCapacity)"
+.br
+.RI "Constructor with output handler\&. "
+.ti -1c
+.RI "\fB~GenericSchemaValidator\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "Reset the internal states\&. "
+.ti -1c
+.RI "virtual bool \fBIsValid\fP () const"
+.br
+.RI "Checks whether the current state is valid\&. "
+.ti -1c
+.RI "PointerType \fBGetInvalidSchemaPointer\fP () const"
+.br
+.RI "Gets the JSON pointer pointed to the invalid schema\&. "
+.ti -1c
+.RI "const Ch * \fBGetInvalidSchemaKeyword\fP () const"
+.br
+.RI "Gets the keyword of invalid schema\&. "
+.ti -1c
+.RI "PointerType \fBGetInvalidDocumentPointer\fP () const"
+.br
+.RI "Gets the JSON pointer pointed to the invalid value\&. "
+.ti -1c
+.RI "bool \fBNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBBool\fP (bool b)"
+.br
+.ti -1c
+.RI "bool \fBInt\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBUint\fP (unsigned u)"
+.br
+.ti -1c
+.RI "bool \fBInt64\fP (int64_t i)"
+.br
+.ti -1c
+.RI "bool \fBUint64\fP (uint64_t u)"
+.br
+.ti -1c
+.RI "bool \fBDouble\fP (double d)"
+.br
+.ti -1c
+.RI "bool \fBRawNumber\fP (const Ch *str, \fBSizeType\fP length, bool copy)"
+.br
+.ti -1c
+.RI "bool \fBString\fP (const Ch *str, \fBSizeType\fP length, bool copy)"
+.br
+.ti -1c
+.RI "bool \fBStartObject\fP ()"
+.br
+.ti -1c
+.RI "bool \fBKey\fP (const Ch *str, \fBSizeType\fP len, bool copy)"
+.br
+.ti -1c
+.RI "bool \fBEndObject\fP (\fBSizeType\fP memberCount)"
+.br
+.ti -1c
+.RI "bool \fBStartArray\fP ()"
+.br
+.ti -1c
+.RI "bool \fBEndArray\fP (\fBSizeType\fP elementCount)"
+.br
+.ti -1c
+.RI "virtual ISchemaValidator * \fBCreateSchemaValidator\fP (const SchemaType &root)"
+.br
+.ti -1c
+.RI "virtual void \fBDestroySchemaValidator\fP (ISchemaValidator *validator)"
+.br
+.ti -1c
+.RI "virtual void * \fBCreateHasher\fP ()"
+.br
+.ti -1c
+.RI "virtual uint64_t \fBGetHashCode\fP (void *hasher)"
+.br
+.ti -1c
+.RI "virtual void \fBDestroryHasher\fP (void *hasher)"
+.br
+.ti -1c
+.RI "virtual void * \fBMallocState\fP (size_t size)"
+.br
+.ti -1c
+.RI "virtual void \fBFreeState\fP (void *p)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename SchemaDocumentType, typename OutputHandler = BaseReaderHandler<typename SchemaDocumentType::SchemaType::EncodingType>, typename StateAllocator = CrtAllocator>
+.br
+class GenericSchemaValidator< SchemaDocumentType, OutputHandler, StateAllocator >"
+JSON Schema Validator\&. 
+
+A SAX style JSON schema validator\&. It uses a \fC\fBGenericSchemaDocument\fP\fP to validate SAX events\&. It delegates the incoming SAX events to an output handler\&. The default output handler does nothing\&. It can be reused multiple times by calling \fC\fBReset()\fP\fP\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISchemaDocumentType\fP Type of schema document\&. 
+.br
+\fIOutputHandler\fP Type of output handler\&. Default handler does nothing\&. 
+.br
+\fIStateAllocator\fP Allocator for storing the internal validation states\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename SchemaDocumentType, typename OutputHandler = BaseReaderHandler<typename SchemaDocumentType::SchemaType::EncodingType>, typename StateAllocator = CrtAllocator> \fBGenericSchemaValidator\fP< SchemaDocumentType, OutputHandler, StateAllocator >::\fBGenericSchemaValidator\fP (const SchemaDocumentType & schemaDocument, StateAllocator * allocator = \fC0\fP, size_t schemaStackCapacity = \fCkDefaultSchemaStackCapacity\fP, size_t documentStackCapacity = \fCkDefaultDocumentStackCapacity\fP)\fC [inline]\fP"
+
+.PP
+Constructor without output handler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIschemaDocument\fP The schema document to conform to\&. 
+.br
+\fIallocator\fP Optional allocator for storing internal validation states\&. 
+.br
+\fIschemaStackCapacity\fP Optional initial capacity of schema path stack\&. 
+.br
+\fIdocumentStackCapacity\fP Optional initial capacity of document path stack\&. 
+.RE
+.PP
+
+.SS "template<typename SchemaDocumentType, typename OutputHandler = BaseReaderHandler<typename SchemaDocumentType::SchemaType::EncodingType>, typename StateAllocator = CrtAllocator> \fBGenericSchemaValidator\fP< SchemaDocumentType, OutputHandler, StateAllocator >::\fBGenericSchemaValidator\fP (const SchemaDocumentType & schemaDocument, OutputHandler & outputHandler, StateAllocator * allocator = \fC0\fP, size_t schemaStackCapacity = \fCkDefaultSchemaStackCapacity\fP, size_t documentStackCapacity = \fCkDefaultDocumentStackCapacity\fP)\fC [inline]\fP"
+
+.PP
+Constructor with output handler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIschemaDocument\fP The schema document to conform to\&. 
+.br
+\fIallocator\fP Optional allocator for storing internal validation states\&. 
+.br
+\fIschemaStackCapacity\fP Optional initial capacity of schema path stack\&. 
+.br
+\fIdocumentStackCapacity\fP Optional initial capacity of document path stack\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

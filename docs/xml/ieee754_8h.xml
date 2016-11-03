@@ -1,0 +1,978 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="ieee754_8h" kind="file" language="C++">
+        <compoundname>ieee754.h</compoundname>
+        <includes refid="rapidjson_8h" local="yes">../rapidjson.h</includes>
+        <includedby refid="strtod_8h" local="yes">rapidjson/internal/strtod.h</includedby>
+        <includedby refid="dtoa_8h" local="yes">rapidjson/internal/dtoa.h</includedby>
+        <incdepgraph>
+            <node id="318">
+                <label>cassert</label>
+            </node>
+            <node id="315">
+                <label>../rapidjson.h</label>
+                <link refid="rapidjson_8h"/>
+                <childnode refid="316" relation="include">
+                </childnode>
+                <childnode refid="317" relation="include">
+                </childnode>
+                <childnode refid="318" relation="include">
+                </childnode>
+            </node>
+            <node id="314">
+                <label>rapidjson/internal/ieee754.h</label>
+                <link refid="ieee754_8h"/>
+                <childnode refid="315" relation="include">
+                </childnode>
+            </node>
+            <node id="316">
+                <label>cstdlib</label>
+            </node>
+            <node id="317">
+                <label>cstring</label>
+            </node>
+        </incdepgraph>
+        <invincdepgraph>
+            <node id="324">
+                <label>rapidjson/pointer.h</label>
+                <link refid="pointer_8h_source"/>
+                <childnode refid="325" relation="include">
+                </childnode>
+            </node>
+            <node id="328">
+                <label>rapidjson/prettywriter.h</label>
+                <link refid="prettywriter_8h_source"/>
+            </node>
+            <node id="327">
+                <label>rapidjson/writer.h</label>
+                <link refid="writer_8h_source"/>
+                <childnode refid="323" relation="include">
+                </childnode>
+                <childnode refid="328" relation="include">
+                </childnode>
+            </node>
+            <node id="321">
+                <label>rapidjson/reader.h</label>
+                <link refid="reader_8h"/>
+                <childnode refid="322" relation="include">
+                </childnode>
+            </node>
+            <node id="326">
+                <label>rapidjson/internal/dtoa.h</label>
+                <link refid="dtoa_8h_source"/>
+                <childnode refid="327" relation="include">
+                </childnode>
+            </node>
+            <node id="319">
+                <label>rapidjson/internal/ieee754.h</label>
+                <link refid="ieee754_8h"/>
+                <childnode refid="320" relation="include">
+                </childnode>
+                <childnode refid="326" relation="include">
+                </childnode>
+            </node>
+            <node id="323">
+                <label>exasockets/exasockets.h</label>
+                <link refid="exasockets_8h_source"/>
+            </node>
+            <node id="325">
+                <label>rapidjson/schema.h</label>
+                <link refid="schema_8h_source"/>
+            </node>
+            <node id="320">
+                <label>rapidjson/internal/strtod.h</label>
+                <link refid="strtod_8h_source"/>
+                <childnode refid="321" relation="include">
+                </childnode>
+            </node>
+            <node id="322">
+                <label>rapidjson/document.h</label>
+                <link refid="document_8h"/>
+                <childnode refid="323" relation="include">
+                </childnode>
+                <childnode refid="324" relation="include">
+                </childnode>
+                <childnode refid="325" relation="include">
+                </childnode>
+            </node>
+        </invincdepgraph>
+        <innerclass refid="classinternal_1_1_double" prot="public">internal::Double</innerclass>
+        <innernamespace refid="namespaceinternal">internal</innernamespace>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <programlisting>
+            <codeline lineno="1">
+                <highlight class="comment">//<sp/>Tencent<sp/>is<sp/>pleased<sp/>to<sp/>support<sp/>the<sp/>open<sp/>
+                    source<sp/>community<sp/>by<sp/>making<sp/>RapidJSON<sp/>available.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="2">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="3">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Copyright<sp/>(C)<sp/>2015<sp/>THL<sp/>A29<sp/>Limited,<sp/>a<sp/>
+                    Tencent<sp/>company,<sp/>and<sp/>Milo<sp/>Yip.<sp/>All<sp/>rights<sp/>reserved.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="4">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="5">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>MIT<sp/>License<sp/>(the<sp/>&quot;License&quot;);
+                    <sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="6">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.<sp/>You<sp/>may<sp/>
+                    obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="7">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="8">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>http://opensource.org/licenses/MIT
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="9">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="10">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed
+                    <sp/>to<sp/>in<sp/>writing,<sp/>software<sp/>distributed
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="11">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>
+                    &quot;AS<sp/>IS&quot;<sp/>BASIS,<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="12">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>
+                    implied.<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the
+                    <sp/>
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="13">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and<sp/>
+                    limitations<sp/>under<sp/>the<sp/>License.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="14">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="15">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#ifndef<sp/>RAPIDJSON_IEEE754_
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="16">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#define<sp/>RAPIDJSON_IEEE754_
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="17">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="18">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#include<sp/>&quot;../rapidjson.h&quot;
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="19">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="20">
+                <highlight class="normal">
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gad3806c8251fdc7da9618b7e922674ffc"
+                         kindref="member">RAPIDJSON_NAMESPACE_BEGIN
+                    </ref>
+                </highlight>
+            </codeline>
+            <codeline lineno="21">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">namespace
+                    <sp/>
+                </highlight>
+                <highlight class="normal">
+                    <ref refid="namespaceinternal" kindref="compound">internal</ref>
+                    <sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="22">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="23" refid="classinternal_1_1_double" refkind="compound">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">class
+                    <sp/>
+                </highlight>
+                <highlight class="normal">
+                    <ref refid="classinternal_1_1_double" kindref="compound">Double</ref>
+                    <sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="24">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">public</highlight>
+                <highlight class="normal">:</highlight>
+            </codeline>
+            <codeline lineno="25">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="classinternal_1_1_double" kindref="compound">Double</ref>()<sp/>{}
+                </highlight>
+            </codeline>
+            <codeline lineno="26">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="classinternal_1_1_double" kindref="compound">Double</ref>(
+                </highlight>
+                <highlight class="keywordtype">double</highlight>
+                <highlight class="normal"><sp/>d)<sp/>:<sp/>d_(d)<sp/>{}
+                </highlight>
+            </codeline>
+            <codeline lineno="27">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="classinternal_1_1_double" kindref="compound">Double</ref>(uint64_t<sp/>u)<sp/>:<sp/>
+                    u_(u)<sp/>{}
+                </highlight>
+            </codeline>
+            <codeline lineno="28">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="29">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">double</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="class_generic_value" kindref="compound">Value</ref>()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>d_;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="30">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>uint64_t<sp/>Uint64Value()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>u_;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="31">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="32">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">double</highlight>
+                <highlight class="normal"><sp/>NextPositiveDouble()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{</highlight>
+            </codeline>
+            <codeline lineno="33">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gabeba18d612187bad2ac62aed9276d47c"
+                         kindref="member">RAPIDJSON_ASSERT</ref>(!Sign());
+                </highlight>
+            </codeline>
+            <codeline lineno="34">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="classinternal_1_1_double" kindref="compound">Double</ref>(u_<sp/>+<sp/>1).Value();
+                </highlight>
+            </codeline>
+            <codeline lineno="35">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="36">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="37">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>Sign()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>kSignMask)<sp/>!=<sp/>0;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="38">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>uint64_t<sp/>Significand()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>u_<sp/>&amp;<sp/>kSignificandMask;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="39">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>Exponent()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static_cast&lt;</highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="keyword">&gt;</highlight>
+                <highlight class="normal">(((u_<sp/>&amp;<sp/>kExponentMask)<sp/>&gt;&gt;<sp/>kSignificandSize)<sp/>-
+                    <sp/>kExponentBias);<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="40">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="41">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>IsNan()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>kExponentMask)<sp/>==<sp/>kExponentMask<sp/>&amp;&amp;
+                    <sp/>Significand()<sp/>!=<sp/>0;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="42">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>IsInf()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>kExponentMask)<sp/>==<sp/>kExponentMask<sp/>&amp;&amp;
+                    <sp/>Significand()<sp/>==<sp/>0;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="43">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>IsNanOrInf()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>kExponentMask)<sp/>==<sp/>kExponentMask;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="44">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>IsNormal()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>kExponentMask)<sp/>!=<sp/>0<sp/>||<sp/>Significand()
+                    <sp/>==<sp/>0;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="45">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">bool</highlight>
+                <highlight class="normal"><sp/>IsZero()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>(kExponentMask<sp/>|<sp/>kSignificandMask))<sp/>==<sp/>
+                    0;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="46">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="47">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>uint64_t<sp/>IntegerSignificand()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>IsNormal()<sp/>?<sp/>Significand()<sp/>|<sp/>kHiddenBit<sp/>:<sp/>
+                    Significand();<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="48">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>IntegerExponent()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(IsNormal()<sp/>?<sp/>Exponent()<sp/>:<sp/>kDenormalExponent)<sp/>-<sp/>
+                    kSignificandSize;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="49">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>uint64_t<sp/>ToBias()
+                </highlight>
+                <highlight class="keyword"><sp/>const
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>(u_<sp/>&amp;<sp/>kSignMask)<sp/>?<sp/>~u_<sp/>+<sp/>1<sp/>:<sp/>u_<sp/>|
+                    <sp/>kSignMask;<sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="50">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="51">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">unsigned</highlight>
+                <highlight class="normal"><sp/>EffectiveSignificandSize(
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>order)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="52">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(order<sp/>&gt;=<sp/>-1021)
+                </highlight>
+            </codeline>
+            <codeline lineno="53">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>53;
+                </highlight>
+            </codeline>
+            <codeline lineno="54">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">else</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">if</highlight>
+                <highlight class="normal"><sp/>(order<sp/>&lt;=<sp/>-1074)
+                </highlight>
+            </codeline>
+            <codeline lineno="55">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal"><sp/>0;
+                </highlight>
+            </codeline>
+            <codeline lineno="56">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">else</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="57">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">return</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static_cast&lt;</highlight>
+                <highlight class="keywordtype">unsigned</highlight>
+                <highlight class="keyword">&gt;</highlight>
+                <highlight class="normal">(order)<sp/>+<sp/>1074;
+                </highlight>
+            </codeline>
+            <codeline lineno="58">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="59">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="60">
+                <highlight class="normal"></highlight>
+                <highlight class="keyword">private</highlight>
+                <highlight class="normal">:</highlight>
+            </codeline>
+            <codeline lineno="61">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>kSignificandSize<sp/>=<sp/>52;
+                </highlight>
+            </codeline>
+            <codeline lineno="62">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>kExponentBias<sp/>=<sp/>0x3FF;
+                </highlight>
+            </codeline>
+            <codeline lineno="63">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>kDenormalExponent<sp/>=<sp/>1<sp/>-<sp/>kExponentBias;
+                </highlight>
+            </codeline>
+            <codeline lineno="64">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>uint64_t<sp/>kSignMask<sp/>=
+                    <sp/>
+                    <ref refid="rapidjson_8h_1aaee1245f375a71be1ac9b8a07ba5fb8f" kindref="member">
+                        RAPIDJSON_UINT64_C2</ref>(0x80000000,<sp/>0x00000000);
+                </highlight>
+            </codeline>
+            <codeline lineno="65">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>uint64_t<sp/>kExponentMask<sp/>=
+                    <sp/>
+                    <ref refid="rapidjson_8h_1aaee1245f375a71be1ac9b8a07ba5fb8f" kindref="member">
+                        RAPIDJSON_UINT64_C2</ref>(0x7FF00000,<sp/>0x00000000);
+                </highlight>
+            </codeline>
+            <codeline lineno="66">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>uint64_t<sp/>kSignificandMask<sp/>=
+                    <sp/>
+                    <ref refid="rapidjson_8h_1aaee1245f375a71be1ac9b8a07ba5fb8f" kindref="member">
+                        RAPIDJSON_UINT64_C2</ref>(0x000FFFFF,<sp/>0xFFFFFFFF);
+                </highlight>
+            </codeline>
+            <codeline lineno="67">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">static</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">const</highlight>
+                <highlight class="normal"><sp/>uint64_t<sp/>kHiddenBit<sp/>=
+                    <sp/>
+                    <ref refid="rapidjson_8h_1aaee1245f375a71be1ac9b8a07ba5fb8f" kindref="member">
+                        RAPIDJSON_UINT64_C2</ref>(0x00100000,<sp/>0x00000000);
+                </highlight>
+            </codeline>
+            <codeline lineno="68">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="69">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">union
+                    <sp/>
+                </highlight>
+                <highlight class="normal">{</highlight>
+            </codeline>
+            <codeline lineno="70">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">double</highlight>
+                <highlight class="normal"><sp/>d_;
+                </highlight>
+            </codeline>
+            <codeline lineno="71">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>uint64_t<sp/>u_;
+                </highlight>
+            </codeline>
+            <codeline lineno="72">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>};
+                </highlight>
+            </codeline>
+            <codeline lineno="73">
+                <highlight class="normal">};</highlight>
+            </codeline>
+            <codeline lineno="74">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="75">
+                <highlight class="normal">}
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>namespace<sp/>internal
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="76">
+                <highlight class="normal">
+                    <ref refid="group___r_a_p_i_d_j_s_o_n___c_o_n_f_i_g_1gaf18f052a98b9f5df5448d39484b743c1"
+                         kindref="member">RAPIDJSON_NAMESPACE_END
+                    </ref>
+                </highlight>
+            </codeline>
+            <codeline lineno="77">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="78">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#endif<sp/>//<sp/>RAPIDJSON_IEEE754_
+                </highlight>
+            </codeline>
+        </programlisting>
+        <location file="rapidjson/internal/ieee754.h"/>
+    </compounddef>
+</doxygen>

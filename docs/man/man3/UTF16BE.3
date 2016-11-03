@@ -1,0 +1,41 @@
+.TH "UTF16BE< CharType >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UTF16BE< CharType > \- UTF-16 big endian encoding\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <encodings\&.h>\fP
+.PP
+Inherits \fBUTF16< CharType >\fP\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename InputByteStream > static CharType \fBTakeBOM\fP (InputByteStream &is)"
+.br
+.ti -1c
+.RI "template<typename InputByteStream > static CharType \fBTake\fP (InputByteStream &is)"
+.br
+.ti -1c
+.RI "template<typename OutputByteStream > static void \fBPutBOM\fP (OutputByteStream &os)"
+.br
+.ti -1c
+.RI "template<typename OutputByteStream > static void \fBPut\fP (OutputByteStream &os, CharType c)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename CharType = wchar_t>
+.br
+struct UTF16BE< CharType >"
+UTF-16 big endian encoding\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

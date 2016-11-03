@@ -1,0 +1,128 @@
+.TH "exasockets_connection" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+exasockets_connection \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBexasockets_connection\fP (const char *server, uint16_t port, const char *clientName, const char *username, const char *password, int pwd_len, bool autocommit=true, bool use_compression=false, uint64_t sessionId=0)"
+.br
+.RI "Establishes a connection to EXASOL and returns an \fBexasockets_connection\fP object\&. "
+.ti -1c
+.RI "int \fBupdate_session_attributes\fP ()"
+.br
+.ti -1c
+.RI "int \fBexec_sql\fP (char *sql)"
+.br
+.RI "Sends an SQL statement to EXASOL and fetches the response\&. "
+.ti -1c
+.RI "int \fBfetch\fP (int handler)"
+.br
+.ti -1c
+.RI "const char * \fBdatabaseName\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBidentifierQuoteString\fP () const"
+.br
+.ti -1c
+.RI "int \fBmaxDataMessageSize\fP () const"
+.br
+.ti -1c
+.RI "int \fBmaxIdentifierLength\fP () const"
+.br
+.ti -1c
+.RI "int \fBmaxVarcharLength\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBproductName\fP () const"
+.br
+.ti -1c
+.RI "int \fBprotocolVersion\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBreleaseVersion\fP () const"
+.br
+.ti -1c
+.RI "uint64_t \fBsession_id\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBtimezone\fP () const"
+.br
+.ti -1c
+.RI "const char * \fBtimeZoneBehaviour\fP () const"
+.br
+.ti -1c
+.RI "bool \fBisStatus\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBrapidjson::Document\fP \fBresultSet\fP"
+.br
+.ti -1c
+.RI "bool \fBjson_debug_output\fP = true"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "exasockets_connection::exasockets_connection (const char * server, uint16_t port, const char * clientName, const char * username, const char * password, int pwd_len, bool autocommit = \fCtrue\fP, bool use_compression = \fCfalse\fP, uint64_t sessionId = \fC0\fP)"
+
+.PP
+Establishes a connection to EXASOL and returns an \fBexasockets_connection\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserver\fP The IP address of the EXASOL node to connect to\&. E\&.g\&. '192\&.168\&.137\&.10' 
+.br
+\fIport\fP The Port the EXASOL DB listens on\&. E\&.g\&. 8563 
+.br
+\fIclientName\fP The name of the client, as it will be shown e\&.g\&. in the CLIENT column in EXA_(USER/ALL/DBA)_SESSIONS\&. E\&.g\&. the name of the frontend\&. 
+.br
+\fIusername\fP The EXASOL DB user name for authentification\&. E\&.g\&. 'sys' 
+.br
+\fIpassword\fP The EXASOL user password\&. E\&.g\&. 'exasol'\&. Transfer is always RSA encrypted\&. 
+.br
+\fIpwd_len\fP The password length\&. E\&.g\&. 6\&. 
+.br
+\fIautocommit\fP If the DBMS is supposed to execute a COMMIT automatically after each statement\&. Default: true (recommended) 
+.br
+\fIuse_compression\fP If the result sets are to be transferred compressed\&. Default: false\&. Compression is not yet implemented on the client side\&. 
+.br
+\fIsessionId\fP An ID for the session to be created in EXASOL\&. Per default a random session ID is created (recommended)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBexasockets_connection\fP object containing an open connection\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int exasockets_connection::exec_sql (char * sql)"
+
+.PP
+Sends an SQL statement to EXASOL and fetches the response\&. Sends an SQL stmt and fetches the result set\&. If a result set handle is received instead of data, then this is returned as an int\&. Otherwise 0 is returned and the resultSet is stored inside the connection object\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SQL statement, e\&.g\&. 'select * from schema1\&.tbl1' 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A result handler to be used with fetch() if available, otherwise 0\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

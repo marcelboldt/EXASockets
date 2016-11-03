@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="struct_generic_schema_document_1_1_schema_entry" kind="struct" language="C++" prot="private">
+        <compoundname>GenericSchemaDocument::SchemaEntry</compoundname>
+        <sectiondef kind="public-attrib">
+            <memberdef kind="variable"
+                       id="struct_generic_schema_document_1_1_schema_entry_1a55cb1fc9735973d1b4c4e481541d9e00"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="class_generic_pointer" kindref="compound">PointerType</ref>
+                </type>
+                <definition>PointerType GenericSchemaDocument&lt; ValueT, Allocator &gt;::SchemaEntry::pointer
+                </definition>
+                <argsstring></argsstring>
+                <name>pointer</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1425" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1425" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable"
+                       id="struct_generic_schema_document_1_1_schema_entry_1ae43ba2bb10eaece15ac9dc6eeaeb5ecf"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="classinternal_1_1_schema" kindref="compound">SchemaType</ref>
+                    *
+                </type>
+                <definition>SchemaType* GenericSchemaDocument&lt; ValueT, Allocator &gt;::SchemaEntry::schema
+                </definition>
+                <argsstring></argsstring>
+                <name>schema</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1426" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1426" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable"
+                       id="struct_generic_schema_document_1_1_schema_entry_1a271f46ff3e4978d13b46739d107637ec"
+                       prot="public" static="no" mutable="no">
+                <type>bool</type>
+                <definition>bool GenericSchemaDocument&lt; ValueT, Allocator &gt;::SchemaEntry::owned</definition>
+                <argsstring></argsstring>
+                <name>owned</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1427" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1427" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function"
+                       id="struct_generic_schema_document_1_1_schema_entry_1ae5bb43ef093b5efe2f72df196aaa4b87"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericSchemaDocument&lt; ValueT, Allocator &gt;::SchemaEntry::SchemaEntry</definition>
+                <argsstring>(const PointerType &amp;p, SchemaType *s, bool o, Allocator *allocator)</argsstring>
+                <name>SchemaEntry</name>
+                <param>
+                    <type>const <ref refid="class_generic_pointer" kindref="compound">PointerType</ref> &amp;
+                    </type>
+                    <declname>p</declname>
+                </param>
+                <param>
+                    <type>
+                        <ref refid="classinternal_1_1_schema" kindref="compound">SchemaType</ref>
+                        *
+                    </type>
+                    <declname>s</declname>
+                </param>
+                <param>
+                    <type>bool</type>
+                    <declname>o</declname>
+                </param>
+                <param>
+                    <type>Allocator *</type>
+                    <declname>allocator</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1418" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1418" bodyend="1418"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="struct_generic_schema_document_1_1_schema_entry_1a4c18d6d563b90be5cb16e66173bb0107"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericSchemaDocument&lt; ValueT, Allocator &gt;::SchemaEntry::~SchemaEntry</definition>
+                <argsstring>()</argsstring>
+                <name>~SchemaEntry</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1419" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1419" bodyend="1424"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <collaborationgraph>
+            <node id="262">
+                <label>internal::Schema&lt; SchemaDocumentType &gt;</label>
+                <link refid="classinternal_1_1_schema"/>
+            </node>
+            <node id="261">
+                <label>GenericSchemaDocument&lt; ValueT, Allocator &gt;::SchemaEntry</label>
+                <childnode refid="262" relation="usage">
+                    <edgelabel>schema</edgelabel>
+                </childnode>
+            </node>
+        </collaborationgraph>
+        <location file="rapidjson/schema.h" line="1417" column="1" bodyfile="rapidjson/schema.h" bodystart="1417"
+                  bodyend="1428"/>
+        <listofallmembers>
+            <member refid="struct_generic_schema_document_1_1_schema_entry_1a271f46ff3e4978d13b46739d107637ec"
+                    prot="public" virt="non-virtual">
+                <scope>GenericSchemaDocument::SchemaEntry</scope>
+                <name>owned</name>
+            </member>
+            <member refid="struct_generic_schema_document_1_1_schema_entry_1a55cb1fc9735973d1b4c4e481541d9e00"
+                    prot="public" virt="non-virtual">
+                <scope>GenericSchemaDocument::SchemaEntry</scope>
+                <name>pointer</name>
+            </member>
+            <member refid="struct_generic_schema_document_1_1_schema_entry_1ae43ba2bb10eaece15ac9dc6eeaeb5ecf"
+                    prot="public" virt="non-virtual">
+                <scope>GenericSchemaDocument::SchemaEntry</scope>
+                <name>schema</name>
+            </member>
+            <member refid="struct_generic_schema_document_1_1_schema_entry_1ae5bb43ef093b5efe2f72df196aaa4b87"
+                    prot="public" virt="non-virtual">
+                <scope>GenericSchemaDocument::SchemaEntry</scope>
+                <name>SchemaEntry</name>
+            </member>
+            <member refid="struct_generic_schema_document_1_1_schema_entry_1a4c18d6d563b90be5cb16e66173bb0107"
+                    prot="public" virt="non-virtual">
+                <scope>GenericSchemaDocument::SchemaEntry</scope>
+                <name>~SchemaEntry</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

@@ -1,0 +1,748 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="classinternal_1_1_stack" kind="class" language="C++" prot="public">
+        <compoundname>internal::Stack</compoundname>
+        <includes refid="stack_8h" local="no">stack.h</includes>
+        <templateparamlist>
+            <param>
+                <type>typename</type>
+                <declname>Allocator</declname>
+                <defname>Allocator</defname>
+            </param>
+        </templateparamlist>
+        <sectiondef kind="private-attrib">
+            <memberdef kind="variable" id="classinternal_1_1_stack_1a029e18096d082b1c81d7e1075a15eaad" prot="private"
+                       static="no" mutable="no">
+                <type>Allocator *</type>
+                <definition>Allocator* internal::Stack&lt; Allocator &gt;::allocator_</definition>
+                <argsstring></argsstring>
+                <name>allocator_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="215" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="215" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classinternal_1_1_stack_1a71e95d02ac850a97e1ee3628a207cbe9" prot="private"
+                       static="no" mutable="no">
+                <type>Allocator *</type>
+                <definition>Allocator* internal::Stack&lt; Allocator &gt;::ownAllocator_</definition>
+                <argsstring></argsstring>
+                <name>ownAllocator_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="216" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="216" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classinternal_1_1_stack_1ae2601d824b6b2f17eadd6739eec5c942" prot="private"
+                       static="no" mutable="no">
+                <type>char *</type>
+                <definition>char* internal::Stack&lt; Allocator &gt;::stack_</definition>
+                <argsstring></argsstring>
+                <name>stack_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="217" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="217" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classinternal_1_1_stack_1aad0ee46c4a6180e2f3e0d9f4348c31f2" prot="private"
+                       static="no" mutable="no">
+                <type>char *</type>
+                <definition>char* internal::Stack&lt; Allocator &gt;::stackTop_</definition>
+                <argsstring></argsstring>
+                <name>stackTop_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="218" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="218" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classinternal_1_1_stack_1af21b647d9f73246e9c96fa0966bdaf5d" prot="private"
+                       static="no" mutable="no">
+                <type>char *</type>
+                <definition>char* internal::Stack&lt; Allocator &gt;::stackEnd_</definition>
+                <argsstring></argsstring>
+                <name>stackEnd_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="219" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="219" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classinternal_1_1_stack_1a224b9fa2406bc1c411068fa36c67c90f" prot="private"
+                       static="no" mutable="no">
+                <type>size_t</type>
+                <definition>size_t internal::Stack&lt; Allocator &gt;::initialCapacity_</definition>
+                <argsstring></argsstring>
+                <name>initialCapacity_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="220" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="220" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function" id="classinternal_1_1_stack_1af09ab91f9e5143deccf7c9af837f451e" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>internal::Stack&lt; Allocator &gt;::Stack</definition>
+                <argsstring>(Allocator *allocator, size_t stackCapacity)</argsstring>
+                <name>Stack</name>
+                <param>
+                    <type>Allocator *</type>
+                    <declname>allocator</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>stackCapacity</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="40" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="40" bodyend="41"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1afedce84c8816abe9277a71ebd5e1808a" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>internal::Stack&lt; Allocator &gt;::~Stack</definition>
+                <argsstring>()</argsstring>
+                <name>~Stack</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="61" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="61" bodyend="63"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a5e601199a21d84b1ac612f558be0f2c3" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::Stack&lt; Allocator &gt;::Swap</definition>
+                <argsstring>(Stack &amp;rhs) RAPIDJSON_NOEXCEPT</argsstring>
+                <name>Swap</name>
+                <param>
+                    <type>
+                        <ref refid="classinternal_1_1_stack" kindref="compound">Stack</ref>
+                        &amp;
+                    </type>
+                    <declname>rhs</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="89" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="89" bodyend="96"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a02da31665a372738e81ded2f7b7d598e" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::Stack&lt; Allocator &gt;::Clear</definition>
+                <argsstring>()</argsstring>
+                <name>Clear</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="98" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="98" bodyend="98"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a3852b8494d69c91f6a238a51572e591e" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::Stack&lt; Allocator &gt;::ShrinkToFit</definition>
+                <argsstring>()</argsstring>
+                <name>ShrinkToFit</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="100" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="100" bodyend="110"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a7ae5de892834b7fc16099eb5e23dd97c" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>RAPIDJSON_FORCEINLINE void</type>
+                <definition>RAPIDJSON_FORCEINLINE void internal::Stack&lt; Allocator &gt;::Reserve</definition>
+                <argsstring>(size_t count=1)</argsstring>
+                <name>Reserve</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                    <defval>1</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="115" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="115" bodyend="119"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a8038223ec0ed6ea92bb5f48e645a25ca" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>RAPIDJSON_FORCEINLINE T *</type>
+                <definition>RAPIDJSON_FORCEINLINE T* internal::Stack&lt; Allocator &gt;::Push</definition>
+                <argsstring>(size_t count=1)</argsstring>
+                <name>Push</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                    <defval>1</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="122" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="122" bodyend="125"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a63b4eabd209d4fc9b43027f4e5660532" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>RAPIDJSON_FORCEINLINE T *</type>
+                <definition>RAPIDJSON_FORCEINLINE T* internal::Stack&lt; Allocator &gt;::PushUnsafe</definition>
+                <argsstring>(size_t count=1)</argsstring>
+                <name>PushUnsafe</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                    <defval>1</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="128" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="128" bodyend="133"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a8545a8ccba595ac6e4ade9784474aa1c" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>T *</type>
+                <definition>T* internal::Stack&lt; Allocator &gt;::Pop</definition>
+                <argsstring>(size_t count)</argsstring>
+                <name>Pop</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="136" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="136" bodyend="140"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1ab3ed5b4afed3c73c516678516d5e195b" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>T *</type>
+                <definition>T* internal::Stack&lt; Allocator &gt;::Top</definition>
+                <argsstring>()</argsstring>
+                <name>Top</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="143" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="143" bodyend="146"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1abd8941a6b827a7ea359cb59b79d7a886" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>const T *</type>
+                <definition>const T* internal::Stack&lt; Allocator &gt;::Top</definition>
+                <argsstring>() const</argsstring>
+                <name>Top</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="149" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="149" bodyend="152"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a54987ae8ad774dd3ee80a43d268ef080" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>T *</type>
+                <definition>T* internal::Stack&lt; Allocator &gt;::End</definition>
+                <argsstring>()</argsstring>
+                <name>End</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="155" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="155" bodyend="155"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a605246623b39f9d36d3d12eee25f9d82" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>const T *</type>
+                <definition>const T* internal::Stack&lt; Allocator &gt;::End</definition>
+                <argsstring>() const</argsstring>
+                <name>End</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="158" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="158" bodyend="158"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a10aa1bc716b82cb0a40b3a3b9d5efe87" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>T *</type>
+                <definition>T* internal::Stack&lt; Allocator &gt;::Bottom</definition>
+                <argsstring>()</argsstring>
+                <name>Bottom</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="161" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="161" bodyend="161"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1af5c55983c553c7355ff6d24beb48c722" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>const T *</type>
+                <definition>const T* internal::Stack&lt; Allocator &gt;::Bottom</definition>
+                <argsstring>() const</argsstring>
+                <name>Bottom</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="164" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="164" bodyend="164"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a657ae4d477b25d4e0045aee0efd809c3" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>bool</type>
+                <definition>bool internal::Stack&lt; Allocator &gt;::HasAllocator</definition>
+                <argsstring>() const</argsstring>
+                <name>HasAllocator</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="166" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="166" bodyend="168"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1ab01f693833dfe136f574d66547623cfa" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>Allocator &amp;</type>
+                <definition>Allocator&amp; internal::Stack&lt; Allocator &gt;::GetAllocator</definition>
+                <argsstring>()</argsstring>
+                <name>GetAllocator</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="170" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="170" bodyend="173"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a2b8bda380e33838a99e3c73ff9785f03" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>bool</type>
+                <definition>bool internal::Stack&lt; Allocator &gt;::Empty</definition>
+                <argsstring>() const</argsstring>
+                <name>Empty</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="175" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="175" bodyend="175"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1ac484468a2791bd3e9ba609bd1600ab48" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>size_t</type>
+                <definition>size_t internal::Stack&lt; Allocator &gt;::GetSize</definition>
+                <argsstring>() const</argsstring>
+                <name>GetSize</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="176" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="176" bodyend="176"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a67d5d7ee9424d3dd46cf9d001b6cdc6b" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>size_t</type>
+                <definition>size_t internal::Stack&lt; Allocator &gt;::GetCapacity</definition>
+                <argsstring>() const</argsstring>
+                <name>GetCapacity</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="177" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="177" bodyend="177"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="private-func">
+            <memberdef kind="function" id="classinternal_1_1_stack_1a5a530d1d2a39a05812e4fee0e299004a" prot="private"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>void</type>
+                <definition>void internal::Stack&lt; Allocator &gt;::Expand</definition>
+                <argsstring>(size_t count)</argsstring>
+                <name>Expand</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="181" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="181" bodyend="197"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a0a23948aa17a9870a5e228d465e40e92" prot="private"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::Stack&lt; Allocator &gt;::Resize</definition>
+                <argsstring>(size_t newCapacity)</argsstring>
+                <name>Resize</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>newCapacity</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="199" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="199" bodyend="204"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1a5efa6fdbfaf93c5e519a2e6f39bd081f" prot="private"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::Stack&lt; Allocator &gt;::Destroy</definition>
+                <argsstring>()</argsstring>
+                <name>Destroy</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="206" column="1" bodyfile="rapidjson/internal/stack.h"
+                          bodystart="206" bodyend="209"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1af4109a9e632f85f70ac01c69d3ccdb3b" prot="private"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type></type>
+                <definition>internal::Stack&lt; Allocator &gt;::Stack</definition>
+                <argsstring>(const Stack &amp;)</argsstring>
+                <name>Stack</name>
+                <param>
+                    <type>const <ref refid="classinternal_1_1_stack" kindref="compound">Stack</ref> &amp;
+                    </type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="212" column="1"/>
+            </memberdef>
+            <memberdef kind="function" id="classinternal_1_1_stack_1ae21d491cc0c4a22a2c131d88c0a37ae1" prot="private"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>
+                    <ref refid="classinternal_1_1_stack" kindref="compound">Stack</ref>
+                    &amp;
+                </type>
+                <definition>Stack&amp; internal::Stack&lt; Allocator &gt;::operator=</definition>
+                <argsstring>(const Stack &amp;)</argsstring>
+                <name>operator=</name>
+                <param>
+                    <type>const <ref refid="classinternal_1_1_stack" kindref="compound">Stack</ref> &amp;
+                    </type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/stack.h" line="213" column="1"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+            <para>A type-unsafe stack for storing different types of data.</para>
+        </briefdescription>
+        <detaileddescription>
+            <para>
+                <parameterlist kind="templateparam">
+                    <parameteritem>
+                        <parameternamelist>
+                            <parametername>Allocator</parametername>
+                        </parameternamelist>
+                        <parameterdescription>
+                            <para>Allocator for allocating stack memory.</para>
+                        </parameterdescription>
+                    </parameteritem>
+                </parameterlist>
+            </para>
+        </detaileddescription>
+        <location file="rapidjson/internal/stack.h" line="36" column="1" bodyfile="rapidjson/internal/stack.h"
+                  bodystart="36" bodyend="221"/>
+        <listofallmembers>
+            <member refid="classinternal_1_1_stack_1a029e18096d082b1c81d7e1075a15eaad" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>allocator_</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a10aa1bc716b82cb0a40b3a3b9d5efe87" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Bottom</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1af5c55983c553c7355ff6d24beb48c722" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Bottom</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a02da31665a372738e81ded2f7b7d598e" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Clear</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a5efa6fdbfaf93c5e519a2e6f39bd081f" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Destroy</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a2b8bda380e33838a99e3c73ff9785f03" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Empty</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a54987ae8ad774dd3ee80a43d268ef080" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>End</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a605246623b39f9d36d3d12eee25f9d82" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>End</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a5a530d1d2a39a05812e4fee0e299004a" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Expand</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1ab01f693833dfe136f574d66547623cfa" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>GetAllocator</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a67d5d7ee9424d3dd46cf9d001b6cdc6b" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>GetCapacity</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1ac484468a2791bd3e9ba609bd1600ab48" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>GetSize</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a657ae4d477b25d4e0045aee0efd809c3" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>HasAllocator</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a224b9fa2406bc1c411068fa36c67c90f" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>initialCapacity_</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1ae21d491cc0c4a22a2c131d88c0a37ae1" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>operator=</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a71e95d02ac850a97e1ee3628a207cbe9" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>ownAllocator_</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a8545a8ccba595ac6e4ade9784474aa1c" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Pop</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a8038223ec0ed6ea92bb5f48e645a25ca" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Push</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a63b4eabd209d4fc9b43027f4e5660532" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>PushUnsafe</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a7ae5de892834b7fc16099eb5e23dd97c" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Reserve</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a0a23948aa17a9870a5e228d465e40e92" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Resize</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a3852b8494d69c91f6a238a51572e591e" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>ShrinkToFit</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1af09ab91f9e5143deccf7c9af837f451e" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Stack</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1af4109a9e632f85f70ac01c69d3ccdb3b" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Stack</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1ae2601d824b6b2f17eadd6739eec5c942" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>stack_</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1af21b647d9f73246e9c96fa0966bdaf5d" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>stackEnd_</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1aad0ee46c4a6180e2f3e0d9f4348c31f2" prot="private"
+                    virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>stackTop_</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1a5e601199a21d84b1ac612f558be0f2c3" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Swap</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1ab3ed5b4afed3c73c516678516d5e195b" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Top</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1abd8941a6b827a7ea359cb59b79d7a886" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>Top</name>
+            </member>
+            <member refid="classinternal_1_1_stack_1afedce84c8816abe9277a71ebd5e1808a" prot="public" virt="non-virtual">
+                <scope>internal::Stack</scope>
+                <name>~Stack</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

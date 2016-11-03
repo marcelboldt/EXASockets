@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="structinternal_1_1_schema_1_1_property" kind="struct" language="C++" prot="private">
+        <compoundname>internal::Schema::Property</compoundname>
+        <sectiondef kind="public-attrib">
+            <memberdef kind="variable" id="structinternal_1_1_schema_1_1_property_1ace21cf3e96710639f11dba3e3d011670"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="class_generic_value" kindref="compound">SValue</ref>
+                </type>
+                <definition>SValue internal::Schema&lt; SchemaDocumentType &gt;::Property::name</definition>
+                <argsstring></argsstring>
+                <name>name</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1201" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1201" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="structinternal_1_1_schema_1_1_property_1a8f152cf4f0ea5418a4fb3bf4c3746eb7"
+                       prot="public" static="no" mutable="no">
+                <type>const <ref refid="classinternal_1_1_schema" kindref="compound">SchemaType</ref> *
+                </type>
+                <definition>const SchemaType* internal::Schema&lt; SchemaDocumentType &gt;::Property::schema
+                </definition>
+                <argsstring></argsstring>
+                <name>schema</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1202" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1202" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="structinternal_1_1_schema_1_1_property_1a422e3f9c2fad29f3f8c3ce3be01430ab"
+                       prot="public" static="no" mutable="no">
+                <type>const <ref refid="classinternal_1_1_schema" kindref="compound">SchemaType</ref> *
+                </type>
+                <definition>const SchemaType* internal::Schema&lt; SchemaDocumentType
+                    &gt;::Property::dependenciesSchema
+                </definition>
+                <argsstring></argsstring>
+                <name>dependenciesSchema</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1203" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1203" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="structinternal_1_1_schema_1_1_property_1a8fe17f87aa205e912f3769873168224a"
+                       prot="public" static="no" mutable="no">
+                <type>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                </type>
+                <definition>SizeType internal::Schema&lt; SchemaDocumentType
+                    &gt;::Property::dependenciesValidatorIndex
+                </definition>
+                <argsstring></argsstring>
+                <name>dependenciesValidatorIndex</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1204" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1204" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="structinternal_1_1_schema_1_1_property_1a942c0457543b8ee3fdda3fbb29fc4598"
+                       prot="public" static="no" mutable="no">
+                <type>bool *</type>
+                <definition>bool* internal::Schema&lt; SchemaDocumentType &gt;::Property::dependencies</definition>
+                <argsstring></argsstring>
+                <name>dependencies</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1205" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1205" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="structinternal_1_1_schema_1_1_property_1a48dd761e20145ea74129c0d4fad5e1d4"
+                       prot="public" static="no" mutable="no">
+                <type>bool</type>
+                <definition>bool internal::Schema&lt; SchemaDocumentType &gt;::Property::required</definition>
+                <argsstring></argsstring>
+                <name>required</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1206" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1206" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function" id="structinternal_1_1_schema_1_1_property_1ad82c2b27ac45b33460cfb78873f90de2"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>internal::Schema&lt; SchemaDocumentType &gt;::Property::Property</definition>
+                <argsstring>()</argsstring>
+                <name>Property</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1199" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1199" bodyend="1199"/>
+            </memberdef>
+            <memberdef kind="function" id="structinternal_1_1_schema_1_1_property_1a801cac647ec64cc4dd4851d1c7613803"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>internal::Schema&lt; SchemaDocumentType &gt;::Property::~Property</definition>
+                <argsstring>()</argsstring>
+                <name>~Property</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/schema.h" line="1200" column="1" bodyfile="rapidjson/schema.h"
+                          bodystart="1200" bodyend="1200"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <collaborationgraph>
+            <node id="243">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::String</label>
+                <link refid="struct_generic_value_1_1_string"/>
+            </node>
+            <node id="241">
+                <label>GenericValue&lt; EncodingType, AllocatorType &gt;</label>
+                <link refid="class_generic_value"/>
+                <childnode refid="242" relation="usage">
+                    <edgelabel>data_</edgelabel>
+                </childnode>
+            </node>
+            <node id="240">
+                <label>internal::Schema&lt; SchemaDocumentType &gt;</label>
+                <link refid="classinternal_1_1_schema"/>
+            </node>
+            <node id="252">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Flag</label>
+                <link refid="struct_generic_value_1_1_flag"/>
+            </node>
+            <node id="246">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ObjectData</label>
+                <link refid="struct_generic_value_1_1_object_data"/>
+                <childnode refid="247" relation="usage">
+                    <edgelabel>members</edgelabel>
+                </childnode>
+            </node>
+            <node id="242">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Data</label>
+                <link refid="union_generic_value_1_1_data"/>
+                <childnode refid="243" relation="usage">
+                    <edgelabel>s</edgelabel>
+                </childnode>
+                <childnode refid="244" relation="usage">
+                    <edgelabel>a</edgelabel>
+                </childnode>
+                <childnode refid="246" relation="usage">
+                    <edgelabel>o</edgelabel>
+                </childnode>
+                <childnode refid="248" relation="usage">
+                    <edgelabel>n</edgelabel>
+                </childnode>
+                <childnode refid="251" relation="usage">
+                    <edgelabel>ss</edgelabel>
+                </childnode>
+                <childnode refid="252" relation="usage">
+                    <edgelabel>f</edgelabel>
+                </childnode>
+            </node>
+            <node id="249">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Number::U</label>
+                <link refid="struct_generic_value_1_1_number_1_1_u"/>
+            </node>
+            <node id="250">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Number::I</label>
+                <link refid="struct_generic_value_1_1_number_1_1_i"/>
+            </node>
+            <node id="251">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ShortString</label>
+                <link refid="struct_generic_value_1_1_short_string"/>
+            </node>
+            <node id="247">
+                <label>GenericMember&lt; Encoding, Allocator &gt;</label>
+                <link refid="struct_generic_member"/>
+            </node>
+            <node id="244">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ArrayData</label>
+                <link refid="struct_generic_value_1_1_array_data"/>
+                <childnode refid="245" relation="usage">
+                    <edgelabel>elements</edgelabel>
+                </childnode>
+            </node>
+            <node id="239">
+                <label>internal::Schema&lt; SchemaDocumentType &gt;::Property</label>
+                <childnode refid="240" relation="usage">
+                    <edgelabel>schema</edgelabel>
+                    <edgelabel>dependenciesSchema</edgelabel>
+                </childnode>
+                <childnode refid="241" relation="usage">
+                    <edgelabel>name</edgelabel>
+                </childnode>
+            </node>
+            <node id="245">
+                <label>GenericValue&lt; Encoding, Allocator &gt;</label>
+                <link refid="class_generic_value"/>
+                <childnode refid="242" relation="usage">
+                    <edgelabel>data_</edgelabel>
+                </childnode>
+            </node>
+            <node id="248">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Number</label>
+                <link refid="union_generic_value_1_1_number"/>
+                <childnode refid="249" relation="usage">
+                    <edgelabel>u</edgelabel>
+                </childnode>
+                <childnode refid="250" relation="usage">
+                    <edgelabel>i</edgelabel>
+                </childnode>
+            </node>
+        </collaborationgraph>
+        <location file="rapidjson/schema.h" line="1198" column="1" bodyfile="rapidjson/schema.h" bodystart="1198"
+                  bodyend="1207"/>
+        <listofallmembers>
+            <member refid="structinternal_1_1_schema_1_1_property_1a942c0457543b8ee3fdda3fbb29fc4598" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>dependencies</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1a422e3f9c2fad29f3f8c3ce3be01430ab" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>dependenciesSchema</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1a8fe17f87aa205e912f3769873168224a" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>dependenciesValidatorIndex</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1ace21cf3e96710639f11dba3e3d011670" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>name</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1ad82c2b27ac45b33460cfb78873f90de2" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>Property</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1a48dd761e20145ea74129c0d4fad5e1d4" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>required</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1a8f152cf4f0ea5418a4fb3bf4c3746eb7" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>schema</name>
+            </member>
+            <member refid="structinternal_1_1_schema_1_1_property_1a801cac647ec64cc4dd4851d1c7613803" prot="public"
+                    virt="non-virtual">
+                <scope>internal::Schema::Property</scope>
+                <name>~Property</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

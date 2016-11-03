@@ -1,0 +1,1024 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="classexasockets__connection" kind="class" language="C++" prot="public">
+        <compoundname>exasockets_connection</compoundname>
+        <sectiondef kind="public-attrib">
+            <memberdef kind="variable" id="classexasockets__connection_1a8476b0597efd50bc7c76e47943d409ed" prot="public"
+                       static="no" mutable="no">
+                <type>
+                    <ref refid="document_8h_1ac6ea5b168e3fe8c7fa532450fc9391f7" kindref="member">rapidjson::Document
+                    </ref>
+                </type>
+                <definition>rapidjson::Document exasockets_connection::resultSet</definition>
+                <argsstring></argsstring>
+                <name>resultSet</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="127" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="127" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a7d905f2f8328d268964e416e81c3619e" prot="public"
+                       static="no" mutable="no">
+                <type>bool</type>
+                <definition>bool exasockets_connection::json_debug_output</definition>
+                <argsstring></argsstring>
+                <name>json_debug_output</name>
+                <initializer>= true</initializer>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="128" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="128" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="private-attrib">
+            <memberdef kind="variable" id="classexasockets__connection_1a864c18e1d0dda0af13fda54cd2ac7bc2"
+                       prot="private" static="no" mutable="no">
+                <type>Websockets_connection *</type>
+                <definition>Websockets_connection* exasockets_connection::ws_con</definition>
+                <argsstring></argsstring>
+                <name>ws_con</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="132" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="132" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a832ac3b4297e34177e7ce4f6ddbdadb3"
+                       prot="private" static="no" mutable="no">
+                <type>std::ifstream</type>
+                <definition>std::ifstream exasockets_connection::tfile</definition>
+                <argsstring></argsstring>
+                <name>tfile</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="133" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="133" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1abb5b8f5312a635e2b5a47db91e9ff57b"
+                       prot="private" static="no" mutable="no">
+                <type>char *</type>
+                <definition>char* exasockets_connection::logfile</definition>
+                <argsstring></argsstring>
+                <name>logfile</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="134" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="134" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a76ecf6b2865765423e12678a1ddf6e3f"
+                       prot="private" static="no" mutable="no">
+                <type>const char *</type>
+                <definition>const char* exasockets_connection::c_databaseName</definition>
+                <argsstring></argsstring>
+                <name>c_databaseName</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="136" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="136" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1ad78d35d0b7e0c12601f4a93066467229"
+                       prot="private" static="no" mutable="no">
+                <type>const char *</type>
+                <definition>const char* exasockets_connection::c_identifierQuoteString</definition>
+                <argsstring></argsstring>
+                <name>c_identifierQuoteString</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="137" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="137" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a718a107e321ebfdcf61ccffc2c69b7a4"
+                       prot="private" static="no" mutable="no">
+                <type>int</type>
+                <definition>int exasockets_connection::c_maxDataMessageSize</definition>
+                <argsstring></argsstring>
+                <name>c_maxDataMessageSize</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="138" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="138" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a8107f9bff9eb71c57eb26c5503c57f4a"
+                       prot="private" static="no" mutable="no">
+                <type>int</type>
+                <definition>int exasockets_connection::c_maxIdentifierLength</definition>
+                <argsstring></argsstring>
+                <name>c_maxIdentifierLength</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="139" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="139" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a45d72d54e461981421284e2b6ab332ef"
+                       prot="private" static="no" mutable="no">
+                <type>int</type>
+                <definition>int exasockets_connection::c_maxVarcharLength</definition>
+                <argsstring></argsstring>
+                <name>c_maxVarcharLength</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="140" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="140" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a067f252f6b59935a18b42503a3f6a5a3"
+                       prot="private" static="no" mutable="no">
+                <type>const char *</type>
+                <definition>const char* exasockets_connection::c_productName</definition>
+                <argsstring></argsstring>
+                <name>c_productName</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="141" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="141" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a997d922b8df19897ed0a4c5e0854967a"
+                       prot="private" static="no" mutable="no">
+                <type>int</type>
+                <definition>int exasockets_connection::c_protocolVersion</definition>
+                <argsstring></argsstring>
+                <name>c_protocolVersion</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="142" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="142" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a972a10f8a98ca5196768674a5da1c63c"
+                       prot="private" static="no" mutable="no">
+                <type>const char *</type>
+                <definition>const char* exasockets_connection::c_releaseVersion</definition>
+                <argsstring></argsstring>
+                <name>c_releaseVersion</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="143" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="143" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a99aa71a97a83d86683010a127a64008a"
+                       prot="private" static="no" mutable="no">
+                <type>uint64_t</type>
+                <definition>uint64_t exasockets_connection::c_session_id</definition>
+                <argsstring></argsstring>
+                <name>c_session_id</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="144" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="144" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1a83842f3ddbc30c178993ee031e87376b"
+                       prot="private" static="no" mutable="no">
+                <type>const char *</type>
+                <definition>const char* exasockets_connection::c_timezone</definition>
+                <argsstring></argsstring>
+                <name>c_timezone</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="145" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="145" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1ae82b377cb3adbff65c17b8b650e2b4f6"
+                       prot="private" static="no" mutable="no">
+                <type>const char *</type>
+                <definition>const char* exasockets_connection::c_timeZoneBehaviour</definition>
+                <argsstring></argsstring>
+                <name>c_timeZoneBehaviour</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="146" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="146" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="classexasockets__connection_1ad48ee8e24dfda6cf0266f27de738d9ea"
+                       prot="private" static="no" mutable="no">
+                <type>bool</type>
+                <definition>bool exasockets_connection::status</definition>
+                <argsstring></argsstring>
+                <name>status</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="147" column="1" bodyfile="exasockets/exasockets.h"
+                          bodystart="147" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function" id="classexasockets__connection_1af230009df6b6cc3cbc0e822a0a07b959" prot="public"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type></type>
+                <definition>exasockets_connection::exasockets_connection</definition>
+                <argsstring>(const char *server, uint16_t port, const char *clientName, const char *username, const char
+                    *password, int pwd_len, bool autocommit=true, bool use_compression=false, uint64_t sessionId=0)
+                </argsstring>
+                <name>exasockets_connection</name>
+                <param>
+                    <type>const char *</type>
+                    <declname>server</declname>
+                </param>
+                <param>
+                    <type>uint16_t</type>
+                    <declname>port</declname>
+                </param>
+                <param>
+                    <type>const char *</type>
+                    <declname>clientName</declname>
+                </param>
+                <param>
+                    <type>const char *</type>
+                    <declname>username</declname>
+                </param>
+                <param>
+                    <type>const char *</type>
+                    <declname>password</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>pwd_len</declname>
+                </param>
+                <param>
+                    <type>bool</type>
+                    <declname>autocommit</declname>
+                    <defval>true</defval>
+                </param>
+                <param>
+                    <type>bool</type>
+                    <declname>use_compression</declname>
+                    <defval>false</defval>
+                </param>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>sessionId</declname>
+                    <defval>0</defval>
+                </param>
+                <briefdescription>
+                    <para>Establishes a connection to EXASOL and returns an <ref refid="classexasockets__connection"
+                                                                                 kindref="compound">
+                        exasockets_connection
+                    </ref> object.
+                    </para>
+                </briefdescription>
+                <detaileddescription>
+                    <para>
+                        <parameterlist kind="param">
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>server</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The IP address of the EXASOL node to connect to. E.g. &apos;192.168.137.10&apos; </para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>port</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The Port the EXASOL DB listens on. E.g. 8563</para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>clientName</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The name of the client, as it will be shown e.g. in the CLIENT column in
+                                        EXA_(USER/ALL/DBA)_SESSIONS. E.g. the name of the frontend.
+                                    </para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>username</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The EXASOL DB user name for authentification. E.g. &apos;sys&apos; </para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>password</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The EXASOL user password. E.g. &apos;exasol&apos;. Transfer is always RSA
+                                        encrypted.
+                                    </para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>pwd_len</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The password length. E.g. 6.</para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>autocommit</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>If the DBMS is supposed to execute a COMMIT automatically after each
+                                        statement. Default: true (recommended)
+                                    </para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>use_compression</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>If the result sets are to be transferred compressed. Default: false.
+                                        Compression is not yet implemented on the client side.
+                                    </para>
+                                </parameterdescription>
+                            </parameteritem>
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>sessionId</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>An ID for the session to be created in EXASOL. Per default a random session ID
+                                        is created (recommended).
+                                    </para>
+                                </parameterdescription>
+                            </parameteritem>
+                        </parameterlist>
+                        <simplesect kind="return">
+                            <para>An <ref refid="classexasockets__connection" kindref="compound">exasockets_connection
+                            </ref> object containing an open connection.
+                            </para>
+                        </simplesect>
+                    </para>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="76" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="72" bodyend="260"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a3543c4dcc64df7f934c93aa941e8d95c" prot="public"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type></type>
+                <definition>exasockets_connection::~exasockets_connection</definition>
+                <argsstring>()</argsstring>
+                <name>~exasockets_connection</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="87" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="262" bodyend="293"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a9e63993a60ccd58e123427f6abcbc7f2" prot="public"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::update_session_attributes</definition>
+                <argsstring>()</argsstring>
+                <name>update_session_attributes</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="89" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="377" bodyend="414"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a52f72bbfe4706a1b9c3c0bcf13f945ca" prot="public"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::exec_sql</definition>
+                <argsstring>(char *sql)</argsstring>
+                <name>exec_sql</name>
+                <param>
+                    <type>char *</type>
+                    <declname>sql</declname>
+                </param>
+                <briefdescription>
+                    <para>Sends an SQL statement to EXASOL and fetches the response.</para>
+                </briefdescription>
+                <detaileddescription>
+                    <para>Sends an SQL stmt and fetches the result set. If a result set handle is received instead of
+                        data, then this is returned as an int. Otherwise 0 is returned and the resultSet is stored
+                        inside the connection object.
+                    </para>
+                    <para>
+                        <parameterlist kind="param">
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>sql</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>The SQL statement, e.g. &apos;select * from schema1.tbl1&apos; </para>
+                                </parameterdescription>
+                            </parameteritem>
+                        </parameterlist>
+                        <simplesect kind="return">
+                            <para>A result handler to be used with fetch() if available, otherwise 0.</para>
+                        </simplesect>
+                    </para>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="98" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="416" bodyend="466"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1ac17f2042a406ea4299dc8b46e7dd950a" prot="public"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::fetch</definition>
+                <argsstring>(int handler)</argsstring>
+                <name>fetch</name>
+                <param>
+                    <type>int</type>
+                    <declname>handler</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="101" column="1"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1ac6b0eaf9f0635b0e8488d26d2f0d68f9" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char * exasockets_connection::databaseName</definition>
+                <argsstring>() const</argsstring>
+                <name>databaseName</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="103" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="329" bodyend="331"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a2bb73a3b3638d012681dde4be776d4c6" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char * exasockets_connection::identifierQuoteString</definition>
+                <argsstring>() const</argsstring>
+                <name>identifierQuoteString</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="105" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="333" bodyend="335"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a759a7018eb264f0001c8856fe0242fc0" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::maxDataMessageSize</definition>
+                <argsstring>() const</argsstring>
+                <name>maxDataMessageSize</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="107" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="337" bodyend="339"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a89a3f22dd6e7e1af1715b29b6647d4f8" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::maxIdentifierLength</definition>
+                <argsstring>() const</argsstring>
+                <name>maxIdentifierLength</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="109" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="341" bodyend="343"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a04ce3ad2e060254d3a97f0856f64e486" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::maxVarcharLength</definition>
+                <argsstring>() const</argsstring>
+                <name>maxVarcharLength</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="111" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="345" bodyend="347"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a96c3d686fc84bb948cd07ebd8e253699" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char * exasockets_connection::productName</definition>
+                <argsstring>() const</argsstring>
+                <name>productName</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="113" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="349" bodyend="351"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a9921ac567c1131f18e17781095c5338c" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::protocolVersion</definition>
+                <argsstring>() const</argsstring>
+                <name>protocolVersion</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="115" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="353" bodyend="355"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1af430816252b3c13f7da0ed9a238e9743" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char * exasockets_connection::releaseVersion</definition>
+                <argsstring>() const</argsstring>
+                <name>releaseVersion</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="117" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="357" bodyend="359"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1ad6dd04b1f5c383ea7b0ce1453696111c" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>uint64_t</type>
+                <definition>uint64_t exasockets_connection::session_id</definition>
+                <argsstring>() const</argsstring>
+                <name>session_id</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="119" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="361" bodyend="363"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a64e8183687ec980a4981382624ef3b7c" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char * exasockets_connection::timezone</definition>
+                <argsstring>() const</argsstring>
+                <name>timezone</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="121" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="365" bodyend="367"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a1705d5c8595584fbd6fa7fb9de04d280" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char * exasockets_connection::timeZoneBehaviour</definition>
+                <argsstring>() const</argsstring>
+                <name>timeZoneBehaviour</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="123" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="369" bodyend="371"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1aca9a2a56d79261b7e2229768bdc44b00" prot="public"
+                       static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+                <type>bool</type>
+                <definition>bool exasockets_connection::isStatus</definition>
+                <argsstring>() const</argsstring>
+                <name>isStatus</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="125" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="373" bodyend="375"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="private-func">
+            <memberdef kind="function" id="classexasockets__connection_1af1e03cae764458083bc71c4e36e0576e"
+                       prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>int</type>
+                <definition>int exasockets_connection::ws_send_data</definition>
+                <argsstring>(const char *data, int len=-1, int type=1)</argsstring>
+                <name>ws_send_data</name>
+                <param>
+                    <type>const char *</type>
+                    <declname>data</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>len</declname>
+                    <defval>-1</defval>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>type</declname>
+                    <defval>1</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="150" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="312" bodyend="326"/>
+            </memberdef>
+            <memberdef kind="function" id="classexasockets__connection_1a755d51b5b6c4cd7e7ad733109d1df2db"
+                       prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>char *</type>
+                <definition>char * exasockets_connection::ws_receive_data</definition>
+                <argsstring>()</argsstring>
+                <name>ws_receive_data</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exasockets.h" line="152" column="1" bodyfile="exasockets/exasockets.cpp"
+                          bodystart="296" bodyend="310"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <collaborationgraph>
+            <node id="76">
+                <label>GenericValue&lt; UTF8&lt;&gt;, MemoryPoolAllocator&lt;&gt; &gt;</label>
+                <link refid="class_generic_value"/>
+                <childnode refid="77" relation="usage">
+                    <edgelabel>data_</edgelabel>
+                </childnode>
+            </node>
+            <node id="78">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::String</label>
+                <link refid="struct_generic_value_1_1_string"/>
+            </node>
+            <node id="74">
+                <label>exasockets_connection</label>
+                <link refid="classexasockets__connection"/>
+                <childnode refid="75" relation="usage">
+                    <edgelabel>resultSet</edgelabel>
+                </childnode>
+            </node>
+            <node id="75">
+                <label>GenericDocument&lt; UTF8&lt;&gt; &gt;</label>
+                <link refid="class_generic_document"/>
+                <childnode refid="76" relation="public-inheritance">
+                </childnode>
+            </node>
+            <node id="87">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Flag</label>
+                <link refid="struct_generic_value_1_1_flag"/>
+            </node>
+            <node id="81">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ObjectData</label>
+                <link refid="struct_generic_value_1_1_object_data"/>
+                <childnode refid="82" relation="usage">
+                    <edgelabel>members</edgelabel>
+                </childnode>
+            </node>
+            <node id="77">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Data</label>
+                <link refid="union_generic_value_1_1_data"/>
+                <childnode refid="78" relation="usage">
+                    <edgelabel>s</edgelabel>
+                </childnode>
+                <childnode refid="79" relation="usage">
+                    <edgelabel>a</edgelabel>
+                </childnode>
+                <childnode refid="81" relation="usage">
+                    <edgelabel>o</edgelabel>
+                </childnode>
+                <childnode refid="83" relation="usage">
+                    <edgelabel>n</edgelabel>
+                </childnode>
+                <childnode refid="86" relation="usage">
+                    <edgelabel>ss</edgelabel>
+                </childnode>
+                <childnode refid="87" relation="usage">
+                    <edgelabel>f</edgelabel>
+                </childnode>
+            </node>
+            <node id="84">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Number::U</label>
+                <link refid="struct_generic_value_1_1_number_1_1_u"/>
+            </node>
+            <node id="85">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Number::I</label>
+                <link refid="struct_generic_value_1_1_number_1_1_i"/>
+            </node>
+            <node id="86">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ShortString</label>
+                <link refid="struct_generic_value_1_1_short_string"/>
+            </node>
+            <node id="82">
+                <label>GenericMember&lt; Encoding, Allocator &gt;</label>
+                <link refid="struct_generic_member"/>
+            </node>
+            <node id="79">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::ArrayData</label>
+                <link refid="struct_generic_value_1_1_array_data"/>
+                <childnode refid="80" relation="usage">
+                    <edgelabel>elements</edgelabel>
+                </childnode>
+            </node>
+            <node id="80">
+                <label>GenericValue&lt; Encoding, Allocator &gt;</label>
+                <link refid="class_generic_value"/>
+                <childnode refid="77" relation="usage">
+                    <edgelabel>data_</edgelabel>
+                </childnode>
+            </node>
+            <node id="83">
+                <label>GenericValue&lt; Encoding, Allocator &gt;::Number</label>
+                <link refid="union_generic_value_1_1_number"/>
+                <childnode refid="84" relation="usage">
+                    <edgelabel>u</edgelabel>
+                </childnode>
+                <childnode refid="85" relation="usage">
+                    <edgelabel>i</edgelabel>
+                </childnode>
+            </node>
+        </collaborationgraph>
+        <location file="exasockets/exasockets.h" line="60" column="1" bodyfile="exasockets/exasockets.h" bodystart="60"
+                  bodyend="155"/>
+        <listofallmembers>
+            <member refid="classexasockets__connection_1a76ecf6b2865765423e12678a1ddf6e3f" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_databaseName</name>
+            </member>
+            <member refid="classexasockets__connection_1ad78d35d0b7e0c12601f4a93066467229" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_identifierQuoteString</name>
+            </member>
+            <member refid="classexasockets__connection_1a718a107e321ebfdcf61ccffc2c69b7a4" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_maxDataMessageSize</name>
+            </member>
+            <member refid="classexasockets__connection_1a8107f9bff9eb71c57eb26c5503c57f4a" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_maxIdentifierLength</name>
+            </member>
+            <member refid="classexasockets__connection_1a45d72d54e461981421284e2b6ab332ef" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_maxVarcharLength</name>
+            </member>
+            <member refid="classexasockets__connection_1a067f252f6b59935a18b42503a3f6a5a3" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_productName</name>
+            </member>
+            <member refid="classexasockets__connection_1a997d922b8df19897ed0a4c5e0854967a" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_protocolVersion</name>
+            </member>
+            <member refid="classexasockets__connection_1a972a10f8a98ca5196768674a5da1c63c" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_releaseVersion</name>
+            </member>
+            <member refid="classexasockets__connection_1a99aa71a97a83d86683010a127a64008a" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_session_id</name>
+            </member>
+            <member refid="classexasockets__connection_1a83842f3ddbc30c178993ee031e87376b" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_timezone</name>
+            </member>
+            <member refid="classexasockets__connection_1ae82b377cb3adbff65c17b8b650e2b4f6" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>c_timeZoneBehaviour</name>
+            </member>
+            <member refid="classexasockets__connection_1ac6b0eaf9f0635b0e8488d26d2f0d68f9" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>databaseName</name>
+            </member>
+            <member refid="classexasockets__connection_1af230009df6b6cc3cbc0e822a0a07b959" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>exasockets_connection</name>
+            </member>
+            <member refid="classexasockets__connection_1a52f72bbfe4706a1b9c3c0bcf13f945ca" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>exec_sql</name>
+            </member>
+            <member refid="classexasockets__connection_1ac17f2042a406ea4299dc8b46e7dd950a" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>fetch</name>
+            </member>
+            <member refid="classexasockets__connection_1a2bb73a3b3638d012681dde4be776d4c6" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>identifierQuoteString</name>
+            </member>
+            <member refid="classexasockets__connection_1aca9a2a56d79261b7e2229768bdc44b00" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>isStatus</name>
+            </member>
+            <member refid="classexasockets__connection_1a7d905f2f8328d268964e416e81c3619e" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>json_debug_output</name>
+            </member>
+            <member refid="classexasockets__connection_1abb5b8f5312a635e2b5a47db91e9ff57b" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>logfile</name>
+            </member>
+            <member refid="classexasockets__connection_1a759a7018eb264f0001c8856fe0242fc0" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>maxDataMessageSize</name>
+            </member>
+            <member refid="classexasockets__connection_1a89a3f22dd6e7e1af1715b29b6647d4f8" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>maxIdentifierLength</name>
+            </member>
+            <member refid="classexasockets__connection_1a04ce3ad2e060254d3a97f0856f64e486" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>maxVarcharLength</name>
+            </member>
+            <member refid="classexasockets__connection_1a96c3d686fc84bb948cd07ebd8e253699" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>productName</name>
+            </member>
+            <member refid="classexasockets__connection_1a9921ac567c1131f18e17781095c5338c" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>protocolVersion</name>
+            </member>
+            <member refid="classexasockets__connection_1af430816252b3c13f7da0ed9a238e9743" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>releaseVersion</name>
+            </member>
+            <member refid="classexasockets__connection_1a8476b0597efd50bc7c76e47943d409ed" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>resultSet</name>
+            </member>
+            <member refid="classexasockets__connection_1ad6dd04b1f5c383ea7b0ce1453696111c" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>session_id</name>
+            </member>
+            <member refid="classexasockets__connection_1ad48ee8e24dfda6cf0266f27de738d9ea" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>status</name>
+            </member>
+            <member refid="classexasockets__connection_1a832ac3b4297e34177e7ce4f6ddbdadb3" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>tfile</name>
+            </member>
+            <member refid="classexasockets__connection_1a64e8183687ec980a4981382624ef3b7c" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>timezone</name>
+            </member>
+            <member refid="classexasockets__connection_1a1705d5c8595584fbd6fa7fb9de04d280" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>timeZoneBehaviour</name>
+            </member>
+            <member refid="classexasockets__connection_1a9e63993a60ccd58e123427f6abcbc7f2" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>update_session_attributes</name>
+            </member>
+            <member refid="classexasockets__connection_1a864c18e1d0dda0af13fda54cd2ac7bc2" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>ws_con</name>
+            </member>
+            <member refid="classexasockets__connection_1a755d51b5b6c4cd7e7ad733109d1df2db" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>ws_receive_data</name>
+            </member>
+            <member refid="classexasockets__connection_1af1e03cae764458083bc71c4e36e0576e" prot="private"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>ws_send_data</name>
+            </member>
+            <member refid="classexasockets__connection_1a3543c4dcc64df7f934c93aa941e8d95c" prot="public"
+                    virt="non-virtual">
+                <scope>exasockets_connection</scope>
+                <name>~exasockets_connection</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

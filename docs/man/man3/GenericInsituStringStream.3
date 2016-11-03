@@ -1,0 +1,85 @@
+.TH "GenericInsituStringStream< Encoding >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericInsituStringStream< Encoding > \- A read-write string stream\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <stream\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef Encoding::Ch \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericInsituStringStream\fP (Ch *src)"
+.br
+.ti -1c
+.RI "Ch \fBPeek\fP ()"
+.br
+.ti -1c
+.RI "Ch \fBTake\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBTell\fP ()"
+.br
+.ti -1c
+.RI "void \fBPut\fP (Ch c)"
+.br
+.ti -1c
+.RI "Ch * \fBPutBegin\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBPutEnd\fP (Ch *begin)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "Ch * \fBPush\fP (size_t count)"
+.br
+.ti -1c
+.RI "void \fBPop\fP (size_t count)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Ch * \fBsrc_\fP"
+.br
+.ti -1c
+.RI "Ch * \fBdst_\fP"
+.br
+.ti -1c
+.RI "Ch * \fBhead_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Encoding>
+.br
+struct GenericInsituStringStream< Encoding >"
+A read-write string stream\&. 
+
+This string stream is particularly designed for in-situ parsing\&. 
+.PP
+\fBNote:\fP
+.RS 4
+implements Stream concept 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

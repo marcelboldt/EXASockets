@@ -1,0 +1,485 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="class_generic_string_buffer" kind="class" language="C++" prot="public">
+        <compoundname>GenericStringBuffer</compoundname>
+        <includes refid="stringbuffer_8h" local="no">stringbuffer.h</includes>
+        <templateparamlist>
+            <param>
+                <type>typename</type>
+                <declname>Encoding</declname>
+                <defname>Encoding</defname>
+            </param>
+            <param>
+                <type>typename</type>
+                <declname>Allocator</declname>
+                <defname>Allocator</defname>
+                <defval>
+                    <ref refid="class_crt_allocator" kindref="compound">CrtAllocator</ref>
+                </defval>
+            </param>
+        </templateparamlist>
+        <sectiondef kind="public-type">
+            <memberdef kind="typedef" id="class_generic_string_buffer_1a735b75db076ffe86d0d294be49655d46" prot="public"
+                       static="no">
+                <type>Encoding::Ch</type>
+                <definition>typedef Encoding::Ch GenericStringBuffer&lt; Encoding, Allocator &gt;::Ch</definition>
+                <argsstring></argsstring>
+                <name>Ch</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="43" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="43" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-static-attrib">
+            <memberdef kind="variable" id="class_generic_string_buffer_1ae74f9df854dd5a7db4315ef44b016d22" prot="public"
+                       static="yes" mutable="no">
+                <type>const size_t</type>
+                <definition>const size_t GenericStringBuffer&lt; Encoding, Allocator &gt;::kDefaultCapacity</definition>
+                <argsstring></argsstring>
+                <name>kDefaultCapacity</name>
+                <initializer>= 256</initializer>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="87" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="87" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-attrib">
+            <memberdef kind="variable" id="class_generic_string_buffer_1aaef716643febb9de5957dbf8ff904409" prot="public"
+                       static="no" mutable="yes">
+                <type><ref refid="classinternal_1_1_stack" kindref="compound">internal::Stack</ref>&lt; Allocator &gt;
+                </type>
+                <definition>internal::Stack&lt;Allocator&gt; GenericStringBuffer&lt; Encoding, Allocator &gt;::stack_
+                </definition>
+                <argsstring></argsstring>
+                <name>stack_</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="88" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="88" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function" id="class_generic_string_buffer_1a62f5ea1a53a2a3f98088f8c152b6183e" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericStringBuffer&lt; Encoding, Allocator &gt;::GenericStringBuffer</definition>
+                <argsstring>(Allocator *allocator=0, size_t capacity=kDefaultCapacity)</argsstring>
+                <name>GenericStringBuffer</name>
+                <param>
+                    <type>Allocator *</type>
+                    <declname>allocator</declname>
+                    <defval>0</defval>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>capacity</declname>
+                    <defval>kDefaultCapacity</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="45" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="45" bodyend="45"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a8be5c8fadccacdcf40e20220f38e0afa" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::Put</definition>
+                <argsstring>(Ch c)</argsstring>
+                <name>Put</name>
+                <param>
+                    <type>Ch</type>
+                    <declname>c</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="56" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="56" bodyend="56"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a9225468d11fdddfc3a9a4e48bf4d3ba4" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::PutUnsafe</definition>
+                <argsstring>(Ch c)</argsstring>
+                <name>PutUnsafe</name>
+                <param>
+                    <type>Ch</type>
+                    <declname>c</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="57" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="57" bodyend="57"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a28bb539487db17b07314a532f3b8847c" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::Flush</definition>
+                <argsstring>()</argsstring>
+                <name>Flush</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="58" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="58" bodyend="58"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a42f15c959046d899cb74c3120a6995f9" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::Clear</definition>
+                <argsstring>()</argsstring>
+                <name>Clear</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="60" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="60" bodyend="60"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a0dbdb77489b95923795011a24f705be5" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::ShrinkToFit</definition>
+                <argsstring>()</argsstring>
+                <name>ShrinkToFit</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="61" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="61" bodyend="66"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a4d6becae201b98c122746298882a318f" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::Reserve</definition>
+                <argsstring>(size_t count)</argsstring>
+                <name>Reserve</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="68" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="68" bodyend="68"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a49fd10cdd5dd97a4cf9813d01334d660" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>Ch *</type>
+                <definition>Ch* GenericStringBuffer&lt; Encoding, Allocator &gt;::Push</definition>
+                <argsstring>(size_t count)</argsstring>
+                <name>Push</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="69" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="69" bodyend="69"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a4e396f55323ca54f949685c7c6ef2060" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>Ch *</type>
+                <definition>Ch* GenericStringBuffer&lt; Encoding, Allocator &gt;::PushUnsafe</definition>
+                <argsstring>(size_t count)</argsstring>
+                <name>PushUnsafe</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="70" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="70" bodyend="70"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a0038e53ba03c271bc4cbbac403ec4de4" prot="public"
+                       static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void GenericStringBuffer&lt; Encoding, Allocator &gt;::Pop</definition>
+                <argsstring>(size_t count)</argsstring>
+                <name>Pop</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>count</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="71" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="71" bodyend="71"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1ab06b8c5f1385bd3dfd4caea8b7510f0b" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>const Ch *</type>
+                <definition>const Ch* GenericStringBuffer&lt; Encoding, Allocator &gt;::GetString</definition>
+                <argsstring>() const</argsstring>
+                <name>GetString</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="73" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="73" bodyend="79"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a725e862b9a78375f5363b0b61ad789f3" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>size_t</type>
+                <definition>size_t GenericStringBuffer&lt; Encoding, Allocator &gt;::GetSize</definition>
+                <argsstring>() const</argsstring>
+                <name>GetSize</name>
+                <briefdescription>
+                    <para>Get the size of string in bytes in the string buffer.</para>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="82" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="82" bodyend="82"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1ad324b8154be3354dda3aa4a0a7361499" prot="public"
+                       static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+                <type>size_t</type>
+                <definition>size_t GenericStringBuffer&lt; Encoding, Allocator &gt;::GetLength</definition>
+                <argsstring>() const</argsstring>
+                <name>GetLength</name>
+                <briefdescription>
+                    <para>Get the length of string in Ch in the string buffer.</para>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="85" column="1" bodyfile="rapidjson/stringbuffer.h"
+                          bodystart="85" bodyend="85"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="private-func">
+            <memberdef kind="function" id="class_generic_string_buffer_1aec9340c9906ce399bb142706a61a9501"
+                       prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type></type>
+                <definition>GenericStringBuffer&lt; Encoding, Allocator &gt;::GenericStringBuffer</definition>
+                <argsstring>(const GenericStringBuffer &amp;)</argsstring>
+                <name>GenericStringBuffer</name>
+                <param>
+                    <type>const <ref refid="class_generic_string_buffer" kindref="compound">GenericStringBuffer</ref> &amp;
+                    </type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="92" column="1"/>
+            </memberdef>
+            <memberdef kind="function" id="class_generic_string_buffer_1a09937913fd2f426be04ae6d6a8abb0f6"
+                       prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>
+                    <ref refid="class_generic_string_buffer" kindref="compound">GenericStringBuffer</ref>
+                    &amp;
+                </type>
+                <definition>GenericStringBuffer&amp; GenericStringBuffer&lt; Encoding, Allocator &gt;::operator=
+                </definition>
+                <argsstring>(const GenericStringBuffer &amp;)</argsstring>
+                <name>operator=</name>
+                <param>
+                    <type>const <ref refid="class_generic_string_buffer" kindref="compound">GenericStringBuffer</ref> &amp;
+                    </type>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stringbuffer.h" line="93" column="1"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+            <para>Represents an in-memory output stream.</para>
+        </briefdescription>
+        <detaileddescription>
+            <para>
+                <parameterlist kind="templateparam">
+                    <parameteritem>
+                        <parameternamelist>
+                            <parametername>Encoding</parametername>
+                        </parameternamelist>
+                        <parameterdescription>
+                            <para>Encoding of the stream.</para>
+                        </parameterdescription>
+                    </parameteritem>
+                    <parameteritem>
+                        <parameternamelist>
+                            <parametername>Allocator</parametername>
+                        </parameternamelist>
+                        <parameterdescription>
+                            <para>type for allocating memory buffer.</para>
+                        </parameterdescription>
+                    </parameteritem>
+                </parameterlist>
+                <simplesect kind="note">
+                    <para>implements Stream concept</para>
+                </simplesect>
+            </para>
+        </detaileddescription>
+        <collaborationgraph>
+            <node id="146">
+                <label>size_t</label>
+            </node>
+            <node id="145">
+                <label>GenericStringBuffer&lt; Encoding, Allocator &gt;</label>
+                <link refid="class_generic_string_buffer"/>
+                <childnode refid="146" relation="usage">
+                    <edgelabel>kDefaultCapacity</edgelabel>
+                </childnode>
+            </node>
+        </collaborationgraph>
+        <location file="rapidjson/fwd.h" line="59" column="1" bodyfile="rapidjson/fwd.h" bodystart="59" bodyend="-1"/>
+        <listofallmembers>
+            <member refid="class_generic_string_buffer_1a735b75db076ffe86d0d294be49655d46" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Ch</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a42f15c959046d899cb74c3120a6995f9" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Clear</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a28bb539487db17b07314a532f3b8847c" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Flush</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a62f5ea1a53a2a3f98088f8c152b6183e" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>GenericStringBuffer</name>
+            </member>
+            <member refid="class_generic_string_buffer_1aec9340c9906ce399bb142706a61a9501" prot="private"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>GenericStringBuffer</name>
+            </member>
+            <member refid="class_generic_string_buffer_1ad324b8154be3354dda3aa4a0a7361499" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>GetLength</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a725e862b9a78375f5363b0b61ad789f3" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>GetSize</name>
+            </member>
+            <member refid="class_generic_string_buffer_1ab06b8c5f1385bd3dfd4caea8b7510f0b" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>GetString</name>
+            </member>
+            <member refid="class_generic_string_buffer_1ae74f9df854dd5a7db4315ef44b016d22" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>kDefaultCapacity</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a09937913fd2f426be04ae6d6a8abb0f6" prot="private"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>operator=</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a0038e53ba03c271bc4cbbac403ec4de4" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Pop</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a49fd10cdd5dd97a4cf9813d01334d660" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Push</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a4e396f55323ca54f949685c7c6ef2060" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>PushUnsafe</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a8be5c8fadccacdcf40e20220f38e0afa" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Put</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a9225468d11fdddfc3a9a4e48bf4d3ba4" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>PutUnsafe</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a4d6becae201b98c122746298882a318f" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>Reserve</name>
+            </member>
+            <member refid="class_generic_string_buffer_1a0dbdb77489b95923795011a24f705be5" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>ShrinkToFit</name>
+            </member>
+            <member refid="class_generic_string_buffer_1aaef716643febb9de5957dbf8ff904409" prot="public"
+                    virt="non-virtual">
+                <scope>GenericStringBuffer</scope>
+                <name>stack_</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

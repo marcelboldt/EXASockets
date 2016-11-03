@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef
+            id="structinternal_1_1_is_generic_value_impl_3_01_t_00_01typename_01_void_3_01typename_01_t_1_1_enco3a51e9d8b4986f001b39e1e8edecb66a"
+            kind="struct" language="C++" prot="public">
+        <compoundname>internal::IsGenericValueImpl&lt; T, typename Void&lt; typename T::EncodingType &gt;::Type,
+            typename Void&lt; typename T::AllocatorType &gt;::Type &gt;</compoundname>
+        <basecompoundref prot="public" virt="non-virtual">IsBaseOf::Type&lt; GenericValue&lt; T::EncodingType,
+            T::AllocatorType &gt;, T &gt;</basecompoundref>
+        <templateparamlist>
+            <param>
+                <type>typename T</type>
+            </param>
+        </templateparamlist>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inheritancegraph>
+            <node id="189">
+                <label>IsBaseOf&lt; GenericValue&lt; T::EncodingType, T::AllocatorType &gt;, T &gt;::Type</label>
+            </node>
+            <node id="188">
+                <label>internal::IsGenericValueImpl&lt; T, typename Void&lt; typename T::EncodingType &gt;::Type,
+                    typename Void&lt; typename T::AllocatorType &gt;::Type &gt;</label>
+                <link refid="structinternal_1_1_is_generic_value_impl_3_01_t_00_01typename_01_void_3_01typename_01_t_1_1_enco3a51e9d8b4986f001b39e1e8edecb66a"/>
+                <childnode refid="189" relation="public-inheritance">
+                </childnode>
+            </node>
+        </inheritancegraph>
+        <collaborationgraph>
+            <node id="191">
+                <label>IsBaseOf&lt; GenericValue&lt; T::EncodingType, T::AllocatorType &gt;, T &gt;::Type</label>
+            </node>
+            <node id="190">
+                <label>internal::IsGenericValueImpl&lt; T, typename Void&lt; typename T::EncodingType &gt;::Type,
+                    typename Void&lt; typename T::AllocatorType &gt;::Type &gt;</label>
+                <link refid="structinternal_1_1_is_generic_value_impl_3_01_t_00_01typename_01_void_3_01typename_01_t_1_1_enco3a51e9d8b4986f001b39e1e8edecb66a"/>
+                <childnode refid="191" relation="public-inheritance">
+                </childnode>
+            </node>
+        </collaborationgraph>
+        <location file="rapidjson/document.h" line="398" column="1" bodyfile="rapidjson/document.h" bodystart="397"
+                  bodyend="398"/>
+        <listofallmembers>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

@@ -1,0 +1,153 @@
+.TH "GenericReader< SourceEncoding, TargetEncoding, StackAllocator >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericReader< SourceEncoding, TargetEncoding, StackAllocator > \- SAX-style JSON parser\&. Use \fBReader\fP for \fBUTF8\fP encoding and default allocator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <reader\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef SourceEncoding::Ch \fBCh\fP"
+.br
+.RI "SourceEncoding character type\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericReader\fP (StackAllocator *stackAllocator=0, size_t stackCapacity=kDefaultStackCapacity)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "template<unsigned parseFlags, typename InputStream , typename Handler > \fBParseResult\fP \fBParse\fP (InputStream &is, Handler &handler)"
+.br
+.RI "Parse JSON text\&. "
+.ti -1c
+.RI "template<typename InputStream , typename Handler > \fBParseResult\fP \fBParse\fP (InputStream &is, Handler &handler)"
+.br
+.RI "Parse JSON text (with \fBkParseDefaultFlags\fP) "
+.ti -1c
+.RI "bool \fBHasParseError\fP () const"
+.br
+.RI "Whether a parse error has occured in the last parsing\&. "
+.ti -1c
+.RI "\fBParseErrorCode\fP \fBGetParseErrorCode\fP () const"
+.br
+.RI "Get the \fBParseErrorCode\fP of last parsing\&. "
+.ti -1c
+.RI "size_t \fBGetErrorOffset\fP () const"
+.br
+.RI "Get the position of last parsing error in input, 0 otherwise\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetParseError\fP (\fBParseErrorCode\fP code, size_t offset)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename SourceEncoding, typename TargetEncoding, typename StackAllocator = CrtAllocator>
+.br
+class GenericReader< SourceEncoding, TargetEncoding, StackAllocator >"
+SAX-style JSON parser\&. Use \fBReader\fP for \fBUTF8\fP encoding and default allocator\&. 
+
+\fBGenericReader\fP parses JSON text from a stream, and send events synchronously to an object implementing Handler concept\&.
+.PP
+It needs to allocate a stack for storing a single decoded string during non-destructive parsing\&.
+.PP
+For in-situ parsing, the decoded string is directly written to the source text string, no temporary buffer is required\&.
+.PP
+A \fBGenericReader\fP object can be reused for parsing multiple JSON text\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISourceEncoding\fP Encoding of the input stream\&. 
+.br
+\fITargetEncoding\fP Encoding of the parse output\&. 
+.br
+\fIStackAllocator\fP Allocator type for stack\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename SourceEncoding, typename TargetEncoding, typename StackAllocator = CrtAllocator> \fBGenericReader\fP< SourceEncoding, TargetEncoding, StackAllocator >::\fBGenericReader\fP (StackAllocator * stackAllocator = \fC0\fP, size_t stackCapacity = \fCkDefaultStackCapacity\fP)\fC [inline]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstackAllocator\fP Optional allocator for allocating stack memory\&. (Only use for non-destructive parsing) 
+.br
+\fIstackCapacity\fP stack capacity in bytes for storing a single decoded string\&. (Only use for non-destructive parsing) 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename SourceEncoding, typename TargetEncoding, typename StackAllocator = CrtAllocator> template<unsigned parseFlags, typename InputStream , typename Handler > \fBParseResult\fP \fBGenericReader\fP< SourceEncoding, TargetEncoding, StackAllocator >::Parse (InputStream & is, Handler & handler)\fC [inline]\fP"
+
+.PP
+Parse JSON text\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIparseFlags\fP Combination of \fBParseFlag\fP\&. 
+.br
+\fIInputStream\fP Type of input stream, implementing Stream concept\&. 
+.br
+\fIHandler\fP Type of handler, implementing Handler concept\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIis\fP Input stream to be parsed\&. 
+.br
+\fIhandler\fP The handler to receive events\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the parsing is successful\&. 
+.RE
+.PP
+
+.SS "template<typename SourceEncoding, typename TargetEncoding, typename StackAllocator = CrtAllocator> template<typename InputStream , typename Handler > \fBParseResult\fP \fBGenericReader\fP< SourceEncoding, TargetEncoding, StackAllocator >::Parse (InputStream & is, Handler & handler)\fC [inline]\fP"
+
+.PP
+Parse JSON text (with \fBkParseDefaultFlags\fP) 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIInputStream\fP Type of input stream, implementing Stream concept 
+.br
+\fIHandler\fP Type of handler, implementing Handler concept\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIis\fP Input stream to be parsed\&. 
+.br
+\fIhandler\fP The handler to receive events\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the parsing is successful\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

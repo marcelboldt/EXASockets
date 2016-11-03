@@ -1,0 +1,964 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="namespaceinternal" kind="namespace" language="C++">
+        <compoundname>internal</compoundname>
+        <innerclass refid="classinternal_1_1_big_integer" prot="public">internal::BigInteger</innerclass>
+        <innerclass refid="classinternal_1_1_decoded_stream" prot="public">internal::DecodedStream</innerclass>
+        <innerclass refid="structinternal_1_1_diy_fp" prot="public">internal::DiyFp</innerclass>
+        <innerclass refid="classinternal_1_1_double" prot="public">internal::Double</innerclass>
+        <innerclass refid="classinternal_1_1_generic_regex" prot="public">internal::GenericRegex</innerclass>
+        <innerclass refid="classinternal_1_1_generic_regex_search" prot="public">internal::GenericRegexSearch
+        </innerclass>
+        <innerclass refid="classinternal_1_1_hasher" prot="public">internal::Hasher</innerclass>
+        <innerclass refid="classinternal_1_1_i_schema_state_factory" prot="public">internal::ISchemaStateFactory
+        </innerclass>
+        <innerclass refid="classinternal_1_1_i_schema_validator" prot="public">internal::ISchemaValidator</innerclass>
+        <innerclass refid="structinternal_1_1_is_generic_value" prot="public">internal::IsGenericValue</innerclass>
+        <innerclass refid="structinternal_1_1_is_generic_value_impl" prot="public">internal::IsGenericValueImpl
+        </innerclass>
+        <innerclass
+                refid="structinternal_1_1_is_generic_value_impl_3_01_t_00_01typename_01_void_3_01typename_01_t_1_1_enco3a51e9d8b4986f001b39e1e8edecb66a"
+                prot="public">internal::IsGenericValueImpl&lt; T, typename Void&lt; typename T::EncodingType &gt;::Type,
+            typename Void&lt; typename T::AllocatorType &gt;::Type &gt;</innerclass>
+        <innerclass refid="classinternal_1_1_schema" prot="public">internal::Schema</innerclass>
+        <innerclass refid="structinternal_1_1_schema_validation_context" prot="public">
+            internal::SchemaValidationContext
+        </innerclass>
+        <innerclass refid="classinternal_1_1_stack" prot="public">internal::Stack</innerclass>
+        <innerclass refid="classinternal_1_1_stream_local_copy" prot="public">internal::StreamLocalCopy</innerclass>
+        <innerclass refid="classinternal_1_1_stream_local_copy_3_01_stream_00_010_01_4" prot="public">
+            internal::StreamLocalCopy&lt; Stream, 0 &gt;</innerclass>
+        <innerclass refid="classinternal_1_1_stream_local_copy_3_01_stream_00_011_01_4" prot="public">
+            internal::StreamLocalCopy&lt; Stream, 1 &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_token_helper" prot="public">internal::TokenHelper</innerclass>
+        <innerclass refid="structinternal_1_1_token_helper_3_01_stack_00_01char_01_4" prot="public">
+            internal::TokenHelper&lt; Stack, char &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper" prot="public">internal::TypeHelper</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01bool_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, bool &gt;</innerclass>
+        <innerclass
+                refid="structinternal_1_1_type_helper_3_01_value_type_00_01const_01typename_01_value_type_1_1_ch_01_5_01_4"
+                prot="public">internal::TypeHelper&lt; ValueType, const typename ValueType::Ch * &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01double_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, double &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01float_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, float &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01int_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, int &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01int64__t_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, int64_t &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01typename_01_value_type_1_1_array_01_4"
+                    prot="public">internal::TypeHelper&lt; ValueType, typename ValueType::Array &gt;</innerclass>
+        <innerclass
+                refid="structinternal_1_1_type_helper_3_01_value_type_00_01typename_01_value_type_1_1_const_array_01_4"
+                prot="public">internal::TypeHelper&lt; ValueType, typename ValueType::ConstArray &gt;</innerclass>
+        <innerclass
+                refid="structinternal_1_1_type_helper_3_01_value_type_00_01typename_01_value_type_1_1_const_object_01_4"
+                prot="public">internal::TypeHelper&lt; ValueType, typename ValueType::ConstObject &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01typename_01_value_type_1_1_object_01_4"
+                    prot="public">internal::TypeHelper&lt; ValueType, typename ValueType::Object &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01uint64__t_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, uint64_t &gt;</innerclass>
+        <innerclass refid="structinternal_1_1_type_helper_3_01_value_type_00_01unsigned_01_4" prot="public">
+            internal::TypeHelper&lt; ValueType, unsigned &gt;</innerclass>
+        <sectiondef kind="typedef">
+            <memberdef kind="typedef" id="regex_8h_1ae7fc20c6ee680ae3ba16ae16b4bd5e16" prot="public" static="no">
+                <type><ref refid="classinternal_1_1_generic_regex" kindref="compound">GenericRegex</ref>&lt; <ref
+                        refid="struct_u_t_f8" kindref="compound">UTF8</ref>&lt;&gt; &gt;
+                </type>
+                <definition>typedef GenericRegex&lt;UTF8&lt;&gt; &gt; internal::Regex</definition>
+                <argsstring></argsstring>
+                <name>Regex</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/regex.h" line="717" column="1" bodyfile="rapidjson/internal/regex.h"
+                          bodystart="717" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="typedef" id="regex_8h_1a7101e324c2d06f1505ef7c7d4401392b" prot="public" static="no">
+                <type><ref refid="classinternal_1_1_generic_regex_search" kindref="compound">GenericRegexSearch</ref>
+                    &lt; <ref refid="classinternal_1_1_generic_regex" kindref="compound">Regex</ref> &gt;
+                </type>
+                <definition>typedef GenericRegexSearch&lt;Regex&gt; internal::RegexSearch</definition>
+                <argsstring></argsstring>
+                <name>RegexSearch</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/regex.h" line="718" column="1" bodyfile="rapidjson/internal/regex.h"
+                          bodystart="718" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="var">
+            <memberdef kind="variable" id="regex_8h_1abdcff7a639884034f884dab7bd6ae76c" prot="public" static="yes"
+                       mutable="no">
+                <type>const
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                </type>
+                <definition>const SizeType internal::kRegexInvalidState</definition>
+                <argsstring></argsstring>
+                <name>kRegexInvalidState</name>
+                <initializer>= ~<ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">
+                    SizeType</ref>(0)
+                </initializer>
+                <briefdescription>
+                    <para>Represents an invalid index in GenericRegex::State::out, out1.</para>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/regex.h" line="74" column="1" bodyfile="rapidjson/internal/regex.h"
+                          bodystart="74" bodyend="-1"/>
+            </memberdef>
+            <memberdef kind="variable" id="regex_8h_1afc9153a9f72e57e5184d5c54562fa8f7" prot="public" static="yes"
+                       mutable="no">
+                <type>const
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                </type>
+                <definition>const SizeType internal::kRegexInvalidRange</definition>
+                <argsstring></argsstring>
+                <name>kRegexInvalidRange</name>
+                <initializer>= ~<ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">
+                    SizeType</ref>(0)
+                </initializer>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/regex.h" line="75" column="1" bodyfile="rapidjson/internal/regex.h"
+                          bodystart="75" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="func">
+            <memberdef kind="function" id="diyfp_8h_1a3e95f043ed6c40cda1c1bc33c2f0ece2" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>
+                    <ref refid="structinternal_1_1_diy_fp" kindref="compound">DiyFp</ref>
+                </type>
+                <definition>DiyFp internal::GetCachedPowerByIndex</definition>
+                <argsstring>(size_t index)</argsstring>
+                <name>GetCachedPowerByIndex</name>
+                <param>
+                    <type>size_t</type>
+                    <declname>index</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/diyfp.h" line="164" column="1" bodyfile="rapidjson/internal/diyfp.h"
+                          bodystart="164" bodyend="224"/>
+            </memberdef>
+            <memberdef kind="function" id="diyfp_8h_1abac3dbfa1070756c37725829148f6038" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>
+                    <ref refid="structinternal_1_1_diy_fp" kindref="compound">DiyFp</ref>
+                </type>
+                <definition>DiyFp internal::GetCachedPower</definition>
+                <argsstring>(int e, int *K)</argsstring>
+                <name>GetCachedPower</name>
+                <param>
+                    <type>int</type>
+                    <declname>e</declname>
+                </param>
+                <param>
+                    <type>int *</type>
+                    <declname>K</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/diyfp.h" line="226" column="1" bodyfile="rapidjson/internal/diyfp.h"
+                          bodystart="226" bodyend="238"/>
+            </memberdef>
+            <memberdef kind="function" id="diyfp_8h_1a74b8503d044bf6c0a5e90c5bea3aba42" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>
+                    <ref refid="structinternal_1_1_diy_fp" kindref="compound">DiyFp</ref>
+                </type>
+                <definition>DiyFp internal::GetCachedPower10</definition>
+                <argsstring>(int exp, int *outExp)</argsstring>
+                <name>GetCachedPower10</name>
+                <param>
+                    <type>int</type>
+                    <declname>exp</declname>
+                </param>
+                <param>
+                    <type>int *</type>
+                    <declname>outExp</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/diyfp.h" line="240" column="1" bodyfile="rapidjson/internal/diyfp.h"
+                          bodystart="240" bodyend="244"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1a234e10bef097ccb2f202b7a133086e71" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::GrisuRound</definition>
+                <argsstring>(char *buffer, int len, uint64_t delta, uint64_t rest, uint64_t ten_kappa, uint64_t wp_w)
+                </argsstring>
+                <name>GrisuRound</name>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>len</declname>
+                </param>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>delta</declname>
+                </param>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>rest</declname>
+                </param>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>ten_kappa</declname>
+                </param>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>wp_w</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                    <para>closer</para>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="35" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="35" bodyend="42"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1ab2e324c403dc7671f732e8959886a8d1" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>unsigned</type>
+                <definition>unsigned internal::CountDecimalDigit32</definition>
+                <argsstring>(uint32_t n)</argsstring>
+                <name>CountDecimalDigit32</name>
+                <param>
+                    <type>uint32_t</type>
+                    <declname>n</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="44" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="44" bodyend="58"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1a47be9aea8d0f9cae49dc03dc046d2450" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::DigitGen</definition>
+                <argsstring>(const DiyFp &amp;W, const DiyFp &amp;Mp, uint64_t delta, char *buffer, int *len, int *K)
+                </argsstring>
+                <name>DigitGen</name>
+                <param>
+                    <type>const <ref refid="structinternal_1_1_diy_fp" kindref="compound">DiyFp</ref> &amp;
+                    </type>
+                    <declname>W</declname>
+                </param>
+                <param>
+                    <type>const <ref refid="structinternal_1_1_diy_fp" kindref="compound">DiyFp</ref> &amp;
+                    </type>
+                    <declname>Mp</declname>
+                </param>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>delta</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <param>
+                    <type>int *</type>
+                    <declname>len</declname>
+                </param>
+                <param>
+                    <type>int *</type>
+                    <declname>K</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="60" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="60" bodyend="110"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1aeb7b6c0784b644968003cbd1b9da57e3" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>void</type>
+                <definition>void internal::Grisu2</definition>
+                <argsstring>(double value, char *buffer, int *length, int *K)</argsstring>
+                <name>Grisu2</name>
+                <param>
+                    <type>double</type>
+                    <declname>value</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <param>
+                    <type>int *</type>
+                    <declname>length</declname>
+                </param>
+                <param>
+                    <type>int *</type>
+                    <declname>K</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="112" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="112" bodyend="124"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1acc9a114f2a03bb4c68e9ee99b9ca99c5" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::WriteExponent</definition>
+                <argsstring>(int K, char *buffer)</argsstring>
+                <name>WriteExponent</name>
+                <param>
+                    <type>int</type>
+                    <declname>K</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="126" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="126" bodyend="148"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1a172fb2d42a4fda6f296b1e9304177f12" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::Prettify</definition>
+                <argsstring>(char *buffer, int length, int k, int maxDecimalPlaces)</argsstring>
+                <name>Prettify</name>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>length</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>k</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>maxDecimalPlaces</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="150" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="150" bodyend="214"/>
+            </memberdef>
+            <memberdef kind="function" id="dtoa_8h_1a2547fbfd0790a9997cb5fb7b543f0485" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::dtoa</definition>
+                <argsstring>(double value, char *buffer, int maxDecimalPlaces=324)</argsstring>
+                <name>dtoa</name>
+                <param>
+                    <type>double</type>
+                    <declname>value</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>maxDecimalPlaces</declname>
+                    <defval>324</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/dtoa.h" line="216" column="1" bodyfile="rapidjson/internal/dtoa.h"
+                          bodystart="216" bodyend="236"/>
+            </memberdef>
+            <memberdef kind="function" id="itoa_8h_1a95459e80b3f0e89ad03ebd0c8e55844c" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char* internal::GetDigitsLut</definition>
+                <argsstring>()</argsstring>
+                <name>GetDigitsLut</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/itoa.h" line="23" column="1" bodyfile="rapidjson/internal/itoa.h"
+                          bodystart="23" bodyend="37"/>
+            </memberdef>
+            <memberdef kind="function" id="itoa_8h_1a8628d3698be60950743bc49d41a1cca7" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::u32toa</definition>
+                <argsstring>(uint32_t value, char *buffer)</argsstring>
+                <name>u32toa</name>
+                <param>
+                    <type>uint32_t</type>
+                    <declname>value</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/itoa.h" line="39" column="1" bodyfile="rapidjson/internal/itoa.h"
+                          bodystart="39" bodyend="111"/>
+            </memberdef>
+            <memberdef kind="function" id="itoa_8h_1a79bdea0c3f5e0c34c5c0aa686fc823c1" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::i32toa</definition>
+                <argsstring>(int32_t value, char *buffer)</argsstring>
+                <name>i32toa</name>
+                <param>
+                    <type>int32_t</type>
+                    <declname>value</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/itoa.h" line="113" column="1" bodyfile="rapidjson/internal/itoa.h"
+                          bodystart="113" bodyend="121"/>
+            </memberdef>
+            <memberdef kind="function" id="itoa_8h_1aff16deebb94b3ea88a1dfff7bbc377b0" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::u64toa</definition>
+                <argsstring>(uint64_t value, char *buffer)</argsstring>
+                <name>u64toa</name>
+                <param>
+                    <type>uint64_t</type>
+                    <declname>value</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/itoa.h" line="123" column="1" bodyfile="rapidjson/internal/itoa.h"
+                          bodystart="123" bodyend="289"/>
+            </memberdef>
+            <memberdef kind="function" id="itoa_8h_1a51566359e64c9746656c396c63a23d61" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>char *</type>
+                <definition>char* internal::i64toa</definition>
+                <argsstring>(int64_t value, char *buffer)</argsstring>
+                <name>i64toa</name>
+                <param>
+                    <type>int64_t</type>
+                    <declname>value</declname>
+                </param>
+                <param>
+                    <type>char *</type>
+                    <declname>buffer</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/itoa.h" line="291" column="1" bodyfile="rapidjson/internal/itoa.h"
+                          bodystart="291" bodyend="299"/>
+            </memberdef>
+            <memberdef kind="function" id="pow10_8h_1af01c41d045d596e2f8d1888cf6fbecb6" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>double</type>
+                <definition>double internal::Pow10</definition>
+                <argsstring>(int n)</argsstring>
+                <name>Pow10</name>
+                <param>
+                    <type>int</type>
+                    <declname>n</declname>
+                </param>
+                <briefdescription>
+                    <para>Computes integer powers of 10 in double (10.0^n).</para>
+                </briefdescription>
+                <detaileddescription>
+                    <para>This function uses lookup table for fast and accurate results.
+                        <parameterlist kind="param">
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>n</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>non-negative exponent. Must &lt;= 308.</para>
+                                </parameterdescription>
+                            </parameteritem>
+                        </parameterlist>
+                        <simplesect kind="return">
+                            <para>10.0^n</para>
+                        </simplesect>
+                    </para>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/pow10.h" line="28" column="1" bodyfile="rapidjson/internal/pow10.h"
+                          bodystart="28" bodyend="50"/>
+            </memberdef>
+            <memberdef kind="function" id="strfunc_8h_1a86326fb0c9d7c7ea8edd7deedbb2b26e" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename Ch</type>
+                    </param>
+                </templateparamlist>
+                <type>
+                    <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                </type>
+                <definition>SizeType internal::StrLen</definition>
+                <argsstring>(const Ch *s)</argsstring>
+                <name>StrLen</name>
+                <param>
+                    <type>const Ch *</type>
+                    <declname>s</declname>
+                </param>
+                <briefdescription>
+                    <para>Custom strlen() which works on different character types.</para>
+                </briefdescription>
+                <detaileddescription>
+                    <para>
+                        <parameterlist kind="templateparam">
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>Ch</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>Character type (e.g. char, wchar_t, short)</para>
+                                </parameterdescription>
+                            </parameteritem>
+                        </parameterlist>
+                        <parameterlist kind="param">
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>s</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>Null-terminated input string.</para>
+                                </parameterdescription>
+                            </parameteritem>
+                        </parameterlist>
+                        <simplesect kind="return">
+                            <para>Number of characters in the string.</para>
+                        </simplesect>
+                        <simplesect kind="note">
+                            <para>This has the same semantics as strlen(), the return value is not number of Unicode
+                                codepoints.
+                            </para>
+                        </simplesect>
+                    </para>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strfunc.h" line="30" column="1"
+                          bodyfile="rapidjson/internal/strfunc.h" bodystart="30" bodyend="35"/>
+            </memberdef>
+            <memberdef kind="function" id="strfunc_8h_1a864bf0d412431b387aeeee9efdf0adfc" prot="public" static="no"
+                       const="no" explicit="no" inline="no" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename Encoding</type>
+                    </param>
+                </templateparamlist>
+                <type>bool</type>
+                <definition>bool internal::CountStringCodePoint</definition>
+                <argsstring>(const typename Encoding::Ch *s, SizeType length, SizeType *outCount)</argsstring>
+                <name>CountStringCodePoint</name>
+                <param>
+                    <type>const typename Encoding::Ch *</type>
+                    <declname>s</declname>
+                </param>
+                <param>
+                    <type>
+                        <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                    </type>
+                    <declname>length</declname>
+                </param>
+                <param>
+                    <type>
+                        <ref refid="rapidjson_8h_1a5ed6e6e67250fadbd041127e6386dcb5" kindref="member">SizeType</ref>
+                        *
+                    </type>
+                    <declname>outCount</declname>
+                </param>
+                <briefdescription>
+                    <para>Returns number of code points in a encoded string.</para>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strfunc.h" line="39" column="1"
+                          bodyfile="rapidjson/internal/strfunc.h" bodystart="39" bodyend="53"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1aa1bb51d788788eb5390a16462b40d98d" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>double</type>
+                <definition>double internal::FastPath</definition>
+                <argsstring>(double significand, int exp)</argsstring>
+                <name>FastPath</name>
+                <param>
+                    <type>double</type>
+                    <declname>significand</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>exp</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="26" column="1" bodyfile="rapidjson/internal/strtod.h"
+                          bodystart="26" bodyend="33"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1a9e5fac4695310f09892fe52b1d24ab19" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>double</type>
+                <definition>double internal::StrtodNormalPrecision</definition>
+                <argsstring>(double d, int p)</argsstring>
+                <name>StrtodNormalPrecision</name>
+                <param>
+                    <type>double</type>
+                    <declname>d</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>p</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="35" column="1" bodyfile="rapidjson/internal/strtod.h"
+                          bodystart="35" bodyend="44"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1ace304441347098a4953ea99f50805da9" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>T</type>
+                <definition>T internal::Min3</definition>
+                <argsstring>(T a, T b, T c)</argsstring>
+                <name>Min3</name>
+                <param>
+                    <type>T</type>
+                    <declname>a</declname>
+                </param>
+                <param>
+                    <type>T</type>
+                    <declname>b</declname>
+                </param>
+                <param>
+                    <type>T</type>
+                    <declname>c</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="47" column="1" bodyfile="rapidjson/internal/strtod.h"
+                          bodystart="47" bodyend="52"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1a190f9c286df64526a7e3550528ed6b02" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>int</type>
+                <definition>int internal::CheckWithinHalfULP</definition>
+                <argsstring>(double b, const BigInteger &amp;d, int dExp)</argsstring>
+                <name>CheckWithinHalfULP</name>
+                <param>
+                    <type>double</type>
+                    <declname>b</declname>
+                </param>
+                <param>
+                    <type>const <ref refid="classinternal_1_1_big_integer" kindref="compound">BigInteger</ref> &amp;
+                    </type>
+                    <declname>d</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>dExp</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="54" column="1" bodyfile="rapidjson/internal/strtod.h"
+                          bodystart="54" bodyend="109"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1a598b2d2f85130bff3c3942e4750b9185" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>bool</type>
+                <definition>bool internal::StrtodFast</definition>
+                <argsstring>(double d, int p, double *result)</argsstring>
+                <name>StrtodFast</name>
+                <param>
+                    <type>double</type>
+                    <declname>d</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>p</declname>
+                </param>
+                <param>
+                    <type>double *</type>
+                    <declname>result</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="111" column="1"
+                          bodyfile="rapidjson/internal/strtod.h" bodystart="111" bodyend="126"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1a8861eacf25d2024c832dfa611407d25a" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>bool</type>
+                <definition>bool internal::StrtodDiyFp</definition>
+                <argsstring>(const char *decimals, size_t length, size_t decimalPosition, int exp, double *result)
+                </argsstring>
+                <name>StrtodDiyFp</name>
+                <param>
+                    <type>const char *</type>
+                    <declname>decimals</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>length</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>decimalPosition</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>exp</declname>
+                </param>
+                <param>
+                    <type>double *</type>
+                    <declname>result</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="129" column="1"
+                          bodyfile="rapidjson/internal/strtod.h" bodystart="129" bodyend="204"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1a21546973704caf6e4c8b0d4869a614a6" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>double</type>
+                <definition>double internal::StrtodBigInteger</definition>
+                <argsstring>(double approx, const char *decimals, size_t length, size_t decimalPosition, int exp)
+                </argsstring>
+                <name>StrtodBigInteger</name>
+                <param>
+                    <type>double</type>
+                    <declname>approx</declname>
+                </param>
+                <param>
+                    <type>const char *</type>
+                    <declname>decimals</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>length</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>decimalPosition</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>exp</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="206" column="1"
+                          bodyfile="rapidjson/internal/strtod.h" bodystart="206" bodyend="222"/>
+            </memberdef>
+            <memberdef kind="function" id="strtod_8h_1a899ff5a0c5f9b203d720bb6f5631ed10" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>double</type>
+                <definition>double internal::StrtodFullPrecision</definition>
+                <argsstring>(double d, int p, const char *decimals, size_t length, size_t decimalPosition, int exp)
+                </argsstring>
+                <name>StrtodFullPrecision</name>
+                <param>
+                    <type>double</type>
+                    <declname>d</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>p</declname>
+                </param>
+                <param>
+                    <type>const char *</type>
+                    <declname>decimals</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>length</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>decimalPosition</declname>
+                </param>
+                <param>
+                    <type>int</type>
+                    <declname>exp</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/strtod.h" line="224" column="1"
+                          bodyfile="rapidjson/internal/strtod.h" bodystart="224" bodyend="264"/>
+            </memberdef>
+            <memberdef kind="function" id="swap_8h_1a72b2c71d36273b9691487f58c671ce04" prot="public" static="no"
+                       const="no" explicit="no" inline="yes" virt="non-virtual">
+                <templateparamlist>
+                    <param>
+                        <type>typename T</type>
+                    </param>
+                </templateparamlist>
+                <type>void</type>
+                <definition>void internal::Swap</definition>
+                <argsstring>(T &amp;a, T &amp;b) RAPIDJSON_NOEXCEPT</argsstring>
+                <name>Swap</name>
+                <param>
+                    <type>T &amp;</type>
+                    <declname>a</declname>
+                </param>
+                <param>
+                    <type>T &amp;</type>
+                    <declname>b</declname>
+                </param>
+                <briefdescription>
+                    <para>Custom swap() to avoid dependency on C++ &lt;algorithm&gt; header.</para>
+                </briefdescription>
+                <detaileddescription>
+                    <para>
+                        <parameterlist kind="templateparam">
+                            <parameteritem>
+                                <parameternamelist>
+                                    <parametername>T</parametername>
+                                </parameternamelist>
+                                <parameterdescription>
+                                    <para>Type of the arguments to swap, should be instantiated with primitive C++ types
+                                        only.
+                                    </para>
+                                </parameterdescription>
+                            </parameteritem>
+                        </parameterlist>
+                        <simplesect kind="note">
+                            <para>This has the same semantics as std::swap().</para>
+                        </simplesect>
+                    </para>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/internal/swap.h" line="33" column="1" bodyfile="rapidjson/internal/swap.h"
+                          bodystart="33" bodyend="37"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <location file="rapidjson/document.h" line="391" column="1"/>
+    </compounddef>
+</doxygen>

@@ -1,0 +1,68 @@
+.TH "EncodedInputStream< Encoding, InputByteStream >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EncodedInputStream< Encoding, InputByteStream > \- Input byte stream wrapper with a statically bound encoding\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <encodedstream\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef Encoding::Ch \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEncodedInputStream\fP (InputByteStream &is)"
+.br
+.ti -1c
+.RI "Ch \fBPeek\fP () const"
+.br
+.ti -1c
+.RI "Ch \fBTake\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBTell\fP () const"
+.br
+.ti -1c
+.RI "void \fBPut\fP (Ch)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "Ch * \fBPutBegin\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBPutEnd\fP (Ch *)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Encoding, typename InputByteStream>
+.br
+class EncodedInputStream< Encoding, InputByteStream >"
+Input byte stream wrapper with a statically bound encoding\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIEncoding\fP The interpretation of encoding of the stream\&. Either \fBUTF8\fP, \fBUTF16LE\fP, \fBUTF16BE\fP, \fBUTF32LE\fP, \fBUTF32BE\fP\&. 
+.br
+\fIInputByteStream\fP Type of input byte stream\&. For example, \fBFileReadStream\fP\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

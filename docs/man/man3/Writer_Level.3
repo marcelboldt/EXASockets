@@ -1,0 +1,41 @@
+.TH "Writer< OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags >::Level" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Writer< OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags >::Level \- Information for each nested level\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <writer\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevel\fP (bool inArray_)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "size_t \fBvalueCount\fP"
+.br
+.RI "number of values in this level "
+.ti -1c
+.RI "bool \fBinArray\fP"
+.br
+.RI "true if in array, otherwise in object "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename OutputStream, typename SourceEncoding = UTF8<>, typename TargetEncoding = UTF8<>, typename StackAllocator = CrtAllocator, unsigned writeFlags = kWriteDefaultFlags>
+.br
+struct Writer< OutputStream, SourceEncoding, TargetEncoding, StackAllocator, writeFlags >::Level"
+Information for each nested level\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

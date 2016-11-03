@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4" kind="class"
+                 language="C++" prot="private">
+        <compoundname>GenericReader::NumberStream&lt; InputStream, true, false &gt;</compoundname>
+        <basecompoundref prot="public" virt="non-virtual">GenericReader&lt; InputStream, false, false
+            &gt;::NumberStream
+        </basecompoundref>
+        <templateparamlist>
+            <param>
+                <type>typename InputStream</type>
+            </param>
+        </templateparamlist>
+        <sectiondef kind="private-type">
+            <memberdef kind="typedef"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1aa5ef230378b076f1565d4aefae39bdd0"
+                       prot="private" static="no">
+                <type>NumberStream&lt; InputStream, false, false &gt;</type>
+                <definition>typedef NumberStream&lt;InputStream, false, false&gt; GenericReader&lt; SourceEncoding,
+                    TargetEncoding, StackAllocator &gt;::NumberStream&lt; InputStream, true, false &gt;::Base
+                </definition>
+                <argsstring></argsstring>
+                <name>Base</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1097" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1097" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="private-attrib">
+            <memberdef kind="variable"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a59725a86d0da733a6265dbc2d1930ed3"
+                       prot="private" static="no" mutable="no">
+                <type>StackStream&lt; char &gt;</type>
+                <definition>StackStream&lt;char&gt; GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator
+                    &gt;::NumberStream&lt; InputStream, true, false &gt;::stackStream
+                </definition>
+                <argsstring></argsstring>
+                <name>stackStream</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1119" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1119" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="public-func">
+            <memberdef kind="function"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a8d2329068edcded23d998b927e0fbd41"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator &gt;::NumberStream&lt;
+                    InputStream, true, false &gt;::NumberStream
+                </definition>
+                <argsstring>(GenericReader &amp;reader, InputStream &amp;is)</argsstring>
+                <name>NumberStream</name>
+                <param>
+                    <type>
+                        <ref refid="class_generic_reader" kindref="compound">GenericReader</ref>
+                        &amp;
+                    </type>
+                    <declname>reader</declname>
+                </param>
+                <param>
+                    <type>InputStream &amp;</type>
+                    <declname>is</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1099" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1099" bodyend="1099"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a4c5ac10463f40240a5b7437d89f11e6e"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type></type>
+                <definition>GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator &gt;::NumberStream&lt;
+                    InputStream, true, false &gt;::~NumberStream
+                </definition>
+                <argsstring>()</argsstring>
+                <name>~NumberStream</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1100" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1100" bodyend="1100"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a6e9e1c93845c9cff6477b4c90fd12817"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>RAPIDJSON_FORCEINLINE
+                    <ref refid="class_generic_reader_1ab39a92bb26d50aee6469df604622218a" kindref="member">Ch</ref>
+                </type>
+                <definition>RAPIDJSON_FORCEINLINE Ch GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator
+                    &gt;::NumberStream&lt; InputStream, true, false &gt;::TakePush
+                </definition>
+                <argsstring>()</argsstring>
+                <name>TakePush</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1102" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1102" bodyend="1105"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1af4a46f7fec72cfff7bb01ed85f1550c4"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>RAPIDJSON_FORCEINLINE void</type>
+                <definition>RAPIDJSON_FORCEINLINE void GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator
+                    &gt;::NumberStream&lt; InputStream, true, false &gt;::Push
+                </definition>
+                <argsstring>(char c)</argsstring>
+                <name>Push</name>
+                <param>
+                    <type>char</type>
+                    <declname>c</declname>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1107" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1107" bodyend="1109"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1aa1b1aff9e5986c72661304568701b368"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>size_t</type>
+                <definition>size_t GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator &gt;::NumberStream&lt;
+                    InputStream, true, false &gt;::Length
+                </definition>
+                <argsstring>()</argsstring>
+                <name>Length</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1111" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1111" bodyend="1111"/>
+            </memberdef>
+            <memberdef kind="function"
+                       id="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a0e4b878efe87a8534d80f0f6fc424640"
+                       prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+                <type>const char *</type>
+                <definition>const char* GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator &gt;::NumberStream&lt;
+                    InputStream, true, false &gt;::Pop
+                </definition>
+                <argsstring>()</argsstring>
+                <name>Pop</name>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/reader.h" line="1113" column="1" bodyfile="rapidjson/reader.h"
+                          bodystart="1113" bodyend="1116"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inheritancegraph>
+            <node id="211">
+                <label>GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator &gt;::NumberStream&lt;
+                    InputStream, true, false &gt;</label>
+                <childnode refid="212" relation="public-inheritance">
+                </childnode>
+            </node>
+            <node id="212">
+                <label>GenericReader&lt; InputStream, false, false &gt;::NumberStream</label>
+            </node>
+        </inheritancegraph>
+        <collaborationgraph>
+            <node id="213">
+                <label>GenericReader&lt; SourceEncoding, TargetEncoding, StackAllocator &gt;::NumberStream&lt;
+                    InputStream, true, false &gt;</label>
+                <childnode refid="214" relation="public-inheritance">
+                </childnode>
+            </node>
+            <node id="214">
+                <label>GenericReader&lt; InputStream, false, false &gt;::NumberStream</label>
+            </node>
+        </collaborationgraph>
+        <location file="rapidjson/reader.h" line="1096" column="1" bodyfile="rapidjson/reader.h" bodystart="1096"
+                  bodyend="1120"/>
+        <listofallmembers>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1aa5ef230378b076f1565d4aefae39bdd0"
+                    prot="private" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>Base</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1aa1b1aff9e5986c72661304568701b368"
+                    prot="public" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>Length</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a8d2329068edcded23d998b927e0fbd41"
+                    prot="public" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>NumberStream</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a0e4b878efe87a8534d80f0f6fc424640"
+                    prot="public" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>Pop</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1af4a46f7fec72cfff7bb01ed85f1550c4"
+                    prot="public" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>Push</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a59725a86d0da733a6265dbc2d1930ed3"
+                    prot="private" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>stackStream</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a6e9e1c93845c9cff6477b4c90fd12817"
+                    prot="public" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>TakePush</name>
+            </member>
+            <member refid="class_generic_reader_1_1_number_stream_3_01_input_stream_00_01true_00_01false_01_4_1a4c5ac10463f40240a5b7437d89f11e6e"
+                    prot="public" virt="non-virtual">
+                <scope>GenericReader::NumberStream&lt; InputStream, true, false &gt;</scope>
+                <name>~NumberStream</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

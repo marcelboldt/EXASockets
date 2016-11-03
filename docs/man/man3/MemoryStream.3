@@ -1,0 +1,97 @@
+.TH "MemoryStream" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryStream \- Represents an in-memory input byte stream\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memorystream\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef char \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryStream\fP (const Ch *src, size_t size)"
+.br
+.ti -1c
+.RI "Ch \fBPeek\fP () const"
+.br
+.ti -1c
+.RI "Ch \fBTake\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBTell\fP () const"
+.br
+.ti -1c
+.RI "Ch * \fBPutBegin\fP ()"
+.br
+.ti -1c
+.RI "void \fBPut\fP (Ch)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBPutEnd\fP (Ch *)"
+.br
+.ti -1c
+.RI "const Ch * \fBPeek4\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const Ch * \fBsrc_\fP"
+.br
+.RI "Current read position\&. "
+.ti -1c
+.RI "const Ch * \fBbegin_\fP"
+.br
+.RI "Original head of the string\&. "
+.ti -1c
+.RI "const Ch * \fBend_\fP"
+.br
+.RI "End of stream\&. "
+.ti -1c
+.RI "size_t \fBsize_\fP"
+.br
+.RI "Size of the stream\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an in-memory input byte stream\&. 
+
+This class is mainly for being wrapped by \fBEncodedInputStream\fP or \fBAutoUTFInputStream\fP\&.
+.PP
+It is similar to FileReadBuffer but the source is an in-memory buffer instead of a file\&.
+.PP
+Differences between \fBMemoryStream\fP and StringStream:
+.IP "1." 4
+StringStream has encoding but \fBMemoryStream\fP is a byte stream\&.
+.IP "2." 4
+\fBMemoryStream\fP needs size of the source buffer and the buffer don't need to be null terminated\&. StringStream assume null-terminated string as source\&.
+.IP "3." 4
+\fBMemoryStream\fP supports Peek4() for encoding detection\&. StringStream is specified with an encoding so it should not have Peek4()\&. 
+.PP
+\fBNote:\fP
+.RS 4
+implements Stream concept 
+.RE
+.PP
+
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

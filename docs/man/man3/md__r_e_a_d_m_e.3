@@ -1,0 +1,34 @@
+.TH "md__r_e_a_d_m_e" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- EXASockets 
+Interface to the EXASOL DB via JSON over Websockets protocol\&.
+.PP
+.SS "Status"
+.PP
+Work in progress\&.\&.\&. what basically works:
+.PP
+.IP "\(bu" 2
+Connect & Disconnect
+.IP "\(bu" 2
+Sending a query
+.IP "\(bu" 2
+Fetching a result set
+.PP
+.PP
+.SS "Build"
+.PP
+These libs are intended to work on Windows and POSIX systems\&. For building the linker needs:
+.PP
+.IP "\(bu" 2
+the websockets libs, see https://github.com/marcelboldt/websockets/
+.IP "\(bu" 2
+RapidJSON 1\&.10, see https://github.com/miloyip/rapidjson/
+.IP "\(bu" 2
+OpenSSL (tested with v1\&.1\&.0b 26 Sep 2016), see https://www.openssl.org/
+.PP
+.PP
+.SS "See also"
+.PP
+https://github.com/EXASOL/websocket-api/blob/master/WebsocketAPI.md 

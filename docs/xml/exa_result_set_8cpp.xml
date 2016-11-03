@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="exa_result_set_8cpp" kind="file" language="C++">
+        <compoundname>exaResultSet.cpp</compoundname>
+        <includes refid="exa_result_set_8h" local="yes">exaResultSet.h</includes>
+        <incdepgraph>
+            <node id="0">
+                <label>exasockets/exaResultSet.cpp</label>
+                <link refid="exa_result_set_8cpp"/>
+                <childnode refid="1" relation="include">
+                </childnode>
+            </node>
+            <node id="2">
+                <label>cstdint</label>
+            </node>
+            <node id="4">
+                <label>bits/shared_ptr.h</label>
+            </node>
+            <node id="3">
+                <label>vector</label>
+            </node>
+            <node id="5">
+                <label>cstddef</label>
+            </node>
+            <node id="1">
+                <label>exaResultSet.h</label>
+                <link refid="exa_result_set_8h_source"/>
+                <childnode refid="2" relation="include">
+                </childnode>
+                <childnode refid="3" relation="include">
+                </childnode>
+                <childnode refid="4" relation="include">
+                </childnode>
+                <childnode refid="5" relation="include">
+                </childnode>
+            </node>
+        </incdepgraph>
+        <sectiondef kind="var">
+            <memberdef kind="variable" id="exa_result_set_8cpp_1a206b1ec7dd4b35e746c52d554fd7e708" prot="public"
+                       static="no" mutable="no">
+                <type></type>
+                <definition>c[10]</definition>
+                <argsstring></argsstring>
+                <name>c</name>
+                <initializer>= new <ref refid="classexa_tbl_column" kindref="compound">exaTblColumn</ref>(&quot;col1&quot;,
+                    BOOLEAN)
+                </initializer>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exaResultSet.cpp" line="28" column="1" bodyfile="exasockets/exaResultSet.cpp"
+                          bodystart="28" bodyend="-1"/>
+            </memberdef>
+        </sectiondef>
+        <sectiondef kind="func">
+            <memberdef kind="function" id="exa_result_set_8cpp_1a4b16e351c3778c3cc85f63c7bebe7511" prot="public"
+                       static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+                <type>c</type>
+                <definition>c appendData</definition>
+                <argsstring>(char *data, size_t start=1;size_t stop=0)</argsstring>
+                <name>appendData</name>
+                <param>
+                    <type>char *</type>
+                    <declname>data</declname>
+                </param>
+                <param>
+                    <type>size_t</type>
+                    <declname>start</declname>
+                    <defval>1;size_t stop=0</defval>
+                </param>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="exasockets/exaResultSet.cpp" line="29" column="1"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <programlisting>
+            <codeline lineno="1">
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="2">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//<sp/>Created<sp/>by<sp/>mbo<sp/>on<sp/>02.11.2016.
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="3">
+                <highlight class="normal"></highlight>
+                <highlight class="comment">//</highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="4">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="5">
+                <highlight class="normal"></highlight>
+                <highlight class="preprocessor">#include<sp/>&quot;exaResultSet.h&quot;
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="6">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="7">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="8">
+                <highlight class="normal">}</highlight>
+            </codeline>
+            <codeline lineno="9">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="10">
+                <highlight class="normal">exaTblColumn::exaTblColumn(</highlight>
+                <highlight class="keywordtype">char</highlight>
+                <highlight class="normal"><sp/>*<sp/>name,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>datatype,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>precision,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">int</highlight>
+                <highlight class="normal"><sp/>scale)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="11">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="12">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>this-&gt;name<sp/>=<sp/>*name;
+                </highlight>
+            </codeline>
+            <codeline lineno="13">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">switch</highlight>
+                <highlight class="normal">(datatype)<sp/>{
+                </highlight>
+            </codeline>
+            <codeline lineno="14">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">case</highlight>
+                <highlight class="normal"><sp/>BOOLEAN<sp/>:
+                </highlight>
+            </codeline>
+            <codeline lineno="15">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>this-&gt;type<sp/>=<sp/>BOOLEAN;
+                </highlight>
+            </codeline>
+            <codeline lineno="16">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>this-&gt;data<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">new</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="classexa_col_data" kindref="compound">exaColData&lt;bool&gt;</ref>();
+                </highlight>
+            </codeline>
+            <codeline lineno="17">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">break</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="18">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">case</highlight>
+                <highlight class="normal"><sp/>CHAR<sp/>:
+                </highlight>
+            </codeline>
+            <codeline lineno="19">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>this-&gt;type<sp/>=<sp/>CHAR;
+                </highlight>
+            </codeline>
+            <codeline lineno="20">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>this-&gt;data<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">new</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="classexa_col_data" kindref="compound">exaColData&lt;char&gt;</ref>();
+                </highlight>
+            </codeline>
+            <codeline lineno="21">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">break</highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="22">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">default</highlight>
+                <highlight class="normal">:</highlight>
+            </codeline>
+            <codeline lineno="23">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                </highlight>
+                <highlight class="keywordflow">throw</highlight>
+                <highlight class="normal">
+                    <sp/>
+                </highlight>
+                <highlight class="stringliteral">&quot;unknown<sp/>datatype&quot;
+                </highlight>
+                <highlight class="normal">;</highlight>
+            </codeline>
+            <codeline lineno="24">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="25">
+                <highlight class="normal">
+                    <sp/>
+                    <sp/>
+                    <sp/>
+                    <sp/>}
+                </highlight>
+            </codeline>
+            <codeline lineno="26">
+                <highlight class="normal">}</highlight>
+            </codeline>
+            <codeline lineno="27">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="28">
+                <highlight class="normal">c<sp/>=
+                    <sp/>
+                </highlight>
+                <highlight class="keyword">new</highlight>
+                <highlight class="normal">
+                    <sp/>
+                    <ref refid="classexa_tbl_column" kindref="compound">exaTblColumn</ref>(
+                </highlight>
+                <highlight class="stringliteral">&quot;col1&quot;</highlight>
+                <highlight class="normal">,<sp/>BOOLEAN);
+                </highlight>
+            </codeline>
+            <codeline lineno="29">
+                <highlight class="normal">c.appendData(</highlight>
+                <highlight class="keywordtype">char</highlight>
+                <highlight class="normal"><sp/>*<sp/>data,
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">size_t</highlight>
+                <highlight class="normal"><sp/>start=1;
+                    <sp/>
+                </highlight>
+                <highlight class="keywordtype">size_t</highlight>
+                <highlight class="normal"><sp/>stop<sp/>=<sp/>0);
+                </highlight>
+            </codeline>
+            <codeline lineno="30">
+                <highlight class="normal">c[10];
+                    <sp/>
+                </highlight>
+                <highlight class="comment">//<sp/>returns<sp/>row<sp/>10
+                </highlight>
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="31">
+                <highlight class="normal"></highlight>
+            </codeline>
+            <codeline lineno="32">
+                <highlight class="normal"></highlight>
+            </codeline>
+        </programlisting>
+        <location file="exasockets/exaResultSet.cpp"/>
+    </compounddef>
+</doxygen>

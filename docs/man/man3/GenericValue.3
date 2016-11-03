@@ -1,0 +1,429 @@
+.TH "GenericValue< Encoding, Allocator >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericValue< Encoding, Allocator > \- Represents a JSON value\&. Use Value for \fBUTF8\fP encoding and default allocator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <document\&.h>\fP
+.PP
+Inherited by \fBGenericDocument< Encoding, Allocator, StackAllocator >\fP, and \fBGenericDocument< UTF8<> >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBArrayData\fP"
+.br
+.ti -1c
+.RI "union \fBData\fP"
+.br
+.ti -1c
+.RI "struct \fBFlag\fP"
+.br
+.ti -1c
+.RI "union \fBNumber\fP"
+.br
+.ti -1c
+.RI "struct \fBObjectData\fP"
+.br
+.ti -1c
+.RI "struct \fBShortString\fP"
+.br
+.ti -1c
+.RI "struct \fBString\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBkBoolFlag\fP = 0x0008, \fBkNumberFlag\fP = 0x0010, \fBkIntFlag\fP = 0x0020, \fBkUintFlag\fP = 0x0040, \fBkInt64Flag\fP = 0x0080, \fBkUint64Flag\fP = 0x0100, \fBkDoubleFlag\fP = 0x0200, \fBkStringFlag\fP = 0x0400, \fBkCopyFlag\fP = 0x0800, \fBkInlineStrFlag\fP = 0x1000, \fBkNullFlag\fP = kNullType, \fBkTrueFlag\fP = kTrueType | kBoolFlag, \fBkFalseFlag\fP = kFalseType | kBoolFlag, \fBkNumberIntFlag\fP = kNumberType | kNumberFlag | kIntFlag | kInt64Flag, \fBkNumberUintFlag\fP = kNumberType | kNumberFlag | kUintFlag | kUint64Flag | kInt64Flag, \fBkNumberInt64Flag\fP = kNumberType | kNumberFlag | kInt64Flag, \fBkNumberUint64Flag\fP = kNumberType | kNumberFlag | kUint64Flag, \fBkNumberDoubleFlag\fP = kNumberType | kNumberFlag | kDoubleFlag, \fBkNumberAnyFlag\fP = kNumberType | kNumberFlag | kIntFlag | kInt64Flag | kUintFlag | kUint64Flag | kDoubleFlag, \fBkConstStringFlag\fP = kStringType | kStringFlag, \fBkCopyStringFlag\fP = kStringType | kStringFlag | kCopyFlag, \fBkShortStringFlag\fP = kStringType | kStringFlag | kCopyFlag | kInlineStrFlag, \fBkObjectFlag\fP = kObjectType, \fBkArrayFlag\fP = kArrayType, \fBkTypeMask\fP = 0x07 }"
+.br
+.ti -1c
+.RI "typedef \fBGenericMember\fP< Encoding, Allocator > \fBMember\fP"
+.br
+.RI "Name-value pair in an object\&. "
+.ti -1c
+.RI "typedef Encoding \fBEncodingType\fP"
+.br
+.RI "Encoding type from template parameter\&. "
+.ti -1c
+.RI "typedef Allocator \fBAllocatorType\fP"
+.br
+.RI "Allocator type from template parameter\&. "
+.ti -1c
+.RI "typedef Encoding::Ch \fBCh\fP"
+.br
+.RI "Character type derived from Encoding\&. "
+.ti -1c
+.RI "typedef \fBGenericStringRef\fP< \fBCh\fP > \fBStringRefType\fP"
+.br
+.RI "Reference to a constant string\&. "
+.ti -1c
+.RI "typedef \fBGenericMemberIterator\fP< false, Encoding, Allocator >::Iterator \fBMemberIterator\fP"
+.br
+.RI "Member iterator for iterating in object\&. "
+.ti -1c
+.RI "typedef \fBGenericMemberIterator\fP< true, Encoding, Allocator >::Iterator \fBConstMemberIterator\fP"
+.br
+.RI "Constant member iterator for iterating in object\&. "
+.ti -1c
+.RI "typedef \fBGenericValue\fP * \fBValueIterator\fP"
+.br
+.RI "Value iterator for iterating in array\&. "
+.ti -1c
+.RI "typedef const \fBGenericValue\fP * \fBConstValueIterator\fP"
+.br
+.RI "Constant value iterator for iterating in array\&. "
+.ti -1c
+.RI "typedef \fBGenericValue\fP< Encoding, Allocator > \fBValueType\fP"
+.br
+.RI "Value type of itself\&. "
+.ti -1c
+.RI "typedef \fBGenericArray\fP< false, \fBValueType\fP > \fBArray\fP"
+.br
+.ti -1c
+.RI "typedef \fBGenericArray\fP< true, \fBValueType\fP > \fBConstArray\fP"
+.br
+.ti -1c
+.RI "typedef \fBGenericObject\fP< false, \fBValueType\fP > \fBObject\fP"
+.br
+.ti -1c
+.RI "typedef \fBGenericObject\fP< true, \fBValueType\fP > \fBConstObject\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > \fBRAPIDJSON_DISABLEIF_RETURN\fP ((internal::IsPointer< T >),(\fBGenericValue\fP &)) operator"
+.br
+.RI "Assignment with primitive types\&. "
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE const \fBCh\fP * \fBGetStringPointer\fP () const"
+.br
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE const \fBCh\fP * \fBSetStringPointer\fP (const \fBCh\fP *str)"
+.br
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE \fBGenericValue\fP * \fBGetElementsPointer\fP () const"
+.br
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE \fBGenericValue\fP * \fBSetElementsPointer\fP (\fBGenericValue\fP *elements)"
+.br
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE \fBMember\fP * \fBGetMembersPointer\fP () const"
+.br
+.ti -1c
+.RI "RAPIDJSON_FORCEINLINE \fBMember\fP * \fBSetMembersPointer\fP (\fBMember\fP *members)"
+.br
+.ti -1c
+.RI "void \fBSetArrayRaw\fP (\fBGenericValue\fP *values, \fBSizeType\fP count, Allocator &allocator)"
+.br
+.ti -1c
+.RI "void \fBSetObjectRaw\fP (\fBMember\fP *members, \fBSizeType\fP count, Allocator &allocator)"
+.br
+.RI "Initialize this value as object with initial data, without calling destructor\&. "
+.ti -1c
+.RI "void \fBSetStringRaw\fP (\fBStringRefType\fP s) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Initialize this value as constant string, without calling destructor\&. "
+.ti -1c
+.RI "void \fBSetStringRaw\fP (\fBStringRefType\fP s, Allocator &allocator)"
+.br
+.RI "Initialize this value as copy string with initial data, without calling destructor\&. "
+.ti -1c
+.RI "void \fBRawAssign\fP (\fBGenericValue\fP &rhs) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Assignment without calling destructor\&. "
+.ti -1c
+.RI "template<typename SourceAllocator > bool \fBStringEqual\fP (const \fBGenericValue\fP< Encoding, SourceAllocator > &rhs) const"
+.br
+.in -1c
+.PP
+.RI "\fBAssignment operators\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBGenericValue\fP & \fBoperator=\fP (\fBGenericValue\fP &rhs) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Assignment with move semantics\&. "
+.ti -1c
+.RI "\fBGenericValue\fP & \fBoperator=\fP (\fBStringRefType\fP str) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Assignment of constant string reference (no copy) "
+.in -1c
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBData\fP \fBdata_\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const \fBSizeType\fP \fBkDefaultArrayCapacity\fP = 16"
+.br
+.ti -1c
+.RI "static const \fBSizeType\fP \fBkDefaultObjectCapacity\fP = 16"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "template<typename , typename , typename > class \fBGenericDocument\fP"
+.br
+.in -1c
+.SS "Constructors and destructor\&."
+
+.in +1c
+.ti -1c
+.RI "\fBGenericValue\fP () RAPIDJSON_NOEXCEPT"
+.br
+.RI "Default constructor creates a null value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (\fBType\fP type) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor with JSON value type\&. "
+.ti -1c
+.RI "template<typename SourceAllocator > \fBGenericValue\fP (const \fBGenericValue\fP< Encoding, SourceAllocator > &rhs, Allocator &allocator)"
+.br
+.RI "Explicit copy constructor (with allocator) "
+.ti -1c
+.RI "template<typename T > \fBGenericValue\fP (T b, RAPIDJSON_ENABLEIF((internal::IsSame< bool, T >))) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for boolean value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (int i) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for int value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (unsigned u) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for unsigned value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (int64_t i64) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for int64_t value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (uint64_t u64) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for uint64_t value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (double d) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for double value\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (const \fBCh\fP *s, \fBSizeType\fP length) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for constant string (i\&.e\&. do not make a copy of string) "
+.ti -1c
+.RI "\fBGenericValue\fP (\fBStringRefType\fP s) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for constant string (i\&.e\&. do not make a copy of string) "
+.ti -1c
+.RI "\fBGenericValue\fP (const \fBCh\fP *s, \fBSizeType\fP length, Allocator &allocator)"
+.br
+.RI "Constructor for copy-string (i\&.e\&. do make a copy of string) "
+.ti -1c
+.RI "\fBGenericValue\fP (const \fBCh\fP *s, Allocator &allocator)"
+.br
+.RI "Constructor for copy-string (i\&.e\&. do make a copy of string) "
+.ti -1c
+.RI "\fBGenericValue\fP (\fBArray\fP a) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for Array\&. "
+.ti -1c
+.RI "\fBGenericValue\fP (\fBObject\fP o) RAPIDJSON_NOEXCEPT"
+.br
+.RI "Constructor for Object\&. "
+.ti -1c
+.RI "\fB~GenericValue\fP ()"
+.br
+.RI "Destructor\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>>
+.br
+class GenericValue< Encoding, Allocator >"
+Represents a JSON value\&. Use Value for \fBUTF8\fP encoding and default allocator\&. 
+
+A JSON value can be one of 7 types\&. This class is a variant type supporting these types\&.
+.PP
+Use the Value if \fBUTF8\fP and default allocator
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIEncoding\fP Encoding of the value\&. (Even non-string values need to have the same encoding in a document) 
+.br
+\fIAllocator\fP Allocator type for allocating memory of object, array and string\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> \fBGenericValue\fP< Encoding, Allocator >::\fBGenericValue\fP (\fBType\fP type)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Constructor with JSON value type\&. This creates a Value of specified type with default content\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP Type of the value\&. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Default content for number is zero\&. 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator> template<typename SourceAllocator > \fBGenericValue\fP< Encoding, Allocator >::\fBGenericValue\fP (const \fBGenericValue\fP< Encoding, SourceAllocator > & rhs, Allocator & allocator)\fC [inline]\fP"
+
+.PP
+Explicit copy constructor (with allocator) Creates a copy of a Value by using the given Allocator 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fISourceAllocator\fP allocator of \fCrhs\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Value to copy from (read-only) 
+.br
+\fIallocator\fP Allocator for allocating copied elements and buffers\&. Commonly use \fBGenericDocument::GetAllocator()\fP\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+CopyFrom() 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> template<typename T > \fBGenericValue\fP< Encoding, Allocator >::\fBGenericValue\fP (T b, RAPIDJSON_ENABLEIF((internal::IsSame< bool, T >)))\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Constructor for boolean value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIb\fP Boolean value 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This constructor is limited to \fIreal\fP boolean values and rejects implicitly converted types like arbitrary pointers\&. Use an explicit cast to \fCbool\fP, if you want to construct a boolean JSON value in such cases\&. 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> \fBGenericValue\fP< Encoding, Allocator >::\fBGenericValue\fP (\fBArray\fP a)\fC [inline]\fP"
+
+.PP
+Constructor for Array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP An array obtained by \fCGetArray()\fP\&. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+\fCArray\fP is always pass-by-value\&. 
+.PP
+the source array is moved into this value and the sourec array becomes empty\&. 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> \fBGenericValue\fP< Encoding, Allocator >::\fBGenericValue\fP (\fBObject\fP o)\fC [inline]\fP"
+
+.PP
+Constructor for Object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP An object obtained by \fCGetObject()\fP\&. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+\fCObject\fP is always pass-by-value\&. 
+.PP
+the source object is moved into this value and the sourec object becomes empty\&. 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> \fBGenericValue\fP< Encoding, Allocator >::~\fBGenericValue\fP ()\fC [inline]\fP"
+
+.PP
+Destructor\&. Need to destruct elements of array, members of object, or copy-string\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> \fBGenericValue\fP& \fBGenericValue\fP< Encoding, Allocator >::operator= (\fBGenericValue\fP< Encoding, Allocator > & rhs)\fC [inline]\fP"
+
+.PP
+Assignment with move semantics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrhs\fP Source of the assignment\&. It will become a null value after assignment\&. 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> \fBGenericValue\fP& \fBGenericValue\fP< Encoding, Allocator >::operator= (\fBStringRefType\fP str)\fC [inline]\fP"
+
+.PP
+Assignment of constant string reference (no copy) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP Constant string reference to be assigned 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+This overload is needed to avoid clashes with the generic primitive type assignment overload below\&. 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBGenericStringRef\fP, operator=(T) 
+.RE
+.PP
+
+.SS "template<typename Encoding, typename Allocator = MemoryPoolAllocator<>> template<typename T > \fBGenericValue\fP< Encoding, Allocator >::RAPIDJSON_DISABLEIF_RETURN ((internal::IsPointer< T >), (\fBGenericValue\fP< Encoding, Allocator > &))"
+
+.PP
+Assignment with primitive types\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Either \fBType\fP, \fCint\fP, \fCunsigned\fP, \fCint64_t\fP, \fCuint64_t\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to be assigned\&.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+The source type \fCT\fP explicitly disallows all pointer types, especially (\fCconst\fP) \fBCh\fP*\&. This helps avoiding implicitly referencing character strings with insufficient lifetime, use \fBSetString(const Ch*, Allocator&)\fP (for copying) or \fBStringRef()\fP (to explicitly mark the pointer as constant) instead\&. All other pointer types would implicitly convert to \fCbool\fP, use \fBSetBool()\fP instead\&.Set boolean value 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

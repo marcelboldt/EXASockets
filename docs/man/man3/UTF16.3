@@ -1,0 +1,73 @@
+.TH "UTF16< CharType >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UTF16< CharType > \- UTF-16 encoding\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <encodings\&.h>\fP
+.PP
+Inherited by \fBUTF16BE< CharType >\fP, and \fBUTF16LE< CharType >\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBsupportUnicode\fP = 1 }"
+.br
+.ti -1c
+.RI "typedef CharType \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRAPIDJSON_STATIC_ASSERT\fP (sizeof(Ch) >=2)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename OutputStream > static void \fBEncode\fP (OutputStream &os, unsigned codepoint)"
+.br
+.ti -1c
+.RI "template<typename OutputStream > static void \fBEncodeUnsafe\fP (OutputStream &os, unsigned codepoint)"
+.br
+.ti -1c
+.RI "template<typename InputStream > static bool \fBDecode\fP (InputStream &is, unsigned *codepoint)"
+.br
+.ti -1c
+.RI "template<typename InputStream , typename OutputStream > static bool \fBValidate\fP (InputStream &is, OutputStream &os)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename CharType = wchar_t>
+.br
+struct UTF16< CharType >"
+UTF-16 encoding\&. 
+
+http://en.wikipedia.org/wiki/UTF-16 http://tools.ietf.org/html/rfc2781 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICharType\fP Type for storing 16-bit UTF-16 data\&. Default is wchar_t\&. C++11 may use char16_t instead\&. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+implements Encoding concept
+.PP
+For in-memory access, no need to concern endianness\&. The code units and code points are represented by CPU's endianness\&. For streaming, use \fBUTF16LE\fP and \fBUTF16BE\fP, which handle endianness\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="struct_stream_traits_3_01_generic_insitu_string_stream_3_01_encoding_01_4_01_4" kind="struct"
+                 language="C++" prot="public">
+        <compoundname>StreamTraits&lt; GenericInsituStringStream&lt; Encoding &gt; &gt;</compoundname>
+        <templateparamlist>
+            <param>
+                <type>typename Encoding</type>
+            </param>
+        </templateparamlist>
+        <sectiondef kind="public-type">
+            <memberdef kind="enum"
+                       id="struct_stream_traits_3_01_generic_insitu_string_stream_3_01_encoding_01_4_01_4_1a8cf1925a04aba7bd4dafb2fa6e73cc98"
+                       prot="public" static="no">
+                <name>@12</name>
+                <enumvalue
+                        id="struct_stream_traits_3_01_generic_insitu_string_stream_3_01_encoding_01_4_01_4_1a8cf1925a04aba7bd4dafb2fa6e73cc98a8d0f051fca7788dc2aeaadd6e5a153ed"
+                        prot="public">
+                    <name>copyOptimization</name>
+                    <initializer>= 1</initializer>
+                    <briefdescription>
+                    </briefdescription>
+                    <detaileddescription>
+                    </detaileddescription>
+                </enumvalue>
+                <briefdescription>
+                </briefdescription>
+                <detaileddescription>
+                </detaileddescription>
+                <inbodydescription>
+                </inbodydescription>
+                <location file="rapidjson/stream.h" line="171" column="1" bodyfile="rapidjson/stream.h" bodystart="171"
+                          bodyend="171"/>
+            </memberdef>
+        </sectiondef>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <location file="rapidjson/stream.h" line="170" column="1" bodyfile="rapidjson/stream.h" bodystart="170"
+                  bodyend="172"/>
+        <listofallmembers>
+            <member refid="struct_stream_traits_3_01_generic_insitu_string_stream_3_01_encoding_01_4_01_4_1a8cf1925a04aba7bd4dafb2fa6e73cc98a8d0f051fca7788dc2aeaadd6e5a153ed"
+                    prot="public" virt="non-virtual">
+                <scope>StreamTraits&lt; GenericInsituStringStream&lt; Encoding &gt; &gt;</scope>
+                <name>copyOptimization</name>
+            </member>
+        </listofallmembers>
+    </compounddef>
+</doxygen>

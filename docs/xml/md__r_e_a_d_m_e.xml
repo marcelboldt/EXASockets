@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="md__r_e_a_d_m_e" kind="page">
+        <compoundname>md_README</compoundname>
+        <title>EXASockets</title>
+        <detaileddescription>
+            <para>Interface to the EXASOL DB via JSON over Websockets protocol.</para>
+            <para>
+                <heading level="2">Status</heading>
+            </para>
+            <para>Work in progress... what basically works:</para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Connect &amp; Disconnect</para>
+                    </listitem>
+                    <listitem>
+                        <para>Sending a query</para>
+                    </listitem>
+                    <listitem>
+                        <para>Fetching a result set</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <heading level="2">Build</heading>
+            </para>
+            <para>These libs are intended to work on Windows and POSIX systems. For building the linker needs:</para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>the websockets libs, see
+                            <ulink url="https://github.com/marcelboldt/websockets/">
+                                https://github.com/marcelboldt/websockets/
+                            </ulink>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>RapidJSON 1.10, see
+                            <ulink url="https://github.com/miloyip/rapidjson/">https://github.com/miloyip/rapidjson/
+                            </ulink>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>OpenSSL (tested with v1.1.0b 26 Sep 2016), see
+                            <ulink url="https://www.openssl.org/">https://www.openssl.org/</ulink>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <heading level="2">See also</heading>
+            </para>
+            <para>
+                <ulink url="https://github.com/EXASOL/websocket-api/blob/master/WebsocketAPI.md">
+                    https://github.com/EXASOL/websocket-api/blob/master/WebsocketAPI.md
+                </ulink>
+            </para>
+        </detaileddescription>
+    </compounddef>
+</doxygen>

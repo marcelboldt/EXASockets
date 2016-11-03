@@ -1,0 +1,97 @@
+.TH "GenericMemoryBuffer< Allocator >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GenericMemoryBuffer< Allocator > \- Represents an in-memory output byte stream\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memorybuffer\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef char \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericMemoryBuffer\fP (Allocator *allocator=0, size_t capacity=kDefaultCapacity)"
+.br
+.ti -1c
+.RI "void \fBPut\fP (Ch c)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "void \fBShrinkToFit\fP ()"
+.br
+.ti -1c
+.RI "Ch * \fBPush\fP (size_t count)"
+.br
+.ti -1c
+.RI "void \fBPop\fP (size_t count)"
+.br
+.ti -1c
+.RI "const Ch * \fBGetBuffer\fP () const"
+.br
+.ti -1c
+.RI "size_t \fBGetSize\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBinternal::Stack\fP< Allocator > \fBstack_\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const size_t \fBkDefaultCapacity\fP = 256"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename Allocator = CrtAllocator>
+.br
+struct GenericMemoryBuffer< Allocator >"
+Represents an in-memory output byte stream\&. 
+
+This class is mainly for being wrapped by \fBEncodedOutputStream\fP or \fBAutoUTFOutputStream\fP\&.
+.PP
+It is similar to FileWriteBuffer but the destination is an in-memory buffer instead of a file\&.
+.PP
+Differences between MemoryBuffer and StringBuffer:
+.IP "1." 4
+StringBuffer has Encoding but MemoryBuffer is only a byte buffer\&.
+.IP "2." 4
+StringBuffer::GetString() returns a null-terminated string\&. MemoryBuffer::GetBuffer() returns a buffer without terminator\&.
+.PP
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIAllocator\fP type for allocating memory buffer\&. 
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+implements Stream concept 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

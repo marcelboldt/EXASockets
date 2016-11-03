@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd"
+         version="1.8.12">
+    <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+        <compoundname>README.md</compoundname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <programlisting>
+            <codeline>
+                <highlight class="normal">#<sp/>EXASockets
+                </highlight>
+            </codeline>
+            <codeline>
+                <highlight class="normal">Interface<sp/>to<sp/>the<sp/>EXASOL<sp/>DB<sp/>via<sp/>JSON<sp/>over<sp/>
+                    Websockets<sp/>protocol.
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">##<sp/>Status
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">Work<sp/>in<sp/>progress...<sp/>what<sp/>basically<sp/>works:
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">-<sp/>Connect<sp/>&amp;<sp/>Disconnect
+                </highlight>
+            </codeline>
+            <codeline>
+                <highlight class="normal">-<sp/>Sending<sp/>a<sp/>query
+                </highlight>
+            </codeline>
+            <codeline>
+                <highlight class="normal">-<sp/>Fetching<sp/>a<sp/>result<sp/>set
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">##<sp/>Build
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">These<sp/>libs<sp/>are<sp/>intended<sp/>to<sp/>work<sp/>on<sp/>Windows<sp/>and
+                    <sp/>POSIX<sp/>systems.<sp/>For<sp/>building<sp/>the<sp/>linker<sp/>needs:
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">-<sp/>the<sp/>websockets<sp/>libs,<sp/>see<sp/>
+                    https://github.com/marcelboldt/websockets/
+                </highlight>
+            </codeline>
+            <codeline>
+                <highlight class="normal">-<sp/>RapidJSON<sp/>1.10,<sp/>see<sp/>https://github.com/miloyip/rapidjson/
+                </highlight>
+            </codeline>
+            <codeline>
+                <highlight class="normal">-<sp/>OpenSSL<sp/>(tested<sp/>with<sp/>v1.1.0b<sp/>26<sp/>Sep<sp/>2016),<sp/>
+                    see<sp/>https://www.openssl.org/
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">##<sp/>See<sp/>also
+                </highlight>
+            </codeline>
+            <codeline></codeline>
+            <codeline>
+                <highlight class="normal">https://github.com/EXASOL/websocket-api/blob/master/WebsocketAPI.md
+                </highlight>
+            </codeline>
+        </programlisting>
+        <location file="README.md"/>
+    </compounddef>
+</doxygen>

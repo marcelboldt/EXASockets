@@ -1,0 +1,90 @@
+.TH "AutoUTFInputStream< CharType, InputByteStream >" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AutoUTFInputStream< CharType, InputByteStream > \- Input stream wrapper with dynamically bound encoding and automatic encoding detection\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <encodedstream\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef CharType \fBCh\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAutoUTFInputStream\fP (InputByteStream &is, UTFType type=kUTF8)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "UTFType \fBGetType\fP () const"
+.br
+.ti -1c
+.RI "bool \fBHasBOM\fP () const"
+.br
+.ti -1c
+.RI "Ch \fBPeek\fP () const"
+.br
+.ti -1c
+.RI "Ch \fBTake\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBTell\fP () const"
+.br
+.ti -1c
+.RI "void \fBPut\fP (Ch)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "Ch * \fBPutBegin\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBPutEnd\fP (Ch *)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename CharType, typename InputByteStream>
+.br
+class AutoUTFInputStream< CharType, InputByteStream >"
+Input stream wrapper with dynamically bound encoding and automatic encoding detection\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fICharType\fP Type of character for reading\&. 
+.br
+\fIInputByteStream\fP type of input byte stream to be wrapped\&. 
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename CharType , typename InputByteStream > \fBAutoUTFInputStream\fP< CharType, InputByteStream >::\fBAutoUTFInputStream\fP (InputByteStream & is, UTFType type = \fCkUTF8\fP)\fC [inline]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIis\fP input stream to be wrapped\&. 
+.br
+\fItype\fP UTF encoding type if it is not detected from the stream\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.

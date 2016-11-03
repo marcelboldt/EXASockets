@@ -1,0 +1,74 @@
+.TH "internal::BigInteger" 3 "Thu Nov 3 2016" "Version 0.9" "EXASockets" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+internal::BigInteger \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef uint64_t \fBType\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBigInteger\fP (const \fBBigInteger\fP &rhs)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP (uint64_t u)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP (const char *decimals, size_t length)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBoperator=\fP (const \fBBigInteger\fP &rhs)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBoperator=\fP (uint64_t u)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBoperator+=\fP (uint64_t u)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBoperator*=\fP (uint64_t u)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBoperator*=\fP (uint32_t u)"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBoperator<<=\fP (size_t shift)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBBigInteger\fP &rhs) const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const Type rhs) const"
+.br
+.ti -1c
+.RI "\fBBigInteger\fP & \fBMultiplyPow5\fP (unsigned exp)"
+.br
+.ti -1c
+.RI "bool \fBDifference\fP (const \fBBigInteger\fP &rhs, \fBBigInteger\fP *out) const"
+.br
+.ti -1c
+.RI "int \fBCompare\fP (const \fBBigInteger\fP &rhs) const"
+.br
+.ti -1c
+.RI "size_t \fBGetCount\fP () const"
+.br
+.ti -1c
+.RI "Type \fBGetDigit\fP (size_t index) const"
+.br
+.ti -1c
+.RI "bool \fBIsZero\fP () const"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for EXASockets from the source code\&.
