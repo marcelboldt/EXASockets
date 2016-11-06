@@ -15,7 +15,7 @@ What basically works:
 
 ### Performance:
 
-Tested with EXASOL 6 Beta 1: The application connects, send a query and fetches a 
+Tested with EXASOL 6 Beta 1: Measured is sending a query and fetching a 
 result set (which needs to be done separately using 'fetch()' if the result set is
  1000 rows or greater). Testing with the flights data set with an EXASolo on the same machine, 
  a simple query (e.g. metadata request) returns within 10-20 ms; an uncompressed fetch of 10k rows / 970 KB
