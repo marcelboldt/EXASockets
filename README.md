@@ -15,6 +15,9 @@ What basically works:
 
 ### Performance:
 
+The library is entierly C++ with a custom implemnetation of the websocket protocol and relying on rapidJSON, 
+which is pretty fast and works well for huge JSONs. Promising so far...
+
 Tested with EXASOL 6 Beta 1: Measured is sending a query and fetching a 
 result set (which needs to be done separately using 'fetch()' if the result set is
  1000 rows or greater). Testing with the flights data set with an EXASolo on the same machine, 
@@ -25,6 +28,11 @@ result set (which needs to be done separately using 'fetch()' if the result set 
 
 Regarding the interface, nothing is final.
 There is certainly still some error-handling left to do. I appreciate any bug report!
+
+### Memory:
+
+std::shared_pointers were used for some parts, but memory management is probably still messy and will see improvement
+ on occasion.
 
 ## Example code:
 
@@ -77,6 +85,8 @@ These libs are intended to work on Windows and POSIX systems. For building the l
 - the websockets libs, see https://github.com/marcelboldt/websockets/
 - RapidJSON 1.10, see https://github.com/miloyip/rapidjson/
 - OpenSSL (tested with v1.1.0b 26 Sep 2016), see https://www.openssl.org/
+
+No other non C++ 11 standard libraries (e.g. boost) are needed.
 
 
 ## Documentation
