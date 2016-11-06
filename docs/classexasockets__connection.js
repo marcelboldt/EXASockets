@@ -3,8 +3,9 @@ var classexasockets__connection =
     [ "exasockets_connection", "classexasockets__connection.html#af230009df6b6cc3cbc0e822a0a07b959", null ],
     [ "~exasockets_connection", "classexasockets__connection.html#a3543c4dcc64df7f934c93aa941e8d95c", null ],
     [ "databaseName", "classexasockets__connection.html#ac6b0eaf9f0635b0e8488d26d2f0d68f9", null ],
+    ["disconnect", "classexasockets__connection.html#aa64cfd8e0bee2b9a2a2cbcb9e587e431", null],
     [ "exec_sql", "classexasockets__connection.html#a52f72bbfe4706a1b9c3c0bcf13f945ca", null ],
-    [ "fetch", "classexasockets__connection.html#ac17f2042a406ea4299dc8b46e7dd950a", null ],
+    ["fetch", "classexasockets__connection.html#adafc027910f698c4394ddc7c9ae40056", null],
     [ "identifierQuoteString", "classexasockets__connection.html#a2bb73a3b3638d012681dde4be776d4c6", null ],
     [ "isStatus", "classexasockets__connection.html#aca9a2a56d79261b7e2229768bdc44b00", null ],
     [ "maxDataMessageSize", "classexasockets__connection.html#a759a7018eb264f0001c8856fe0242fc0", null ],
@@ -17,6 +18,8 @@ var classexasockets__connection =
     [ "timezone", "classexasockets__connection.html#a64e8183687ec980a4981382624ef3b7c", null ],
     [ "timeZoneBehaviour", "classexasockets__connection.html#a1705d5c8595584fbd6fa7fb9de04d280", null ],
     [ "update_session_attributes", "classexasockets__connection.html#a9e63993a60ccd58e123427f6abcbc7f2", null ],
+    ["d", "classexasockets__connection.html#a60fc6c562cc07a60b741c5e0a384ab1a", null],
+    ["data", "classexasockets__connection.html#ab273fea7085f9e68460cf27f2c2c6a8c", null],
     [ "json_debug_output", "classexasockets__connection.html#a7d905f2f8328d268964e416e81c3619e", null ],
     [ "resultSet", "classexasockets__connection.html#a8476b0597efd50bc7c76e47943d409ed", null ]
 ];

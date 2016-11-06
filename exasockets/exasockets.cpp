@@ -52,14 +52,6 @@ RSA *createRSA(unsigned char *key, bool publ, int len = -1) {
     return rsa;
 }
 
-/*
-int private_decrypt(unsigned char * enc_data,int data_len,unsigned char * key, unsigned char *decrypted)
-{    // http://hayageek.com/rsa-encryption-decryption-openssl-c/
-    RSA * rsa = createRSA(key,false);
-    int  result = RSA_private_decrypt(data_len,enc_data,decrypted,rsa,RSA_PKCS1_PADDING);
-    return result;
-}
- */
 
 void printLastError(char *msg) {    // http://hayageek.com/rsa-encryption-decryption-openssl-c/
     char *err = (char *) malloc(130);
@@ -75,7 +67,15 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
                                              uint64_t sessionId) {
 
     this->status = false;
-    this->logfile = "exaloginjson.txt";
+    if (this->logfile == nullptr) {
+        this->logfile = new char[128];
+        time_t tt = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+        strftime(this->logfile, 128, "EXASockets %Y-%m-%d %X", std::localtime(&tt));
+        sprintf(this->logfile, "%s %i.tmp", logfile, rand() % 65536);
+        std::ofstream outfile (this->logfile);
+        outfile.close();
+    }
 
     char *host = new char[HOST_NAME_MAX];
     if (gethostname(host, HOST_NAME_MAX) != 0) *host = *clientName;
@@ -85,7 +85,10 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
     if (clientOsUsername == nullptr) {
         clientOsUsername = "unknown";
     }
-    tfile.open(logfile, std::ios::in);
+    tfile.open(this->logfile, std::ios::in);
+    if(!tfile.is_open()) {
+        throw "EXASockets 90: Couldn't open tempfile.";
+    }
     ws_con = new Websockets_connection(server, port, clientName);
 
     if (!ws_con->connected()) {
@@ -259,14 +262,14 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
     this->status = true;
 }
 
-exasockets_connection::~exasockets_connection() {
+int exasockets_connection::disconnect(bool throw_message) {
     if (this->status) {
 
         rapidjson::StringBuffer s;
         rapidjson::Document d;
         rapidjson::Writer<rapidjson::StringBuffer> writer(s);
 
-// Compose LOGIN REQUEST:
+// Compose disconnect REQUEST:
 
         writer.StartObject();
         writer.Key("command");
@@ -285,18 +288,29 @@ exasockets_connection::~exasockets_connection() {
             throw "Disconnect: Response parsing failed.";
             // std::cout << "Disconnect: Response parsing failed." << std::endl;
         } else if (d.HasMember("exception")) {
-            std::cout << d["exception"]["text"].GetString() << std::endl;
+            if (throw_message) std::cout << d["exception"]["text"].GetString() << std::endl;
+            return 1; // some errot
         } else {
-            std::cout << d["status"].GetString() << std::endl;
+            if (throw_message) std::cout << "Disconnected from EXASOL." << std::endl;
+            return 0; // all fine
         }
+    } else {
+        return -1; // already disconnected
     }
+
+}
+
+exasockets_connection::~exasockets_connection() {
+
+    disconnect();
+    if (remove(this->logfile) != 0) throw "EXASockets tempfile couldn't be deleted. Look for garbage in the application's working directory.";
 }
 
 
 char *exasockets_connection::ws_receive_data() {
     /* reads from websocket and returns the data */
 
-    int len = ws_con->receive_data(logfile);
+    int len = ws_con->receive_data(this->logfile);
     char *recv_line = new char[len];
 
     tfile.seekg(0, std::ios::beg);
@@ -416,7 +430,6 @@ int exasockets_connection::update_session_attributes() {
 int exasockets_connection::exec_sql(char *sql) {
 
     rapidjson::StringBuffer s;
-//rapidjson::Document d;
     rapidjson::Writer<rapidjson::StringBuffer> writer(s);
 
     writer.StartObject();
@@ -443,7 +456,7 @@ int exasockets_connection::exec_sql(char *sql) {
             if(this->resultSet["responseData"]["results"][0]["resultSet"].HasMember("resultSetHandle")) { // result contains a handle... separate fetching needed
                 return this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
             } else {// resultset without a handle received
-            this->data = &this->resultSet["responseData"]["results"][0]["resultSet"]["data"];
+                this->data = &this->resultSet["responseData"]["results"][0]["resultSet"]["data"][0];
             return 0;
             }
         }
@@ -482,8 +495,8 @@ int64_t exasockets_connection::fetch(int resultSetHandle, size_t startPosition, 
         return -1;
     } else { // something useful received
         if (this->d.HasMember("responseData")) { // a resultset received
-            if(d["responseData"].HasMember("data")) std::cout << "hasmember data" << std::endl;
-            this->data = &this->d["responseData"]["data"];
+            assert(d["responseData"].HasMember("data"));
+            this->data = &this->d["responseData"]["data"][0];
             return this->d["responseData"]["numRows"].GetInt64();
         }
     }

@@ -86,6 +86,14 @@ public:
 
     ~exasockets_connection();
 
+    //! Disconnect from EXASOL DB.
+    /*! If the connection is still alive, a clean disconnect from EXASOL DB is performed.
+     *
+     * @param throw_message If true, a status message is thrown to stdout.
+     * @return 0 in case of success; 1 if EXASOL refuses to disconnect; -1 if the connection had already been dead.
+     */
+    int disconnect(bool throw_message = true);
+
     int update_session_attributes();
 
     //! Sends an SQL statement to EXASOL and fetches the response.
@@ -108,39 +116,28 @@ public:
     int64_t fetch(int resultSetHandle, size_t startPosition=0, size_t numBytes=10485760);
 
     const char *databaseName() const;
-
     const char *identifierQuoteString() const;
-
     int maxDataMessageSize() const;
-
     int maxIdentifierLength() const;
-
     int maxVarcharLength() const;
-
     const char *productName() const;
-
     int protocolVersion() const;
-
     const char *releaseVersion() const;
-
     uint64_t session_id() const;
-
     const char *timezone() const;
-
     const char *timeZoneBehaviour() const;
-
     bool isStatus() const;
 
     rapidjson::Document resultSet;
-    rapidjson::Document d; // for fetch()
     rapidjson::Value* data = nullptr;
     bool json_debug_output = true; // set to true for cmd line output of all JSON elements
 
 
-private:
+protected:
     Websockets_connection *ws_con;
+    rapidjson::Document d; // for fetch()
     std::ifstream tfile;
-    char *logfile;
+    char *logfile = nullptr; // if nullptr, then the tempfile will be names "EXASockets %timestamp% %random_number%.tmp"
 
     const char *c_databaseName;
     const char *c_identifierQuoteString;
