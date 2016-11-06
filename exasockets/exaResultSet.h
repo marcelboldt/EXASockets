@@ -28,79 +28,84 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 */
 
-//
-// Created by mbo on 02.11.2016.
-//
 
 #ifndef EXASOCKETS_EXARESULTSET_H
 #define EXASOCKETS_EXARESULTSET_H
 
-#define BOOLEAN 1
-#define CHAR 2
-#define DATE 3
-#define DECIMAL 4
-#define DOUBLE 5
-#define GEOMETRY 6
-#define INTERVAL_DS 7
-#define INTERVAL_YM 8
-#define TIMESTAMP 9
-#define TIMESTAMP_TZ 10
-#define VARCHAR 11
+#define EXA_BOOLEAN 301
+#define EXA_CHAR 302
+#define EXA_DATE 303
+#define EXA_DECIMAL 304
+#define EXA_DOUBLE 305
+#define EXA_GEOMETRY 306
+#define EXA_INTERVAL_DS 307
+#define EXA_INTERVAL_YM 308
+#define EXA_TIMESTAMP 309
+#define EXA_TIMESTAMP_TZ 310
+#define EXA_VARCHAR 311
 
 #include <cstdint>
 #include <vector>
-#include <bits/shared_ptr.h>
+#include <memory>
 #include <cstddef>
+#include <cstring>
+
+
 
 class exaTblColumn {
 public:
-    //e.g. new exaTblColumn("col1", BOOLEAN);
-    virtual exaTblColumn(char name, int datatype, int precision = 0, int scale = 0);
+    static exaTblColumn* create(char *name, int datatype, int precision = 0, int scale = 0);
 
-    virtual ~exaTblColumn();
+    exaTblColumn(char *name, int datatype, int precision = 0, int scale = 0);
+    virtual ~exaTblColumn() {};
 
-    virtual void operator[](size_t position);
+  //  virtual void* operator[](size_t position) = 0;
+  //  virtual void appendData(char *data, size_t start) = 0;
+    virtual size_t count() const = 0;
 
-    virtual void appendData(char *data, size_t start = 1;
-
-    size_t stop = 0
-    );
-    int type;
-
-    int count();
-
-private:
-    exaColData data;
-    char name;
+protected:
+    char* name;
     int datatype;
     int precision;
     int scale;
+
 };
 
-template<typename T>
-class exaColData : public exaTblColumn {
+template <typename T>
+class exaColumn : public exaTblColumn {
 public:
-    exaColData();
+    exaColumn(char *name, int datatype, int precision = 0, int scale = 0) : exaTblColumn(name, datatype, precision, scale) {
+       this->name = name;
+       this->datatype = datatype;
+       this->precision = precision;
+       this->scale = scale;
 
-    exaColData(std::vector<T> *data);
+        this->data = new std::vector<T>();
+   } ;
+    // exaColumn(std::vector<T> *data);
+    // exaColumn(char *data);
+    // ~exaColumn();
 
-    exaColData(char *data);
+    // T operator[](size_t position);
+  //  void appendData(char *data, size_t start = 0);
+    size_t count() const;
 
-    T operator[](size_t position);
-
-private:
-    std::vector<T> *data;
+protected:
+    std::vector<T>* data;
 };
 
 
-class exaResultSet {
+class exaResultSetHandler {
 public:
-    exaResultSet();
+    //exaTblColumn* c = new exaColumn<bool>("col1", EXA_BOOLEAN);
+    exaResultSetHandler();
+    ~exaResultSetHandler();
+    int addColumn();
+    int removeColumn();
+    int getRows(int start_row_no, int stop_row_no = -1);
+    int fetchRows(size_t limit, size_t offset);
 
-    exaResultSet getRows(int start_row_no, int stop_row_no = -1);
-
-
-private:
+protected:
     std::vector<std::shared_ptr<exaTblColumn>> columns;
     size_t num_rows;
     int num_cols;

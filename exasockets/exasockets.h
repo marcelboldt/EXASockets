@@ -97,9 +97,15 @@ public:
      */
     int exec_sql(char *sql);
 
-    //TODO: add a fetch method
-    // exec_sql may call fetch internally and return a result set. Question: how is the result set stored best? Own class?
-    int fetch(int handler);
+    //! Fetches a result set.
+    /*! Takes a result set handle ID and fetches a result set, to be stored in the object->data.
+     *
+     * @param resultSetHandle The id of the result set.
+     * @param startPosition  row offset (0-bytes) from which to begin data retrieval. Default: 0
+     * @param numBytes Number of bytes to retrieve. Default: 10485760 (10 MB)
+     * @return the number of rows fetched.
+     */
+    int64_t fetch(int resultSetHandle, size_t startPosition=0, size_t numBytes=10485760);
 
     const char *databaseName() const;
 
@@ -126,7 +132,9 @@ public:
     bool isStatus() const;
 
     rapidjson::Document resultSet;
-    bool json_debug_output = true;
+    rapidjson::Document d; // for fetch()
+    rapidjson::Value* data = nullptr;
+    bool json_debug_output = true; // set to true for cmd line output of all JSON elements
 
 
 private:

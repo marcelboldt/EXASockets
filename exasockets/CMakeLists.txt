@@ -8,7 +8,7 @@ find_package(OpenSSL REQUIRED)
 set(SOURCE_FILES
         exasockets.h exasockets.cpp
         osname.h
-#        exaResultSet.h exaResultSet.cpp exaResultSet.h
+       exaResultSet.h exaResultSet.cpp
         )
 add_library(exasockets ${SOURCE_FILES})
 

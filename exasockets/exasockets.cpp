@@ -414,19 +414,6 @@ int exasockets_connection::update_session_attributes() {
 }
 
 int exasockets_connection::exec_sql(char *sql) {
-    /* Sends an SQL stmt and fetches the result set.
-     * If a result set handle is received instead of data, then this is returned as an int.
-     * Otherwise 0 is returned and the resultSet is stored inside the result set.
-
-    /*
-     *  {
-     "command": "execute",
-     "attributes": {
-             // as defined separately
-     },
-     "sqlText": <string>
- }
-     */
 
     rapidjson::StringBuffer s;
 //rapidjson::Document d;
@@ -445,23 +432,62 @@ int exasockets_connection::exec_sql(char *sql) {
 
     this->resultSet.Parse(ws_receive_data());
 
-    if (!this->resultSet.IsObject()) {
+    if (!this->resultSet.IsObject()) { // nonsense received
         throw "update_session_attributes: Response parsing failed.";
-// std::cout << "update_session_attribute: Response parsing failed." << std::endl;
-    } else if (this->resultSet.HasMember("exception")) {
+        return -2;
+    } else if (this->resultSet.HasMember("exception")) { // DB had a problem
         std::cout << this->resultSet["exception"]["text"].GetString() << std::endl;
-    } else {
-        if (this->resultSet.HasMember("results")) {
-            const rapidjson::Value &results = this->resultSet["results"];
-            assert(results.IsArray());
-            assert(results[1].HasMember("resultSetHandle"));
-            return results[1]["resultSetHandle"].GetInt();
+        return -1;
+  } else { // something useful received
+        if (this->resultSet["responseData"].HasMember("results")) { // a result received
+            if(this->resultSet["responseData"]["results"][0]["resultSet"].HasMember("resultSetHandle")) { // result contains a handle... separate fetching needed
+                return this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
+            } else {// resultset without a handle received
+            this->data = &this->resultSet["responseData"]["results"][0]["resultSet"]["data"];
+            return 0;
+            }
         }
-
-// TODO: parse parameters
-
+        return -3;
     }
 
-    return 0;
+    return -4;
+}
+
+
+
+int64_t exasockets_connection::fetch(int resultSetHandle, size_t startPosition, size_t numBytes) {
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("fetch");
+    writer.Key("resultSetHandle");
+    writer.Int(resultSetHandle);
+    writer.Key("startPosition");
+    writer.Int64(startPosition);
+    writer.Key("numBytes");
+    writer.Int64(numBytes);
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    this->d.Parse(ws_receive_data());
+
+    if (!this->d.IsObject()) { // nonsense received
+        throw "update_session_attributes: Response parsing failed.";
+        return -2;
+    } else if (this->d.HasMember("exception")) { // DB had a problem
+        std::cout << this->d["exception"]["text"].GetString() << std::endl;
+        return -1;
+    } else { // something useful received
+        if (this->d.HasMember("responseData")) { // a resultset received
+            if(d["responseData"].HasMember("data")) std::cout << "hasmember data" << std::endl;
+            this->data = &this->d["responseData"]["data"];
+            return this->d["responseData"]["numRows"].GetInt64();
+        }
+    }
+
+    return -3;
 }
 

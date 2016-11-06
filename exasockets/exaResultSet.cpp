@@ -1,38 +1,91 @@
-//
-// Created by mbo on 02.11.2016.
-//
+/*
+exaResultSet.h and exaResultSet.cpp
+http://www.github.com/marcelboldt/EXASockets
+
+ The MIT License (MIT)
+
+Copyright (C) 2016 Marcel Boldt / EXASOL
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Marcel Boldt <marcel.boldt@exasol.com>
+
+*/
 
 #include "exaResultSet.h"
 
+exaTblColumn* exaTblColumn::create(char *name, int datatype, int precision, int scale) {
 
-}
-
-exaTblColumn::exaTblColumn(char *name, int datatype, int precision, int scale) {
-
-    this->name = *name;
     switch (datatype) {
-        case BOOLEAN :
-            this->type = BOOLEAN;
-            this->data = new exaColData<bool>();
-            break;
-        case CHAR :
-            this->type = CHAR;
-            this->data = new exaColData<char>();
-            break;
+        case EXA_BOOLEAN :
+            return new exaColumn<bool>(name, datatype, precision, scale);
+        case EXA_CHAR :
+         //   return new exaColumn<char[precision]>(name, datatype, precision, scale);
+        case EXA_DATE :
+         //   return new exaColumn<char[10]>(name, datatype, precision, scale);
+        case EXA_DECIMAL :
+         //   return new exaColumn<int32_t>();
+        case EXA_DOUBLE :
+        //    return new exaColumn<double>();
+            /*  case EXA_GEOMETRY :
+                  this->data = new exaColumn<char[20]>();
+                  break; */
+            /*   case EXA_INTERVAL_DS :
+                   this->data = new exaColumn<char[20]>();
+                   break; */
+            /*   case EXA_INTERVAL_YM :
+                   this->data = new exaColumn<char[20]>();
+                   break; */
+            /*   case EXA_TIMESTAMP :
+                   this->data = new exaColumn<char[20]>();
+                   break; */
+            /*    case EXA_TIMESTAMP_TZ :
+                    this->data = new exaColumn<char[20]>();
+                    break; */
+        case EXA_VARCHAR :
+        //    return new exaColumn<char*>(name, datatype, precision, scale);
         default:
             throw "unknown datatype";
     }
 }
 
+exaTblColumn::exaTblColumn(char *name, int datatype, int precision, int scale) {
+
+    this->name = name;
+    this->datatype = datatype;
+    this->precision = precision;
+    this->scale = scale;
 }
 
-c = new exaTblColumn("col1", BOOLEAN);
-c.
+template <typename T>
+size_t exaColumn<T>::count() const  {
+    //return this->data->size();
+    return 0;
+}
+/*
+template <typename T>
+void exaColumn<T>::appendData(char *data, size_t start) {
+    switch (this->datatype) {
+        case EXA_BOOLEAN :
 
-appendData(char *data, size_t start = 1;
+            break;
+    }
+}
 
-size_t stop = 0
-);
-c[10]; // returns row 10
-
-
+*/

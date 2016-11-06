@@ -1,6 +1,5 @@
 /*
-websockets.cpp and websockets.h
-http://www.github.com/marcelboldt/websockets
+http://www.github.com/marcelboldt/EXASockets
 
  The MIT License (MIT)
 
@@ -44,29 +43,31 @@ int main() {
 
     std::cout << exaws->session_id() << std::endl;
 
-    for (int i = 1; i <= 100; i++) {
+    for (int i = 1; i <= 1; i++) {
 
         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-        exaws->exec_sql("select * from pub1092.flights limit 1");
+        int h = exaws->exec_sql("select * from pub1092.flights limit 500");
+       // int h = exaws->exec_sql("select * from test.bools");
+        if (h > 0) std::cout << "rows fetched: " << exaws->fetch(h, 0, (10485760*3)) << std::endl;
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
         std::cout << "Duration " << i << " : " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000
                   << " ms." << std::endl;
     }
 
+    std::cout << "numResults: " << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
+    std::cout << "data col: " << exaws->data[0][0].GetInt() << std::endl;
 
-  //  const rapidjson::Value &a = exaws->resultSet["responseData"]["results"];
-  //  assert(a.IsArray());
-  //  assert(a[1].IsString());
 
-     std::cout << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
-    // std::cout << exaws->resultSet["responseData"]["results"][1]["resultSet"]["columns"][1]["name"].GetString() << std::endl;
- //   }
-//rapidjson::Document d;
-//d.Parse(a[1].GetString());
+/*
+    const rapidjson::Value &res_data = exaws->resultSet["responseData"]["results"][0]["resultSet"]["data"];
+    std::cout << "numResults: " << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
+    static const char* kTypeNames[] =
+            { "Null", "False", "True", "Object", "Array", "String", "Number" };
+    std::cout << "A0 : " << kTypeNames[res_data[0][1].GetType()] << std::endl; // [col]][row]
 
-//std::cout << d["resultSet"].GetBool() << std::endl;
+*/
 
-    delete exaws;
+
     return 0;
 }

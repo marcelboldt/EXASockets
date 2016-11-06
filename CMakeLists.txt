@@ -12,4 +12,6 @@ set(SOURCE_FILES
 
 
 add_executable(EXASockets ${SOURCE_FILES})
+add_executable(exaresultset exaresultset.cpp)
 target_link_libraries(EXASockets exasockets)
+target_link_libraries(exaresultset exasockets)
