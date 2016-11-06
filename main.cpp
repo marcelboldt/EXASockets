@@ -31,7 +31,6 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include <iostream>
 #include "exasockets/exasockets.h"
 
-
 int main() {
 
     exasockets_connection *exaws;
@@ -39,35 +38,25 @@ int main() {
         exaws = new exasockets_connection("192.168.137.10", 8563, "MBO", "sys", "exasol", 6, false);
     } catch (const char *msg) {
         std::cerr << msg << std::endl;
+        exit(-1);
     }
 
     std::cout << exaws->session_id() << std::endl;
 
-    for (int i = 1; i <= 1; i++) {
-
         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-        int h = exaws->exec_sql("select * from pub1092.flights limit 500");
-       // int h = exaws->exec_sql("select * from test.bools");
-        if (h > 0) std::cout << "rows fetched: " << exaws->fetch(h, 0, (10485760*3)) << std::endl;
+    int h = exaws->exec_sql("select * from pub1092.flights limit 100000");
+    if (h > 0) { // a result set handle received (result set >= 1000 rows))
+        std::cout << "rows fetched: " << exaws->fetch(h, 0, (10485760 * 30)) << std::endl;
+    }
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-        std::cout << "Duration " << i << " : " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000
-                  << " ms." << std::endl;
-    }
+    std::cout << "Duration " << " : "
+              << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000
+              << " ms." << std::endl;
 
     std::cout << "numResults: " << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
-    std::cout << "data col: " << exaws->data[0][0].GetInt() << std::endl;
+    std::cout << "First data field: " << exaws->data[0][0].GetInt() << std::endl; // first col, first row
 
-
-/*
-    const rapidjson::Value &res_data = exaws->resultSet["responseData"]["results"][0]["resultSet"]["data"];
-    std::cout << "numResults: " << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
-    static const char* kTypeNames[] =
-            { "Null", "False", "True", "Object", "Array", "String", "Number" };
-    std::cout << "A0 : " << kTypeNames[res_data[0][1].GetType()] << std::endl; // [col]][row]
-
-*/
-
-
+    delete (exaws);
     return 0;
 }

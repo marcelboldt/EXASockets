@@ -1,8 +1,8 @@
 var hierarchy =
 [
-    [ "exaResultSet", "classexa_result_set.html", null ],
+    ["exaResultSetHandler", "classexa_result_set_handler.html", null],
     [ "exasockets_connection", "classexasockets__connection.html", null ],
     [ "exaTblColumn", "classexa_tbl_column.html", [
-      [ "exaColData< T >", "classexa_col_data.html", null ]
+        ["exaColumn< T >", "classexa_column.html", null]
     ] ]
 ];

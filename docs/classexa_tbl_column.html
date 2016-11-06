@@ -83,10 +83,13 @@ $(document).ready(function(){initNavTree('classexa_tbl_column.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+      <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+      <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classexa_tbl_column-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">exaTblColumn Class Reference</div>  </div>
+      <div class="title">exaTblColumn Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span>
+      </div>
+  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
@@ -95,30 +98,82 @@ Inheritance diagram for exaTblColumn:</div>
  <div class="center">
   <img src="classexa_tbl_column.png" usemap="#exaTblColumn_map" alt=""/>
   <map id="exaTblColumn_map" name="exaTblColumn_map">
-<area href="classexa_col_data.html" alt="exaColumn&lt; T &gt;" shape="rect" coords="0,56,108,80"/>
+      <area href="classexa_column.html" alt="exaColumn&lt; T &gt;" shape="rect" coords="0,56,105,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2c2b23be1d6b44aca9275e9ad3762de2"><td class="memItemLeft" align="right" valign="top"><a id="a2c2b23be1d6b44aca9275e9ad3762de2"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>exaTblColumn</b> (char name, int datatype, int precision=0, int scale=0)</td></tr>
-<tr class="separator:a2c2b23be1d6b44aca9275e9ad3762de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a488030bea49a79dd4b4d50a7fc211307"><td class="memItemLeft" align="right" valign="top"><a id="a488030bea49a79dd4b4d50a7fc211307"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (size_t position)</td></tr>
-<tr class="separator:a488030bea49a79dd4b4d50a7fc211307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8757f84aaffc38f4c0ad37191c1dfb6"><td class="memItemLeft" align="right" valign="top"><a id="af8757f84aaffc38f4c0ad37191c1dfb6"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>appendData</b> (char *data, size_t start=1;size_t stop=0)</td></tr>
-<tr class="separator:af8757f84aaffc38f4c0ad37191c1dfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaec6fed88cc838eeb717cd54f2dbd775"><td class="memItemLeft" align="right" valign="top"><a id="aaec6fed88cc838eeb717cd54f2dbd775"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> ()</td></tr>
-<tr class="separator:aaec6fed88cc838eeb717cd54f2dbd775"><td class="memSeparator" colspan="2">&#160;</td></tr>
+    <tr class="memitem:a7af9115bfdc2c7da27b5160260842782">
+        <td class="memItemLeft" align="right" valign="top"><a id="a7af9115bfdc2c7da27b5160260842782"></a>
+            &#160;</td>
+        <td class="memItemRight" valign="bottom"><b>exaTblColumn</b> (char *name, int datatype, int precision=0, int
+            scale=0)
+        </td>
+    </tr>
+    <tr class="separator:a7af9115bfdc2c7da27b5160260842782">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
+    <tr class="memitem:a0ec14849d72436e31a5a29d401ce540e">
+        <td class="memItemLeft" align="right" valign="top"><a id="a0ec14849d72436e31a5a29d401ce540e"></a>
+            virtual size_t&#160;</td>
+        <td class="memItemRight" valign="bottom"><b>count</b> () const =0</td>
+    </tr>
+    <tr class="separator:a0ec14849d72436e31a5a29d401ce540e">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ae2e1473bcf4e3045c777b91783a3849b"><td class="memItemLeft" align="right" valign="top"><a id="ae2e1473bcf4e3045c777b91783a3849b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
-<tr class="separator:ae2e1473bcf4e3045c777b91783a3849b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+    <tr class="heading">
+        <td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+            Static Public Member Functions</h2></td>
+    </tr>
+    <tr class="memitem:afc19b2b4cec65a3384db76df4046409c">
+        <td class="memItemLeft" align="right" valign="top"><a id="afc19b2b4cec65a3384db76df4046409c"></a>
+            static <a class="el" href="classexa_tbl_column.html">exaTblColumn</a> *&#160;</td>
+        <td class="memItemRight" valign="bottom"><b>create</b> (char *name, int datatype, int precision=0, int scale=0)
+        </td>
+    </tr>
+    <tr class="separator:afc19b2b4cec65a3384db76df4046409c">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
+</table>
+    <table class="memberdecls">
+        <tr class="heading">
+            <td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+                Protected Attributes</h2></td>
+        </tr>
+        <tr class="memitem:a026852399e682340cf6953127b0d2114">
+            <td class="memItemLeft" align="right" valign="top"><a id="a026852399e682340cf6953127b0d2114"></a>
+                char *&#160;</td>
+            <td class="memItemRight" valign="bottom"><b>name</b></td>
+        </tr>
+        <tr class="separator:a026852399e682340cf6953127b0d2114">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:aa9c635a3e9695deae3e0de86b46e7bcf">
+            <td class="memItemLeft" align="right" valign="top"><a id="aa9c635a3e9695deae3e0de86b46e7bcf"></a>
+                int&#160;</td>
+            <td class="memItemRight" valign="bottom"><b>datatype</b></td>
+        </tr>
+        <tr class="separator:aa9c635a3e9695deae3e0de86b46e7bcf">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:a0d78bef4ae8f43c3d1e19675b5d9347e">
+            <td class="memItemLeft" align="right" valign="top"><a id="a0d78bef4ae8f43c3d1e19675b5d9347e"></a>
+                int&#160;</td>
+            <td class="memItemRight" valign="bottom"><b>precision</b></td>
+        </tr>
+        <tr class="separator:a0d78bef4ae8f43c3d1e19675b5d9347e">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+        <tr class="memitem:aa1dfed3c54e4fb70c08a6a061b752d90">
+            <td class="memItemLeft" align="right" valign="top"><a id="aa1dfed3c54e4fb70c08a6a061b752d90"></a>
+                int&#160;</td>
+            <td class="memItemRight" valign="bottom"><b>scale</b></td>
+        </tr>
+        <tr class="separator:aa1dfed3c54e4fb70c08a6a061b752d90">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>exasockets/<a class="el" href="exa_result_set_8h_source.html">exaResultSet.h</a></li>
