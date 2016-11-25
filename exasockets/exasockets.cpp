@@ -466,12 +466,27 @@ int exasockets_connection::exec_sql(char *sql) {
     return -4;
 }
 
+void appendValue(rapidjson::Value &v1, rapidjson::Value &v2, rapidjson::Document::AllocatorType &alloc) {
+
+    for (auto i1 = 0; i1 < v2.Size(); i1++) {
+        for (auto &i2 : v2[i1].GetArray()) {
+            v1[i1].PushBack(i2, alloc);
+        }
+    }
+}
 
 
-int64_t exasockets_connection::fetch(int resultSetHandle, size_t startPosition, size_t numBytes) {
+int64_t exasockets_connection::fetch(int resultSetHandle, uint64_t numRows, uint64_t startPosition, uint64_t numBytes) {
 
     rapidjson::StringBuffer s;
     rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+    rapidjson::Document d0, d1;
+
+    uint64_t nr2, nr_here;
+
+    if (numRows == 0) {
+        numRows = this->resultSet["responseData"]["results"][0]["resultSet"]["numRows"].GetInt();
+    }
 
     writer.StartObject();
     writer.Key("command");
@@ -479,10 +494,11 @@ int64_t exasockets_connection::fetch(int resultSetHandle, size_t startPosition, 
     writer.Key("resultSetHandle");
     writer.Int(resultSetHandle);
     writer.Key("startPosition");
-    writer.Int64(startPosition);
+    writer.Int64(startPosition - 1);
     writer.Key("numBytes");
     writer.Int64(numBytes);
     writer.EndObject();
+
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
     this->d.Parse(ws_receive_data());
@@ -495,12 +511,40 @@ int64_t exasockets_connection::fetch(int resultSetHandle, size_t startPosition, 
         return -1;
     } else { // something useful received
         if (this->d.HasMember("responseData")) { // a resultset received
-            assert(d["responseData"].HasMember("data"));
-            this->data = &this->d["responseData"]["data"][0];
-            return this->d["responseData"]["numRows"].GetInt64();
+            assert(this->d["responseData"].HasMember("data"));
+            this->data = &this->d["responseData"]["data"];
+
+            nr_here = this->d["responseData"]["numRows"].GetUint64();
+
+            if (nr_here < numRows) {
+
+                d1.CopyFrom(this->d, d1.GetAllocator());
+                // rapidjson::Value& v1 = d1["responseData"]["data"][0];
+
+                nr2 = fetch(resultSetHandle, numRows - nr_here, startPosition + nr_here, numBytes);
+
+                //appendValue(v1, *this->data, d1.GetAllocator());
+
+                assert(this->d["responseData"]["data"].IsArray());
+                assert(this->d["responseData"]["data"][1].IsArray());
+
+                std::cout << this->d["responseData"]["data"][0].GetType() << std::endl;
+
+                for (auto i = 0; i < this->data->Size(); i++) {
+                    for (auto i2 = 0; i2 < this->data[i].Size(); i2++) {
+                        //  for (auto& item : this->data[i].GetArray()) {
+                        d1["responseData"]["data"][i].PushBack(this->data[i][i2].GetObject(), d1.GetAllocator());
+                    }
+                    //  }
+                }
+
+                nr_here += nr2;
+
+                this->d.CopyFrom(d1, this->d.GetAllocator());
+                this->data = &this->d["responseData"]["data"];
+            }
+            return nr_here;
         }
     }
-
     return -3;
 }
-

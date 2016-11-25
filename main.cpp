@@ -31,7 +31,15 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include <iostream>
 #include "exasockets/exasockets.h"
 
-int main() {
+int main(int argc, char **argv) {
+
+    char *sql_stmt;
+
+    if (argc > 1) {
+        sql_stmt = argv[1];
+    } else {
+        sql_stmt = "select * from pub1092.flights;";
+    }
 
     exasockets_connection *exaws;
     try {
@@ -44,9 +52,10 @@ int main() {
     std::cout << exaws->session_id() << std::endl;
 
         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    int h = exaws->exec_sql("select * from pub1092.flights limit 100000");
+    int h = exaws->exec_sql(sql_stmt);
     if (h > 0) { // a result set handle received (result set >= 1000 rows))
-        std::cout << "rows fetched: " << exaws->fetch(h, 0, (10485760 * 30)) << std::endl;
+        std::cout << "rows fetched: " << exaws->fetch(h, 0, 1, (10485760 * 30)) << std::endl;
+
     }
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
@@ -54,8 +63,12 @@ int main() {
               << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000
               << " ms." << std::endl;
 
+
     std::cout << "numResults: " << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
     std::cout << "First data field: " << exaws->data[0][0].GetInt() << std::endl; // first col, first row
+
+
+
 
     delete (exaws);
     return 0;

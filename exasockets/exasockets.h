@@ -31,16 +31,16 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #ifndef EXASOCKETS_EXASOCKETS_H
 #define EXASOCKETS_EXASOCKETS_H
 
-#include "../../sockets/websockets/websockets.h"
+#include "../../websockets/websockets/websockets.h"
 #include "osname.h"
+
 #include "../rapidjson/document.h"
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
+#include "../../rapidjson/allocators.h"
 #include<iostream>
 #include <openssl/pem.h>
-//#include <openssl/ssl.h>
 #include <openssl/rsa.h>
-//#include <openssl/evp.h>
 #include <openssl/bio.h>
 #include <openssl/err.h>
 
@@ -109,11 +109,13 @@ public:
     /*! Takes a result set handle ID and fetches a result set, to be stored in the object->data.
      *
      * @param resultSetHandle The id of the result set.
-     * @param startPosition  row offset (0-bytes) from which to begin data retrieval. Default: 0
-     * @param numBytes Number of bytes to retrieve. Default: 10485760 (10 MB)
+     * @param numRows Amount of rows to fetch. Default: 10 000
+     * @param startPosition  row offset from which to begin data retrieval (first row of the table: row 1). Default: 1
+     * @param numBytes Number of bytes to retrieve. Default: 10 485 760 (10 MB)
      * @return the number of rows fetched.
      */
-    int64_t fetch(int resultSetHandle, size_t startPosition=0, size_t numBytes=10485760);
+    int64_t
+    fetch(int resultSetHandle, uint64_t numRows = 10000, uint64_t startPosition = 1, uint64_t numBytes = 10485760);
 
     const char *databaseName() const;
     const char *identifierQuoteString() const;
@@ -129,7 +131,7 @@ public:
     bool isStatus() const;
 
     rapidjson::Document resultSet;
-    rapidjson::Value* data = nullptr;
+    rapidjson::Value *data;
     bool json_debug_output = true; // set to true for cmd line output of all JSON elements
 
 

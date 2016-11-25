@@ -78,14 +78,8 @@ size_t exaColumn<T>::count() const  {
     //return this->data->size();
     return 0;
 }
-/*
-template <typename T>
-void exaColumn<T>::appendData(char *data, size_t start) {
-    switch (this->datatype) {
-        case EXA_BOOLEAN :
 
-            break;
-    }
+template<typename T>
+void exaColumn<T>::appendData(void *value) {
+    this->data.push_back(*static_cast<T *>(value));
 }
-
-*/

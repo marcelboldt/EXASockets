@@ -60,7 +60,7 @@ public:
     virtual ~exaTblColumn() {};
 
   //  virtual void* operator[](size_t position) = 0;
-  //  virtual void appendData(char *data, size_t start) = 0;
+  virtual void appendData(void *value) = 0;
     virtual size_t count() const = 0;
 
 protected:
@@ -68,33 +68,35 @@ protected:
     int datatype;
     int precision;
     int scale;
-
 };
 
-template <typename T>
+template<typename T>
 class exaColumn : public exaTblColumn {
 public:
-    exaColumn(char *name, int datatype, int precision = 0, int scale = 0) : exaTblColumn(name, datatype, precision, scale) {
-       this->name = name;
-       this->datatype = datatype;
-       this->precision = precision;
-       this->scale = scale;
+    exaColumn(char *name, int datatype, int precision = 0, int scale = 0) : exaTblColumn(name, datatype, precision,
+                                                                                         scale) {
+        this->name = name;
+        this->datatype = datatype;
+        this->precision = precision;
+        this->scale = scale;
 
-        this->data = new std::vector<T>();
-   } ;
+        //this->data = new std::vector<T>();
+    };
     // exaColumn(std::vector<T> *data);
     // exaColumn(char *data);
     // ~exaColumn();
 
     // T operator[](size_t position);
-  //  void appendData(char *data, size_t start = 0);
+
+    void appendData(void *value);
+
     size_t count() const;
 
 protected:
-    std::vector<T>* data;
+    std::vector<T> data;
 };
 
-
+/*
 class exaResultSetHandler {
 public:
     //exaTblColumn* c = new exaColumn<bool>("col1", EXA_BOOLEAN);
@@ -111,6 +113,6 @@ protected:
     int num_cols;
     int handle;
 };
-
+*/
 
 #endif //EXASOCKETS_EXARESULTSET_H
