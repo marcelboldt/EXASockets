@@ -52,11 +52,7 @@ int main(int argc, char **argv) {
     std::cout << exaws->session_id() << std::endl;
 
         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
-    int h = exaws->exec_sql(sql_stmt);
-    if (h > 0) { // a result set handle received (result set >= 1000 rows))
-        std::cout << "rows fetched: " << exaws->fetch(h, 0, 1, (10485760 * 30)) << std::endl;
-
-    }
+    exaResultSetHandler *h = exaws->exec_sql(sql_stmt);
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
     std::cout << "Duration " << " : "
@@ -64,10 +60,7 @@ int main(int argc, char **argv) {
               << " ms." << std::endl;
 
 
-    std::cout << "numResults: " << exaws->resultSet["responseData"]["numResults"].GetInt() << std::endl;
-    std::cout << "First data field: " << exaws->data[0][0].GetInt() << std::endl; // first col, first row
-
-
+    std::cout << "Test value:" << *static_cast<int32_t *>((*h)[0][1]) << std::endl;
 
 
     delete (exaws);

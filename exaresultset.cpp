@@ -5,7 +5,6 @@
 #include<iostream>
 #include <cstring>
 #include "exasockets/exasockets.h"
-#include "exasockets/exaResultSet.h"
 
 
 int main(int argc, char **argv) {
@@ -28,32 +27,12 @@ int main(int argc, char **argv) {
 
     std::cout << exaws->session_id() << std::endl;
 
-    int h = exaws->exec_sql(sql_stmt);
-    if (h > 0) { // a result set handle received (result set >= 1000 rows))
-        std::cout << "rows fetched: " << exaws->fetch(h, 0, 1, (10485760 * 30)) << std::endl;
+    exaResultSetHandler *rs = exaws->exec_sql("select * from test.bools;");
 
-    }
+    std::cout << "Data Value from result set: " << *static_cast<int32_t *>((*rs)[0][1]) << std::endl;
 
-
-    exaTblColumn *c = exaTblColumn::create("col1", EXA_BOOLEAN);
-    // now iterate through the bool column and insert the data one by one in the exaresultset
-
-    bool b;
-    for (auto &item : exaws->data[1].GetArray()) {
-
-        if (item.IsNull()) {
-            // c->appendData(nullptr); // how to store NULL values? this causes a segfault
-        } else {
-            b = item.GetBool();
-            // bool b = true;
-            c->appendData(&b);
-        }
-    }
-    //
-    //  std::cout << c[1] << std::endl;
-
-    // exaResultSetHandler r = new exaResultSetHandler();
-    // r.addColumn(c);
+    delete (rs);
+    delete (exaws);
 
     return 0;
 }

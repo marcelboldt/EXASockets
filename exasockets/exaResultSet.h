@@ -49,25 +49,99 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include <memory>
 #include <cstddef>
 #include <cstring>
-
+#include <iostream>
 
 
 class exaTblColumn {
 public:
-    static exaTblColumn* create(char *name, int datatype, int precision = 0, int scale = 0);
+    static exaTblColumn *create(char *name, int datatype);
 
     exaTblColumn(char *name, int datatype, int precision = 0, int scale = 0);
     virtual ~exaTblColumn() {};
 
-  //  virtual void* operator[](size_t position) = 0;
-  virtual void appendData(void *value) = 0;
+    //! Returns a void pointer to the value, or a nullptr if the value is NULL.
+    /*!
+     *
+     * @param position A 64 Bit Integer specifying the row position, from 0.
+     * @return A void pointer to the value that may then be static_casted. If the actual value is NULL, a nullptr is returned.
+     */
+    virtual void *operator[](size_t row) = 0;
+
+    //! Returns the value as a 32 Bit integer.
+    /*!
+     *
+     * @param position The (row-)position index within the column, starting from 0.
+     * @return A 32 Bit integer, which is undefined if the value is NULL.
+     */
+    virtual int32_t intVal(size_t row) = 0;
+
+    //! Appends a data object to the column.
+    /*!
+     *
+     * @param value A void pointer to the data object.
+     * @param numRows A boolean setting the NULL flag for this object, i.e. indicating if the value is NULL. A value
+     *  that is valid towards the data type must nevertheless be given (alternatively a nullptr).
+     */
+    virtual void appendData(const void *value, bool null = false) = 0;
+
+    //! Returns a boolean on whether the row specified contains a NULL value.
+    virtual bool is_null(size_t rowno);
+
+    //! Returns the number of rows contained in the column.
     virtual size_t count() const = 0;
+
+    int type() {
+        return datatype;
+    }
+
+    char *getName() const {
+        return name;
+    }
+
+    void setName(char *name) {
+        exaTblColumn::name = name;
+    }
+
+    int getPrecision() const;
+
+    void setPrecision(int precision);
+
+    int getScale() const;
+
+    void setScale(int scale);
+
+    int getSize() const;
+
+    void setSize(int size);
+
+    const std::string &getCharacterSet() const;
+
+    void setCharacterSet(const std::string &characterSet);
+
+    bool isWithLocalTimeTone() const;
+
+    void setWithLocalTimeTone(bool withLocalTimeTone);
+
+    int getFraction() const;
+
+    void setFraction(int fraction);
+
+    int getSrid() const;
+
+    void setSrid(int srid);
 
 protected:
     char* name;
     int datatype;
-    int precision;
-    int scale;
+    int precision = 0;
+    int scale = 0;
+    int size = 0;
+    std::string characterSet = "";
+    bool withLocalTimeTone = 0;
+    int fraction = 0;
+    int srid = 0;
+
+    std::vector<bool> nulls;
 };
 
 template<typename T>
@@ -80,15 +154,16 @@ public:
         this->precision = precision;
         this->scale = scale;
 
-        //this->data = new std::vector<T>();
     };
     // exaColumn(std::vector<T> *data);
     // exaColumn(char *data);
     // ~exaColumn();
 
-    // T operator[](size_t position);
+    void *operator[](size_t row);
 
-    void appendData(void *value);
+    int32_t intVal(size_t row);
+
+    void appendData(const void *value, const bool null = false);
 
     size_t count() const;
 
@@ -96,23 +171,35 @@ protected:
     std::vector<T> data;
 };
 
-/*
+
 class exaResultSetHandler {
 public:
-    //exaTblColumn* c = new exaColumn<bool>("col1", EXA_BOOLEAN);
-    exaResultSetHandler();
-    ~exaResultSetHandler();
-    int addColumn();
-    int removeColumn();
-    int getRows(int start_row_no, int stop_row_no = -1);
-    int fetchRows(size_t limit, size_t offset);
+    //  exaResultSetHandler();
+    //  ~exaResultSetHandler();
+
+    //! Add an exaTblColumn.
+    void addColumn(exaTblColumn *c);
+
+    //! Add an exaTblColumn.
+    void addColumn(std::shared_ptr<exaTblColumn> c);
+
+    // int removeColumn();
+
+    //! Returns the number of columns contained in the result set.
+    size_t cols();
+
+    //! Returns the number of rows contained in the result set.
+    size_t rows();
+
+    exaTblColumn &operator[](size_t col);
+
+    //   int getRows(int start_row_no, int stop_row_no = -1);
+    //   int fetchRows(size_t limit, size_t offset);
 
 protected:
     std::vector<std::shared_ptr<exaTblColumn>> columns;
-    size_t num_rows;
-    int num_cols;
     int handle;
 };
-*/
+
 
 #endif //EXASOCKETS_EXARESULTSET_H

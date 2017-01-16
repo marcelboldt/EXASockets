@@ -30,17 +30,17 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 #include "exaResultSet.h"
 
-exaTblColumn* exaTblColumn::create(char *name, int datatype, int precision, int scale) {
+exaTblColumn *exaTblColumn::create(char *name, int datatype) {
 
     switch (datatype) {
         case EXA_BOOLEAN :
-            return new exaColumn<bool>(name, datatype, precision, scale);
+            return new exaColumn<bool>(name, EXA_BOOLEAN);
         case EXA_CHAR :
          //   return new exaColumn<char[precision]>(name, datatype, precision, scale);
         case EXA_DATE :
          //   return new exaColumn<char[10]>(name, datatype, precision, scale);
         case EXA_DECIMAL :
-         //   return new exaColumn<int32_t>();
+            return new exaColumn<int32_t>(name, EXA_DECIMAL);
         case EXA_DOUBLE :
         //    return new exaColumn<double>();
             /*  case EXA_GEOMETRY :
@@ -73,13 +73,123 @@ exaTblColumn::exaTblColumn(char *name, int datatype, int precision, int scale) {
     this->scale = scale;
 }
 
+bool exaTblColumn::is_null(size_t rowno) {
+    return this->nulls[rowno];
+}
+
+int exaTblColumn::getPrecision() const {
+    return precision;
+}
+
+void exaTblColumn::setPrecision(int precision) {
+    exaTblColumn::precision = precision;
+}
+
+int exaTblColumn::getScale() const {
+    return scale;
+}
+
+void exaTblColumn::setScale(int scale) {
+    exaTblColumn::scale = scale;
+}
+
+int exaTblColumn::getSize() const {
+    return size;
+}
+
+void exaTblColumn::setSize(int size) {
+    exaTblColumn::size = size;
+}
+
+const std::string &exaTblColumn::getCharacterSet() const {
+    return characterSet;
+}
+
+void exaTblColumn::setCharacterSet(const std::string &characterSet) {
+    exaTblColumn::characterSet = characterSet;
+}
+
+bool exaTblColumn::isWithLocalTimeTone() const {
+    return withLocalTimeTone;
+}
+
+void exaTblColumn::setWithLocalTimeTone(bool withLocalTimeTone) {
+    exaTblColumn::withLocalTimeTone = withLocalTimeTone;
+}
+
+int exaTblColumn::getFraction() const {
+    return fraction;
+}
+
+void exaTblColumn::setFraction(int fraction) {
+    exaTblColumn::fraction = fraction;
+}
+
+int exaTblColumn::getSrid() const {
+    return srid;
+}
+
+void exaTblColumn::setSrid(int srid) {
+    exaTblColumn::srid = srid;
+}
+
+
 template <typename T>
 size_t exaColumn<T>::count() const  {
-    //return this->data->size();
-    return 0;
+    return this->data.size();
+}
+
+
+template<typename T>
+void exaColumn<T>::appendData(const void *value, const bool null) {
+    if (value == nullptr) {
+        data.push_back(*new T);
+    } else {
+        this->data.push_back(*static_cast<const T *>(value));
+    }
+    try {
+        this->nulls.push_back(null);
+    } catch (...) {
+        this->data.pop_back();
+        throw "Failed to insert null-value in column";
+    }
 }
 
 template<typename T>
-void exaColumn<T>::appendData(void *value) {
-    this->data.push_back(*static_cast<T *>(value));
+void *exaColumn<T>::operator[](size_t row) {
+    if (this->is_null(row)) return nullptr;
+    return new T(this->data[row]);
 }
+
+template<typename T>
+int32_t exaColumn<T>::intVal(size_t row) {
+    return this->data[row];
+}
+
+
+void exaResultSetHandler::addColumn(exaTblColumn *c) {
+
+    std::shared_ptr<exaTblColumn> c_sh(c);
+    this->columns.push_back(c_sh);
+}
+
+void exaResultSetHandler::addColumn(std::shared_ptr<exaTblColumn> c) {
+
+    this->columns.push_back(c);
+}
+
+size_t exaResultSetHandler::cols() {
+    return this->columns.size();
+}
+
+size_t exaResultSetHandler::rows() {
+    if (this->columns.size() == 0) return 0;
+    return this->columns[0]->count();
+}
+
+exaTblColumn &exaResultSetHandler::operator[](size_t col) {
+    return *this->columns[col];
+}
+
+
+

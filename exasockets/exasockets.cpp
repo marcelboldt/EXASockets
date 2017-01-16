@@ -30,6 +30,7 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 #include "exasockets.h"
 
+
 RSA *createRSA(unsigned char *key, bool publ, int len = -1) {
 // http://hayageek.com/rsa-encryption-decryption-openssl-c/
     RSA *rsa = NULL;
@@ -427,7 +428,87 @@ int exasockets_connection::update_session_attributes() {
     return 0;
 }
 
-int exasockets_connection::exec_sql(char *sql) {
+int StringToExaDatatype(const char *str) {
+    if (strcmp(str, "BOOLEAN") == 0) return EXA_BOOLEAN;
+    if (strcmp(str, "DECIMAL") == 0) return EXA_DECIMAL;
+
+    return 0;
+}
+
+// Inits, composes and returns an exaResultSet from a rapidJSON result set
+exaResultSetHandler *
+exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet,
+                                                                          const rapidjson::Value &JSONdata) {
+
+    exaResultSetHandler *exa_rs = new exaResultSetHandler();
+
+    // for each column in the JSON result set create a new exaTblColumn in the resSetHandler
+
+    for (auto i = 0; i < JSONresultSet["numColumns"].GetInt64(); i++) { //for each column
+
+        // create a new exaTblCol
+
+        std::shared_ptr<exaTblColumn> exa_col(
+                exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
+                                     StringToExaDatatype(
+                                             JSONresultSet["columns"][i]["dataType"]["type"].GetString())
+                ));
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("precision"))
+            exa_col->setPrecision(JSONresultSet["columns"][i]["dataType"]["precision"].GetInt());
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("scale"))
+            exa_col->setScale(JSONresultSet["columns"][i]["dataType"]["scale"].GetInt());
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("size"))
+            exa_col->setSize(JSONresultSet["columns"][i]["dataType"]["size"].GetInt());
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("characterSet"))
+            exa_col->setCharacterSet(JSONresultSet["columns"][i]["dataType"]["characterSet"].GetString());
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("withLocalTimeZone"))
+            exa_col->setWithLocalTimeTone(JSONresultSet["columns"][i]["dataType"]["withLocalTimeZone"].GetBool());
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("fraction"))
+            exa_col->setFraction(JSONresultSet["columns"][i]["dataType"]["fraction"].GetInt());
+
+        if (JSONresultSet["columns"][i]["dataType"].HasMember("srid"))
+            exa_col->setSrid(JSONresultSet["columns"][i]["dataType"]["srid"].GetInt());
+
+
+        // and insert the data
+
+        for (auto &item : JSONdata[i].GetArray()) {     //  iterate through the column and insert the data one by one in the exaresultset
+
+            if (item.IsNull()) {
+                exa_col->appendData(nullptr, true);
+            } else {
+                switch (exa_col->type()) {
+                    case EXA_BOOLEAN : {
+                        auto bool1 = item.GetBool();
+                        exa_col->appendData(&bool1);
+                        break;
+                    }
+                    case EXA_DECIMAL : {// TODO: determine if int or float...
+                        auto int1 = item.GetInt();
+                        exa_col->appendData(&int1);
+                        break;
+                    }
+                }
+            }
+        }
+
+        // then add it to the handler
+        exa_rs->addColumn(exa_col);
+    }
+
+    return exa_rs;
+}
+
+
+exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
+
+    exaResultSetHandler *exa_rs = nullptr;
 
     rapidjson::StringBuffer s;
     rapidjson::Writer<rapidjson::StringBuffer> writer(s);
@@ -441,29 +522,34 @@ int exasockets_connection::exec_sql(char *sql) {
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
 
-   // std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+    // std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 
     this->resultSet.Parse(ws_receive_data());
 
     if (!this->resultSet.IsObject()) { // nonsense received
-        throw "update_session_attributes: Response parsing failed.";
-        return -2;
+        std::cout << "exec_sql: Response parsing failed." << std::endl;
+        throw "exec_sql: Response parsing failed.";
     } else if (this->resultSet.HasMember("exception")) { // DB had a problem
         std::cout << this->resultSet["exception"]["text"].GetString() << std::endl;
-        return -1;
-  } else { // something useful received
-        if (this->resultSet["responseData"].HasMember("results")) { // a result received
-            if(this->resultSet["responseData"]["results"][0]["resultSet"].HasMember("resultSetHandle")) { // result contains a handle... separate fetching needed
-                return this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
-            } else {// resultset without a handle received
-                this->data = &this->resultSet["responseData"]["results"][0]["resultSet"]["data"][0];
-            return 0;
-            }
-        }
-        return -3;
-    }
 
-    return -4;
+    } else { // something useful received
+        if (this->resultSet["responseData"].HasMember("results")) { // a result received
+            if (this->resultSet["responseData"]["results"][0]["resultSet"].HasMember("resultSetHandle")) {
+                // result contains a handle... separate fetching needed
+                //  call fetch(), then return the exaResultSet composed
+                int h = this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
+                this->fetch(h, 0, 1, (10485760 * 30));
+
+
+            } else {// resultset without a handle received
+                // build an exaResultSet and return it. Dispose the JSON resultSet afterwards. Or: redeclare data as exaResultSet.
+                this->data = &this->resultSet["responseData"]["results"][0]["resultSet"]["data"];
+            }
+            const rapidjson::Value &jrs = this->resultSet["responseData"]["results"][0]["resultSet"];
+            exa_rs = this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, *this->data);
+        }
+    }
+    return exa_rs;
 }
 
 void appendValue(rapidjson::Value &v1, rapidjson::Value &v2, rapidjson::Document::AllocatorType &alloc) {
@@ -478,9 +564,13 @@ void appendValue(rapidjson::Value &v1, rapidjson::Value &v2, rapidjson::Document
 
 int64_t exasockets_connection::fetch(int resultSetHandle, uint64_t numRows, uint64_t startPosition, uint64_t numBytes) {
 
+    // recursively fetches until the number of rows are all transferred
+    // stores the json containing the dataset in d, while resultSet keeps the initial JSON containing the handle.
+    // also sets the pointer data to the dataset contained in d.
+
     rapidjson::StringBuffer s;
     rapidjson::Writer<rapidjson::StringBuffer> writer(s);
-    rapidjson::Document d0, d1;
+    rapidjson::Document d0, d1;  // TODO: remove d0, it is not used.
 
     uint64_t nr2, nr_here;
 
@@ -516,21 +606,22 @@ int64_t exasockets_connection::fetch(int resultSetHandle, uint64_t numRows, uint
 
             nr_here = this->d["responseData"]["numRows"].GetUint64();
 
-            if (nr_here < numRows) {
+            if (nr_here < numRows) { // if not completely fetched...
 
-                d1.CopyFrom(this->d, d1.GetAllocator());
+                d1.CopyFrom(this->d, d1.GetAllocator()); // copy d
                 // rapidjson::Value& v1 = d1["responseData"]["data"][0];
 
-                nr2 = fetch(resultSetHandle, numRows - nr_here, startPosition + nr_here, numBytes);
+                nr2 = fetch(resultSetHandle, numRows - nr_here, startPosition + nr_here,
+                            numBytes); // fetch again, overwriting d
 
                 //appendValue(v1, *this->data, d1.GetAllocator());
 
                 assert(this->d["responseData"]["data"].IsArray());
                 assert(this->d["responseData"]["data"][1].IsArray());
 
-                std::cout << this->d["responseData"]["data"][0].GetType() << std::endl;
+                // std::cout << this->d["responseData"]["data"][0].GetType() << std::endl;
 
-                for (auto i = 0; i < this->data->Size(); i++) {
+                for (auto i = 0; i < this->data->Size(); i++) { // insert all the newly fetched data into d1
                     for (auto i2 = 0; i2 < this->data[i].Size(); i2++) {
                         //  for (auto& item : this->data[i].GetArray()) {
                         d1["responseData"]["data"][i].PushBack(this->data[i][i2].GetObject(), d1.GetAllocator());
@@ -540,7 +631,7 @@ int64_t exasockets_connection::fetch(int resultSetHandle, uint64_t numRows, uint
 
                 nr_here += nr2;
 
-                this->d.CopyFrom(d1, this->d.GetAllocator());
+                this->d.CopyFrom(d1, this->d.GetAllocator()); // at the end, cp all back to d and set the data link
                 this->data = &this->d["responseData"]["data"];
             }
             return nr_here;

@@ -33,6 +33,7 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 #include "../../websockets/websockets/websockets.h"
 #include "osname.h"
+#include "exaResultSet.h"
 
 #include "../rapidjson/document.h"
 #include "../rapidjson/writer.h"
@@ -103,7 +104,7 @@ public:
      * @param sql The SQL statement, e.g. 'select * from schema1.tbl1'
      * @return A result handler to be used with fetch() if available, otherwise 0.
      */
-    int exec_sql(char *sql);
+    exaResultSetHandler *exec_sql(char *sql);
 
     //! Fetches a result set.
     /*! Takes a result set handle ID and fetches a result set, to be stored in the object->data.
@@ -131,13 +132,15 @@ public:
     bool isStatus() const;
 
     rapidjson::Document resultSet;
-    rapidjson::Value *data;
+    rapidjson::Value *data; // TODO: remove this
     bool json_debug_output = true; // set to true for cmd line output of all JSON elements
 
 
 protected:
+    exaResultSetHandler *create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet,
+                                                                            const rapidjson::Value &JSONdata);
     Websockets_connection *ws_con;
-    rapidjson::Document d; // for fetch()
+    rapidjson::Document d; // for fetch() - the result set containing a dataset
     std::ifstream tfile;
     char *logfile = nullptr; // if nullptr, then the tempfile will be names "EXASockets %timestamp% %random_number%.tmp"
 
