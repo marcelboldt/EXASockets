@@ -49,14 +49,21 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include <memory>
 #include <cstddef>
 #include <cstring>
+#include <string>
 #include <iostream>
+#include <ctime>
 
 
 class exaTblColumn {
 public:
-    static exaTblColumn *create(char *name, int datatype);
+    static exaTblColumn *create(char *name, int datatype,
+                                int precision = 0, int scale = 0, int size = 0, char *charset = "",
+                                bool w_local_tz = false,
+                                int fraction = 0, int srid = 0);
 
-    exaTblColumn(char *name, int datatype, int precision = 0, int scale = 0);
+    exaTblColumn(char *name, int datatype, int precision = 0, int scale = 0, int size = 0, char *charset = "",
+                 bool w_local_tz = false, int fraction = 0, int srid = 0) {};
+
     virtual ~exaTblColumn() {};
 
     //! Returns a void pointer to the value, or a nullptr if the value is NULL.
@@ -73,7 +80,7 @@ public:
      * @param position The (row-)position index within the column, starting from 0.
      * @return A 32 Bit integer, which is undefined if the value is NULL.
      */
-    virtual int32_t intVal(size_t row) = 0;
+//    virtual int32_t intVal(size_t row) = 0;
 
     //! Appends a data object to the column.
     /*!
@@ -114,9 +121,9 @@ public:
 
     void setSize(int size);
 
-    const std::string &getCharacterSet() const;
+    const char *getCharacterSet() const;
 
-    void setCharacterSet(const std::string &characterSet);
+    void setCharacterSet(const char *characterSet);
 
     bool isWithLocalTimeTone() const;
 
@@ -136,7 +143,7 @@ protected:
     int precision = 0;
     int scale = 0;
     int size = 0;
-    std::string characterSet = "";
+    char *characterSet = "";
     bool withLocalTimeTone = 0;
     int fraction = 0;
     int srid = 0;
@@ -147,12 +154,19 @@ protected:
 template<typename T>
 class exaColumn : public exaTblColumn {
 public:
-    exaColumn(char *name, int datatype, int precision = 0, int scale = 0) : exaTblColumn(name, datatype, precision,
-                                                                                         scale) {
+    exaColumn(char *name, int datatype, int precision = 0, int scale = 0, int size = 0, char *charset = "",
+              bool w_local_tz = false,
+              int fraction = 0, int srid = 0) : exaTblColumn(name, datatype, precision,
+                                                             scale, size, charset, w_local_tz, fraction, srid) {
         this->name = name;
         this->datatype = datatype;
         this->precision = precision;
         this->scale = scale;
+        this->size = size;
+        this->characterSet = charset;
+        this->withLocalTimeTone = w_local_tz;
+        this->fraction = fraction;
+        this->srid = srid;
 
     };
     // exaColumn(std::vector<T> *data);
@@ -161,7 +175,7 @@ public:
 
     void *operator[](size_t row);
 
-    int32_t intVal(size_t row);
+    //   int32_t intVal(size_t row);
 
     void appendData(const void *value, const bool null = false);
 

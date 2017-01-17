@@ -428,10 +428,33 @@ int exasockets_connection::update_session_attributes() {
     return 0;
 }
 
-int StringToExaDatatype(const char *str) {
+int exasockets_connection::StringToExaDatatype(const char *str) {
     if (strcmp(str, "BOOLEAN") == 0) return EXA_BOOLEAN;
+    if (strcmp(str, "CHAR") == 0) return EXA_CHAR;
+    if (strcmp(str, "DATE") == 0) return EXA_DATE;
     if (strcmp(str, "DECIMAL") == 0) return EXA_DECIMAL;
+    if (strcmp(str, "DOUBLE") == 0) return EXA_DOUBLE;
+    if (strcmp(str, "GEOMETRY") == 0) return EXA_GEOMETRY;
+    if (strcmp(str, "INTERVAL_DS") == 0) return EXA_INTERVAL_DS;
+    if (strcmp(str, "INTERVAL_YM") == 0) return EXA_INTERVAL_YM;
+    if (strcmp(str, "TIMESTAMP") == 0) return EXA_TIMESTAMP;
+    if (strcmp(str, "TIMESTAMP_TZ") == 0) return EXA_TIMESTAMP_TZ;
+    if (strcmp(str, "VARCHAR") == 0) return EXA_VARCHAR;
+    return 0;
+}
 
+char *exasockets_connection::ExaDatatypeToString(const int type) {
+    if (type == EXA_BOOLEAN) return "BOOLEAN";
+    if (type == EXA_CHAR) return "CHAR";
+    if (type == EXA_DATE) return "DATE";
+    if (type == EXA_DECIMAL) return "DECIMAL";
+    if (type == EXA_DOUBLE) return "DOUBLE";
+    if (type == EXA_GEOMETRY) return "GEOMETRY";
+    if (type == EXA_INTERVAL_DS) return "INTERVAL_DS";
+    if (type == EXA_INTERVAL_YM) return "INTERVAL_YM";
+    if (type == EXA_TIMESTAMP) return "TIMESTAMP";
+    if (type == EXA_TIMESTAMP_TZ) return "TIMESTAMP_TZ";
+    if (type == EXA_VARCHAR) return "VARCHAR";
     return 0;
 }
 
@@ -448,33 +471,13 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
 
         // create a new exaTblCol
 
+        //TODO: extract the attributes from JSON one-by-one and insert these into the create()
+
         std::shared_ptr<exaTblColumn> exa_col(
                 exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
                                      StringToExaDatatype(
                                              JSONresultSet["columns"][i]["dataType"]["type"].GetString())
                 ));
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("precision"))
-            exa_col->setPrecision(JSONresultSet["columns"][i]["dataType"]["precision"].GetInt());
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("scale"))
-            exa_col->setScale(JSONresultSet["columns"][i]["dataType"]["scale"].GetInt());
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("size"))
-            exa_col->setSize(JSONresultSet["columns"][i]["dataType"]["size"].GetInt());
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("characterSet"))
-            exa_col->setCharacterSet(JSONresultSet["columns"][i]["dataType"]["characterSet"].GetString());
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("withLocalTimeZone"))
-            exa_col->setWithLocalTimeTone(JSONresultSet["columns"][i]["dataType"]["withLocalTimeZone"].GetBool());
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("fraction"))
-            exa_col->setFraction(JSONresultSet["columns"][i]["dataType"]["fraction"].GetInt());
-
-        if (JSONresultSet["columns"][i]["dataType"].HasMember("srid"))
-            exa_col->setSrid(JSONresultSet["columns"][i]["dataType"]["srid"].GetInt());
-
 
         // and insert the data
 
@@ -489,11 +492,43 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
                         exa_col->appendData(&bool1);
                         break;
                     }
-                    case EXA_DECIMAL : {// TODO: determine if int or float...
-                        auto int1 = item.GetInt();
-                        exa_col->appendData(&int1);
+                    case EXA_CHAR : {
+                        std::string str1 = item.GetString();
+                        exa_col->appendData(&str1);
                         break;
                     }
+                    case EXA_DATE : {
+                        std::string s = item.GetString();
+                        exa_col->appendData(&s);
+                        break;
+                    }
+                    case EXA_DECIMAL : {// TODO: determine if int or float...
+                        std::string str1;
+                        if (item.IsString()) { // a decimal with scale > 0
+                            str1 = item.GetString();
+
+                        } else {
+                            str1 = std::to_string(item.GetInt());
+                        }
+                        exa_col->appendData(&str1);
+                        break;
+                    }
+                    case EXA_DOUBLE : {
+                        double d1 = item.GetDouble();
+                        exa_col->appendData(&d1);
+                        break;
+                    }
+                    case EXA_TIMESTAMP : {
+                        std::string s = item.GetString();
+                        exa_col->appendData(&s);
+                        break;
+                    }
+                    case EXA_VARCHAR : {
+                        std::string str1 = item.GetString();
+                        exa_col->appendData(&str1);
+                        break;
+                    }
+
                 }
             }
         }

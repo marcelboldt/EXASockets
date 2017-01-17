@@ -6,6 +6,13 @@
 #include <cstring>
 #include "exasockets/exasockets.h"
 
+template<typename T>
+void printValue(exaResultSetHandler *rs, int col, int row) {
+    std::cout << "- Column: " << col << " | Row: " << row << std::endl;
+    std::cout << "    + Type: " << exasockets_connection::ExaDatatypeToString((*rs)[col].type()) << std::endl;
+    std::cout << "    + Value: " << *static_cast<T *>((*rs)[col][row]) << std::endl;
+}
+
 
 int main(int argc, char **argv) {
 
@@ -14,7 +21,7 @@ int main(int argc, char **argv) {
     if (argc > 1) {
         sql_stmt = argv[1];
     } else {
-        sql_stmt = "select * from test.bools;";
+        sql_stmt = "select * from pub1092.flights";
     }
 
     exasockets_connection *exaws;
@@ -27,9 +34,18 @@ int main(int argc, char **argv) {
 
     std::cout << exaws->session_id() << std::endl;
 
-    exaResultSetHandler *rs = exaws->exec_sql("select * from test.bools;");
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    exaResultSetHandler *rs = exaws->exec_sql(sql_stmt);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
-    std::cout << "Data Value from result set: " << *static_cast<int32_t *>((*rs)[0][1]) << std::endl;
+    printValue<std::string>(rs, 0, 0);
+    printValue<bool>(rs, 1, 0);
+    printValue<std::string>(rs, 2, 0);
+    printValue<std::string>(rs, 3, 0);
+    printValue<double>(rs, 4, 0);
+    printValue<std::string>(rs, 5, 0);
+    printValue<std::string>(rs, 6, 0);
+    printValue<std::string>(rs, 7, 0);
 
     delete (rs);
     delete (exaws);

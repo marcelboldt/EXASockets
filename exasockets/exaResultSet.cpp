@@ -30,19 +30,21 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 #include "exaResultSet.h"
 
-exaTblColumn *exaTblColumn::create(char *name, int datatype) {
+exaTblColumn *
+exaTblColumn::create(char *name, int datatype, int precision, int scale, int size, char *charset, bool w_local_tz,
+                     int fraction, int srid) {
 
     switch (datatype) {
         case EXA_BOOLEAN :
             return new exaColumn<bool>(name, EXA_BOOLEAN);
         case EXA_CHAR :
-         //   return new exaColumn<char[precision]>(name, datatype, precision, scale);
+            return new exaColumn<std::string>(name, EXA_CHAR);
         case EXA_DATE :
-         //   return new exaColumn<char[10]>(name, datatype, precision, scale);
+            return new exaColumn<std::string>(name, EXA_DATE);
         case EXA_DECIMAL :
-            return new exaColumn<int32_t>(name, EXA_DECIMAL);
+            return new exaColumn<std::string>(name, EXA_DECIMAL);
         case EXA_DOUBLE :
-        //    return new exaColumn<double>();
+            return new exaColumn<double>(name, EXA_DOUBLE);
             /*  case EXA_GEOMETRY :
                   this->data = new exaColumn<char[20]>();
                   break; */
@@ -52,26 +54,18 @@ exaTblColumn *exaTblColumn::create(char *name, int datatype) {
             /*   case EXA_INTERVAL_YM :
                    this->data = new exaColumn<char[20]>();
                    break; */
-            /*   case EXA_TIMESTAMP :
-                   this->data = new exaColumn<char[20]>();
-                   break; */
+        case EXA_TIMESTAMP :
+            return new exaColumn<std::string>(name, EXA_TIMESTAMP);
             /*    case EXA_TIMESTAMP_TZ :
                     this->data = new exaColumn<char[20]>();
                     break; */
         case EXA_VARCHAR :
-        //    return new exaColumn<char*>(name, datatype, precision, scale);
+            return new exaColumn<std::string>(name, EXA_VARCHAR);
         default:
             throw "unknown datatype";
     }
 }
 
-exaTblColumn::exaTblColumn(char *name, int datatype, int precision, int scale) {
-
-    this->name = name;
-    this->datatype = datatype;
-    this->precision = precision;
-    this->scale = scale;
-}
 
 bool exaTblColumn::is_null(size_t rowno) {
     return this->nulls[rowno];
@@ -101,13 +95,14 @@ void exaTblColumn::setSize(int size) {
     exaTblColumn::size = size;
 }
 
-const std::string &exaTblColumn::getCharacterSet() const {
+const char *exaTblColumn::getCharacterSet() const {
     return characterSet;
 }
 
-void exaTblColumn::setCharacterSet(const std::string &characterSet) {
+/*
+void exaTblColumn::setCharacterSet(char* characterSet) {
     exaTblColumn::characterSet = characterSet;
-}
+}*/
 
 bool exaTblColumn::isWithLocalTimeTone() const {
     return withLocalTimeTone;
@@ -161,10 +156,12 @@ void *exaColumn<T>::operator[](size_t row) {
     return new T(this->data[row]);
 }
 
+/*
 template<typename T>
 int32_t exaColumn<T>::intVal(size_t row) {
     return this->data[row];
 }
+ */
 
 
 void exaResultSetHandler::addColumn(exaTblColumn *c) {

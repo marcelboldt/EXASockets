@@ -87,6 +87,10 @@ public:
 
     ~exasockets_connection();
 
+    static int StringToExaDatatype(const char *str);
+
+    static char *ExaDatatypeToString(const int type);
+
     //! Disconnect from EXASOL DB.
     /*! If the connection is still alive, a clean disconnect from EXASOL DB is performed.
      *
@@ -96,6 +100,7 @@ public:
     int disconnect(bool throw_message = true);
 
     int update_session_attributes();
+
 
     //! Sends an SQL statement to EXASOL and fetches the response.
     /*! Sends an SQL stmt and fetches the result set. If a result set handle is received instead of data, then this is returned as an int.
