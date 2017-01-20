@@ -3,7 +3,7 @@ Interface to the EXASOL DB via JSON over Websockets protocol.
 
 ## Status
 
-Work in progress... 
+Work in progress... but probably already useful.
 
 ### Functionality: 
 
@@ -13,9 +13,13 @@ What basically works:
 - Sending a query
 - Fetching a result set
 
+The result set is stored in an exaResultSet that stores data column-wise in C++ std::vectors 
+of an appropriate data type, depending on the column data type. However, the data type mapping is not yet perfect and
+may be improved in the future.
+
 ### Performance:
 
-The library is entierly C++ with a custom implemnetation of the websocket protocol and relying on rapidJSON, 
+The library is entierly C++ with a custom implementation of the websocket protocol and relying on rapidJSON, 
 which is pretty fast and works well for huge JSONs. Promising so far...
 
 Tested with EXASOL 6 Beta 1: Measured is sending a query and fetching a 
@@ -34,7 +38,7 @@ There is certainly still some error-handling left to do. I appreciate any bug re
 std::shared_pointers were used for some parts, but memory management is probably still messy and will see improvement
  on occasion.
 
-## Example code:
+## Use:
 
 ```C++
 
@@ -55,19 +59,19 @@ int main() {
     // returning the EXASOL session ID
     std::cout << exaws->session_id() << std::endl;
 
-    // sending a query to EXASOL
-    int h = exaws->exec_sql("select * from pub1092.flights limit 100000");
+    // sending a query to EXASOL and receiving a result set
+    exaResultSetHandler *rs = exaws->exec_sql("select * from test.flights;");
     
-    // if exec_sql() returns a handle, use it to fetch the result set
-    // results sets < 1000 rows are immediately fetched by exec_sql()
-    // fetch(handle, row offset / first row to fetch, Bytes to fetch - here 30 MB)
-    if (h > 0) { // a result set handle received (result set >= 1000 rows))
-        std::cout << "rows fetched: " << exaws->fetch(h, 0, (10485760 * 3)) << std::endl;
-    }
 
     // accessing the data 
-    // data is a rapidJSON Value object. For details see the rapidJSON documentation (link below).
-    std::cout << "First data field: " << exaws->data[0][0].GetInt() << std::endl; // first col, first row
+    // data is stored in an exaResultSet. Values can be addressed two-dimensionally [column][row];
+    // returned is a void pointer that may be casted into the appropriate C datatype (see section "Data type mapping").
+    
+    int col = 0; int row = 1; // first column, second row
+   
+    std::cout << "Column name: " << (*rs)[col].getName() << std::endl;
+    std::cout << "Column type: " << exasockets_connection::ExaDatatypeToString((*rs)[col].type()) << std::endl;
+    std::cout << "Value: " << *static_cast<std::string *>((*rs)[col][row]) << std::endl;
 
     // a clean disconnect is done on destruction of the connection object.
     delete (exaws);
@@ -76,6 +80,21 @@ int main() {
 }
 
 ```
+
+### Data type mapping
+
+| EXASOL data type 	| client data type (C++ type) 	|
+|------------------	|-----------------------------	|
+| BOOLEAN          	| bool                        	|
+| CHAR             	| std::string                 	|
+| DATE             	| std::string                 	|
+| DECIMAL          	| std::string                 	|
+| DOUBLE           	| double                      	|
+| GEOMETRY         	| not yet implemented         	|
+| INTERVAL_DS      	| not yet implemented         	|
+| INTERVAL_YM      	| not yet implemented         	|
+| TIMESTAMP        	| std::string                 	|
+| VARCHAR          	| std::string                 	|
 
 
 ## Build
@@ -86,7 +105,7 @@ These libs are intended to work on Windows and POSIX systems. For building the l
 - RapidJSON 1.10, see https://github.com/miloyip/rapidjson/
 - OpenSSL (tested with v1.1.0b 26 Sep 2016), see https://www.openssl.org/
 
-No other non C++ 11 standard libraries (e.g. boost) are needed.
+No other non C++ standard libraries (e.g. boost) are needed.
 
 
 ## Documentation
@@ -95,7 +114,6 @@ Also in progress...
 
 See https://marcelboldt.github.io/EXASockets/
 
-A tutorial for rapidJSON: http://rapidjson.org/md_doc_tutorial.html
 
 ## See also
 
