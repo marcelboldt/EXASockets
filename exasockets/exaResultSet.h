@@ -210,6 +210,10 @@ public:
     //   int getRows(int start_row_no, int stop_row_no = -1);
     //   int fetchRows(size_t limit, size_t offset);
 
+    std::vector<std::shared_ptr<exaTblColumn>> &getColumns() {
+        return this->columns;
+    }
+
 protected:
     std::vector<std::shared_ptr<exaTblColumn>> columns;
     int handle;

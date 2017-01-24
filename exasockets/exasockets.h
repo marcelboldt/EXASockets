@@ -121,7 +121,8 @@ public:
      * @return the number of rows fetched.
      */
     int64_t
-    fetch(int resultSetHandle, uint64_t numRows = 10000, uint64_t startPosition = 1, uint64_t numBytes = 10485760);
+    fetch(exaResultSetHandler *rs, int resultSetHandle, uint64_t numRows = 10000, uint64_t startPosition = 1,
+          uint64_t numBytes = 10485760);
 
     const char *databaseName() const;
     const char *identifierQuoteString() const;
@@ -142,8 +143,7 @@ public:
 
 
 protected:
-    exaResultSetHandler *create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet,
-                                                                            const rapidjson::Value &JSONdata);
+    exaResultSetHandler *create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet);
     Websockets_connection *ws_con;
     rapidjson::Document d; // for fetch() - the result set containing a dataset
     std::ifstream tfile;

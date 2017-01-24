@@ -458,28 +458,11 @@ char *exasockets_connection::ExaDatatypeToString(const int type) {
     return 0;
 }
 
-// Inits, composes and returns an exaResultSet from a rapidJSON result set
-exaResultSetHandler *
-exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet,
-                                                                          const rapidjson::Value &JSONdata) {
+void append_data_from_Rapid_JSON_Document(exaResultSetHandler *rs, const rapidjson::Value &JSONdata) {
 
-    exaResultSetHandler *exa_rs = new exaResultSetHandler();
-
-    // for each column in the JSON result set create a new exaTblColumn in the resSetHandler
-
-    for (auto i = 0; i < JSONresultSet["numColumns"].GetInt64(); i++) { //for each column
-
-        // create a new exaTblCol
-
-        //TODO: extract the attributes from JSON one-by-one and insert these into the create()
-
-        std::shared_ptr<exaTblColumn> exa_col(
-                exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
-                                     StringToExaDatatype(
-                                             JSONresultSet["columns"][i]["dataType"]["type"].GetString())
-                ));
-
-        // and insert the data
+    // and insert the data
+    int i = 0;
+    for (auto exa_col : rs->getColumns()) {// all columns
 
         for (auto &item : JSONdata[i].GetArray()) {     //  iterate through the column and insert the data one by one in the exaresultset
 
@@ -532,10 +515,38 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
                 }
             }
         }
+        i++;
+    }
+}
+
+
+// Inits and returns an exaResultSet from a rapidJSON result set
+exaResultSetHandler *
+exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet) {
+
+    exaResultSetHandler *exa_rs = new exaResultSetHandler();
+
+    // for each column in the JSON result set create a new exaTblColumn in the resSetHandler
+
+    for (auto i = 0; i < JSONresultSet["numColumns"].GetInt64(); i++) { //for each column
+
+        // create a new exaTblCol
+
+        //TODO: extract the attributes from JSON one-by-one and insert these into the create()
+
+        std::shared_ptr<exaTblColumn> exa_col(
+                exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
+                                     StringToExaDatatype(
+                                             JSONresultSet["columns"][i]["dataType"]["type"].GetString())
+                ));
+
+
 
         // then add it to the handler
         exa_rs->addColumn(exa_col);
     }
+
+    // append_data_from_Rapid_JSON_Document(exa_rs, JSONdata);
 
     return exa_rs;
 }
@@ -569,19 +580,22 @@ exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
 
     } else { // something useful received
         if (this->resultSet["responseData"].HasMember("results")) { // a result received
+            const rapidjson::Value &jrs = this->resultSet["responseData"]["results"][0]["resultSet"];
+            exa_rs = this->create_exaResultSetHandler_from_RapidJSON_Document(jrs);
+
+
             if (this->resultSet["responseData"]["results"][0]["resultSet"].HasMember("resultSetHandle")) {
                 // result contains a handle... separate fetching needed
                 //  call fetch(), then return the exaResultSet composed
                 int h = this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
-                this->fetch(h, 0, 1, (10485760 * 30));
+                this->fetch(exa_rs, h, 0, 1, (10485760));
 
 
             } else {// resultset without a handle received
-                // build an exaResultSet and return it. Dispose the JSON resultSet afterwards. Or: redeclare data as exaResultSet.
+                // add data to exaResultSet and return it. TODO: Dispose the JSON resultSet afterwards.
                 this->data = &this->resultSet["responseData"]["results"][0]["resultSet"]["data"];
+                append_data_from_Rapid_JSON_Document(exa_rs, *this->data);
             }
-            const rapidjson::Value &jrs = this->resultSet["responseData"]["results"][0]["resultSet"];
-            exa_rs = this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, *this->data);
         }
     }
     return exa_rs;
@@ -597,11 +611,15 @@ void appendValue(rapidjson::Value &v1, rapidjson::Value &v2, rapidjson::Document
 }
 
 
-int64_t exasockets_connection::fetch(int resultSetHandle, uint64_t numRows, uint64_t startPosition, uint64_t numBytes) {
+int64_t
+exasockets_connection::fetch(exaResultSetHandler *rs, int resultSetHandle, uint64_t numRows, uint64_t startPosition,
+                             uint64_t numBytes) {
 
     // recursively fetches until the number of rows are all transferred
     // stores the json containing the dataset in d, while resultSet keeps the initial JSON containing the handle.
     // also sets the pointer data to the dataset contained in d.
+
+    // std::cout << "Fetch start from row" << startPosition << std::endl;
 
     rapidjson::StringBuffer s;
     rapidjson::Writer<rapidjson::StringBuffer> writer(s);
@@ -639,35 +657,40 @@ int64_t exasockets_connection::fetch(int resultSetHandle, uint64_t numRows, uint
             assert(this->d["responseData"].HasMember("data"));
             this->data = &this->d["responseData"]["data"];
 
+            // append the data to rs
+            append_data_from_Rapid_JSON_Document(rs, *this->data);
+
             nr_here = this->d["responseData"]["numRows"].GetUint64();
 
             if (nr_here < numRows) { // if not completely fetched...
 
-                d1.CopyFrom(this->d, d1.GetAllocator()); // copy d
+
+                //d1.CopyFrom(this->d, d1.GetAllocator()); // copy d
                 // rapidjson::Value& v1 = d1["responseData"]["data"][0];
 
-                nr2 = fetch(resultSetHandle, numRows - nr_here, startPosition + nr_here,
+                nr2 = fetch(rs, resultSetHandle, numRows - nr_here, startPosition + nr_here,
                             numBytes); // fetch again, overwriting d
 
                 //appendValue(v1, *this->data, d1.GetAllocator());
 
-                assert(this->d["responseData"]["data"].IsArray());
-                assert(this->d["responseData"]["data"][1].IsArray());
+                // assert(this->d["responseData"]["data"].IsArray());
+                // assert(this->d["responseData"]["data"][1].IsArray());
 
                 // std::cout << this->d["responseData"]["data"][0].GetType() << std::endl;
-
-                for (auto i = 0; i < this->data->Size(); i++) { // insert all the newly fetched data into d1
-                    for (auto i2 = 0; i2 < this->data[i].Size(); i2++) {
-                        //  for (auto& item : this->data[i].GetArray()) {
-                        d1["responseData"]["data"][i].PushBack(this->data[i][i2].GetObject(), d1.GetAllocator());
-                    }
-                    //  }
-                }
+                /*
+                               for (auto i = 0; i < this->data->Size(); i++) { // insert all the newly fetched data into d1
+                                   for (auto i2 = 0; i2 < this->data[i].Size(); i2++) {
+                                       //  for (auto& item : this->data[i].GetArray()) {
+                                       d1["responseData"]["data"][i].PushBack(this->data[i][i2].GetObject(), d1.GetAllocator());
+                                   }
+                                   //  }
+                               }
+                               */
 
                 nr_here += nr2;
 
-                this->d.CopyFrom(d1, this->d.GetAllocator()); // at the end, cp all back to d and set the data link
-                this->data = &this->d["responseData"]["data"];
+                //  this->d.CopyFrom(d1, this->d.GetAllocator()); // at the end, cp all back to d and set the data link
+                //  this->data = &this->d["responseData"]["data"];
             }
             return nr_here;
         }
