@@ -73,6 +73,13 @@ public:
      * @return A void pointer to the value that may then be static_casted. If the actual value is NULL, a nullptr is returned.
      */
     virtual void *operator[](size_t row) = 0;
+    
+    //! Returns a void pointer to the embedded std::vector
+    /*!
+    *
+    * @return A void pointer to the std::vector.
+    */
+    virtual void *as_std_vector() = 0;
 
     //! Returns the value as a 32 Bit integer.
     /*!
@@ -180,6 +187,11 @@ public:
     void appendData(const void *value, const bool null = false);
 
     size_t count() const;
+    
+    void *as_std_vector() {
+      // returns a pointer to the vector
+      return &this->data;
+    }
 
 protected:
     std::vector<T> data;

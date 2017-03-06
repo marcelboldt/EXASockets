@@ -31,14 +31,14 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #ifndef EXASOCKETS_EXASOCKETS_H
 #define EXASOCKETS_EXASOCKETS_H
 
-#include "../../websockets/websockets/websockets.h"
+#include "../websockets/websockets.h"
 #include "osname.h"
 #include "exaResultSet.h"
 
 #include "../rapidjson/document.h"
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
-#include "../../rapidjson/allocators.h"
+#include "../rapidjson/allocators.h"
 #include<iostream>
 #include <openssl/pem.h>
 #include <openssl/rsa.h>
@@ -46,7 +46,7 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include <openssl/err.h>
 
 
-#include <unistd.h> // gethostname, getlogin
+ // gethostname, getlogin
 
 #define __USE_POSIX
 
@@ -57,6 +57,19 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #endif
 
 #define DRV_NAME "EXASOCKETS 0.1"
+
+
+ struct exas_rsa_bio_create : public std::exception {
+     const char * what() const throw () {
+         return "Error: failed to create RSA bio";
+     }
+ };
+
+ struct exas_rsa_create : public std::exception {
+     const char * what() const throw () {
+         return "Error: failed to create RSA";
+     }
+ };
 
 class exasockets_connection {
 public:
@@ -85,7 +98,7 @@ public:
                           uint64_t sessionId = 0 // 0 -> create randomly
     );
 
-    ~exasockets_connection();
+    virtual ~exasockets_connection();
 
     static int StringToExaDatatype(const char *str);
 
@@ -109,7 +122,7 @@ public:
      * @param sql The SQL statement, e.g. 'select * from schema1.tbl1'
      * @return A result handler to be used with fetch() if available, otherwise 0.
      */
-    exaResultSetHandler *exec_sql(char *sql);
+    virtual exaResultSetHandler *exec_sql(char *sql);
 
     //! Fetches a result set.
     /*! Takes a result set handle ID and fetches a result set, to be stored in the object->data.
@@ -139,12 +152,14 @@ public:
 
     rapidjson::Document resultSet;
     rapidjson::Value *data; // TODO: remove this
-    bool json_debug_output = true; // set to true for cmd line output of all JSON elements
+    bool json_debug_output = false; // set to true for cmd line output of all JSON elements
 
 
 protected:
-    exaResultSetHandler *create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet);
-    Websockets_connection *ws_con;
+    static void append_data_from_Rapid_JSON_Document(exaResultSetHandler *rs, const rapidjson::Value &JSONdata);
+    static exaResultSetHandler *create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet);
+
+    Websockets_connection *ws_con = nullptr;
     rapidjson::Document d; // for fetch() - the result set containing a dataset
     std::ifstream tfile;
     char *logfile = nullptr; // if nullptr, then the tempfile will be names "EXASockets %timestamp% %random_number%.tmp"
