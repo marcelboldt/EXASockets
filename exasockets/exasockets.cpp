@@ -77,8 +77,8 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
 
         strftime(this->logfile, 128, "EXASockets %Y-%m-%d %X", std::localtime(&tt));
         sprintf(this->logfile, "%s %i.tmp", logfile, rand() % 65536);
-        std::ofstream outfile (this->logfile);
-        outfile.close();
+        std::stringstream outfile(this->logfile); //ostream
+        // outfile.close();
     }
 
 
@@ -91,11 +91,11 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
         clientOsUsername = "unknown";
     }
 
-    tfile.open(this->logfile, std::ios::in);
-    if(!tfile.is_open()) {
-        throw std::runtime_error("EXASockets: Couldn't open tempfile.");
-    }
-    Websockets_connection::write_msg_to_file("ws init");
+    // tfile.open(this->logfile, std::ios::in);
+    //  if(!tfile.is_open()) {
+    //      throw std::runtime_error("EXASockets: Couldn't open tempfile.");
+    //  }
+    //  Websockets_connection::write_msg_to_file("ws init");
     ws_con = new Websockets_connection(server, port, clientName);
     if (ws_con == nullptr) throw std::runtime_error("Error: failed to initialise websockets connection");
     if (!ws_con->connected()) throw std::runtime_error("EXASOCKETS: Websockets connection couldn't be established.");
@@ -120,9 +120,11 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
 
 // get LOGIN RESPONSE
 
-    d.Parse(ws_receive_data());
+    //   std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+
+    d.Parse(ws_receive_data().c_str());
     if (!d.IsObject()) {
-        throw std::runtime_error("Response parsing failed.");
+        throw std::runtime_error("Login stage 1: Response parsing failed.");
     } else if (d.HasMember("exception")) {
         throw std::runtime_error(d["exception"]["text"].GetString());
     }
@@ -142,6 +144,7 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
 
 
     RSA *rsa = createRSA(pubkey, true);
+    delete (pubkey);
 // RSA * rsa = RSA_generate_key( 1024, 3, 0 , 0 );
 // PEM_write_RSAPublicKey(stdout, rsa);
     int enc_len = RSA_size(rsa);
@@ -152,6 +155,7 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
     if (RSA_public_encrypt(pwd_len, pwd, encrypted, rsa, RSA_PKCS1_PADDING) == -1) {
         throw std::runtime_error("RSA_public_encrypt failed");
     }
+    delete (pwd);
 //    printf("encrypted: %s\n", encrypted);
 
     BIO *b64 = BIO_new((BIO_METHOD *) BIO_f_base64());
@@ -168,6 +172,7 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
     BIO_free(b64);
     BIO_free(bmem);
     RSA_free(rsa);
+    delete (encrypted);
 
 
 // Build and send the request JSON:
@@ -205,7 +210,7 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
         writer.Int(sessionId);
     }
     writer.Key("clientName");
-    writer.String(clientName);
+    writer.String(host);
     writer.Key("driverName");
     writer.String(driverName);
     writer.Key("clientOs");
@@ -217,7 +222,7 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
     writer.Key("clientVersion");
     writer.String("0.1"); // TODO
     writer.Key("clientRuntime");
-    writer.String("runtime"); // TODO
+    writer.String(clientName);
     writer.Key("attributes");
     writer.StartObject();
     writer.Key("autocommit");
@@ -227,15 +232,17 @@ exasockets_connection::exasockets_connection(const char *server, uint16_t port, 
     writer.EndObject();
     writer.EndObject();
 
+    delete (host);
+    delete (encrypted_b64);
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
 
 
 // get LOGIN RESPONSE
 
-    d.Parse(ws_receive_data());
+    d.Parse(ws_receive_data().c_str());
     if (!d.IsObject()) {
-        throw std::runtime_error("Response parsing failed.");
+        throw std::runtime_error("Login stage 2: Response parsing failed.");
     } else if (d.HasMember("exception")) {
         throw std::runtime_error(d["exception"]["text"].GetString());
     }
@@ -289,7 +296,7 @@ int exasockets_connection::disconnect(bool throw_message) {
 
 // get LOGIN RESPONSE
 
-        d.Parse(ws_receive_data());
+        d.Parse(ws_receive_data().c_str());
         if (!d.IsObject()) {
             throw std::runtime_error("Disconnect: Response parsing failed.");
         } else if (d.HasMember("exception")) {
@@ -302,30 +309,31 @@ int exasockets_connection::disconnect(bool throw_message) {
     } else {
         return -1; // already disconnected
     }
-
 }
 
 exasockets_connection::~exasockets_connection() {
 
     disconnect();
-    if (remove(this->logfile) != 0) throw std::runtime_error("EXASockets tempfile couldn't be deleted. Look for garbage in the application's working directory.");
+    delete (this->ws_con);
+    delete (this->logfile);
+
+    //  if (remove(this->logfile) != 0) throw std::runtime_error("EXASockets tempfile couldn't be deleted. Look for garbage in the application's working directory.");
 }
 
 
-char *exasockets_connection::ws_receive_data() {
+std::string exasockets_connection::ws_receive_data() {
     /* reads from websocket and returns the data */
 
-    int len = ws_con->receive_data(this->logfile);
-    char *recv_line = new char[len];
 
-    tfile.seekg(0, std::ios::beg);
-    tfile.getline(recv_line, len);
+    std::string buf;
+    int len = ws_con->receive_data(&buf);
 
     if (this->json_debug_output) {
-        std::cout << "RECV:" << recv_line << std::endl;
+        std::cout << "RECV:" << buf << std::endl;
     }
 
-    return recv_line;
+
+    return buf;
 }
 
 int exasockets_connection::ws_send_data(const char *data, int len, int type) {
@@ -417,7 +425,7 @@ int exasockets_connection::update_session_attributes() {
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
 
-    d.Parse(ws_receive_data());
+    d.Parse(ws_receive_data().c_str());
 
     if (!d.IsObject()) {
         throw std::runtime_error("update_session_attributes: Response parsing failed.");
@@ -426,6 +434,7 @@ int exasockets_connection::update_session_attributes() {
     } else {
 
         // TODO: parse parameters
+        throw std::runtime_error("update_session_attributes not implemented");
 
     }
     return 0;
@@ -461,12 +470,17 @@ char *exasockets_connection::ExaDatatypeToString(const int type) {
     return 0;
 }
 
+
 void exasockets_connection::append_data_from_Rapid_JSON_Document(exaResultSetHandler *rs, const rapidjson::Value &JSONdata) {
 
     // and insert the data
-    int i = 0;
+    // int i = 0;
 
-    for (auto exa_col : rs->getColumns()) {// all columns
+
+#pragma omp parallel for
+    //  for (auto exa_col : rs->getColumns()) {// all columns
+    for (int i = 0; i < rs->cols(); i++) {
+        auto exa_col = rs->getColumns()[i];
 
         for (auto &item : JSONdata[i].GetArray()) {     //  iterate through the column and insert the data one by one in the exaresultset
 
@@ -519,14 +533,16 @@ void exasockets_connection::append_data_from_Rapid_JSON_Document(exaResultSetHan
                 }
             }
         }
-        i++;
+        //   i++;
     }
+
 }
 
 
 // Inits and returns an exaResultSet from a rapidJSON result set
 exaResultSetHandler *
-exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet) {
+exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet,
+                                                                          int handle) {
 
     exaResultSetHandler *exa_rs = new exaResultSetHandler();
 
@@ -535,12 +551,13 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
         std::shared_ptr<exaTblColumn> exa_col(
                 exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
                                      StringToExaDatatype(
-                                             JSONresultSet["columns"][i]["dataType"]["type"].GetString())
+                                             JSONresultSet["columns"][i]["dataType"]["type"].GetString()),
+                                     JSONresultSet["numRows"].GetInt64()
                 ));
 
         exa_rs->addColumn(exa_col);
     }
-
+    exa_rs->setHandle(handle);
     return exa_rs;
 }
 
@@ -563,7 +580,7 @@ exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
 
     // std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 
-    this->resultSet.Parse(ws_receive_data());
+    this->resultSet.Parse(ws_receive_data().c_str());
 
     if (!this->resultSet.IsObject()) { // nonsense received
         throw std::runtime_error("exec_sql: Response parsing failed.");
@@ -580,6 +597,7 @@ exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
                 // result contains a handle... separate fetching needed
                 //  call fetch(), then return the exaResultSet composed
                 int h = this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
+                exa_rs->setHandle(h);
                 this->fetch(exa_rs, h, 0, 1, (10485760));
 
 
@@ -627,7 +645,7 @@ exasockets_connection::fetch(exaResultSetHandler *rs, int resultSetHandle, uint6
 
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
-    this->d.Parse(ws_receive_data());
+    this->d.Parse(ws_receive_data().c_str());
 
     if (!this->d.IsObject()) { // nonsense received
         throw std::runtime_error("fetch: Response parsing failed.");
@@ -655,3 +673,67 @@ exasockets_connection::fetch(exaResultSetHandler *rs, int resultSetHandle, uint6
     }
     return -3;
 }
+
+exaResultSetHandler *exasockets_connection::create_prepared(char *sql) {
+    // creates a prepared statement
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("createPreparedStatement");
+    writer.Key("sqlText");
+    writer.String(sql);
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+    if (d.IsObject() & d.HasMember("status")) {
+        const rapidjson::Value &jrs = d["responseData"]["results"][0]["resultSet"];
+        int h = d["responseData"]["statementHandle"].GetInt();
+        return this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, h);
+    } else {
+        throw std::runtime_error(d["exception"]["text"].GetString());
+    }
+    return nullptr;
+}
+
+void exasockets_connection::exec_prepared(exaResultSetHandler &rs, size_t start_row, size_t num_rows, bool send) {
+
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("executePreparedStatement");
+    writer.Key("statementHandle");
+    writer.Int(rs.getHandle());
+    writer.Key("numColumns");
+    writer.Int(rs.cols());
+    writer.Key("numRows");
+    writer.Int(num_rows);
+    writer.EndObject();
+
+    if (send) {
+
+    } else {
+
+    }
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+    if (d.IsObject() & d.HasMember("status")) {
+        if (d["status"].GetString() == "ok") {
+            rapidjson::Value &data = d["responseData"]["results"][0]["resultSet"]["data"];
+            this->append_data_from_Rapid_JSON_Document(&rs, data);
+        } else {
+            throw std::runtime_error(d["exception"]["text"].GetString());
+        }
+    }
+    throw std::runtime_error("nonsense received");
+}
+

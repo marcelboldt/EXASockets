@@ -13,5 +13,7 @@ set(SOURCE_FILES
 
 add_executable(EXASockets ${SOURCE_FILES})
 add_executable(exaresultset exaresultset.cpp)
+add_executable(exaprepared exaprepared.cpp)
 target_link_libraries(EXASockets exasockets)
-target_link_libraries(exaresultset exasockets)
+target_link_libraries(exaresultset exasockets -lprofiler -ltcmalloc)
+target_link_libraries(exaprepared exasockets)

@@ -31,7 +31,7 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #ifndef EXASOCKETS_EXASOCKETS_H
 #define EXASOCKETS_EXASOCKETS_H
 
-#include "../websockets/websockets.h"
+#include "../../websockets/websockets/websockets.h"
 #include "osname.h"
 #include "exaResultSet.h"
 
@@ -39,11 +39,12 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include "../rapidjson/writer.h"
 #include "../rapidjson/stringbuffer.h"
 #include "../rapidjson/allocators.h"
-#include<iostream>
+#include <iostream>
 #include <openssl/pem.h>
 #include <openssl/rsa.h>
 #include <openssl/bio.h>
 #include <openssl/err.h>
+#include <omp.h>
 
 
  // gethostname, getlogin
@@ -137,6 +138,10 @@ public:
     fetch(exaResultSetHandler *rs, int resultSetHandle, uint64_t numRows = 10000, uint64_t startPosition = 1,
           uint64_t numBytes = 10485760);
 
+    virtual exaResultSetHandler *create_prepared(char *sql);
+
+    virtual void exec_prepared(exaResultSetHandler &rs, size_t start_row = 0, size_t num_rows = 0, bool send = false);
+
     const char *databaseName() const;
     const char *identifierQuoteString() const;
     int maxDataMessageSize() const;
@@ -157,11 +162,13 @@ public:
 
 protected:
     static void append_data_from_Rapid_JSON_Document(exaResultSetHandler *rs, const rapidjson::Value &JSONdata);
-    static exaResultSetHandler *create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet);
+
+    static exaResultSetHandler *
+    create_exaResultSetHandler_from_RapidJSON_Document(const rapidjson::Value &JSONresultSet, int handle = -1);
 
     Websockets_connection *ws_con = nullptr;
     rapidjson::Document d; // for fetch() - the result set containing a dataset
-    std::ifstream tfile;
+    std::stringstream tfile; // ifstream
     char *logfile = nullptr; // if nullptr, then the tempfile will be names "EXASockets %timestamp% %random_number%.tmp"
 
     const char *c_databaseName;
@@ -180,7 +187,7 @@ protected:
 
     int ws_send_data(const char *data, int len = -1, int type = 1);
 
-    char *ws_receive_data();
+    std::string ws_receive_data();
 
 
 };

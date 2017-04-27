@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['exacolumn',['exaColumn',['../classexa_column.html',1,'']]],
-  ['exaresultsethandler',['exaResultSetHandler',['../classexa_result_set_handler.html',1,'']]],
-  ['exasockets_5fconnection',['exasockets_connection',['../classexasockets__connection.html',1,'exasockets_connection'],['../classexasockets__connection.html#af230009df6b6cc3cbc0e822a0a07b959',1,'exasockets_connection::exasockets_connection()']]],
-  ['exatblcolumn',['exaTblColumn',['../classexa_tbl_column.html',1,'']]],
-  ['exec_5fsql',['exec_sql',['../classexasockets__connection.html#a52f72bbfe4706a1b9c3c0bcf13f945ca',1,'exasockets_connection']]]
+    ['cols', ['cols', ['../classexa_result_set_handler.html#ac7423e36c1d4edee4ec9993bc22a80e6', 1, 'exaResultSetHandler']]],
+    ['count', ['count', ['../classexa_tbl_column.html#a0ec14849d72436e31a5a29d401ce540e', 1, 'exaTblColumn::count()'], ['../classexa_column.html#a1c801ea20c53cd9ad9f15333619554a2', 1, 'exaColumn::count()']]]
 ];

@@ -31,20 +31,21 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include "exaResultSet.h"
 
 exaTblColumn *
-exaTblColumn::create(char *name, int datatype, int precision, int scale, int size, char *charset, bool w_local_tz,
+exaTblColumn::create(char *name, int datatype, size_t num_rows, int precision, int scale, int size, char *charset,
+                     bool w_local_tz,
                      int fraction, int srid) {
 
     switch (datatype) {
         case EXA_BOOLEAN :
-            return new exaColumn<bool>(name, EXA_BOOLEAN);
+            return new exaColumn<bool>(name, EXA_BOOLEAN, num_rows);
         case EXA_CHAR :
-            return new exaColumn<std::string>(name, EXA_CHAR);
+            return new exaColumn<std::string>(name, EXA_CHAR, num_rows);
         case EXA_DATE :
-            return new exaColumn<std::string>(name, EXA_DATE);
+            return new exaColumn<std::string>(name, EXA_DATE, num_rows);
         case EXA_DECIMAL :
-            return new exaColumn<std::string>(name, EXA_DECIMAL);
+            return new exaColumn<std::string>(name, EXA_DECIMAL, num_rows);
         case EXA_DOUBLE :
-            return new exaColumn<double>(name, EXA_DOUBLE);
+            return new exaColumn<double>(name, EXA_DOUBLE, num_rows);
             /*  case EXA_GEOMETRY :
                   this->data = new exaColumn<char[20]>();
                   break; */
@@ -55,12 +56,12 @@ exaTblColumn::create(char *name, int datatype, int precision, int scale, int siz
                    this->data = new exaColumn<char[20]>();
                    break; */
         case EXA_TIMESTAMP :
-            return new exaColumn<std::string>(name, EXA_TIMESTAMP);
+            return new exaColumn<std::string>(name, EXA_TIMESTAMP, num_rows);
             /*    case EXA_TIMESTAMP_TZ :
                     this->data = new exaColumn<char[20]>();
                     break; */
         case EXA_VARCHAR :
-            return new exaColumn<std::string>(name, EXA_VARCHAR);
+            return new exaColumn<std::string>(name, EXA_VARCHAR, num_rows);
         default:
             throw "unknown datatype";
     }
@@ -138,7 +139,9 @@ size_t exaColumn<T>::count() const  {
 template<typename T>
 void exaColumn<T>::appendData(const void *value, const bool null) {
     if (value == nullptr) {
-        data.push_back(*new T);
+        void *p = new T;
+        data.push_back(*static_cast<const T *>(p));
+        delete (p);
     } else {
         this->data.push_back(*static_cast<const T *>(value));
     }
@@ -186,6 +189,14 @@ size_t exaResultSetHandler::rows() {
 
 exaTblColumn &exaResultSetHandler::operator[](size_t col) {
     return *this->columns[col];
+}
+
+int exaResultSetHandler::getHandle() const {
+    return handle;
+}
+
+void exaResultSetHandler::setHandle(int handle) {
+    this->handle = handle;
 }
 
 

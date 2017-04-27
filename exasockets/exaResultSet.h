@@ -32,6 +32,8 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #ifndef EXASOCKETS_EXARESULTSET_H
 #define EXASOCKETS_EXARESULTSET_H
 
+#define COL_DEFAULT_ROWS 1000
+
 #define EXA_BOOLEAN 301
 #define EXA_CHAR 302
 #define EXA_DATE 303
@@ -56,12 +58,13 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 class exaTblColumn {
 public:
-    static exaTblColumn *create(char *name, int datatype,
+    static exaTblColumn *create(char *name, int datatype, size_t num_rows = COL_DEFAULT_ROWS,
                                 int precision = 0, int scale = 0, int size = 0, char *charset = "",
                                 bool w_local_tz = false,
                                 int fraction = 0, int srid = 0);
 
-    exaTblColumn(char *name, int datatype, int precision = 0, int scale = 0, int size = 0, char *charset = "",
+    exaTblColumn(char *name, int datatype, size_t num_rows = COL_DEFAULT_ROWS, int precision = 0, int scale = 0,
+                 int size = 0, char *charset = "",
                  bool w_local_tz = false, int fraction = 0, int srid = 0) {};
 
     virtual ~exaTblColumn() {};
@@ -161,9 +164,10 @@ protected:
 template<typename T>
 class exaColumn : public exaTblColumn {
 public:
-    exaColumn(char *name, int datatype, int precision = 0, int scale = 0, int size = 0, char *charset = "",
+    exaColumn(char *name, int datatype, size_t num_rows = COL_DEFAULT_ROWS, int precision = 0, int scale = 0,
+              int size = 0, char *charset = "",
               bool w_local_tz = false,
-              int fraction = 0, int srid = 0) : exaTblColumn(name, datatype, precision,
+              int fraction = 0, int srid = 0) : exaTblColumn(name, datatype, num_rows, precision,
                                                              scale, size, charset, w_local_tz, fraction, srid) {
         this->name = name;
         this->datatype = datatype;
@@ -175,6 +179,7 @@ public:
         this->fraction = fraction;
         this->srid = srid;
 
+        this->data.reserve(num_rows);
     };
     // exaColumn(std::vector<T> *data);
     // exaColumn(char *data);
@@ -226,9 +231,14 @@ public:
         return this->columns;
     }
 
+    int getHandle() const;
+
+    void setHandle(int handle);
+
 protected:
     std::vector<std::shared_ptr<exaTblColumn>> columns;
     int handle;
+
 };
 
 
