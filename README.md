@@ -19,12 +19,11 @@ may be improved in the future.
 
 ### Performance:
 
-The library is entierly C++ with a custom implementation of the websocket protocol and relying on rapidJSON, 
+The library is C++ with a custom implementation of the websocket protocol and relying on rapidJSON, 
 which is pretty fast and works well for huge JSONs. Promising so far...
 
-Tested with EXASOL 6 Beta 1: Measured is sending a query and fetching a 
-result set (which needs to be done separately using 'fetch()' if the result set is
- 1000 rows or greater). Testing with the flights data set with an EXASolo on the same machine, 
+Tested with EXASOL 6.0.0: Measured is sending a query and fetching a 
+result set. Testing with the flights data set with a VM on the same machine, 
  a simple query (e.g. metadata request) returns within 10-20 ms; an uncompressed fetch of 10k rows / 970 KB
   RAW data took me ~ 900 - 1300 ms. Fetching 100k rows / 9.8 MB RAW data typically took about 8.5 sec.
 
@@ -33,10 +32,6 @@ result set (which needs to be done separately using 'fetch()' if the result set 
 Regarding the interface, nothing is final.
 There is certainly still some error-handling left to do. I appreciate any bug report!
 
-### Memory:
-
-std::shared_pointers were used for some parts, but memory management is probably still messy and will see improvement
- on occasion.
 
 ## Use:
 
@@ -51,7 +46,7 @@ int main() {
     
     // connecting to EXASOL (IP, port, client descriptor, username, password, password length, autocommit)
     try {
-        exaws = new exasockets_connection("192.168.137.10", 8563, "MBO", "sys", "exasol", 6, false);
+        exaws = new exasockets_connection("192.168.137.10", 8563, "user", "sys", "exasol", 6, false);
     } catch (const char *msg) {
         std::cerr << msg << std::endl;
     }
@@ -68,10 +63,12 @@ int main() {
     // returned is a void pointer that may be casted into the appropriate C datatype (see section "Data type mapping").
     
     int col = 0; int row = 1; // first column, second row
-   
+    
+    std::string * value = static_cast<std::string *>((*rs)[col][row]);
     std::cout << "Column name: " << (*rs)[col].getName() << std::endl;
     std::cout << "Column type: " << exasockets_connection::ExaDatatypeToString((*rs)[col].type()) << std::endl;
-    std::cout << "Value: " << *static_cast<std::string *>((*rs)[col][row]) << std::endl;
+    std::cout << "Value: " << *value << std::endl;
+    delete(value);
 
     // a clean disconnect is done on destruction of the connection object.
     delete (exaws);
@@ -104,6 +101,7 @@ These libs are intended to work on Windows and POSIX systems. For building the l
 - the websockets libs, see https://github.com/marcelboldt/websockets/
 - RapidJSON 1.10, see https://github.com/miloyip/rapidjson/
 - OpenSSL (tested with v1.1.0b 26 Sep 2016), see https://www.openssl.org/
+- OpenMP
 
 No other non C++ standard libraries (e.g. boost) are needed.
 
