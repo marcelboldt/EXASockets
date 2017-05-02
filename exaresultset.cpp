@@ -19,26 +19,55 @@ void printValue(exaResultSetHandler *rs, int col, int row) {
     delete (p);
 }
 
+int my_str2int(const char *s) { // http://stackoverflow.com/questions/17478793/converting-multi-digit-char-number-to-int
+    int res = 0;
+    while (*s) {
+        res *= 10;
+        res += *s++ - '0';
+    }
+
+    return res;
+}
+
 
 int main(int argc, char **argv) {
 
+    char *ip;
+    uint16_t port;
+    char *user;
+    char *pw;
     char *sql_stmt;
 
     if (argc > 1) {
-        sql_stmt = argv[1];
+        ip = argv[1];
+        port = my_str2int(argv[2]);
+        user = argv[3];
+        pw = argv[4];
+        sql_stmt = argv[5];
     } else {
-        sql_stmt = "select * from pub1092.flights;";
+        ip = "192.168.137.8";
+        port = 8563;
+        user = "sys";
+        pw = "exasol";
+        sql_stmt = "select * from pub1092.flights limit 100;";
     }
+
+    std::cout << "connecting to:"
+              << "\n  IP   : " << ip
+              << "\n  port : " << port
+              << "\n  user : " << user
+              << "\n  pw   : " << pw
+              << "\n  SQL  : " << sql_stmt << std::endl;
 
     exasockets_connection *exaws;
     try {
-        exaws = new exasockets_connection("192.168.137.8", 8563, "MBO", "sys", "exasol", 6, false);
+        exaws = new exasockets_connection(ip, port, "EXASockets", user, pw, 6, false);
     } catch (const char *msg) {
         std::cerr << msg << std::endl;
         return -1;
     }
 
-    std::cout << exaws->session_id() << std::endl;
+    std::cout << "session ID: " << exaws->session_id() << std::endl;
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     ProfilerStart("/tmp/exaresultset.prof");
