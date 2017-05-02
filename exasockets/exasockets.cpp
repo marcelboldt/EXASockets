@@ -598,7 +598,7 @@ exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
                 //  call fetch(), then return the exaResultSet composed
                 int h = this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
                 exa_rs->setHandle(h);
-                this->fetch(exa_rs, 0, 1, (10485760));
+                this->fetch(exa_rs, 0, 1, FETCH_BYTES);
                 close_result_set(*exa_rs);
 
             } else {// resultset without a handle received
@@ -690,12 +690,13 @@ exaResultSetHandler *exasockets_connection::create_prepared(char *sql) {
     ws_send_data(s.GetString(), s.GetSize(), 1);
     rapidjson::Document d;
     d.Parse(ws_receive_data().c_str());
-    if (d.IsObject() & d.HasMember("status")) {
+    if (d.IsObject() & d.HasMember("status")) { // TODO: change error handling pattern to that of fetch etc.
         const rapidjson::Value &jrs = d["responseData"]["results"][0]["resultSet"];
         int h = d["responseData"]["statementHandle"].GetInt();
         return this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, h);
     } else {
-        throw std::runtime_error(d["exception"]["text"].GetString());
+        if (d.IsObject()) throw std::runtime_error(d["exception"]["text"].GetString());
+        else throw std::runtime_error("create_prepared: nonsense received");
     }
     return nullptr;
 }
@@ -726,7 +727,7 @@ void exasockets_connection::exec_prepared(exaResultSetHandler &rs, size_t start_
     ws_send_data(s.GetString(), s.GetSize(), 1);
     rapidjson::Document d;
     d.Parse(ws_receive_data().c_str());
-    if (d.IsObject() & d.HasMember("status")) {
+    if (d.IsObject() & d.HasMember("status")) {  // TODO: change error handling pattern to that of fetch etc.
         if (d["status"].GetString() == "ok") {
             rapidjson::Value &data = d["responseData"]["results"][0]["resultSet"]["data"];
             this->append_data_from_Rapid_JSON_Document(&rs, data);
@@ -745,7 +746,7 @@ int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
     writer.StartObject();
     writer.Key("command");
     writer.String("closeResultSet");
-    writer.Key("resultSetHandle");
+    writer.Key("resultSetHandles");
     writer.StartArray();
     writer.Int(rs.getHandle());
     writer.EndArray();
@@ -754,14 +755,18 @@ int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
     ws_send_data(s.GetString(), s.GetSize(), 1);
     rapidjson::Document d;
     d.Parse(ws_receive_data().c_str());
-    if (d.IsObject() & d.HasMember("status")) {
-        if (d["status"].GetString() == "ok") {
-            rs.setHandle(rs.getHandle() * (-1));
-            return 0;
-        } else {
-            throw std::runtime_error(d["exception"]["text"].GetString());
-        }
+
+
+    if (!this->d.IsObject()) { // nonsense received
+        throw std::runtime_error("close_result_set: Response parsing failed.");
+        return -2;
+    } else if (this->d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(this->d["exception"]["text"].GetString());
+        return -1;
+    } else { // something useful received
+        rs.setHandle(rs.getHandle() * (-1));
+        return 0;
     }
-    throw std::runtime_error("close_result_set: nonsense received");
+
 }
 

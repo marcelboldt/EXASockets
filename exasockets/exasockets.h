@@ -58,9 +58,9 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #endif
 
 #define DRV_NAME "EXASOCKETS 0.1"
+#define FETCH_BYTES 2 * 1048576//2097152//10485760
 
-
- struct exas_rsa_bio_create : public std::exception {
+struct exas_rsa_bio_create : public std::exception {
      const char * what() const throw () {
          return "Error: failed to create RSA bio";
      }
