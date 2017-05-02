@@ -128,6 +128,7 @@ public:
     //! Fetches a result set.
     /*! Takes a result set handle ID and fetches a result set, to be stored in the object->data.
      *
+     * @param rs An exaResultSetHandler object to be filled with data.
      * @param resultSetHandle The id of the result set.
      * @param numRows Amount of rows to fetch. Default: 10 000
      * @param startPosition  row offset from which to begin data retrieval (first row of the table: row 1). Default: 1
@@ -135,8 +136,10 @@ public:
      * @return the number of rows fetched.
      */
     int64_t
-    fetch(exaResultSetHandler *rs, int resultSetHandle, uint64_t numRows = 10000, uint64_t startPosition = 1,
+    fetch(exaResultSetHandler *rs, uint64_t numRows = 10000, uint64_t startPosition = 1,
           uint64_t numBytes = 10485760);
+
+    virtual int close_result_set(exaResultSetHandler &rs);
 
     virtual exaResultSetHandler *create_prepared(char *sql);
 

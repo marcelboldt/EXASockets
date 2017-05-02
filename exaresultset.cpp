@@ -57,7 +57,8 @@ int main(int argc, char **argv) {
               << "\n  port : " << port
               << "\n  user : " << user
               << "\n  pw   : " << pw
-              << "\n  SQL  : " << sql_stmt << std::endl;
+              << "\n  SQL  : " << sql_stmt
+              << std::endl;
 
     exasockets_connection *exaws;
     try {
@@ -67,22 +68,22 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    std::cout << "session ID: " << exaws->session_id() << std::endl;
+    std::cout << "Got session ID: " << exaws->session_id() << std::endl;
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     ProfilerStart("/tmp/exaresultset.prof");
     exaResultSetHandler *rs = exaws->exec_sql(sql_stmt);
     ProfilerStop();
-
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 
 
-    std::cout << "Rows received: " << rs->rows() << std::endl;
-    printValue<std::string>(rs, 9, 0);
-
-    std::cout << "Duration " << " : "
+    std::cout << "rows received: " << rs->rows() << " - duration " << " : "
               << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000
               << " ms." << std::endl;
+
+    printValue<std::string>(rs, 0, 0);
+
+
 
     delete (rs);
     delete (exaws);

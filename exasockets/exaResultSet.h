@@ -235,6 +235,7 @@ public:
 
     void setHandle(int handle);
 
+
 protected:
     std::vector<std::shared_ptr<exaTblColumn>> columns;
     int handle;

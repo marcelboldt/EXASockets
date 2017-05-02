@@ -598,8 +598,8 @@ exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
                 //  call fetch(), then return the exaResultSet composed
                 int h = this->resultSet["responseData"]["results"][0]["resultSet"]["resultSetHandle"].GetInt();
                 exa_rs->setHandle(h);
-                this->fetch(exa_rs, h, 0, 1, (10485760));
-
+                this->fetch(exa_rs, 0, 1, (10485760));
+                close_result_set(*exa_rs);
 
             } else {// resultset without a handle received
                 // add data to exaResultSet and return it. TODO: Dispose the JSON resultSet afterwards.
@@ -613,7 +613,7 @@ exaResultSetHandler *exasockets_connection::exec_sql(char *sql) {
 
 
 int64_t
-exasockets_connection::fetch(exaResultSetHandler *rs, int resultSetHandle, uint64_t numRows, uint64_t startPosition,
+exasockets_connection::fetch(exaResultSetHandler *rs, uint64_t numRows, uint64_t startPosition,
                              uint64_t numBytes) {
 
     // recursively fetches until the number of rows are all transferred
@@ -636,7 +636,7 @@ exasockets_connection::fetch(exaResultSetHandler *rs, int resultSetHandle, uint6
     writer.Key("command");
     writer.String("fetch");
     writer.Key("resultSetHandle");
-    writer.Int(resultSetHandle);
+    writer.Int(rs->getHandle());
     writer.Key("startPosition");
     writer.Int64(startPosition - 1);
     writer.Key("numBytes");
@@ -664,7 +664,7 @@ exasockets_connection::fetch(exaResultSetHandler *rs, int resultSetHandle, uint6
             nr_here = this->d["responseData"]["numRows"].GetUint64();
 
             if (nr_here < numRows) { // if not completely fetched...
-                nr2 = fetch(rs, resultSetHandle, numRows - nr_here, startPosition + nr_here,
+                nr2 = fetch(rs, numRows - nr_here, startPosition + nr_here,
                             numBytes); // fetch again, overwriting d
                 nr_here += nr2;
             }
@@ -735,5 +735,33 @@ void exasockets_connection::exec_prepared(exaResultSetHandler &rs, size_t start_
         }
     }
     throw std::runtime_error("nonsense received");
+}
+
+int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("closeResultSet");
+    writer.Key("resultSetHandle");
+    writer.StartArray();
+    writer.Int(rs.getHandle());
+    writer.EndArray();
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+    if (d.IsObject() & d.HasMember("status")) {
+        if (d["status"].GetString() == "ok") {
+            rs.setHandle(rs.getHandle() * (-1));
+            return 0;
+        } else {
+            throw std::runtime_error(d["exception"]["text"].GetString());
+        }
+    }
+    throw std::runtime_error("close_result_set: nonsense received");
 }
 
