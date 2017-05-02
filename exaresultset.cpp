@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
         port = 8563;
         user = "sys";
         pw = "exasol";
-        sql_stmt = "select * from pub1092.flights limit 100;";
+        sql_stmt = "select * from pub1092.flights;";
     }
 
     std::cout << "connecting to:"
