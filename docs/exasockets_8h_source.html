@@ -323,150 +323,160 @@ $(document).ready(function(){initNavTree('exasockets_8h_source.html','');});
         </div>
         <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
         <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-        <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; int64_t</div>
-        <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; fetch(<a class="code"
+        <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; int64_t</div>
+        <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; fetch(<a class="code"
                                                                                                 href="classexa_result_set_handler.html">exaResultSetHandler</a>
-            *rs, <span class="keywordtype">int</span> resultSetHandle, uint64_t numRows = 10000, uint64_t startPosition
-            = 1,
+            *rs, uint64_t numRows = 10000, uint64_t startPosition = 1,
         </div>
-        <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; uint64_t numBytes = 10485760);
+        <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; uint64_t numBytes = 10485760);
         </div>
-        <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-        <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; <span
+        <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+        <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; <span
+                class="keyword">virtual</span> <span class="keywordtype">int</span> close_result_set(<a class="code"
+                                                                                                        href="classexa_result_set_handler.html">exaResultSetHandler</a>
+            &amp;rs);
+        </div>
+        <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+        <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; <span
                 class="keyword">virtual</span> <a class="code" href="classexa_result_set_handler.html">exaResultSetHandler</a>
             *create_prepared(<span class="keywordtype">char</span> *sql);
         </div>
-        <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; <span
+        <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+        <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; <span
                 class="keyword">virtual</span> <span class="keywordtype">void</span> exec_prepared(<a class="code"
                                                                                                       href="classexa_result_set_handler.html">exaResultSetHandler</a>
             &amp;rs, <span class="keywordtype">size_t</span> start_row = 0, <span class="keywordtype">size_t</span>
             num_rows = 0, <span class="keywordtype">bool</span> send = <span class="keyword">false</span>);
         </div>
-        <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-        <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; <span
+        <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+        <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *databaseName() <span
                 class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; <span
+        <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *identifierQuoteString() <span
                 class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; <span
+        <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; <span
                 class="keywordtype">int</span> maxDataMessageSize() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; <span
+        <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; <span
                 class="keywordtype">int</span> maxIdentifierLength() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; <span
+        <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; <span
                 class="keywordtype">int</span> maxVarcharLength() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; <span
+        <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *productName() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; <span
+        <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; <span
                 class="keywordtype">int</span> protocolVersion() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; <span
+        <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *releaseVersion() <span
                 class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; uint64_t session_id() <span
+        <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; uint64_t session_id() <span
                 class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; <span
+        <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *timezone() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; <span
+        <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *timeZoneBehaviour() <span
                 class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; <span
+        <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; <span
                 class="keywordtype">bool</span> isStatus() <span class="keyword">const</span>;
         </div>
-        <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-        <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; rapidjson::Document resultSet;
+        <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+        <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; rapidjson::Document resultSet;
         </div>
-        <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; rapidjson::Value *data; <span
+        <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; rapidjson::Value *data; <span
                 class="comment">// TODO: remove this</span></div>
-        <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; <span
+        <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; <span
                 class="keywordtype">bool</span> json_debug_output = <span class="keyword">false</span>; <span
                 class="comment">// set to true for cmd line output of all JSON elements</span></div>
-        <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-        <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-        <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span
+        <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+        <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+        <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span
                 class="keyword">protected</span>:
         </div>
-        <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; <span
+        <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; <span
                 class="keyword">static</span> <span class="keywordtype">void</span>
             append_data_from_Rapid_JSON_Document(<a class="code" href="classexa_result_set_handler.html">exaResultSetHandler</a>
             *rs, <span class="keyword">const</span> rapidjson::Value &amp;JSONdata);
         </div>
-        <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; <span
+        <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+        <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; <span
                 class="keyword">static</span> <a class="code" href="classexa_result_set_handler.html">exaResultSetHandler</a>
-            *create_exaResultSetHandler_from_RapidJSON_Document(<span class="keyword">const</span> rapidjson::Value
-            &amp;JSONresultSet, <span class="keywordtype">int</span> handle = -1);
+            *
         </div>
-        <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-        <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; Websockets_connection *ws_con =
+        <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;
+            create_exaResultSetHandler_from_RapidJSON_Document(<span class="keyword">const</span> rapidjson::Value &amp;JSONresultSet,
+            <span class="keywordtype">int</span> handle = -1);
+        </div>
+        <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+        <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; Websockets_connection *ws_con =
             <span class="keyword">nullptr</span>;
         </div>
-        <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; rapidjson::Document d; <span
+        <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; rapidjson::Document d; <span
                 class="comment">// for fetch() - the result set containing a dataset</span></div>
-        <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; std::stringstream tfile; <span
+        <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; std::stringstream tfile; <span
                 class="comment">// ifstream</span></div>
-        <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; <span
+        <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; <span
                 class="keywordtype">char</span> *logfile = <span class="keyword">nullptr</span>; <span class="comment">// if nullptr, then the tempfile will be names &quot;EXASockets %timestamp% %random_number%.tmp&quot;</span>
         </div>
-        <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-        <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; <span
+        <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+        <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *c_databaseName;
         </div>
-        <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; <span
+        <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *c_identifierQuoteString;
         </div>
-        <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; <span
+        <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; <span
                 class="keywordtype">int</span> c_maxDataMessageSize;
         </div>
-        <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; <span
+        <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; <span
                 class="keywordtype">int</span> c_maxIdentifierLength;
         </div>
-        <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; <span
+        <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; <span
                 class="keywordtype">int</span> c_maxVarcharLength;
         </div>
-        <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; <span
+        <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *c_productName;
         </div>
-        <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; <span
+        <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; <span
                 class="keywordtype">int</span> c_protocolVersion;
         </div>
-        <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; <span
+        <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *c_releaseVersion;
         </div>
-        <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; uint64_t c_session_id;</div>
-        <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; <span
+        <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; uint64_t c_session_id;</div>
+        <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *c_timezone;
         </div>
-        <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; <span
+        <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; <span
                 class="keyword">const</span> <span class="keywordtype">char</span> *c_timeZoneBehaviour; <span
                 class="comment">// change to predef</span></div>
-        <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; <span
+        <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; <span
                 class="keywordtype">bool</span> status;
         </div>
-        <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-        <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-        <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; <span
+        <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+        <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
+        <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; <span
                 class="keywordtype">int</span> ws_send_data(<span class="keyword">const</span> <span
                 class="keywordtype">char</span> *data, <span class="keywordtype">int</span> len = -1, <span
                 class="keywordtype">int</span> type = 1);
         </div>
-        <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-        <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; std::string ws_receive_data();
+        <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+        <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; std::string ws_receive_data();
         </div>
-        <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-        <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-        <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;};</div>
-        <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-        <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#endif //EXASOCKETS_EXASOCKETS_H</span>
+        <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+        <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+        <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;};</div>
+        <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+        <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#endif //EXASOCKETS_EXASOCKETS_H</span>
         </div>
         <div class="ttc" id="structexas__rsa__bio__create_html">
             <div class="ttname"><a href="structexas__rsa__bio__create.html">exas_rsa_bio_create</a></div>
@@ -474,7 +484,7 @@ $(document).ready(function(){initNavTree('exasockets_8h_source.html','');});
         </div>
         <div class="ttc" id="classexa_result_set_handler_html">
             <div class="ttname"><a href="classexa_result_set_handler.html">exaResultSetHandler</a></div>
-            <div class="ttdef"><b>Definition:</b> exaResultSet.h:204</div>
+            <div class="ttdef"><b>Definition:</b> exaResultSet.h:206</div>
         </div>
         <div class="ttc" id="structexas__rsa__create_html">
             <div class="ttname"><a href="structexas__rsa__create.html">exas_rsa_create</a></div>

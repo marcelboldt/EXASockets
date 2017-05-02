@@ -165,19 +165,31 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>update_session_attribu
     <tr class="separator:ac019ce85aa77f548fe567261c1733490">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:acdffd0aee3ec9a6a5a79404a96cee8e5">
+    <tr class="memitem:a5326bcb45ce667757fffa483bf4db47b">
         <td class="memItemLeft" align="right" valign="top">int64_t&#160;</td>
         <td class="memItemRight" valign="bottom"><a class="el"
-                                                    href="classexasockets__connection.html#acdffd0aee3ec9a6a5a79404a96cee8e5">fetch</a>
-            (<a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> *rs, int resultSetHandle,
-            uint64_t numRows=10000, uint64_t startPosition=1, uint64_t numBytes=10485760)
+                                                    href="classexasockets__connection.html#a5326bcb45ce667757fffa483bf4db47b">fetch</a>
+            (<a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> *rs, uint64_t numRows=10000,
+            uint64_t startPosition=1, uint64_t numBytes=10485760)
         </td>
     </tr>
-    <tr class="memdesc:acdffd0aee3ec9a6a5a79404a96cee8e5">
+    <tr class="memdesc:a5326bcb45ce667757fffa483bf4db47b">
         <td class="mdescLeft">&#160;</td>
-        <td class="mdescRight">Fetches a result set. <a href="#acdffd0aee3ec9a6a5a79404a96cee8e5">More...</a><br/></td>
+        <td class="mdescRight">Fetches a result set. <a href="#a5326bcb45ce667757fffa483bf4db47b">More...</a><br/></td>
     </tr>
-    <tr class="separator:acdffd0aee3ec9a6a5a79404a96cee8e5">
+    <tr class="separator:a5326bcb45ce667757fffa483bf4db47b">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
+    <tr class="memitem:a322e3831b12ec3d886d534e79812e445">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a322e3831b12ec3d886d534e79812e445"></a>
+            virtual int&#160;
+        </td>
+        <td class="memItemRight" valign="bottom"><b>close_result_set</b> (<a class="el"
+                                                                             href="classexa_result_set_handler.html">exaResultSetHandler</a>
+            &amp;rs)
+        </td>
+    </tr>
+    <tr class="separator:a322e3831b12ec3d886d534e79812e445">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
     <tr class="memitem:aa9452133eadf3f9f42ab562d07e67db5">
@@ -721,7 +733,8 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
                         </td>
                         <td>(</td>
                         <td class="paramtype">char *&#160;</td>
-                        <td class="paramname"><em>sql</em></td><td>)</td>
+                        <td class="paramname"><em>sql</em></td>
+                        <td>)</td>
                         <td></td>
                     </tr>
                 </table>
@@ -743,14 +756,14 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
     <dl class="section return">
         <dt>Returns</dt>
         <dd>A result handler to be used with <a class="el"
-                                                href="classexasockets__connection.html#acdffd0aee3ec9a6a5a79404a96cee8e5"
+                                                href="classexasockets__connection.html#a5326bcb45ce667757fffa483bf4db47b"
                                                 title="Fetches a result set. ">fetch()</a> if available, otherwise 0.
         </dd>
     </dl>
 
 </div>
 </div>
-    <a class="anchor" id="acdffd0aee3ec9a6a5a79404a96cee8e5"></a>
+    <a class="anchor" id="a5326bcb45ce667757fffa483bf4db47b"></a>
     <div class="memitem">
         <div class="memproto">
             <table class="memname">
@@ -761,12 +774,6 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
                         *&#160;
                     </td>
                     <td class="paramname"><em>rs</em>,</td>
-                </tr>
-                <tr>
-                    <td class="paramkey"></td>
-                    <td></td>
-                    <td class="paramtype">int&#160;</td>
-                    <td class="paramname"><em>resultSetHandle</em>,</td>
                 </tr>
                 <tr>
                     <td class="paramkey"></td>
@@ -802,6 +809,12 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
                 <dt>Parameters</dt>
                 <dd>
                     <table class="params">
+                        <tr>
+                            <td class="paramname">rs</td>
+                            <td>An <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> object
+                                to be filled with data.
+                            </td>
+                        </tr>
                         <tr>
                             <td class="paramname">resultSetHandle</td>
                             <td>The id of the result set.</td>
