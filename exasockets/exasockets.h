@@ -31,14 +31,14 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #ifndef EXASOCKETS_EXASOCKETS_H
 #define EXASOCKETS_EXASOCKETS_H
 
-#include "../../websockets/websockets/websockets.h"
+#include <websockets/websockets.h>
 #include "osname.h"
 #include "exaResultSet.h"
 
-#include "../rapidjson/document.h"
-#include "../rapidjson/writer.h"
-#include "../rapidjson/stringbuffer.h"
-#include "../rapidjson/allocators.h"
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/allocators.h>
 #include <iostream>
 #include <openssl/pem.h>
 #include <openssl/rsa.h>

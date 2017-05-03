@@ -3,15 +3,10 @@ project(EXASockets)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(../websockets)
 add_subdirectory(exasockets)
 
-
-set(SOURCE_FILES
-        main.cpp
-        )
-
-
-add_executable(EXASockets ${SOURCE_FILES})
+add_executable(EXASockets main.cpp)
 add_executable(exaresultset exaresultset.cpp)
 add_executable(exaprepared exaprepared.cpp)
 target_link_libraries(EXASockets exasockets)
