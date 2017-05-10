@@ -75,7 +75,7 @@ public:
      * @param position A 64 Bit Integer specifying the row position, from 0.
      * @return A void pointer to the value that may then be static_casted. If the actual value is NULL, a nullptr is returned.
      */
-    virtual void *operator[](size_t row) = 0;
+    virtual std::shared_ptr<void> operator[](size_t row) = 0;
     
     //! Returns a void pointer to the embedded std::vector
     /*!
@@ -147,6 +147,7 @@ public:
 
     void setSrid(int srid);
 
+    std::vector<bool> nulls;
 protected:
     char* name;
     int datatype;
@@ -157,8 +158,6 @@ protected:
     bool withLocalTimeTone = 0;
     int fraction = 0;
     int srid = 0;
-
-    std::vector<bool> nulls;
 };
 
 template<typename T>
@@ -179,13 +178,13 @@ public:
         this->fraction = fraction;
         this->srid = srid;
 
-        this->data.reserve(num_rows);
+        //   this->data.reserve(num_rows);
     };
     // exaColumn(std::vector<T> *data);
     // exaColumn(char *data);
     // ~exaColumn();
 
-    void *operator[](size_t row);
+    std::shared_ptr<void> operator[](size_t row);
 
     //   int32_t intVal(size_t row);
 
