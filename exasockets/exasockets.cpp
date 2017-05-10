@@ -552,16 +552,20 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
         num_rows = JSONresultSet["numRows"].GetInt64();
     }
 
+    std::string name;
     int precision;
     int scale;
     int size;
-    char *charset;
+    std::string charset;
     bool w_local_tz;
     int fraction;
     int srid;
 
 
     for (auto i = 0; i < JSONresultSet["numColumns"].GetInt64(); i++) { //for each column
+
+        name.assign(
+                JSONresultSet["columns"][i].HasMember("name") ? JSONresultSet["columns"][i]["name"].GetString() : "");
 
         precision = JSONresultSet["columns"][i]["dataType"].HasMember("precision")
                     ? JSONresultSet["columns"][i]["dataType"]["precision"].GetInt() : -1;
@@ -572,8 +576,8 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
         size = JSONresultSet["columns"][i]["dataType"].HasMember("size")
                ? JSONresultSet["columns"][i]["dataType"]["size"].GetInt() : -1;
 
-        charset = (char *) (JSONresultSet["columns"][i]["dataType"].HasMember("characterSet")
-                            ? JSONresultSet["columns"][i]["dataType"]["characterSet"].GetString() : nullptr);
+        charset.assign(JSONresultSet["columns"][i]["dataType"].HasMember("characterSet")
+                       ? JSONresultSet["columns"][i]["dataType"]["characterSet"].GetString() : "");
 
         w_local_tz = JSONresultSet["columns"][i]["dataType"].HasMember("withLocalTimeZone")
                      ? JSONresultSet["columns"][i]["dataType"]["withLocalTimeZone"].GetBool() : false;
@@ -587,7 +591,7 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
 
 
         std::shared_ptr<exaTblColumn> exa_col(
-                exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
+                exaTblColumn::create(name,
                                      StringToExaDatatype(
                                              JSONresultSet["columns"][i]["dataType"]["type"].GetString()),
                                      num_rows, precision, scale, size, charset, w_local_tz, fraction, srid
@@ -762,7 +766,7 @@ void exasockets_connection::exec_prepared_insert(exaResultSetHandler &rs) {
     for (int i = 0; i < rs.cols(); i++) { // writing the parameter metadata
         writer.StartObject();
         writer.Key("name");
-        writer.String(rs[i].getName());
+        writer.String(rs[i].getName().c_str());
         writer.Key("dataType");
         writer.StartObject();
         writer.Key("type");

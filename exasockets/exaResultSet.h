@@ -58,13 +58,13 @@ Marcel Boldt <marcel.boldt@exasol.com>
 
 class exaTblColumn {
 public:
-    static exaTblColumn *create(char *name, int datatype, size_t num_rows = COL_DEFAULT_ROWS,
-                                int precision = 0, int scale = 0, int size = 0, char *charset = "",
+    static exaTblColumn *create(std::string name, int datatype, size_t num_rows = COL_DEFAULT_ROWS,
+                                int precision = 0, int scale = 0, int size = 0, std::string charset = "",
                                 bool w_local_tz = false,
                                 int fraction = 0, int srid = 0);
 
-    exaTblColumn(char *name, int datatype, size_t num_rows = COL_DEFAULT_ROWS, int precision = 0, int scale = 0,
-                 int size = 0, char *charset = "",
+    exaTblColumn(std::string name, int datatype, size_t num_rows = COL_DEFAULT_ROWS, int precision = 0, int scale = 0,
+                 int size = 0, std::string charset = "",
                  bool w_local_tz = false, int fraction = 0, int srid = 0) {};
 
     virtual ~exaTblColumn() {};
@@ -111,11 +111,11 @@ public:
         return datatype;
     }
 
-    char *getName() const {
+    std::string getName() const {
         return name;
     }
 
-    void setName(char *name) {
+    void setName(std::string name) {
         exaTblColumn::name = name;
     }
 
@@ -131,9 +131,9 @@ public:
 
     void setSize(int size);
 
-    const char *getCharacterSet() const;
+    std::string getCharacterSet() const;
 
-    void setCharacterSet(const char *characterSet);
+    void setCharacterSet(std::string characterSet);
 
     bool isWithLocalTimeTone() const;
 
@@ -149,12 +149,12 @@ public:
 
     std::vector<bool> nulls;
 protected:
-    char* name;
+    std::string name;
     int datatype;
     int precision = 0;
     int scale = 0;
     int size = 0;
-    char *characterSet = "";
+    std::string characterSet = "";
     bool withLocalTimeTone = 0;
     int fraction = 0;
     int srid = 0;
@@ -163,8 +163,8 @@ protected:
 template<typename T>
 class exaColumn : public exaTblColumn {
 public:
-    exaColumn(char *name, int datatype, size_t num_rows = COL_DEFAULT_ROWS, int precision = 0, int scale = 0,
-              int size = 0, char *charset = "",
+    exaColumn(std::string name, int datatype, size_t num_rows = COL_DEFAULT_ROWS, int precision = 0, int scale = 0,
+              int size = 0, std::string charset = "",
               bool w_local_tz = false,
               int fraction = 0, int srid = 0) : exaTblColumn(name, datatype, num_rows, precision,
                                                              scale, size, charset, w_local_tz, fraction, srid) {

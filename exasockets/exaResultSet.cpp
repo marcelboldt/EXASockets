@@ -31,7 +31,8 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include "exaResultSet.h"
 
 exaTblColumn *
-exaTblColumn::create(char *name, int datatype, size_t num_rows, int precision, int scale, int size, char *charset,
+exaTblColumn::create(std::string name, int datatype, size_t num_rows, int precision, int scale, int size,
+                     std::string charset,
                      bool w_local_tz,
                      int fraction, int srid) {
 
@@ -103,14 +104,14 @@ void exaTblColumn::setSize(int size) {
     exaTblColumn::size = size;
 }
 
-const char *exaTblColumn::getCharacterSet() const {
+std::string exaTblColumn::getCharacterSet() const {
     return characterSet;
 }
 
-/*
-void exaTblColumn::setCharacterSet(char* characterSet) {
+
+void exaTblColumn::setCharacterSet(std::string characterSet) {
     exaTblColumn::characterSet = characterSet;
-}*/
+}
 
 bool exaTblColumn::isWithLocalTimeTone() const {
     return withLocalTimeTone;
