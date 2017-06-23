@@ -85,10 +85,10 @@ int main(int argc, char **argv) {
     printMetadata(rs);
 
     std::string s = "1";
-    for (int i = 0; i < 1000000; i++) (*rs)[0].appendData(&s);
+    for (int i = 0; i < 10000; i++) (*rs)[0].appendData(&s);
 
     double d = 3.123;
-    for (int i = 0; i < 1000000; i++) (*rs)[1].appendData(&d);
+    for (int i = 0; i < 10000; i++) (*rs)[1].appendData(&d);
 
     for (int i = 0; i < 1; i++) {
         std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
@@ -99,6 +99,9 @@ int main(int argc, char **argv) {
                   << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000
                   << " ms." << std::endl;
     }
+
+    exaws->close_prepared(*rs);
+
     exaws->json_debug_output = false;
 
     //  std::cout << "Rows received: " << rs->rows() << std::endl;

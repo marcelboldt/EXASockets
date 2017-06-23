@@ -330,7 +330,7 @@ std::string exasockets_connection::ws_receive_data() {
     int len = ws_con->receive_data(&buf);
 
     if (this->json_debug_output) {
-        std::cout << "RECV:" << buf << std::endl;
+        std::cout << "RECV: " << buf << std::endl;
     }
 
 
@@ -899,22 +899,18 @@ int exasockets_connection::close_prepared(exaResultSetHandler &rs) {
     writer.Key("command");
     writer.String("closePreparedStatement");
     writer.Key("statementHandle");
-    writer.StartArray();
     writer.Int(rs.getHandle());
-    writer.EndArray();
     writer.EndObject();
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
     rapidjson::Document d;
     d.Parse(ws_receive_data().c_str());
 
-
-    if (!this->d.IsObject()) { // nonsense received
-        throw std::runtime_error("close_result_set: Response parsing failed.");
-        return -2;
-    } else if (this->d.HasMember("exception")) { // DB had a problem
-        throw std::runtime_error(this->d["exception"]["text"].GetString());
-        return -1;
+    if (!d.IsObject()) { // nonsense received
+        // throw std::runtime_error("close_prepared: Response parsing failed.");
+        throw (std::runtime_error("close_prepared: Response parsing failed"));
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
     } else { // something useful received
         rs.setHandle(rs.getHandle() * (-1));
         return 0;
@@ -941,11 +937,11 @@ int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
     d.Parse(ws_receive_data().c_str());
 
 
-    if (!this->d.IsObject()) { // nonsense received
+    if (!d.IsObject()) { // nonsense received
         throw std::runtime_error("close_result_set: Response parsing failed.");
         return -2;
-    } else if (this->d.HasMember("exception")) { // DB had a problem
-        throw std::runtime_error(this->d["exception"]["text"].GetString());
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
         return -1;
     } else { // something useful received
         rs.setHandle(rs.getHandle() * (-1));
@@ -973,11 +969,11 @@ int exasockets_connection::close_result_set(int handle) {
     d.Parse(ws_receive_data().c_str());
 
 
-    if (!this->d.IsObject()) { // nonsense received
+    if (!d.IsObject()) { // nonsense received
         throw std::runtime_error("close_result_set: Response parsing failed.");
         return -2;
-    } else if (this->d.HasMember("exception")) { // DB had a problem
-        throw std::runtime_error(this->d["exception"]["text"].GetString());
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
         return -1;
     } else { // something useful received
         return 0;
