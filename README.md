@@ -1,10 +1,6 @@
 # EXASockets
 Interface to the EXASOL DB via JSON over Websockets protocol.
 
-## Status
-
-Work in progress... but probably already useful.
-
 ## Build
 
 These libs are intended to work on Windows and POSIX systems. For building the linker needs:
@@ -21,6 +17,10 @@ As the websockets library is included as a submodule, clone the repository recur
  by ```git submodule update --init```. For details see e.g. https://github.com/blog/2104-working-with-submodules
 
 
+## Status
+
+Work in progress... but probably already useful.
+
 
 ### Functionality: 
 
@@ -28,7 +28,8 @@ What basically works:
 
 - Connect & Disconnect
 - Sending a query
-- Fetching a result set
+- Fetching & closing a result set
+- Writing into DB via prepared insert statement
 
 The result set is stored in an exaResultSet that stores data column-wise in C++ std::vectors 
 of an appropriate data type, depending on the column data type. However, the data type mapping is not yet perfect and
@@ -36,8 +37,8 @@ may be improved in the future.
 
 ### Performance:
 
-The library is C++ with a custom implementation of the websocket protocol and relying on rapidJSON, 
-which is pretty fast and works well for huge JSONs. Promising so far...
+The library is C++ with a custom implementation of the websocket protocol and relying on RapidJSON, 
+which is pretty fast and works well for huge JSONs.
 
 Tested with EXASOL 6.0.0: Measured is sending a query and fetching a 
 result set. Testing with the flights data set with a VM on the same machine, 
@@ -46,8 +47,7 @@ result set. Testing with the flights data set with a VM on the same machine,
 
 ### Stability:
 
-Regarding the interface, nothing is final.
-There is certainly still some error-handling left to do. I appreciate any bug report!
+There is still some error-handling left to be done. Bug reports and feedback are highly appreciated.
 
 
 ## Use:
@@ -127,8 +127,6 @@ int main() {
 
 
 ## Documentation
-
-Also in progress...
 
 See https://marcelboldt.github.io/EXASockets/
 

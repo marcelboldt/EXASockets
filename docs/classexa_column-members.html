@@ -143,9 +143,9 @@ $(document).ready(function(){initNavTree('classexa_column.html','');});
         <td class="entry"><span class="mlabel">virtual</span></td>
     </tr>
     <tr bgcolor="#f0f0f0" class="even">
-        <td class="entry"><b>create</b>(char *name, int datatype, size_t num_rows=COL_DEFAULT_ROWS, int precision=0, int
-            scale=0, int size=0, char *charset=&quot;&quot;, bool w_local_tz=false, int fraction=0, int srid=0) (defined
-            in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)
+        <td class="entry"><b>create</b>(std::string name, int datatype, size_t num_rows=COL_DEFAULT_ROWS, int
+            precision=0, int scale=0, int size=0, std::string charset=&quot;&quot;, bool w_local_tz=false, int
+            fraction=0, int srid=0) (defined in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)
         </td>
         <td class="entry"><a class="el" href="classexa_tbl_column.html">exaTblColumn</a></td>
         <td class="entry"><span class="mlabel">static</span></td>
@@ -163,17 +163,17 @@ $(document).ready(function(){initNavTree('classexa_column.html','');});
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
     <tr bgcolor="#f0f0f0">
-        <td class="entry"><b>exaColumn</b>(char *name, int datatype, size_t num_rows=COL_DEFAULT_ROWS, int precision=0,
-            int scale=0, int size=0, char *charset=&quot;&quot;, bool w_local_tz=false, int fraction=0, int srid=0)
-            (defined in <a class="el" href="classexa_column.html">exaColumn&lt; T &gt;</a>)
+        <td class="entry"><b>exaColumn</b>(std::string name, int datatype, size_t num_rows=COL_DEFAULT_ROWS, int
+            precision=0, int scale=0, int size=0, std::string charset=&quot;&quot;, bool w_local_tz=false, int
+            fraction=0, int srid=0) (defined in <a class="el" href="classexa_column.html">exaColumn&lt; T &gt;</a>)
         </td>
         <td class="entry"><a class="el" href="classexa_column.html">exaColumn&lt; T &gt;</a></td>
         <td class="entry"><span class="mlabel">inline</span></td>
     </tr>
     <tr bgcolor="#f0f0f0" class="even">
-        <td class="entry"><b>exaTblColumn</b>(char *name, int datatype, size_t num_rows=COL_DEFAULT_ROWS, int
-            precision=0, int scale=0, int size=0, char *charset=&quot;&quot;, bool w_local_tz=false, int fraction=0, int
-            srid=0) (defined in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)
+        <td class="entry"><b>exaTblColumn</b>(std::string name, int datatype, size_t num_rows=COL_DEFAULT_ROWS, int
+            precision=0, int scale=0, int size=0, std::string charset=&quot;&quot;, bool w_local_tz=false, int
+            fraction=0, int srid=0) (defined in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)
         </td>
         <td class="entry"><a class="el" href="classexa_tbl_column.html">exaTblColumn</a></td>
         <td class="entry"><span class="mlabel">inline</span></td>
@@ -251,10 +251,10 @@ $(document).ready(function(){initNavTree('classexa_column.html','');});
     <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>nulls</b> (defined in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)</td>
         <td class="entry"><a class="el" href="classexa_tbl_column.html">exaTblColumn</a></td>
-        <td class="entry"><span class="mlabel">protected</span></td>
+        <td class="entry"></td>
     </tr>
     <tr>
-        <td class="entry"><a class="el" href="classexa_column.html#a73a9e7f1a00d46e30db07dbdc54f0999">operator[]</a>(size_t
+        <td class="entry"><a class="el" href="classexa_column.html#a9e72ce8e466d3db3761021d52c7cb52b">operator[]</a>(size_t
             row)
         </td>
         <td class="entry"><a class="el" href="classexa_column.html">exaColumn&lt; T &gt;</a></td>
@@ -272,7 +272,7 @@ $(document).ready(function(){initNavTree('classexa_column.html','');});
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
     <tr bgcolor="#f0f0f0" class="even">
-        <td class="entry"><b>setCharacterSet</b>(const char *characterSet) (defined in <a class="el"
+        <td class="entry"><b>setCharacterSet</b>(std::string characterSet) (defined in <a class="el"
                                                                                           href="classexa_tbl_column.html">exaTblColumn</a>)
         </td>
         <td class="entry"><a class="el" href="classexa_tbl_column.html">exaTblColumn</a></td>
@@ -285,7 +285,7 @@ $(document).ready(function(){initNavTree('classexa_column.html','');});
         <td class="entry"></td>
     </tr>
     <tr bgcolor="#f0f0f0" class="even">
-        <td class="entry"><b>setName</b>(char *name) (defined in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)
+        <td class="entry"><b>setName</b>(std::string name) (defined in <a class="el" href="classexa_tbl_column.html">exaTblColumn</a>)
         </td>
         <td class="entry"><a class="el" href="classexa_tbl_column.html">exaTblColumn</a></td>
         <td class="entry"><span class="mlabel">inline</span></td>

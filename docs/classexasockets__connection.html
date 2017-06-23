@@ -125,9 +125,23 @@ $(document).ready(function(){initNavTree('classexasockets__connection.html','');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af230009df6b6cc3cbc0e822a0a07b959"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classexasockets__connection.html#af230009df6b6cc3cbc0e822a0a07b959">exasockets_connection</a> (const char *server, uint16_t port, const char *clientName, const char *username, const char *password, int pwd_len, bool autocommit=true, bool use_compression=false, uint64_t sessionId=0)</td></tr>
-<tr class="memdesc:af230009df6b6cc3cbc0e822a0a07b959"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establishes a connection to EXASOL and returns an <a class="el" href="classexasockets__connection.html">exasockets_connection</a> object.  <a href="#af230009df6b6cc3cbc0e822a0a07b959">More...</a><br /></td></tr>
-<tr class="separator:af230009df6b6cc3cbc0e822a0a07b959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+    <tr class="memitem:a2b8a104eb625f339b57e65b10767e5d8">
+        <td class="memItemLeft" align="right" valign="top">&#160;</td>
+        <td class="memItemRight" valign="bottom"><a class="el"
+                                                    href="classexasockets__connection.html#a2b8a104eb625f339b57e65b10767e5d8">exasockets_connection</a>
+            (const char *server, uint16_t port, const char *clientName, const char *username, const char *password, int
+            pwd_len, bool autocommit=true, bool use_compression=false, uint64_t sessionId=0, bool debug=false)
+        </td>
+    </tr>
+    <tr class="memdesc:a2b8a104eb625f339b57e65b10767e5d8">
+        <td class="mdescLeft">&#160;</td>
+        <td class="mdescRight">Establishes a connection to EXASOL and returns an <a class="el"
+                                                                                    href="classexasockets__connection.html">exasockets_connection</a>
+            object. <a href="#a2b8a104eb625f339b57e65b10767e5d8">More...</a><br/></td>
+    </tr>
+    <tr class="separator:a2b8a104eb625f339b57e65b10767e5d8">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
     <tr class="memitem:a8e5abb3b9262c2ef892fcc43338d91dd">
         <td class="memItemLeft" align="right" valign="top">int&#160;</td>
         <td class="memItemRight" valign="bottom"><a class="el"
@@ -181,36 +195,88 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>update_session_attribu
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
     <tr class="memitem:a322e3831b12ec3d886d534e79812e445">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a322e3831b12ec3d886d534e79812e445"></a>
-            virtual int&#160;
+        <td class="memItemLeft" align="right" valign="top">virtual int&#160;</td>
+        <td class="memItemRight" valign="bottom"><a class="el"
+                                                    href="classexasockets__connection.html#a322e3831b12ec3d886d534e79812e445">close_result_set</a>
+            (<a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> &amp;rs)
         </td>
-        <td class="memItemRight" valign="bottom"><b>close_result_set</b> (<a class="el"
-                                                                             href="classexa_result_set_handler.html">exaResultSetHandler</a>
-            &amp;rs)
-        </td>
+    </tr>
+    <tr class="memdesc:a322e3831b12ec3d886d534e79812e445">
+        <td class="mdescLeft">&#160;</td>
+        <td class="mdescRight">Closes a result set. <a href="#a322e3831b12ec3d886d534e79812e445">More...</a><br/></td>
     </tr>
     <tr class="separator:a322e3831b12ec3d886d534e79812e445">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:aa9452133eadf3f9f42ab562d07e67db5">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9452133eadf3f9f42ab562d07e67db5"></a>
-            virtual <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> *&#160;
+    <tr class="memitem:a360b6b17466f0e428a3ed44930fd5674">
+        <td class="memItemLeft" align="right" valign="top">virtual int&#160;</td>
+        <td class="memItemRight" valign="bottom"><a class="el"
+                                                    href="classexasockets__connection.html#a360b6b17466f0e428a3ed44930fd5674">close_result_set</a>
+            (int handle)
         </td>
-        <td class="memItemRight" valign="bottom"><b>create_prepared</b> (char *sql)</td>
     </tr>
-    <tr class="separator:aa9452133eadf3f9f42ab562d07e67db5">
+    <tr class="memdesc:a360b6b17466f0e428a3ed44930fd5674">
+        <td class="mdescLeft">&#160;</td>
+        <td class="mdescRight">Closes a result set. <a href="#a360b6b17466f0e428a3ed44930fd5674">More...</a><br/></td>
+    </tr>
+    <tr class="separator:a360b6b17466f0e428a3ed44930fd5674">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:a5bda45d9047db6df921859f1ba0cc492">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bda45d9047db6df921859f1ba0cc492"></a>
-            virtual void&#160;
+    <tr class="memitem:a86a356fdbd00d49143211205ebdc4edb">
+        <td class="memItemLeft" align="right" valign="top">virtual <a class="el"
+                                                                      href="classexa_result_set_handler.html">exaResultSetHandler</a>
+            *&#160;
         </td>
-        <td class="memItemRight" valign="bottom"><b>exec_prepared</b> (<a class="el"
-                                                                          href="classexa_result_set_handler.html">exaResultSetHandler</a>
-            &amp;rs, size_t start_row=0, size_t num_rows=0, bool send=false)
+        <td class="memItemRight" valign="bottom"><a class="el"
+                                                    href="classexasockets__connection.html#a86a356fdbd00d49143211205ebdc4edb">create_prepared_insert</a>
+            (char *sql)
         </td>
     </tr>
-    <tr class="separator:a5bda45d9047db6df921859f1ba0cc492">
+    <tr class="memdesc:a86a356fdbd00d49143211205ebdc4edb">
+        <td class="mdescLeft">&#160;</td>
+        <td class="mdescRight">Creates a prepared statement. <a
+                href="#a86a356fdbd00d49143211205ebdc4edb">More...</a><br/></td>
+    </tr>
+    <tr class="separator:a86a356fdbd00d49143211205ebdc4edb">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
+    <tr class="memitem:afb58f94893aff633944e36e6d5499b94">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb58f94893aff633944e36e6d5499b94"></a>
+            virtual int&#160;
+        </td>
+        <td class="memItemRight" valign="bottom"><b>create_prepared_insert_int</b> (char *sql)</td>
+    </tr>
+    <tr class="separator:afb58f94893aff633944e36e6d5499b94">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
+    <tr class="memitem:af506325e4fd10a5f3cc55d61a1882836">
+        <td class="memItemLeft" align="right" valign="top">virtual void&#160;</td>
+        <td class="memItemRight" valign="bottom"><a class="el"
+                                                    href="classexasockets__connection.html#af506325e4fd10a5f3cc55d61a1882836">exec_prepared_insert</a>
+            (<a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> &amp;rs)
+        </td>
+    </tr>
+    <tr class="memdesc:af506325e4fd10a5f3cc55d61a1882836">
+        <td class="mdescLeft">&#160;</td>
+        <td class="mdescRight">Executes a previously prepared statement. <a href="#af506325e4fd10a5f3cc55d61a1882836">More...</a><br/>
+        </td>
+    </tr>
+    <tr class="separator:af506325e4fd10a5f3cc55d61a1882836">
+        <td class="memSeparator" colspan="2">&#160;</td>
+    </tr>
+    <tr class="memitem:a2d7febee644fe09102e55c6d4a6e77ec">
+        <td class="memItemLeft" align="right" valign="top">virtual int&#160;</td>
+        <td class="memItemRight" valign="bottom"><a class="el"
+                                                    href="classexasockets__connection.html#a2d7febee644fe09102e55c6d4a6e77ec">close_prepared</a>
+            (<a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> &amp;rs)
+        </td>
+    </tr>
+    <tr class="memdesc:a2d7febee644fe09102e55c6d4a6e77ec">
+        <td class="mdescLeft">&#160;</td>
+        <td class="mdescRight">Closes a prepared statement. <a
+                href="#a2d7febee644fe09102e55c6d4a6e77ec">More...</a><br/></td>
+    </tr>
+    <tr class="separator:a2d7febee644fe09102e55c6d4a6e77ec">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
     <tr class="memitem:a15502f340303ffff6a264376686e9942">
@@ -595,7 +661,7 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
         </tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-    <a class="anchor" id="af230009df6b6cc3cbc0e822a0a07b959"></a>
+    <a class="anchor" id="a2b8a104eb625f339b57e65b10767e5d8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -651,7 +717,13 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>sessionId</em> = <code>0</code>&#160;</td>
+            <td class="paramname"><em>sessionId</em> = <code>0</code>,</td>
+        </tr>
+          <tr>
+              <td class="paramkey"></td>
+              <td></td>
+              <td class="paramtype">bool&#160;</td>
+              <td class="paramname"><em>debug</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -673,6 +745,12 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
     <tr><td class="paramname">autocommit</td><td>If the DBMS is supposed to execute a COMMIT automatically after each statement. Default: true (recommended) </td></tr>
     <tr><td class="paramname">use_compression</td><td>If the result sets are to be transferred compressed. Default: false. Compression is not yet implemented on the client side. </td></tr>
     <tr><td class="paramname">sessionId</td><td>An ID for the session to be created in EXASOL. Per default a random session ID is created (recommended). </td></tr>
+      <tr>
+          <td class="paramname">debug</td>
+          <td>A boolean that controls debug output. If true, all sent and received JSON elements are written to stdout.
+              Default: false
+          </td>
+      </tr>
   </table>
   </dd>
 </dl>
@@ -681,6 +759,196 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+    <a class="anchor" id="a2d7febee644fe09102e55c6d4a6e77ec"></a>
+    <div class="memitem">
+        <div class="memproto">
+            <table class="mlabels">
+                <tr>
+                    <td class="mlabels-left">
+                        <table class="memname">
+                            <tr>
+                                <td class="memname">int exasockets_connection::close_prepared</td>
+                                <td>(</td>
+                                <td class="paramtype"><a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                    &amp;&#160;
+                                </td>
+                                <td class="paramname"><em>rs</em></td>
+                                <td>)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="mlabels-right">
+                        <span class="mlabels"><span class="mlabel">virtual</span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+
+            <p>Closes a prepared statement. </p>
+            <p>Sends to the DB the command to close the prepared statement.</p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">rs</td>
+                            <td>A reference to an <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                object related to the result set to be closed.
+                            </td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>0 on success.</dd>
+            </dl>
+
+        </div>
+    </div>
+    <a class="anchor" id="a322e3831b12ec3d886d534e79812e445"></a>
+    <div class="memitem">
+        <div class="memproto">
+            <table class="mlabels">
+                <tr>
+                    <td class="mlabels-left">
+                        <table class="memname">
+                            <tr>
+                                <td class="memname">int exasockets_connection::close_result_set</td>
+                                <td>(</td>
+                                <td class="paramtype"><a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                    &amp;&#160;
+                                </td>
+                                <td class="paramname"><em>rs</em></td>
+                                <td>)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="mlabels-right">
+                        <span class="mlabels"><span class="mlabel">virtual</span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+
+            <p>Closes a result set. </p>
+            <p>Sends to the DB the command to dispose the result set.</p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">rs</td>
+                            <td>A reference to an <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                object related to the result set to be closed.
+                            </td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>0 on success.</dd>
+            </dl>
+
+        </div>
+    </div>
+    <a class="anchor" id="a360b6b17466f0e428a3ed44930fd5674"></a>
+    <div class="memitem">
+        <div class="memproto">
+            <table class="mlabels">
+                <tr>
+                    <td class="mlabels-left">
+                        <table class="memname">
+                            <tr>
+                                <td class="memname">int exasockets_connection::close_result_set</td>
+                                <td>(</td>
+                                <td class="paramtype">int&#160;</td>
+                                <td class="paramname"><em>handle</em></td>
+                                <td>)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="mlabels-right">
+                        <span class="mlabels"><span class="mlabel">virtual</span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+
+            <p>Closes a result set. </p>
+            <p>Sends to the DB the command to dispose the result set.</p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">handle</td>
+                            <td>An <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> object
+                                related to the result set to be closed.
+                            </td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>0 on success.</dd>
+            </dl>
+
+        </div>
+    </div>
+    <a class="anchor" id="a86a356fdbd00d49143211205ebdc4edb"></a>
+    <div class="memitem">
+        <div class="memproto">
+            <table class="mlabels">
+                <tr>
+                    <td class="mlabels-left">
+                        <table class="memname">
+                            <tr>
+                                <td class="memname"><a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                    * exasockets_connection::create_prepared_insert
+                                </td>
+                                <td>(</td>
+                                <td class="paramtype">char *&#160;</td>
+                                <td class="paramname"><em>sql</em></td>
+                                <td>)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="mlabels-right">
+                        <span class="mlabels"><span class="mlabel">virtual</span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+
+            <p>Creates a prepared statement. </p>
+            <p>Sends to the DB the command to prepare a statement.</p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">sql</td>
+                            <td>A character string containing the SQL statement to prepare.</td>
+                        </tr>
+                    </table>
+                </dd>
+            </dl>
+            <dl class="section return">
+                <dt>Returns</dt>
+                <dd>Returns an <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a> referencing
+                    the prepared statement.
+                </dd>
+            </dl>
+
+        </div>
+    </div>
     <a class="anchor" id="a8e5abb3b9262c2ef892fcc43338d91dd"></a>
     <div class="memitem">
         <div class="memproto">
@@ -714,6 +982,50 @@ rapidjson::Document&#160;</td><td class="memItemRight" valign="bottom"><b>result
                 <dt>Returns</dt>
                 <dd>0 in case of success; 1 if EXASOL refuses to disconnect; -1 if the connection had already been
                     dead.
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+    <a class="anchor" id="af506325e4fd10a5f3cc55d61a1882836"></a>
+    <div class="memitem">
+        <div class="memproto">
+            <table class="mlabels">
+                <tr>
+                    <td class="mlabels-left">
+                        <table class="memname">
+                            <tr>
+                                <td class="memname">void exasockets_connection::exec_prepared_insert</td>
+                                <td>(</td>
+                                <td class="paramtype"><a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                    &amp;&#160;
+                                </td>
+                                <td class="paramname"><em>rs</em></td>
+                                <td>)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="mlabels-right">
+                        <span class="mlabels"><span class="mlabel">virtual</span></span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="memdoc">
+
+            <p>Executes a previously prepared statement. </p>
+            <p>Sends to the DB the command to execute a previously prepared statement.</p>
+            <dl class="params">
+                <dt>Parameters</dt>
+                <dd>
+                    <table class="params">
+                        <tr>
+                            <td class="paramname">rs</td>
+                            <td>An <a class="el" href="classexa_result_set_handler.html">exaResultSetHandler</a>
+                                affiliated with the statement prepared.
+                            </td>
+                        </tr>
+                    </table>
                 </dd>
             </dl>
 

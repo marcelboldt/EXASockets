@@ -113,6 +113,7 @@ $(document).ready(function(){initNavTree('classexa_tbl_column.html','');});
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
       <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+      <a href="#pub-attribs">Public Attributes</a> &#124;
       <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classexa_tbl_column-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -133,31 +134,31 @@ Inheritance diagram for exaTblColumn:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-    <tr class="memitem:a8fa93cc60c9bd62b23d2422795c8ca47">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fa93cc60c9bd62b23d2422795c8ca47"></a>
+    <tr class="memitem:a879773a717b65ad46a16af668abf419f">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a879773a717b65ad46a16af668abf419f"></a>
             &#160;
         </td>
-        <td class="memItemRight" valign="bottom"><b>exaTblColumn</b> (char *name, int datatype, size_t
-            num_rows=COL_DEFAULT_ROWS, int precision=0, int scale=0, int size=0, char *charset=&quot;&quot;, bool
+        <td class="memItemRight" valign="bottom"><b>exaTblColumn</b> (std::string name, int datatype, size_t
+            num_rows=COL_DEFAULT_ROWS, int precision=0, int scale=0, int size=0, std::string charset=&quot;&quot;, bool
             w_local_tz=false, int fraction=0, int srid=0)
         </td>
     </tr>
-    <tr class="separator:a8fa93cc60c9bd62b23d2422795c8ca47">
+    <tr class="separator:a879773a717b65ad46a16af668abf419f">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:a420c550faef8f6e28ee909a5ff9fcb39">
-        <td class="memItemLeft" align="right" valign="top">virtual void *&#160;</td>
+    <tr class="memitem:a14c26e3d07619567b06ce20c2d5a0d35">
+        <td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; void &gt;&#160;</td>
         <td class="memItemRight" valign="bottom"><a class="el"
-                                                    href="classexa_tbl_column.html#a420c550faef8f6e28ee909a5ff9fcb39">operator[]</a>
+                                                    href="classexa_tbl_column.html#a14c26e3d07619567b06ce20c2d5a0d35">operator[]</a>
             (size_t row)=0
         </td>
     </tr>
-    <tr class="memdesc:a420c550faef8f6e28ee909a5ff9fcb39">
+    <tr class="memdesc:a14c26e3d07619567b06ce20c2d5a0d35">
         <td class="mdescLeft">&#160;</td>
         <td class="mdescRight">Returns a void pointer to the value, or a nullptr if the value is NULL. <a
-                href="#a420c550faef8f6e28ee909a5ff9fcb39">More...</a><br/></td>
+                href="#a14c26e3d07619567b06ce20c2d5a0d35">More...</a><br/></td>
     </tr>
-    <tr class="separator:a420c550faef8f6e28ee909a5ff9fcb39">
+    <tr class="separator:a14c26e3d07619567b06ce20c2d5a0d35">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
     <tr class="memitem:ac760c7a968c1f8c90a9155ef19d5cedf">
@@ -231,22 +232,22 @@ Public Member Functions</h2></td></tr>
     <tr class="separator:a99861c17921350814b90a81c503b4948">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:a84a7acf59ff7442372f50935c1a35187">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84a7acf59ff7442372f50935c1a35187"></a>
-            char *&#160;
+    <tr class="memitem:aafc3ea0c8b9c68dfaf88266638e45187">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aafc3ea0c8b9c68dfaf88266638e45187"></a>
+            std::string&#160;
         </td>
         <td class="memItemRight" valign="bottom"><b>getName</b> () const</td>
     </tr>
-    <tr class="separator:a84a7acf59ff7442372f50935c1a35187">
+    <tr class="separator:aafc3ea0c8b9c68dfaf88266638e45187">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:a3f253557e372c63ba58969bc3329ad65">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f253557e372c63ba58969bc3329ad65"></a>
+    <tr class="memitem:a7904f15c088fb790d9e9a2def5e06ad8">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7904f15c088fb790d9e9a2def5e06ad8"></a>
             void&#160;
         </td>
-        <td class="memItemRight" valign="bottom"><b>setName</b> (char *name)</td>
+        <td class="memItemRight" valign="bottom"><b>setName</b> (std::string name)</td>
     </tr>
-    <tr class="separator:a3f253557e372c63ba58969bc3329ad65">
+    <tr class="separator:a7904f15c088fb790d9e9a2def5e06ad8">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
     <tr class="memitem:a7db0269119aeaf8b0ce7eae72d31fe66">
@@ -303,22 +304,22 @@ Public Member Functions</h2></td></tr>
     <tr class="separator:a7d8ab60b769217109afd9b8d382a581d">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:a3b72b1e7ce0a73cff7874c8b8dd71f8c">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b72b1e7ce0a73cff7874c8b8dd71f8c"></a>
-            const char *&#160;
+    <tr class="memitem:a4db1e25c3ee02f20de706760414f80f9">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4db1e25c3ee02f20de706760414f80f9"></a>
+            std::string&#160;
         </td>
         <td class="memItemRight" valign="bottom"><b>getCharacterSet</b> () const</td>
     </tr>
-    <tr class="separator:a3b72b1e7ce0a73cff7874c8b8dd71f8c">
+    <tr class="separator:a4db1e25c3ee02f20de706760414f80f9">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
-    <tr class="memitem:a19d8f503a159865561612d7e54a5baa5">
-        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19d8f503a159865561612d7e54a5baa5"></a>
+    <tr class="memitem:a97ff3ffca25cbfe6f54cf92250e8c5de">
+        <td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97ff3ffca25cbfe6f54cf92250e8c5de"></a>
             void&#160;
         </td>
-        <td class="memItemRight" valign="bottom"><b>setCharacterSet</b> (const char *characterSet)</td>
+        <td class="memItemRight" valign="bottom"><b>setCharacterSet</b> (std::string characterSet)</td>
     </tr>
-    <tr class="separator:a19d8f503a159865561612d7e54a5baa5">
+    <tr class="separator:a97ff3ffca25cbfe6f54cf92250e8c5de">
         <td class="memSeparator" colspan="2">&#160;</td>
     </tr>
     <tr class="memitem:a4c4672bda33938e67e612a4deb4185fd">
@@ -381,17 +382,33 @@ Public Member Functions</h2></td></tr>
             <td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
                 Static Public Member Functions</h2></td>
         </tr>
-        <tr class="memitem:af0bb587b18be082afcd0e00857e338c4">
+        <tr class="memitem:ab6bef7cf3ff17620f61ee3ef9d56d8c9">
             <td class="memItemLeft" align="right" valign="top"><a class="anchor"
-                                                                  id="af0bb587b18be082afcd0e00857e338c4"></a>
+                                                                  id="ab6bef7cf3ff17620f61ee3ef9d56d8c9"></a>
                 static <a class="el" href="classexa_tbl_column.html">exaTblColumn</a> *&#160;
             </td>
-            <td class="memItemRight" valign="bottom"><b>create</b> (char *name, int datatype, size_t
-                num_rows=COL_DEFAULT_ROWS, int precision=0, int scale=0, int size=0, char *charset=&quot;&quot;, bool
-                w_local_tz=false, int fraction=0, int srid=0)
+            <td class="memItemRight" valign="bottom"><b>create</b> (std::string name, int datatype, size_t
+                num_rows=COL_DEFAULT_ROWS, int precision=0, int scale=0, int size=0, std::string charset=&quot;&quot;,
+                bool w_local_tz=false, int fraction=0, int srid=0)
             </td>
         </tr>
-        <tr class="separator:af0bb587b18be082afcd0e00857e338c4">
+        <tr class="separator:ab6bef7cf3ff17620f61ee3ef9d56d8c9">
+            <td class="memSeparator" colspan="2">&#160;</td>
+        </tr>
+    </table>
+    <table class="memberdecls">
+        <tr class="heading">
+            <td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+                Public Attributes</h2></td>
+        </tr>
+        <tr class="memitem:a4a3836c5d3e62dc2c52c185c7916bc3b">
+            <td class="memItemLeft" align="right" valign="top"><a class="anchor"
+                                                                  id="a4a3836c5d3e62dc2c52c185c7916bc3b"></a>
+                std::vector&lt; bool &gt;&#160;
+            </td>
+            <td class="memItemRight" valign="bottom"><b>nulls</b></td>
+        </tr>
+        <tr class="separator:a4a3836c5d3e62dc2c52c185c7916bc3b">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
     </table>
@@ -400,14 +417,14 @@ Public Member Functions</h2></td></tr>
             <td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
                 Protected Attributes</h2></td>
         </tr>
-        <tr class="memitem:a026852399e682340cf6953127b0d2114">
+        <tr class="memitem:a1833192f0001417a96fd13ca04fb13cd">
             <td class="memItemLeft" align="right" valign="top"><a class="anchor"
-                                                                  id="a026852399e682340cf6953127b0d2114"></a>
-                char *&#160;
+                                                                  id="a1833192f0001417a96fd13ca04fb13cd"></a>
+                std::string&#160;
             </td>
             <td class="memItemRight" valign="bottom"><b>name</b></td>
         </tr>
-        <tr class="separator:a026852399e682340cf6953127b0d2114">
+        <tr class="separator:a1833192f0001417a96fd13ca04fb13cd">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
         <tr class="memitem:aa9c635a3e9695deae3e0de86b46e7bcf">
@@ -450,14 +467,14 @@ Public Member Functions</h2></td></tr>
         <tr class="separator:a46f67620c3a317c201e8d49c64aa4ffe">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
-        <tr class="memitem:a2698b6a7cd365e7afac24deba5fefec0">
+        <tr class="memitem:a7c45eb79c69cc6943dd2992f7a1e0caa">
             <td class="memItemLeft" align="right" valign="top"><a class="anchor"
-                                                                  id="a2698b6a7cd365e7afac24deba5fefec0"></a>
-                char *&#160;
+                                                                  id="a7c45eb79c69cc6943dd2992f7a1e0caa"></a>
+                std::string&#160;
             </td>
             <td class="memItemRight" valign="bottom"><b>characterSet</b> = &quot;&quot;</td>
         </tr>
-        <tr class="separator:a2698b6a7cd365e7afac24deba5fefec0">
+        <tr class="separator:a7c45eb79c69cc6943dd2992f7a1e0caa">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
         <tr class="memitem:a7c19cab8febe3648c6d99dc58704263f">
@@ -488,16 +505,6 @@ Public Member Functions</h2></td></tr>
             <td class="memItemRight" valign="bottom"><b>srid</b> = 0</td>
         </tr>
         <tr class="separator:ac34b8bd9234898d8f28a11089da8f131">
-            <td class="memSeparator" colspan="2">&#160;</td>
-        </tr>
-        <tr class="memitem:a4a3836c5d3e62dc2c52c185c7916bc3b">
-            <td class="memItemLeft" align="right" valign="top"><a class="anchor"
-                                                                  id="a4a3836c5d3e62dc2c52c185c7916bc3b"></a>
-                std::vector&lt; bool &gt;&#160;
-            </td>
-            <td class="memItemRight" valign="bottom"><b>nulls</b></td>
-        </tr>
-        <tr class="separator:a4a3836c5d3e62dc2c52c185c7916bc3b">
             <td class="memSeparator" colspan="2">&#160;</td>
         </tr>
 </table>
@@ -610,7 +617,7 @@ Public Member Functions</h2></td></tr>
 
         </div>
     </div>
-    <a class="anchor" id="a420c550faef8f6e28ee909a5ff9fcb39"></a>
+    <a class="anchor" id="a14c26e3d07619567b06ce20c2d5a0d35"></a>
     <div class="memitem">
         <div class="memproto">
             <table class="mlabels">
@@ -618,7 +625,7 @@ Public Member Functions</h2></td></tr>
                     <td class="mlabels-left">
                         <table class="memname">
                             <tr>
-                                <td class="memname">virtual void* exaTblColumn::operator[]</td>
+                                <td class="memname">virtual std::shared_ptr&lt;void&gt; exaTblColumn::operator[]</td>
                                 <td>(</td>
                                 <td class="paramtype">size_t&#160;</td>
                                 <td class="paramname"><em>row</em></td>
@@ -653,7 +660,7 @@ Public Member Functions</h2></td></tr>
                 </dd>
             </dl>
 
-            <p>Implemented in <a class="el" href="classexa_column.html#a73a9e7f1a00d46e30db07dbdc54f0999">exaColumn&lt;
+            <p>Implemented in <a class="el" href="classexa_column.html#a9e72ce8e466d3db3761021d52c7cb52b">exaColumn&lt;
                 T &gt;</a>.</p>
 
         </div>

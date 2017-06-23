@@ -1,12 +1,15 @@
 var classexasockets__connection =
 [
-    [ "exasockets_connection", "classexasockets__connection.html#af230009df6b6cc3cbc0e822a0a07b959", null ],
+    ["exasockets_connection", "classexasockets__connection.html#a2b8a104eb625f339b57e65b10767e5d8", null],
     [ "~exasockets_connection", "classexasockets__connection.html#a3543c4dcc64df7f934c93aa941e8d95c", null ],
+    ["close_prepared", "classexasockets__connection.html#a2d7febee644fe09102e55c6d4a6e77ec", null],
     ["close_result_set", "classexasockets__connection.html#a322e3831b12ec3d886d534e79812e445", null],
-    ["create_prepared", "classexasockets__connection.html#aa9452133eadf3f9f42ab562d07e67db5", null],
+    ["close_result_set", "classexasockets__connection.html#a360b6b17466f0e428a3ed44930fd5674", null],
+    ["create_prepared_insert", "classexasockets__connection.html#a86a356fdbd00d49143211205ebdc4edb", null],
+    ["create_prepared_insert_int", "classexasockets__connection.html#afb58f94893aff633944e36e6d5499b94", null],
     ["databaseName", "classexasockets__connection.html#a15502f340303ffff6a264376686e9942", null],
     ["disconnect", "classexasockets__connection.html#a8e5abb3b9262c2ef892fcc43338d91dd", null],
-    ["exec_prepared", "classexasockets__connection.html#a5bda45d9047db6df921859f1ba0cc492", null],
+    ["exec_prepared_insert", "classexasockets__connection.html#af506325e4fd10a5f3cc55d61a1882836", null],
     ["exec_sql", "classexasockets__connection.html#ac019ce85aa77f548fe567261c1733490", null],
     ["fetch", "classexasockets__connection.html#a5326bcb45ce667757fffa483bf4db47b", null],
     ["identifierQuoteString", "classexasockets__connection.html#a972f656c7279ab648cfce772a0ca9d12", null],

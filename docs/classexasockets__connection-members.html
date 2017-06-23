@@ -192,9 +192,23 @@ $(document).ready(function(){initNavTree('classexasockets__connection.html','');
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
-        <td class="entry"><b>close_result_set</b>(exaResultSetHandler &amp;rs) (defined in <a class="el"
-                                                                                              href="classexasockets__connection.html">exasockets_connection</a>)
+    <tr class="even">
+        <td class="entry"><a class="el" href="classexasockets__connection.html#a2d7febee644fe09102e55c6d4a6e77ec">close_prepared</a>(exaResultSetHandler
+            &amp;rs)
+        </td>
+        <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
+        <td class="entry"><span class="mlabel">virtual</span></td>
+    </tr>
+    <tr>
+        <td class="entry"><a class="el" href="classexasockets__connection.html#a322e3831b12ec3d886d534e79812e445">close_result_set</a>(exaResultSetHandler
+            &amp;rs)
+        </td>
+        <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
+        <td class="entry"><span class="mlabel">virtual</span></td>
+    </tr>
+    <tr class="even">
+        <td class="entry"><a class="el" href="classexasockets__connection.html#a360b6b17466f0e428a3ed44930fd5674">close_result_set</a>(int
+            handle)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">virtual</span></td>
@@ -206,68 +220,75 @@ $(document).ready(function(){initNavTree('classexasockets__connection.html','');
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span><span class="mlabel">static</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
-        <td class="entry"><b>create_prepared</b>(char *sql) (defined in <a class="el"
-                                                                           href="classexasockets__connection.html">exasockets_connection</a>)
+    <tr class="even">
+        <td class="entry"><a class="el" href="classexasockets__connection.html#a86a356fdbd00d49143211205ebdc4edb">create_prepared_insert</a>(char
+            *sql)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">virtual</span></td>
     </tr>
     <tr bgcolor="#f0f0f0">
+        <td class="entry"><b>create_prepared_insert_int</b>(char *sql) (defined in <a class="el"
+                                                                                      href="classexasockets__connection.html">exasockets_connection</a>)
+        </td>
+        <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
+        <td class="entry"><span class="mlabel">virtual</span></td>
+    </tr>
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>d</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>data</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>databaseName</b>() const (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr class="even">
+    <tr>
         <td class="entry"><a class="el" href="classexasockets__connection.html#a8e5abb3b9262c2ef892fcc43338d91dd">disconnect</a>(bool
             throw_message=true)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>ExaDatatypeToString</b>(const int type) (defined in <a class="el"
                                                                                     href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">static</span></td>
     </tr>
-    <tr class="even">
-        <td class="entry"><a class="el" href="classexasockets__connection.html#af230009df6b6cc3cbc0e822a0a07b959">exasockets_connection</a>(const
+    <tr>
+        <td class="entry"><a class="el" href="classexasockets__connection.html#a2b8a104eb625f339b57e65b10767e5d8">exasockets_connection</a>(const
             char *server, uint16_t port, const char *clientName, const char *username, const char *password, int
-            pwd_len, bool autocommit=true, bool use_compression=false, uint64_t sessionId=0)
+            pwd_len, bool autocommit=true, bool use_compression=false, uint64_t sessionId=0, bool debug=false)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
-        <td class="entry"><b>exec_prepared</b>(exaResultSetHandler &amp;rs, size_t start_row=0, size_t num_rows=0, bool
-            send=false) (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
+    <tr class="even">
+        <td class="entry"><a class="el" href="classexasockets__connection.html#af506325e4fd10a5f3cc55d61a1882836">exec_prepared_insert</a>(exaResultSetHandler
+            &amp;rs)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">virtual</span></td>
     </tr>
-    <tr class="even">
+    <tr>
         <td class="entry"><a class="el" href="classexasockets__connection.html#ac019ce85aa77f548fe567261c1733490">exec_sql</a>(char
             *sql)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">virtual</span></td>
     </tr>
-    <tr>
+    <tr class="even">
         <td class="entry"><a class="el"
                              href="classexasockets__connection.html#a5326bcb45ce667757fffa483bf4db47b">fetch</a>(exaResultSetHandler
             *rs, uint64_t numRows=10000, uint64_t startPosition=1, uint64_t numBytes=10485760)
@@ -275,143 +296,143 @@ $(document).ready(function(){initNavTree('classexasockets__connection.html','');
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>identifierQuoteString</b>() const (defined in <a class="el"
                                                                               href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>isStatus</b>() const (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>json_debug_output</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>logfile</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>maxDataMessageSize</b>() const (defined in <a class="el"
                                                                            href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>maxIdentifierLength</b>() const (defined in <a class="el"
                                                                             href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>maxVarcharLength</b>() const (defined in <a class="el"
                                                                          href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>productName</b>() const (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>protocolVersion</b>() const (defined in <a class="el"
                                                                         href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>releaseVersion</b>() const (defined in <a class="el"
                                                                        href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>resultSet</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>session_id</b>() const (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>status</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>StringToExaDatatype</b>(const char *str) (defined in <a class="el"
                                                                                      href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">static</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>tfile</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>timezone</b>() const (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>timeZoneBehaviour</b>() const (defined in <a class="el"
                                                                           href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>update_session_attributes</b>() (defined in <a class="el"
                                                                             href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>ws_con</b> (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>ws_receive_data</b>() (defined in <a class="el" href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0" class="even">
+    <tr bgcolor="#f0f0f0">
         <td class="entry"><b>ws_send_data</b>(const char *data, int len=-1, int type=1) (defined in <a class="el"
                                                                                                        href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
         <td class="entry"><a class="el" href="classexasockets__connection.html">exasockets_connection</a></td>
         <td class="entry"><span class="mlabel">protected</span></td>
     </tr>
-    <tr bgcolor="#f0f0f0">
+    <tr bgcolor="#f0f0f0" class="even">
         <td class="entry"><b>~exasockets_connection</b>() (defined in <a class="el"
                                                                          href="classexasockets__connection.html">exasockets_connection</a>)
         </td>
