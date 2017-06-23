@@ -149,6 +149,14 @@ public:
      */
     virtual int close_result_set(exaResultSetHandler &rs);
 
+    //! Closes a result set.
+    /*! Sends to the DB the command to dispose the result set.
+     *
+     * @param handle An exaResultSetHandler object related to the result set to be closed.
+     * @return 0 on success.
+     */
+    virtual int close_result_set(int handle);
+
     //! Creates a prepared statement.
     /*! Sends to the DB the command to prepare a statement.
      *
@@ -156,6 +164,9 @@ public:
      * @return Returns an exaResultSetHandler referencing the prepared statement.
      */
     virtual exaResultSetHandler *create_prepared_insert(char *sql);
+
+
+    virtual int create_prepared_insert_int(char *sql);
 
     //! Executes a previously prepared statement.
     /*! Sends to the DB the command to execute a previously prepared statement.

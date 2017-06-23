@@ -745,6 +745,36 @@ exaResultSetHandler *exasockets_connection::create_prepared_insert(char *sql) {
     }
 }
 
+int exasockets_connection::create_prepared_insert_int(char *sql) {
+    // creates a prepared statement
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("createPreparedStatement");
+    writer.Key("sqlText");
+    writer.String(sql);
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+
+
+    if (!d.IsObject()) { // nonsense received
+        throw std::runtime_error("create_prepared: Response parsing failed.");
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
+    } else { // something useful received
+        const rapidjson::Value &jrs = d["responseData"]["parameterData"];
+        int h = d["responseData"]["statementHandle"].GetInt();
+        // return this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, h);
+        return h;
+    }
+}
+
 void exasockets_connection::exec_prepared_insert(exaResultSetHandler &rs) {
 
 
@@ -923,4 +953,37 @@ int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
     }
 
 }
+
+int exasockets_connection::close_result_set(int handle) {
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("closeResultSet");
+    writer.Key("resultSetHandles");
+    writer.StartArray();
+    writer.Int(handle);
+    writer.EndArray();
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+
+
+    if (!this->d.IsObject()) { // nonsense received
+        throw std::runtime_error("close_result_set: Response parsing failed.");
+        return -2;
+    } else if (this->d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(this->d["exception"]["text"].GetString());
+        return -1;
+    } else { // something useful received
+        return 0;
+    }
+
+}
+
+
 

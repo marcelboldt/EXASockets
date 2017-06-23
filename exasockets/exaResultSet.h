@@ -178,7 +178,7 @@ public:
         this->fraction = fraction;
         this->srid = srid;
 
-        //   this->data.reserve(num_rows);
+        this->data.reserve(num_rows);
     };
     // exaColumn(std::vector<T> *data);
     // exaColumn(char *data);

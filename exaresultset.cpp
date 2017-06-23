@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
 
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     // ProfilerStart("/tmp/exaresultset.prof");
-    exaws->json_debug_output = true;
+    // exaws->json_debug_output = true;
     exaResultSetHandler *rs = exaws->exec_sql(sql_stmt);
     exaws->json_debug_output = false;
     // ProfilerStop();
