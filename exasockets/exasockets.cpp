@@ -915,7 +915,6 @@ int exasockets_connection::close_prepared(exaResultSetHandler &rs) {
         rs.setHandle(rs.getHandle() * (-1));
         return 0;
     }
-
 }
 
 int exasockets_connection::close_result_set(exaResultSetHandler &rs) {

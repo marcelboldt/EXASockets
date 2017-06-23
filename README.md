@@ -76,18 +76,13 @@ int main() {
     
     exaResultSetHandler *prep_rs = exaws->create_prepared_insert("insert into test.tbl1 values (?,?);");
 
-    printMetadata(rs);
-    
     std::string s = "1";
     for (int i = 0; i < 1000000; i++) (*prep_rs)[0].appendData(&s);
     
     double d = 3.123;
     for (int i = 0; i < 1000000; i++) (*prep_rs)[1].appendData(&d);
     
-    for (int i = 0; i < 1; i++) {
-        exaws->exec_prepared_insert(*prep_rs);
-    }
-    
+    exaws->exec_prepared_insert(*prep_rs);   
     exaws->close_prepared(*prep_rs);
 
     // a clean disconnect is done on destruction of the connection object.
