@@ -86,6 +86,7 @@ public:
      * @param autocommit    If the DBMS is supposed to execute a COMMIT automatically after each statement. Default: true (recommended)
      * @param use_compression   If the result sets are to be transferred compressed. Default: false. Compression is not yet implemented on the client side.
      * @param sessionId     An ID for the session to be created in EXASOL. Per default a random session ID is created (recommended).
+     * @param debug     A boolean that controls debug output. If true, all sent and received JSON elements are written to stdout. Default: false
      * @return An exasockets_connection object containing an open connection.
      */
     exasockets_connection(const char *server,
@@ -96,7 +97,8 @@ public:
                           int pwd_len,
                           bool autocommit = true,
                           bool use_compression = false,
-                          uint64_t sessionId = 0 // 0 -> create randomly
+                          uint64_t sessionId = 0, // 0 -> create randomly
+                          bool debug = false
     );
 
     virtual ~exasockets_connection();
@@ -139,11 +141,48 @@ public:
     fetch(exaResultSetHandler *rs, uint64_t numRows = 10000, uint64_t startPosition = 1,
           uint64_t numBytes = 10485760);
 
+    //! Closes a result set.
+    /*! Sends to the DB the command to dispose the result set.
+     *
+     * @param rs A reference to an exaResultSetHandler object related to the result set to be closed.
+     * @return 0 on success.
+     */
     virtual int close_result_set(exaResultSetHandler &rs);
 
-    virtual exaResultSetHandler *create_prepared(char *sql);
+    //! Closes a result set.
+    /*! Sends to the DB the command to dispose the result set.
+     *
+     * @param handle An exaResultSetHandler object related to the result set to be closed.
+     * @return 0 on success.
+     */
+    virtual int close_result_set(int handle);
 
-    virtual void exec_prepared(exaResultSetHandler &rs, size_t start_row = 0, size_t num_rows = 0, bool send = false);
+    //! Creates a prepared statement.
+    /*! Sends to the DB the command to prepare a statement.
+     *
+     * @param sql A character string containing the SQL statement to prepare.
+     * @return Returns an exaResultSetHandler referencing the prepared statement.
+     */
+    virtual exaResultSetHandler *create_prepared_insert(char *sql);
+
+
+    virtual int create_prepared_insert_int(char *sql);
+
+    //! Executes a previously prepared statement.
+    /*! Sends to the DB the command to execute a previously prepared statement.
+     *
+     * @param rs An exaResultSetHandler affiliated with the statement prepared.
+     */
+    virtual void exec_prepared_insert(exaResultSetHandler &rs);
+
+
+    //! Closes a prepared statement.
+    /*! Sends to the DB the command to close the prepared statement.
+     *
+     * @param rs A reference to an exaResultSetHandler object related to the result set to be closed.
+     * @return 0 on success.
+     */
+    virtual int close_prepared(exaResultSetHandler &rs);
 
     const char *databaseName() const;
     const char *identifierQuoteString() const;
@@ -191,7 +230,6 @@ protected:
     int ws_send_data(const char *data, int len = -1, int type = 1);
 
     std::string ws_receive_data();
-
 
 };
 

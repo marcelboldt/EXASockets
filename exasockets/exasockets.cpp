@@ -64,7 +64,8 @@ void printLastError(char *msg) {    // http://hayageek.com/rsa-encryption-decryp
 exasockets_connection::exasockets_connection(const char *server, uint16_t port, const char *clientName,
                                              const char *username,
                                              const char *password, int pwd_len, bool autocommit, bool use_compression,
-                                             uint64_t sessionId) {
+                                             uint64_t sessionId, bool debug) {
+    this->json_debug_output = debug;
 
 //    Websockets_connection::write_msg_to_file("exasock init");
 //    Websockets_connection::write_msg_to_file(OS_NAME);
@@ -329,7 +330,7 @@ std::string exasockets_connection::ws_receive_data() {
     int len = ws_con->receive_data(&buf);
 
     if (this->json_debug_output) {
-        std::cout << "RECV:" << buf << std::endl;
+        std::cout << "RECV: " << buf << std::endl;
     }
 
 
@@ -546,13 +547,54 @@ exasockets_connection::create_exaResultSetHandler_from_RapidJSON_Document(const 
 
     exaResultSetHandler *exa_rs = new exaResultSetHandler();
 
+    size_t num_rows = 0;
+    if (JSONresultSet.HasMember("numRows") && JSONresultSet["numRows"].IsInt64()) {
+        num_rows = JSONresultSet["numRows"].GetInt64();
+    }
+
+    std::string name;
+    int precision;
+    int scale;
+    int size;
+    std::string charset;
+    bool w_local_tz;
+    int fraction;
+    int srid;
+
+
     for (auto i = 0; i < JSONresultSet["numColumns"].GetInt64(); i++) { //for each column
 
+        name.assign(
+                JSONresultSet["columns"][i].HasMember("name") ? JSONresultSet["columns"][i]["name"].GetString() : "");
+
+        precision = JSONresultSet["columns"][i]["dataType"].HasMember("precision")
+                    ? JSONresultSet["columns"][i]["dataType"]["precision"].GetInt() : -1;
+
+        scale = JSONresultSet["columns"][i]["dataType"].HasMember("scale")
+                ? JSONresultSet["columns"][i]["dataType"]["scale"].GetInt() : -1;
+
+        size = JSONresultSet["columns"][i]["dataType"].HasMember("size")
+               ? JSONresultSet["columns"][i]["dataType"]["size"].GetInt() : -1;
+
+        charset.assign(JSONresultSet["columns"][i]["dataType"].HasMember("characterSet")
+                       ? JSONresultSet["columns"][i]["dataType"]["characterSet"].GetString() : "");
+
+        w_local_tz = JSONresultSet["columns"][i]["dataType"].HasMember("withLocalTimeZone")
+                     ? JSONresultSet["columns"][i]["dataType"]["withLocalTimeZone"].GetBool() : false;
+
+        fraction = JSONresultSet["columns"][i]["dataType"].HasMember("fraction")
+                   ? JSONresultSet["columns"][i]["dataType"]["fraction"].GetInt() : -1;
+
+        srid = JSONresultSet["columns"][i]["dataType"].HasMember("srid")
+               ? JSONresultSet["columns"][i]["dataType"]["srid"].GetInt() : -1;
+
+
+
         std::shared_ptr<exaTblColumn> exa_col(
-                exaTblColumn::create((char *) JSONresultSet["columns"][i]["name"].GetString(),
+                exaTblColumn::create(name,
                                      StringToExaDatatype(
                                              JSONresultSet["columns"][i]["dataType"]["type"].GetString()),
-                                     JSONresultSet["numRows"].GetInt64()
+                                     num_rows, precision, scale, size, charset, w_local_tz, fraction, srid
                 ));
 
         exa_rs->addColumn(exa_col);
@@ -674,7 +716,7 @@ exasockets_connection::fetch(exaResultSetHandler *rs, uint64_t numRows, uint64_t
     return -3;
 }
 
-exaResultSetHandler *exasockets_connection::create_prepared(char *sql) {
+exaResultSetHandler *exasockets_connection::create_prepared_insert(char *sql) {
     // creates a prepared statement
 
     rapidjson::StringBuffer s;
@@ -690,18 +732,50 @@ exaResultSetHandler *exasockets_connection::create_prepared(char *sql) {
     ws_send_data(s.GetString(), s.GetSize(), 1);
     rapidjson::Document d;
     d.Parse(ws_receive_data().c_str());
-    if (d.IsObject() & d.HasMember("status")) { // TODO: change error handling pattern to that of fetch etc.
-        const rapidjson::Value &jrs = d["responseData"]["results"][0]["resultSet"];
+
+
+    if (!d.IsObject()) { // nonsense received
+        throw std::runtime_error("create_prepared: Response parsing failed.");
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
+    } else { // something useful received
+        const rapidjson::Value &jrs = d["responseData"]["parameterData"];
         int h = d["responseData"]["statementHandle"].GetInt();
         return this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, h);
-    } else {
-        if (d.IsObject()) throw std::runtime_error(d["exception"]["text"].GetString());
-        else throw std::runtime_error("create_prepared: nonsense received");
     }
-    return nullptr;
 }
 
-void exasockets_connection::exec_prepared(exaResultSetHandler &rs, size_t start_row, size_t num_rows, bool send) {
+int exasockets_connection::create_prepared_insert_int(char *sql) {
+    // creates a prepared statement
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("createPreparedStatement");
+    writer.Key("sqlText");
+    writer.String(sql);
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+
+
+    if (!d.IsObject()) { // nonsense received
+        throw std::runtime_error("create_prepared: Response parsing failed.");
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
+    } else { // something useful received
+        const rapidjson::Value &jrs = d["responseData"]["parameterData"];
+        int h = d["responseData"]["statementHandle"].GetInt();
+        // return this->create_exaResultSetHandler_from_RapidJSON_Document(jrs, h);
+        return h;
+    }
+}
+
+void exasockets_connection::exec_prepared_insert(exaResultSetHandler &rs) {
 
 
     rapidjson::StringBuffer s;
@@ -715,27 +789,132 @@ void exasockets_connection::exec_prepared(exaResultSetHandler &rs, size_t start_
     writer.Key("numColumns");
     writer.Int(rs.cols());
     writer.Key("numRows");
-    writer.Int(num_rows);
+    writer.Int(rs.rows());
+    writer.Key("columns");
+    writer.StartArray();
+
+    for (int i = 0; i < rs.cols(); i++) { // writing the parameter metadata
+        writer.StartObject();
+        writer.Key("name");
+        writer.String(rs[i].getName().c_str());
+        writer.Key("dataType");
+        writer.StartObject();
+        writer.Key("type");
+        writer.String(this->ExaDatatypeToString(rs[i].type()));
+        if (rs[i].getPrecision() > -1) {
+            writer.Key("precision");
+            writer.Int(rs[i].getPrecision());
+            if (rs[i].getScale() > -1) {
+                writer.Key("scale");
+                writer.Int(rs[i].getScale());
+            }
+            if (rs[i].getFraction() > -1) {
+                writer.Key("fraction");
+                writer.Int(rs[i].getFraction());
+            }
+        }
+        if (rs[i].getSize() > -1) {
+            writer.Key("size");
+            writer.Int(rs[i].getSize());
+        }
+        writer.EndObject();
+        writer.EndObject();
+    }
+
+    writer.EndArray();
+    writer.Key("data");
+
+    writer.StartArray(); // column array
+    for (int i = 0; i < rs.cols(); i++) { // for each column
+        writer.StartArray();
+
+        switch (rs[i].type()) {
+            case EXA_BOOLEAN : {
+
+                std::vector<bool> &v = *static_cast<std::vector<bool> *>(rs[i].as_std_vector());
+                std::vector<bool> &b = rs[i].nulls;
+                for (int j = 0; j < v.size(); j++) {
+
+                    if (!b[j]) {
+                        writer.Bool(v[j]);
+                    } else {
+                        writer.Null();
+                    }
+                }
+                break;
+            }
+            case EXA_DOUBLE : {
+
+                std::vector<double> &v = *static_cast<std::vector<double> *>(rs[i].as_std_vector());
+                std::vector<bool> &b = rs[i].nulls;
+                for (int j = 0; j < v.size(); j++) {
+
+                    if (!b[j]) {
+                        writer.Double(v[j]);
+                    } else {
+                        writer.Null();
+                    }
+                }
+                break;
+            }
+            default : {
+                std::vector<std::string> &v = *static_cast<std::vector<std::string> *>(rs[i].as_std_vector());
+                std::vector<bool> &b = rs[i].nulls;
+                for (int j = 0; j < v.size(); j++) {
+                    if (!b[j]) {
+                        writer.String(v[j].c_str());
+                    } else {
+                        writer.Null();
+                    }
+                }
+            }
+        }
+        writer.EndArray();
+    }
+
+    writer.EndArray();
     writer.EndObject();
 
-    if (send) {
-
-    } else {
-
-    }
 
     ws_send_data(s.GetString(), s.GetSize(), 1);
     rapidjson::Document d;
     d.Parse(ws_receive_data().c_str());
-    if (d.IsObject() & d.HasMember("status")) {  // TODO: change error handling pattern to that of fetch etc.
-        if (d["status"].GetString() == "ok") {
-            rapidjson::Value &data = d["responseData"]["results"][0]["resultSet"]["data"];
-            this->append_data_from_Rapid_JSON_Document(&rs, data);
-        } else {
-            throw std::runtime_error(d["exception"]["text"].GetString());
-        }
+
+
+    if (!d.IsObject()) { // nonsense received
+        throw std::runtime_error("create_prepared: Response parsing failed.");
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
+    } else { // something useful received
+        //std::cout << "ok" << std::endl;
     }
-    throw std::runtime_error("nonsense received");
+}
+
+int exasockets_connection::close_prepared(exaResultSetHandler &rs) {
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("closePreparedStatement");
+    writer.Key("statementHandle");
+    writer.Int(rs.getHandle());
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+
+    if (!d.IsObject()) { // nonsense received
+        // throw std::runtime_error("close_prepared: Response parsing failed.");
+        throw (std::runtime_error("close_prepared: Response parsing failed"));
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
+    } else { // something useful received
+        rs.setHandle(rs.getHandle() * (-1));
+        return 0;
+    }
 }
 
 int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
@@ -757,11 +936,11 @@ int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
     d.Parse(ws_receive_data().c_str());
 
 
-    if (!this->d.IsObject()) { // nonsense received
+    if (!d.IsObject()) { // nonsense received
         throw std::runtime_error("close_result_set: Response parsing failed.");
         return -2;
-    } else if (this->d.HasMember("exception")) { // DB had a problem
-        throw std::runtime_error(this->d["exception"]["text"].GetString());
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
         return -1;
     } else { // something useful received
         rs.setHandle(rs.getHandle() * (-1));
@@ -769,4 +948,37 @@ int exasockets_connection::close_result_set(exaResultSetHandler &rs) {
     }
 
 }
+
+int exasockets_connection::close_result_set(int handle) {
+
+    rapidjson::StringBuffer s;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(s);
+
+    writer.StartObject();
+    writer.Key("command");
+    writer.String("closeResultSet");
+    writer.Key("resultSetHandles");
+    writer.StartArray();
+    writer.Int(handle);
+    writer.EndArray();
+    writer.EndObject();
+
+    ws_send_data(s.GetString(), s.GetSize(), 1);
+    rapidjson::Document d;
+    d.Parse(ws_receive_data().c_str());
+
+
+    if (!d.IsObject()) { // nonsense received
+        throw std::runtime_error("close_result_set: Response parsing failed.");
+        return -2;
+    } else if (d.HasMember("exception")) { // DB had a problem
+        throw std::runtime_error(d["exception"]["text"].GetString());
+        return -1;
+    } else { // something useful received
+        return 0;
+    }
+
+}
+
+
 

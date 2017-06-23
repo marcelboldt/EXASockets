@@ -31,21 +31,27 @@ Marcel Boldt <marcel.boldt@exasol.com>
 #include "exaResultSet.h"
 
 exaTblColumn *
-exaTblColumn::create(char *name, int datatype, size_t num_rows, int precision, int scale, int size, char *charset,
+exaTblColumn::create(std::string name, int datatype, size_t num_rows, int precision, int scale, int size,
+                     std::string charset,
                      bool w_local_tz,
                      int fraction, int srid) {
 
     switch (datatype) {
         case EXA_BOOLEAN :
-            return new exaColumn<bool>(name, EXA_BOOLEAN, num_rows);
+            return new exaColumn<bool>(name, EXA_BOOLEAN, num_rows, precision, scale, size, charset, w_local_tz,
+                                       fraction, srid);
         case EXA_CHAR :
-            return new exaColumn<std::string>(name, EXA_CHAR, num_rows);
+            return new exaColumn<std::string>(name, EXA_CHAR, num_rows, precision, scale, size, charset, w_local_tz,
+                                              fraction, srid);
         case EXA_DATE :
-            return new exaColumn<std::string>(name, EXA_DATE, num_rows);
+            return new exaColumn<std::string>(name, EXA_DATE, num_rows, precision, scale, size, charset, w_local_tz,
+                                              fraction, srid);
         case EXA_DECIMAL :
-            return new exaColumn<std::string>(name, EXA_DECIMAL, num_rows);
+            return new exaColumn<std::string>(name, EXA_DECIMAL, num_rows, precision, scale, size, charset, w_local_tz,
+                                              fraction, srid);
         case EXA_DOUBLE :
-            return new exaColumn<double>(name, EXA_DOUBLE, num_rows);
+            return new exaColumn<double>(name, EXA_DOUBLE, num_rows, precision, scale, size, charset, w_local_tz,
+                                         fraction, srid);
             /*  case EXA_GEOMETRY :
                   this->data = new exaColumn<char[20]>();
                   break; */
@@ -56,12 +62,14 @@ exaTblColumn::create(char *name, int datatype, size_t num_rows, int precision, i
                    this->data = new exaColumn<char[20]>();
                    break; */
         case EXA_TIMESTAMP :
-            return new exaColumn<std::string>(name, EXA_TIMESTAMP, num_rows);
+            return new exaColumn<std::string>(name, EXA_TIMESTAMP, num_rows, precision, scale, size, charset,
+                                              w_local_tz, fraction, srid);
             /*    case EXA_TIMESTAMP_TZ :
                     this->data = new exaColumn<char[20]>();
                     break; */
         case EXA_VARCHAR :
-            return new exaColumn<std::string>(name, EXA_VARCHAR, num_rows);
+            return new exaColumn<std::string>(name, EXA_VARCHAR, num_rows, precision, scale, size, charset, w_local_tz,
+                                              fraction, srid);
         default:
             throw "unknown datatype";
     }
@@ -96,14 +104,14 @@ void exaTblColumn::setSize(int size) {
     exaTblColumn::size = size;
 }
 
-const char *exaTblColumn::getCharacterSet() const {
+std::string exaTblColumn::getCharacterSet() const {
     return characterSet;
 }
 
-/*
-void exaTblColumn::setCharacterSet(char* characterSet) {
+
+void exaTblColumn::setCharacterSet(std::string characterSet) {
     exaTblColumn::characterSet = characterSet;
-}*/
+}
 
 bool exaTblColumn::isWithLocalTimeTone() const {
     return withLocalTimeTone;
@@ -154,9 +162,10 @@ void exaColumn<T>::appendData(const void *value, const bool null) {
 }
 
 template<typename T>
-void *exaColumn<T>::operator[](size_t row) {
+std::shared_ptr<void> exaColumn<T>::operator[](size_t row) {
     if (this->is_null(row)) return nullptr;
-    return new T(this->data[row]);
+    //return new T(this->data[row]);
+    return std::shared_ptr<T>(new T(this->data[row]));
 }
 
 /*
