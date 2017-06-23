@@ -5,6 +5,23 @@ Interface to the EXASOL DB via JSON over Websockets protocol.
 
 Work in progress... but probably already useful.
 
+## Build
+
+These libs are intended to work on Windows and POSIX systems. For building the linker needs:
+
+- the websockets libs (included as a git submodule; see below), see https://github.com/marcelboldt/websockets/
+- RapidJSON 1.10, see https://github.com/miloyip/rapidjson/
+- OpenSSL (tested with v1.1.0b 26 Sep 2016), see https://www.openssl.org/
+- OpenMP (optional but recommended)
+
+No other non C++ standard libraries (e.g. boost) are needed.
+
+As the websockets library is included as a submodule, clone the repository recursively by
+ ```git clone --recursive <project_url>```, or pull the submodule before building 
+ by ```git submodule update --init```. For details see e.g. https://github.com/blog/2104-working-with-submodules
+
+
+
 ### Functionality: 
 
 What basically works:
@@ -107,18 +124,6 @@ int main() {
 | INTERVAL_YM      	| not yet implemented         	|
 | TIMESTAMP        	| std::string                 	|
 | VARCHAR          	| std::string                 	|
-
-
-## Build
-
-These libs are intended to work on Windows and POSIX systems. For building the linker needs:
-
-- the websockets libs, see https://github.com/marcelboldt/websockets/
-- RapidJSON 1.10, see https://github.com/miloyip/rapidjson/
-- OpenSSL (tested with v1.1.0b 26 Sep 2016), see https://www.openssl.org/
-- OpenMP
-
-No other non C++ standard libraries (e.g. boost) are needed.
 
 
 ## Documentation
